@@ -1,0 +1,216 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/akuity-*.json (path hierarchy + protobuf message fields)
+description: >-
+  The Akuity Platform resource graph, derived from the URL hierarchy of the 482
+  operations in openapi/ and the id-reference fields in the published protobuf
+  messages. Organization is the root of everything; Workspace is an optional
+  tenancy layer that duplicates most of the Argo CD and Kargo surface under a
+  second path prefix.
+
+root: Organization
+
+id_conventions:
+  style: opaque string ids, no type prefixes
+  note: >-
+    Akuity uses plain string ids (`id`, `organization_id`, `instance_id`,
+    `cluster_id`, `workspace_id`) with no Stripe-style type prefix. Several
+    resources are addressable by NAME as well as id — GetKargoInstance takes
+    `{name}`, DeleteInstanceAddon takes `{instance_name}` — so name uniqueness
+    within a parent is part of the contract.
+
+entities:
+  - name: Organization
+    path: /api/v1/organizations/{id}
+    schema: akuity.organization.v1
+    description: The billing and tenancy root. Every other resource hangs off an organization.
+
+  - name: Workspace
+    path: /api/v1/organizations/{organization_id}/workspaces/{workspace_id}
+    description: >-
+      Optional sub-tenancy inside an organization. Argo CD instances, Kargo
+      instances, API keys and custom roles each have a workspace-scoped twin
+      route; 69 of the 482 operations exist only to serve the workspace-scoped
+      form of an organization-scoped operation.
+
+  - name: Member
+    path: /api/v1/organizations/{id}/members
+    description: A user's membership in an organization, with a role.
+
+  - name: Team
+    path: /api/v1/orgs/{organization_id}/teams
+    description: A named group of members, mappable from an OIDC claim.
+
+  - name: CustomRole
+    path: /api/v1/customroles/{id}
+    schema: akuity.customrole.v1.CustomRole
+    fields: [id, name, description, policy, organization_id]
+    description: A named authorization policy attached to an organization or workspace.
+
+  - name: APIKey
+    path: /api/v1/apikeys/{id}
+    schema: akuity.apikey.v1.APIKey
+    description: >-
+      The AKUITY_API_KEY_ID / AKUITY_API_KEY_SECRET credential pair. Created via
+      the organization or workspace, then addressed by its own id for get, delete
+      and secret regeneration.
+
+  - name: ArgoCDInstance
+    path: /api/v1/orgs/{organization_id}/argocd/instances/{id}
+    schema: akuity.argocd.v1
+    description: A managed Argo CD control plane.
+
+  - name: Cluster
+    path: /api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/{id}
+    schema: akuity.argocd.v1.Cluster
+    description: A target Kubernetes cluster attached to an Argo CD instance via the Akuity Agent.
+
+  - name: Addon
+    path: /api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/addons/{id}
+    description: A cluster addon deployed through the instance, sourced from an AddonRepo.
+
+  - name: AddonRepo
+    path: /api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-repos/{id}
+    schema: akuity.argocd.v1.AddonRepo
+
+  - name: KargoInstance
+    path: /api/v1/orgs/{organization_id}/kargo/instances/{name}
+    schema: akuity.kargo.v1
+    description: A managed Kargo control plane for multi-stage promotion.
+
+  - name: KargoAgent
+    path: /api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}
+    description: The Kargo-side agent running in a target cluster.
+
+  - name: NotificationConfig
+    path: /api/v1/orgs/{organization_id}/notification-configs
+    description: Webhook/email notification destination. Emits the events in asyncapi/akuity-notifications-webhooks.yml.
+
+  - name: AuditLog
+    path: /api/v1/organizations/{id}/audit-logs
+    description: >-
+      Immutable organization audit trail. Also exported as an archive
+      (audit-logs-archives) and streamed as CSV (/api/v1/stream/...).
+
+  - name: Quota
+    path: /api/v1/orgs/{organization_id}/argocd-instances-quota
+    description: Per-instance application and stage limits. Breaching a threshold emits a usage webhook.
+
+  - name: SSOConfiguration
+    path: /api/v1/organizations/{id}/sso
+    description: OIDC SSO configuration, with a separate OIDC claim → team/role map.
+
+  - name: KubernetesResource
+    path: /api/v1/orgs/{organization_id}/k8s/resources
+    description: >-
+      The Akuity Intelligence / KubeVision inventory read model — resources,
+      namespaces, images, containers, and their diffs and manifests, aggregated
+      across every connected cluster. Read-only; 30 operations.
+
+  - name: AIConversation
+    path: /api/v1/orgs/{organization_id}/ai/conversations
+    description: An Akuity Intelligence assistant conversation and its messages.
+
+relationships:
+  - from: Organization
+    to: Workspace
+    kind: has_many
+    via: organization_id
+  - from: Organization
+    to: Member
+    kind: has_many
+    via: organization_id
+  - from: Organization
+    to: Team
+    kind: has_many
+    via: organization_id
+  - from: Team
+    to: Member
+    kind: has_many
+    via: team member routes
+  - from: Organization
+    to: CustomRole
+    kind: has_many
+    via: organization_id
+  - from: Workspace
+    to: CustomRole
+    kind: has_many
+    via: workspace_id
+  - from: Organization
+    to: APIKey
+    kind: has_many
+    via: organization_id
+  - from: Workspace
+    to: APIKey
+    kind: has_many
+    via: workspace_id
+  - from: Organization
+    to: ArgoCDInstance
+    kind: has_many
+    via: organization_id
+  - from: Workspace
+    to: ArgoCDInstance
+    kind: has_many
+    via: workspace_id
+  - from: ArgoCDInstance
+    to: Cluster
+    kind: has_many
+    via: instance_id
+  - from: ArgoCDInstance
+    to: Addon
+    kind: has_many
+    via: instance_id
+  - from: Addon
+    to: AddonRepo
+    kind: belongs_to
+    via: addon repo reference
+  - from: Organization
+    to: KargoInstance
+    kind: has_many
+    via: organization_id
+  - from: KargoInstance
+    to: KargoAgent
+    kind: has_many
+    via: instance_id
+  - from: Organization
+    to: NotificationConfig
+    kind: has_many
+    via: organization_id
+  - from: Organization
+    to: AuditLog
+    kind: has_many
+    via: organization_id
+  - from: Organization
+    to: Quota
+    kind: has_many
+    via: organization_id
+  - from: ArgoCDInstance
+    to: Quota
+    kind: has_one
+    via: instance name
+  - from: Organization
+    to: SSOConfiguration
+    kind: has_one
+    via: organization_id
+  - from: Cluster
+    to: KubernetesResource
+    kind: has_many
+    via: cluster_id
+  - from: Organization
+    to: AIConversation
+    kind: has_many
+    via: organization_id
+
+observations:
+  - >-
+    The graph is a strict tree, not a mesh: there are no cross-organization
+    references and no many-to-many join resources in the public surface.
+  - >-
+    Workspace scoping is expressed by route duplication rather than by a
+    parameter. That is why 155 Argo CD operations cover only ~80 distinct RPCs —
+    most operations carry an `_1` sibling that is the workspace-scoped binding of
+    the same method.
+  - >-
+    The Kubernetes inventory (k8s/*) is a denormalised read model over every
+    connected cluster, not part of the write graph. It has no create/update/delete
+    operations at all.

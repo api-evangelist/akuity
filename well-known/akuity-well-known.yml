@@ -1,0 +1,102 @@
+generated: '2026-08-06'
+method: probed
+source: direct HTTP probe of every Akuity host
+description: >-
+  Akuity publishes NO /.well-known/ documents of its own. Every path below was
+  probed anonymously on 2026-08-06. Two hosts answer 200 for well-known paths,
+  and both are false positives that were disproved with a control path:
+  trust.akuity.io is a Vanta-hosted single-page app that returns the same HTML
+  shell for every path, and status.akuity.io is Atlassian Statuspage, whose
+  security.txt is Atlassian's own (Canonical: https://www.atlassian.com/.well-known/security.txt).
+  No SecurityTxt, WellKnown or APICatalog pointer is wired in apis.yml as a result.
+result: none-found
+probes:
+  - host: akuity.io
+    path: /.well-known/security.txt
+    status: 404
+  - host: akuity.io
+    path: /security.txt
+    status: 404
+  - host: akuity.io
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: akuity.io
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: akuity.io
+    path: /.well-known/api-catalog
+    status: 404
+  - host: akuity.io
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: akuity.io
+    path: /.well-known/agent.json
+    status: 404
+  - host: akuity.io
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: docs.akuity.io
+    path: /.well-known/security.txt
+    status: 404
+  - host: docs.akuity.io
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: docs.akuity.io
+    path: /.well-known/agent.json
+    status: 404
+  - host: akuity.cloud
+    path: /.well-known/security.txt
+    status: 404
+  - host: akuity.cloud
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: akuity.cloud
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: akuity.cloud
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: akuity.cloud
+    path: /.well-known/agent.json
+    status: 404
+  - host: academy.akuity.io
+    path: /.well-known/security.txt
+    status: 404
+  - host: trust.akuity.io
+    path: /.well-known/security.txt
+    status: 200
+    verdict: false-positive
+    note: >-
+      Body is the Vanta trust-center SPA shell (<!doctype html>, data-signature-manifest-url
+      pointing at assets.vanta.com). The control path
+      /.well-known/definitely-not-real-xyz123 returned byte-identical HTML with
+      status 200, so the 200 carries no information.
+  - host: trust.akuity.io
+    path: /.well-known/agent-card.json
+    status: 200
+    verdict: false-positive
+    note: same Vanta SPA catch-all; body is HTML, not an AgentCard JSON object.
+  - host: trust.akuity.io
+    path: /.well-known/agent.json
+    status: 200
+    verdict: false-positive
+    note: same Vanta SPA catch-all.
+  - host: trust.akuity.io
+    path: /.well-known/definitely-not-real-xyz123
+    status: 200
+    verdict: control
+    note: control path proving the SPA answers 200 for everything.
+  - host: status.akuity.io
+    path: /.well-known/security.txt
+    status: 200
+    verdict: vendor-not-provider
+    note: >-
+      A real, PGP-signed RFC 9116 document — but it is Atlassian's, served by
+      Statuspage. Contact: security@atlassian.com;
+      Canonical: https://www.atlassian.com/.well-known/security.txt. It is not
+      Akuity's vulnerability-disclosure surface.
+  - host: status.akuity.io
+    path: /.well-known/control-xyz123
+    status: 404
+    verdict: control
+    note: control path proving status.akuity.io does NOT blanket-200 well-known paths.

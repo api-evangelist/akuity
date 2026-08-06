@@ -1,0 +1,6555 @@
+{
+  "components": {
+    "schemas": {
+      "Status": {
+        "properties": {
+          "code": {
+            "description": "gRPC status code (google.rpc.Code)",
+            "format": "int32",
+            "type": "integer"
+          },
+          "details": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "google.rpc.Status",
+        "type": "object"
+      },
+      "akuity_kargo_v1_AkuityIntelligence": {
+        "properties": {
+          "aiSupportEngineerEnabled": {
+            "type": "boolean"
+          },
+          "allowedGroups": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "allowedUsernames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "modelVersion": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.AkuityIntelligence",
+        "type": "object"
+      },
+      "akuity_kargo_v1_ApplyKargoInstanceRequest": {
+        "properties": {
+          "agents": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "analysisTemplates": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "clusterMessageChannels": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "clusterPromotionTasks": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "configmaps": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "eventRouters": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "id": {
+            "type": "string"
+          },
+          "idType": {
+            "$ref": "#/components/schemas/akuity_types_id_v1_Type"
+          },
+          "kargo": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "kargoConfigmap": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "kargoSecret": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "messageChannels": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "projectConfigs": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "projects": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "promotionTasks": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "pruneResourceTypes": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_PruneResourceType"
+            },
+            "type": "array"
+          },
+          "repoCredentials": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "roleBindings": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "roles": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "serviceAccounts": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "stages": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "warehouses": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.ApplyKargoInstanceRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_ApplyKargoInstanceResponse": {
+        "title": "akuity.kargo.v1.ApplyKargoInstanceResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_CertificateStatus": {
+        "properties": {
+          "cnameNotSetSince": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "isCnameSet": {
+            "type": "boolean"
+          },
+          "isIssued": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.CertificateStatus",
+        "type": "object"
+      },
+      "akuity_kargo_v1_CreateKargoInstanceAgentRequest": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgentData"
+          },
+          "description": {
+            "type": "string"
+          },
+          "instanceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "upsert": {
+            "type": "boolean"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.CreateKargoInstanceAgentRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_CreateKargoInstanceAgentResponse": {
+        "properties": {
+          "agent": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgent"
+          }
+        },
+        "title": "akuity.kargo.v1.CreateKargoInstanceAgentResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_CreateKargoInstanceRequest": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.CreateKargoInstanceRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_CreateKargoInstanceResponse": {
+        "properties": {
+          "instance": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoInstance"
+          }
+        },
+        "title": "akuity.kargo.v1.CreateKargoInstanceResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_DataDogRolloutsSecret": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "apiKey": {
+            "type": "string"
+          },
+          "appKey": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.DataDogRolloutsSecret",
+        "type": "object"
+      },
+      "akuity_kargo_v1_DeleteInstanceAgentResponse": {
+        "title": "akuity.kargo.v1.DeleteInstanceAgentResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_DeleteInstanceResponse": {
+        "title": "akuity.kargo.v1.DeleteInstanceResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_ExportKargoInstanceResponse": {
+        "properties": {
+          "agents": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "analysisTemplates": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "clusterMessageChannels": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "clusterPromotionTasks": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "configmaps": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "eventRouters": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "kargo": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "kargoConfigmap": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "messageChannels": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "projectConfigs": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "projects": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "promotionTasks": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "roleBindings": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "roles": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "serviceAccounts": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "stages": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "warehouses": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.ExportKargoInstanceResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GarbageCollectorConfig": {
+        "properties": {
+          "maxRetainedFreight": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "maxRetainedPromotions": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "minFreightDeletionAge": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "minPromotionDeletionAge": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "title": "akuity.kargo.v1.GarbageCollectorConfig",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetInstanceAgentCommandResponse": {
+        "properties": {
+          "command": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.GetInstanceAgentCommandResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetKargoInstanceAgentResponse": {
+        "properties": {
+          "agent": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgent"
+          }
+        },
+        "title": "akuity.kargo.v1.GetKargoInstanceAgentResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetKargoInstanceResponse": {
+        "properties": {
+          "instance": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoInstance"
+          }
+        },
+        "title": "akuity.kargo.v1.GetKargoInstanceResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetPromotionEventsRequest": {
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_PromotionField"
+          },
+          "fieldLike": {
+            "type": "string"
+          },
+          "filter": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_PromotionFilter"
+          },
+          "limit": {
+            "format": "int64",
+            "type": "string"
+          },
+          "offset": {
+            "format": "int64",
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.GetPromotionEventsRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetPromotionEventsResponse": {
+        "properties": {
+          "count": {
+            "format": "int64",
+            "type": "string"
+          },
+          "fieldResult": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "promotionEvents": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_PromotionEvent"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.GetPromotionEventsResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetPromotionStatsRequest": {
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_PromotionFilter"
+          },
+          "groupByField": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_PromotionGroupField"
+          },
+          "interval": {
+            "$ref": "#/components/schemas/akuity_types_misc_v1_GroupByInterval"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.GetPromotionStatsRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetPromotionStatsResponse": {
+        "properties": {
+          "promotionStats": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_PromotionStat"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.GetPromotionStatsResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetStageSpecificStatsRequest": {
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_PromotionFilter"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.GetStageSpecificStatsRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_GetStageSpecificStatsResponse": {
+        "properties": {
+          "leadTimeData": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_LeadTimeData"
+            },
+            "type": "array"
+          },
+          "recoveryTimeData": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_RecoveryTimeData"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.GetStageSpecificStatsResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_InfluxDbRolloutsSecret": {
+        "properties": {
+          "authToken": {
+            "type": "string"
+          },
+          "influxdbAddress": {
+            "type": "string"
+          },
+          "org": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.InfluxDbRolloutsSecret",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoAgent": {
+        "properties": {
+          "agentState": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgentState"
+          },
+          "data": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgentData"
+          },
+          "deleteTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "healthStatus": {
+            "$ref": "#/components/schemas/akuity_types_status_health_v1_Status"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "observedGeneration": {
+            "format": "int64",
+            "type": "string"
+          },
+          "readonlySettingsChangedGeneration": {
+            "format": "int64",
+            "type": "string"
+          },
+          "reconciliationStatus": {
+            "$ref": "#/components/schemas/akuity_types_status_reconciliation_v1_Status"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoAgent",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoAgentCustomization": {
+        "properties": {
+          "autoUpgradeDisabled": {
+            "type": "boolean"
+          },
+          "kustomization": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoAgentCustomization",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoAgentData": {
+        "properties": {
+          "akuityManaged": {
+            "type": "boolean"
+          },
+          "allowedJobSa": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "annotations": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "argocdNamespace": {
+            "type": "string"
+          },
+          "autoUpgradeDisabled": {
+            "type": "boolean"
+          },
+          "kustomization": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "maintenanceMode": {
+            "type": "boolean"
+          },
+          "maintenanceModeExpiry": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "remoteArgocd": {
+            "type": "string"
+          },
+          "selfManagedArgocdUrl": {
+            "type": "string"
+          },
+          "size": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgentSize"
+          },
+          "targetVersion": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoAgentData",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoAgentSize": {
+        "enum": [
+          "KARGO_AGENT_SIZE_UNSPECIFIED",
+          "KARGO_AGENT_SIZE_SMALL",
+          "KARGO_AGENT_SIZE_MEDIUM",
+          "KARGO_AGENT_SIZE_LARGE"
+        ],
+        "type": "string"
+      },
+      "akuity_kargo_v1_KargoAgentState": {
+        "properties": {
+          "agentIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "kargoVersion": {
+            "type": "string"
+          },
+          "lastUserAppliedGeneration": {
+            "format": "int64",
+            "type": "string"
+          },
+          "observeTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/akuity_types_status_health_v1_AgentAggregatedHealthResponse"
+          },
+          "updateStatus": {
+            "$ref": "#/components/schemas/akuity_types_status_reconciliation_v1_AgentUpdateStatus"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoAgentState",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoApiCM": {
+        "properties": {
+          "adminAccountEnabled": {
+            "type": "boolean"
+          },
+          "adminAccountTokenTtl": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoApiCM",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoApiSecret": {
+        "properties": {
+          "adminAccountPasswordHash": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoApiSecret",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoControllerCM": {
+        "title": "akuity.kargo.v1.KargoControllerCM",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoIPAllowListEntry": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoIPAllowListEntry",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoInstance": {
+        "properties": {
+          "apiCm": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoApiCM"
+          },
+          "apiSecret": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoApiSecret"
+          },
+          "certificateStatus": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_CertificateStatus"
+          },
+          "controllerCm": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoControllerCM"
+          },
+          "deleteTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "fqdn": {
+            "type": "string"
+          },
+          "generation": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "healthStatus": {
+            "$ref": "#/components/schemas/akuity_types_status_health_v1_Status"
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "miscellaneousSecrets": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoMiscellaneousSecrets"
+          },
+          "name": {
+            "type": "string"
+          },
+          "oidcConfig": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoOidcConfig"
+          },
+          "ownerOrganizationName": {
+            "type": "string"
+          },
+          "reconciliationStatus": {
+            "$ref": "#/components/schemas/akuity_types_status_reconciliation_v1_Status"
+          },
+          "spec": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoInstanceSpec"
+          },
+          "subdomain": {
+            "type": "string"
+          },
+          "unsupportedVersion": {
+            "type": "boolean"
+          },
+          "version": {
+            "type": "string"
+          },
+          "webhookCm": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoWebhookCM"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoInstance",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoInstanceSpec": {
+        "properties": {
+          "agentCustomizationDefaults": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgentCustomization"
+          },
+          "akuityIntelligence": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_AkuityIntelligence"
+          },
+          "backendIpAllowListEnabled": {
+            "type": "boolean"
+          },
+          "defaultShardAgent": {
+            "type": "string"
+          },
+          "gcConfig": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_GarbageCollectorConfig"
+          },
+          "globalCredentialsNs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "globalServiceAccountNs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "ipAllowList": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_KargoIPAllowListEntry"
+            },
+            "type": "array"
+          },
+          "promoControllerEnabled": {
+            "type": "boolean"
+          },
+          "secrets": {
+            "$ref": "#/components/schemas/akuity_types_secrets_v1_SecretsManagementConfig"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoInstanceSpec",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoMiscellaneousSecrets": {
+        "properties": {
+          "datadogRolloutsSecret": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_DataDogRolloutsSecret"
+          },
+          "influxdbRolloutsSecret": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_InfluxDbRolloutsSecret"
+          },
+          "newrelicRolloutsSecret": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_NewRelicRolloutsSecret"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoMiscellaneousSecrets",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoOidcConfig": {
+        "properties": {
+          "additionalScopes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "adminAccount": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData"
+          },
+          "cliClientId": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "dexConfig": {
+            "type": "string"
+          },
+          "dexConfigSecret": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_KargoOidcConfig_Value"
+            },
+            "type": "object"
+          },
+          "dexEnabled": {
+            "type": "boolean"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "issuerUrl": {
+            "type": "string"
+          },
+          "projectCreatorAccount": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData"
+          },
+          "userAccount": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData"
+          },
+          "viewerAccount": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoOidcConfig",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoOidcConfig_Value": {
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoOidcConfig.Value",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoPredefinedAccountClaimValue": {
+        "properties": {
+          "values": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoPredefinedAccountClaimValue",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoPredefinedAccountData": {
+        "properties": {
+          "claims": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountClaimValue"
+            },
+            "type": "object"
+          },
+          "email": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "groups": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "sub": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.KargoPredefinedAccountData",
+        "type": "object"
+      },
+      "akuity_kargo_v1_KargoWebhookCM": {
+        "title": "akuity.kargo.v1.KargoWebhookCM",
+        "type": "object"
+      },
+      "akuity_kargo_v1_LeadTimeData": {
+        "properties": {
+          "freightCreationTime": {
+            "type": "string"
+          },
+          "leadTime": {
+            "format": "float",
+            "type": "number"
+          },
+          "promotionEndTime": {
+            "type": "string"
+          },
+          "stageName": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.LeadTimeData",
+        "type": "object"
+      },
+      "akuity_kargo_v1_ListKargoInstanceAgentsResponse": {
+        "properties": {
+          "agents": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgent"
+            },
+            "type": "array"
+          },
+          "totalCount": {
+            "format": "int64",
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.ListKargoInstanceAgentsResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_ListKargoInstancesResponse": {
+        "properties": {
+          "instances": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_kargo_v1_KargoInstance"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.ListKargoInstancesResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_NewRelicRolloutsSecret": {
+        "properties": {
+          "accountId": {
+            "type": "string"
+          },
+          "baseUrlNerdgraph": {
+            "type": "string"
+          },
+          "baseUrlRest": {
+            "type": "string"
+          },
+          "personalApiKey": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.NewRelicRolloutsSecret",
+        "type": "object"
+      },
+      "akuity_kargo_v1_OperationInitiator": {
+        "properties": {
+          "automated": {
+            "type": "boolean"
+          },
+          "username": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.OperationInitiator",
+        "type": "object"
+      },
+      "akuity_kargo_v1_PatchKargoInstanceResponse": {
+        "properties": {
+          "instance": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoInstance"
+          }
+        },
+        "title": "akuity.kargo.v1.PatchKargoInstanceResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_PromotionEvent": {
+        "properties": {
+          "details": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_PromotionEventDetails"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instanceId": {
+            "type": "string"
+          },
+          "promotionName": {
+            "type": "string"
+          },
+          "resultMessage": {
+            "type": "string"
+          },
+          "resultPhase": {
+            "type": "string"
+          },
+          "startTime": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.PromotionEvent",
+        "type": "object"
+      },
+      "akuity_kargo_v1_PromotionEventDetails": {
+        "properties": {
+          "freightAlias": {
+            "type": "string"
+          },
+          "freightCreationTime": {
+            "type": "string"
+          },
+          "freightName": {
+            "type": "string"
+          },
+          "initiatedBy": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_OperationInitiator"
+          },
+          "miscellaneous": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "project": {
+            "type": "string"
+          },
+          "promotionStatus": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          },
+          "verificationEndTime": {
+            "type": "string"
+          },
+          "verificationStartTime": {
+            "type": "string"
+          },
+          "verificationStatus": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.PromotionEventDetails",
+        "type": "object"
+      },
+      "akuity_kargo_v1_PromotionField": {
+        "enum": [
+          "PROMOTION_FIELD_UNSPECIFIED",
+          "PROMOTION_FIELD_STAGES",
+          "PROMOTION_FIELD_PROJECTS",
+          "PROMOTION_FIELD_INITIATORS",
+          "PROMOTION_FIELD_PROMOTIONS",
+          "PROMOTION_FIELD_INSTANCE_NAMES"
+        ],
+        "type": "string"
+      },
+      "akuity_kargo_v1_PromotionFilter": {
+        "properties": {
+          "endTime": {
+            "type": "string"
+          },
+          "initiatedBy": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "instanceId": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "instanceNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "projects": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "promotionName": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "stageName": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "startTime": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.PromotionFilter",
+        "type": "object"
+      },
+      "akuity_kargo_v1_PromotionGroupField": {
+        "enum": [
+          "PROMOTION_GROUP_FIELD_UNSPECIFIED",
+          "PROMOTION_GROUP_FIELD_STAGES",
+          "PROMOTION_GROUP_FIELD_PROJECTS",
+          "PROMOTION_GROUP_FIELD_INITIATORS",
+          "PROMOTION_GROUP_FIELD_INSTANCE_NAMES",
+          "PROMOTION_GROUP_FIELD_STATUS"
+        ],
+        "type": "string"
+      },
+      "akuity_kargo_v1_PromotionStat": {
+        "properties": {
+          "averageMap": {
+            "additionalProperties": {
+              "format": "float",
+              "type": "number"
+            },
+            "type": "object"
+          },
+          "countMap": {
+            "additionalProperties": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "type": "object"
+          },
+          "intervalStart": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.PromotionStat",
+        "type": "object"
+      },
+      "akuity_kargo_v1_PruneResourceType": {
+        "enum": [
+          "PRUNE_RESOURCE_TYPE_UNSPECIFIED",
+          "PRUNE_RESOURCE_TYPE_ALL",
+          "PRUNE_RESOURCE_TYPE_AGENTS",
+          "PRUNE_RESOURCE_TYPE_PROJECTS",
+          "PRUNE_RESOURCE_TYPE_WAREHOUSES",
+          "PRUNE_RESOURCE_TYPE_STAGES",
+          "PRUNE_RESOURCE_TYPE_ANALYSIS_TEMPLATES",
+          "PRUNE_RESOURCE_TYPE_PROMOTION_TASKS",
+          "PRUNE_RESOURCE_TYPE_CLUSTER_PROMOTION_TASKS",
+          "PRUNE_RESOURCE_TYPE_REPO_CREDENTIALS",
+          "PRUNE_RESOURCE_TYPE_SERVICE_ACCOUNTS",
+          "PRUNE_RESOURCE_TYPE_ROLES",
+          "PRUNE_RESOURCE_TYPE_ROLE_BINDINGS",
+          "PRUNE_RESOURCE_TYPE_CONFIGMAPS",
+          "PRUNE_RESOURCE_TYPE_PROJECT_CONFIGS",
+          "PRUNE_RESOURCE_TYPE_MESSAGE_CHANNELS",
+          "PRUNE_RESOURCE_TYPE_CLUSTER_MESSAGE_CHANNELS",
+          "PRUNE_RESOURCE_TYPE_EVENT_ROUTERS"
+        ],
+        "type": "string"
+      },
+      "akuity_kargo_v1_RecoveryTimeData": {
+        "properties": {
+          "phase": {
+            "type": "string"
+          },
+          "phaseChangeTime": {
+            "type": "string"
+          },
+          "stageName": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.RecoveryTimeData",
+        "type": "object"
+      },
+      "akuity_kargo_v1_RegenerateManifestsRequest": {
+        "properties": {
+          "agentNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "allAgents": {
+            "type": "boolean"
+          },
+          "instanceId": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.RegenerateManifestsRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_RegenerateManifestsResponse": {
+        "properties": {
+          "skippedAgents": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.RegenerateManifestsResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_RotateInstanceAgentCredentialsRequest": {
+        "properties": {
+          "agentNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "allAgents": {
+            "type": "boolean"
+          },
+          "instanceId": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.RotateInstanceAgentCredentialsRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_RotateInstanceAgentCredentialsResponse": {
+        "properties": {
+          "skippedAgents": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.kargo.v1.RotateInstanceAgentCredentialsResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_SetAgentMaintenanceModeRequest": {
+        "properties": {
+          "agentNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "allAgents": {
+            "type": "boolean"
+          },
+          "expiry": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "instanceId": {
+            "type": "string"
+          },
+          "maintenanceMode": {
+            "type": "boolean"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.SetAgentMaintenanceModeRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_SetAgentMaintenanceModeResponse": {
+        "title": "akuity.kargo.v1.SetAgentMaintenanceModeResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_UpdateInstanceAgentVersionRequest": {
+        "properties": {
+          "agentNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "allAgents": {
+            "type": "boolean"
+          },
+          "instanceId": {
+            "type": "string"
+          },
+          "newVersion": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.UpdateInstanceAgentVersionRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_UpdateInstanceAgentVersionResponse": {
+        "title": "akuity.kargo.v1.UpdateInstanceAgentVersionResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_UpdateKargoInstanceAgentRequest": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgentData"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instanceId": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.UpdateKargoInstanceAgentRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_UpdateKargoInstanceAgentResponse": {
+        "properties": {
+          "agent": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgent"
+          }
+        },
+        "title": "akuity.kargo.v1.UpdateKargoInstanceAgentResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_UpdateKargoInstanceAgentsRequest": {
+        "properties": {
+          "agentCustomizations": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgentCustomization"
+          },
+          "instanceId": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.UpdateKargoInstanceAgentsRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_UpdateKargoInstanceAgentsResponse": {
+        "title": "akuity.kargo.v1.UpdateKargoInstanceAgentsResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_UpdateKargoInstanceWorkspaceRequest": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "newWorkspaceId": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.kargo.v1.UpdateKargoInstanceWorkspaceRequest",
+        "type": "object"
+      },
+      "akuity_kargo_v1_UpdateKargoInstanceWorkspaceResponse": {
+        "properties": {
+          "instance": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoInstance"
+          }
+        },
+        "title": "akuity.kargo.v1.UpdateKargoInstanceWorkspaceResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_WatchKargoInstanceAgentsResponse": {
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoAgent"
+          },
+          "type": {
+            "$ref": "#/components/schemas/akuity_types_events_v1_EventType"
+          }
+        },
+        "title": "akuity.kargo.v1.WatchKargoInstanceAgentsResponse",
+        "type": "object"
+      },
+      "akuity_kargo_v1_WatchKargoInstancesResponse": {
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/akuity_kargo_v1_KargoInstance"
+          },
+          "type": {
+            "$ref": "#/components/schemas/akuity_types_events_v1_EventType"
+          }
+        },
+        "title": "akuity.kargo.v1.WatchKargoInstancesResponse",
+        "type": "object"
+      },
+      "akuity_types_events_v1_EventType": {
+        "enum": [
+          "EVENT_TYPE_UNSPECIFIED",
+          "EVENT_TYPE_ADDED",
+          "EVENT_TYPE_MODIFIED",
+          "EVENT_TYPE_DELETED"
+        ],
+        "type": "string"
+      },
+      "akuity_types_id_v1_Type": {
+        "enum": [
+          "UNSPECIFIED",
+          "ID",
+          "NAME"
+        ],
+        "type": "string"
+      },
+      "akuity_types_misc_v1_GroupByInterval": {
+        "enum": [
+          "GROUP_BY_INTERVAL_UNSPECIFIED",
+          "GROUP_BY_INTERVAL_MINUTE",
+          "GROUP_BY_INTERVAL_HOUR",
+          "GROUP_BY_INTERVAL_DAY",
+          "GROUP_BY_INTERVAL_WEEK",
+          "GROUP_BY_INTERVAL_MONTH",
+          "GROUP_BY_INTERVAL_YEAR"
+        ],
+        "type": "string"
+      },
+      "akuity_types_secrets_v1_ClusterSecretMapping": {
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/akuity_types_secrets_v1_ObjectSelector"
+          },
+          "secrets": {
+            "$ref": "#/components/schemas/akuity_types_secrets_v1_ObjectSelector"
+          }
+        },
+        "title": "akuity.types.secrets.v1.ClusterSecretMapping",
+        "type": "object"
+      },
+      "akuity_types_secrets_v1_LabelSelectorRequirement": {
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string"
+          },
+          "values": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.types.secrets.v1.LabelSelectorRequirement",
+        "type": "object"
+      },
+      "akuity_types_secrets_v1_ObjectSelector": {
+        "properties": {
+          "matchExpressions": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_types_secrets_v1_LabelSelectorRequirement"
+            },
+            "type": "array"
+          },
+          "matchLabels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          }
+        },
+        "title": "akuity.types.secrets.v1.ObjectSelector",
+        "type": "object"
+      },
+      "akuity_types_secrets_v1_SecretsManagementConfig": {
+        "properties": {
+          "destinations": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_types_secrets_v1_ClusterSecretMapping"
+            },
+            "type": "array"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_types_secrets_v1_ClusterSecretMapping"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.types.secrets.v1.SecretsManagementConfig",
+        "type": "object"
+      },
+      "akuity_types_status_health_v1_AgentAggregatedHealthResponse": {
+        "properties": {
+          "degraded": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus"
+            },
+            "type": "object"
+          },
+          "healthy": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus"
+            },
+            "type": "object"
+          },
+          "minObservedGeneration": {
+            "format": "int64",
+            "type": "string"
+          },
+          "priorityStatus": {
+            "$ref": "#/components/schemas/akuity_types_status_health_v1_TenantPhase"
+          },
+          "progressing": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus"
+            },
+            "type": "object"
+          },
+          "unknown": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus"
+            },
+            "type": "object"
+          }
+        },
+        "title": "akuity.types.status.health.v1.AgentAggregatedHealthResponse",
+        "type": "object"
+      },
+      "akuity_types_status_health_v1_AgentHealthStatus": {
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "observedGeneration": {
+            "format": "int64",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/akuity_types_status_health_v1_TenantPhase"
+          }
+        },
+        "title": "akuity.types.status.health.v1.AgentHealthStatus",
+        "type": "object"
+      },
+      "akuity_types_status_health_v1_Status": {
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/akuity_types_status_health_v1_StatusCode"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.types.status.health.v1.Status",
+        "type": "object"
+      },
+      "akuity_types_status_health_v1_StatusCode": {
+        "enum": [
+          "STATUS_CODE_UNSPECIFIED",
+          "STATUS_CODE_HEALTHY",
+          "STATUS_CODE_PROGRESSING",
+          "STATUS_CODE_DEGRADED",
+          "STATUS_CODE_UNKNOWN"
+        ],
+        "type": "string"
+      },
+      "akuity_types_status_health_v1_TenantPhase": {
+        "enum": [
+          "TENANT_PHASE_UNSPECIFIED",
+          "TENANT_PHASE_HEALTHY",
+          "TENANT_PHASE_PROGRESSING",
+          "TENANT_PHASE_DEGRADED",
+          "TENANT_PHASE_UNKNOWN"
+        ],
+        "type": "string"
+      },
+      "akuity_types_status_reconciliation_v1_AgentUpdateStatus": {
+        "enum": [
+          "AGENT_UPDATE_STATUS_UNSPECIFIED",
+          "AGENT_UPDATE_STATUS_UPDATED",
+          "AGENT_UPDATE_STATUS_IN_PROGRESS",
+          "AGENT_UPDATE_STATUS_DELAYED"
+        ],
+        "type": "string"
+      },
+      "akuity_types_status_reconciliation_v1_Status": {
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/akuity_types_status_reconciliation_v1_StatusCode"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.types.status.reconciliation.v1.Status",
+        "type": "object"
+      },
+      "akuity_types_status_reconciliation_v1_StatusCode": {
+        "enum": [
+          "STATUS_CODE_UNSPECIFIED",
+          "STATUS_CODE_SUCCESSFUL",
+          "STATUS_CODE_PROGRESSING",
+          "STATUS_CODE_FAILED"
+        ],
+        "type": "string"
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "description": "HTTP Basic auth: username = AKUITY_API_KEY_ID, password = AKUITY_API_KEY_SECRET.",
+        "scheme": "basic",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "info@akuity.io",
+      "name": "Akuity",
+      "url": "https://docs.akuity.io/akuity-portal/automation/api"
+    },
+    "description": "The Kargo surface of the Akuity Platform REST API (grpc-gateway projection of kargo/v1). Derived mechanically from the protobuf service descriptors and google.api.http annotations published in the akuity/api-client-go Go module.",
+    "title": "Akuity Platform API — Kargo",
+    "version": "v1"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/orgs/{organization_id}/kargo/instances": {
+      "get": {
+        "operationId": "KargoService_ListKargoInstances",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_ListKargoInstancesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "List Kargo Instances",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/ListKargoInstances"
+      },
+      "post": {
+        "operationId": "KargoService_CreateKargoInstance",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_CreateKargoInstanceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_CreateKargoInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Create Kargo Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/CreateKargoInstance"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/promotions-events": {
+      "post": {
+        "operationId": "KargoService_GetPromotionEvents",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionEventsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionEventsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Promotion Events",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetPromotionEvents"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/promotions-stats": {
+      "post": {
+        "operationId": "KargoService_GetPromotionStats",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionStatsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionStatsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Promotion Stats",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetPromotionStats"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/stage-specific-stats": {
+      "post": {
+        "operationId": "KargoService_GetStageSpecificStats",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetStageSpecificStatsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetStageSpecificStatsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Stage Specific Stats",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetStageSpecificStats"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{id}": {
+      "delete": {
+        "operationId": "KargoService_DeleteInstance",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_DeleteInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Delete Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/DeleteInstance"
+      },
+      "patch": {
+        "operationId": "KargoService_PatchKargoInstance",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_PatchKargoInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Patch Kargo Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/PatchKargoInstance"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{id}/transfer": {
+      "put": {
+        "operationId": "KargoService_UpdateKargoInstanceWorkspace",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceWorkspaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceWorkspaceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Kargo Instance Workspace",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/UpdateKargoInstanceWorkspace"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents": {
+      "get": {
+        "operationId": "KargoService_ListKargoInstanceAgents",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_ListKargoInstanceAgentsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "List Kargo Instance Agents",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/ListKargoInstanceAgents"
+      },
+      "post": {
+        "operationId": "KargoService_CreateKargoInstanceAgent",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_CreateKargoInstanceAgentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_CreateKargoInstanceAgentResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Create Kargo Instance Agent",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/CreateKargoInstanceAgent"
+      },
+      "put": {
+        "operationId": "KargoService_UpdateKargoInstanceAgents",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceAgentsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceAgentsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Kargo Instance Agents",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/UpdateKargoInstanceAgents"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/regenerate-manifests": {
+      "post": {
+        "operationId": "KargoService_RegenerateManifests",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_RegenerateManifestsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_RegenerateManifestsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Regenerate Manifests",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/RegenerateManifests"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/rotate-credentials": {
+      "post": {
+        "operationId": "KargoService_RotateInstanceAgentCredentials",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_RotateInstanceAgentCredentialsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_RotateInstanceAgentCredentialsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Rotate Instance Agent Credentials",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/RotateInstanceAgentCredentials"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/set-maintenance-mode": {
+      "post": {
+        "operationId": "KargoService_SetAgentMaintenanceMode",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_SetAgentMaintenanceModeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_SetAgentMaintenanceModeResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Set Agent Maintenance Mode",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/SetAgentMaintenanceMode"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/version": {
+      "post": {
+        "operationId": "KargoService_UpdateInstanceAgentVersion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_UpdateInstanceAgentVersionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_UpdateInstanceAgentVersionResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Instance Agent Version",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/UpdateInstanceAgentVersion"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}": {
+      "delete": {
+        "operationId": "KargoService_DeleteInstanceAgent",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_DeleteInstanceAgentResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Delete Instance Agent",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/DeleteInstanceAgent"
+      },
+      "get": {
+        "operationId": "KargoService_GetKargoInstanceAgent",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetKargoInstanceAgentResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Kargo Instance Agent",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetKargoInstanceAgent"
+      },
+      "put": {
+        "operationId": "KargoService_UpdateKargoInstanceAgent",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceAgentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceAgentResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Kargo Instance Agent",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/UpdateKargoInstanceAgent"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}/command": {
+      "get": {
+        "operationId": "KargoService_GetInstanceAgentCommand",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "locationOrigin",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "skipNamespace",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetInstanceAgentCommandResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Instance Agent Command",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetInstanceAgentCommand"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}/manifests": {
+      "get": {
+        "operationId": "KargoService_GetKargoInstanceAgentManifests",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "skipNamespace",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Raw HTTP body (see google.api.HttpBody)",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "OK (server-streaming; grpc-gateway emits a newline-delimited JSON stream of result/error envelopes)"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Kargo Instance Agent Manifests",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetKargoInstanceAgentManifests",
+        "x-streaming": "server"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/kargo/instances/{name}": {
+      "get": {
+        "operationId": "KargoService_GetKargoInstance",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetKargoInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Kargo Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetKargoInstance"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances": {
+      "get": {
+        "operationId": "KargoService_ListKargoInstances_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_ListKargoInstancesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "List Kargo Instances",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/ListKargoInstances"
+      },
+      "post": {
+        "operationId": "KargoService_CreateKargoInstance_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_CreateKargoInstanceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_CreateKargoInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Create Kargo Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/CreateKargoInstance"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/promotions-events": {
+      "post": {
+        "operationId": "KargoService_GetPromotionEvents_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionEventsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionEventsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Promotion Events",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetPromotionEvents"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/promotions-stats": {
+      "post": {
+        "operationId": "KargoService_GetPromotionStats_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionStatsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionStatsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Promotion Stats",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetPromotionStats"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/stage-specific-stats": {
+      "post": {
+        "operationId": "KargoService_GetStageSpecificStats_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetStageSpecificStatsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetStageSpecificStatsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Stage Specific Stats",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetStageSpecificStats"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}": {
+      "delete": {
+        "operationId": "KargoService_DeleteInstance_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_DeleteInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Delete Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/DeleteInstance"
+      },
+      "patch": {
+        "operationId": "KargoService_PatchKargoInstance_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_PatchKargoInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Patch Kargo Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/PatchKargoInstance"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}/apply": {
+      "post": {
+        "operationId": "KargoService_ApplyKargoInstance",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_ApplyKargoInstanceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_ApplyKargoInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Apply Kargo Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/ApplyKargoInstance"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}/export": {
+      "get": {
+        "operationId": "KargoService_ExportKargoInstance",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_ExportKargoInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Export Kargo Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/ExportKargoInstance"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}/transfer": {
+      "put": {
+        "operationId": "KargoService_UpdateKargoInstanceWorkspace_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceWorkspaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceWorkspaceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Kargo Instance Workspace",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/UpdateKargoInstanceWorkspace"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents": {
+      "get": {
+        "operationId": "KargoService_ListKargoInstanceAgents_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_ListKargoInstanceAgentsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "List Kargo Instance Agents",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/ListKargoInstanceAgents"
+      },
+      "post": {
+        "operationId": "KargoService_CreateKargoInstanceAgent_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_CreateKargoInstanceAgentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_CreateKargoInstanceAgentResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Create Kargo Instance Agent",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/CreateKargoInstanceAgent"
+      },
+      "put": {
+        "operationId": "KargoService_UpdateKargoInstanceAgents_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceAgentsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceAgentsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Kargo Instance Agents",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/UpdateKargoInstanceAgents"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/regenerate-manifests": {
+      "post": {
+        "operationId": "KargoService_RegenerateManifests_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_RegenerateManifestsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_RegenerateManifestsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Regenerate Manifests",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/RegenerateManifests"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/rotate-credentials": {
+      "post": {
+        "operationId": "KargoService_RotateInstanceAgentCredentials_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_RotateInstanceAgentCredentialsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_RotateInstanceAgentCredentialsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Rotate Instance Agent Credentials",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/RotateInstanceAgentCredentials"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/set-maintenance-mode": {
+      "post": {
+        "operationId": "KargoService_SetAgentMaintenanceMode_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_SetAgentMaintenanceModeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_SetAgentMaintenanceModeResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Set Agent Maintenance Mode",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/SetAgentMaintenanceMode"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/version": {
+      "post": {
+        "operationId": "KargoService_UpdateInstanceAgentVersion_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_UpdateInstanceAgentVersionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_UpdateInstanceAgentVersionResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Instance Agent Version",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/UpdateInstanceAgentVersion"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/{id}": {
+      "delete": {
+        "operationId": "KargoService_DeleteInstanceAgent_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_DeleteInstanceAgentResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Delete Instance Agent",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/DeleteInstanceAgent"
+      },
+      "get": {
+        "operationId": "KargoService_GetKargoInstanceAgent_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetKargoInstanceAgentResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Kargo Instance Agent",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetKargoInstanceAgent"
+      },
+      "put": {
+        "operationId": "KargoService_UpdateKargoInstanceAgent_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceAgentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_UpdateKargoInstanceAgentResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Kargo Instance Agent",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/UpdateKargoInstanceAgent"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/{id}/command": {
+      "get": {
+        "operationId": "KargoService_GetInstanceAgentCommand_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "locationOrigin",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "skipNamespace",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetInstanceAgentCommandResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Instance Agent Command",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetInstanceAgentCommand"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/{id}/manifests": {
+      "get": {
+        "operationId": "KargoService_GetKargoInstanceAgentManifests_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "skipNamespace",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Raw HTTP body (see google.api.HttpBody)",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "OK (server-streaming; grpc-gateway emits a newline-delimited JSON stream of result/error envelopes)"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Kargo Instance Agent Manifests",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetKargoInstanceAgentManifests",
+        "x-streaming": "server"
+      }
+    },
+    "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{name}": {
+      "get": {
+        "operationId": "KargoService_GetKargoInstance_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetKargoInstanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Kargo Instance",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetKargoInstance"
+      }
+    },
+    "/api/v1/stream/orgs/{organization_id}/kargo/instances": {
+      "get": {
+        "operationId": "KargoService_WatchKargoInstances",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "instanceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_WatchKargoInstancesResponse"
+                }
+              }
+            },
+            "description": "OK (server-streaming; grpc-gateway emits a newline-delimited JSON stream of result/error envelopes)"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Watch Kargo Instances",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/WatchKargoInstances",
+        "x-streaming": "server"
+      }
+    },
+    "/api/v1/stream/orgs/{organization_id}/kargo/instances/{instance_id}/agents": {
+      "get": {
+        "operationId": "KargoService_WatchKargoInstanceAgents",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "agentId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "minAgentName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "maxAgentName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_WatchKargoInstanceAgentsResponse"
+                }
+              }
+            },
+            "description": "OK (server-streaming; grpc-gateway emits a newline-delimited JSON stream of result/error envelopes)"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Watch Kargo Instance Agents",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/WatchKargoInstanceAgents",
+        "x-streaming": "server"
+      }
+    },
+    "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances": {
+      "get": {
+        "operationId": "KargoService_WatchKargoInstances_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "instanceId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_WatchKargoInstancesResponse"
+                }
+              }
+            },
+            "description": "OK (server-streaming; grpc-gateway emits a newline-delimited JSON stream of result/error envelopes)"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Watch Kargo Instances",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/WatchKargoInstances",
+        "x-streaming": "server"
+      }
+    },
+    "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents": {
+      "get": {
+        "operationId": "KargoService_WatchKargoInstanceAgents_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workspace_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "instance_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "agentId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "minAgentName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "maxAgentName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_WatchKargoInstanceAgentsResponse"
+                }
+              }
+            },
+            "description": "OK (server-streaming; grpc-gateway emits a newline-delimited JSON stream of result/error envelopes)"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Watch Kargo Instance Agents",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/WatchKargoInstanceAgents",
+        "x-streaming": "server"
+      }
+    },
+    "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/kargo/instances/promotions-events": {
+      "post": {
+        "operationId": "KargoService_GetPromotionEvents_2",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionEventsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionEventsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Promotion Events",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetPromotionEvents"
+      }
+    },
+    "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/kargo/instances/promotions-stats": {
+      "post": {
+        "operationId": "KargoService_GetPromotionStats_2",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionStatsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetPromotionStatsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Promotion Stats",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetPromotionStats"
+      }
+    },
+    "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/kargo/instances/stage-specific-stats": {
+      "post": {
+        "operationId": "KargoService_GetStageSpecificStats_2",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_kargo_v1_GetStageSpecificStatsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_kargo_v1_GetStageSpecificStatsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Stage Specific Stats",
+        "tags": [
+          "KargoService"
+        ],
+        "x-grpc-method": "akuity.kargo.v1.KargoService/GetStageSpecificStats"
+      }
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "servers": [
+    {
+      "description": "Akuity Platform (SaaS)",
+      "url": "https://akuity.cloud"
+    }
+  ]
+}

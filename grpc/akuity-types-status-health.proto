@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package akuity.types.status.health.v1;
+
+option csharp_namespace = "Akuity.Types.Status.Health.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/types/status/health/v1;healthv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "HealthProto";
+
+option java_package = "com.akuity.types.status.health.v1";
+
+option objc_class_prefix = "ATSH";
+
+option php_metadata_namespace = "Akuity\\Types\\Status\\Health\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Types\\Status\\Health\\V1";
+
+option ruby_package = "Akuity::Types::Status::Health::V1";
+
+message Status {
+  StatusCode code = 1;
+
+  string message = 2;
+}
+
+message AgentHealthStatus {
+  uint64 observed_generation = 1;
+
+  TenantPhase status = 2;
+
+  string message = 3;
+}
+
+message AgentAggregatedHealthResponse {
+  uint64 min_observed_generation = 1;
+
+  map<string, AgentHealthStatus> healthy = 2;
+
+  map<string, AgentHealthStatus> progressing = 3;
+
+  map<string, AgentHealthStatus> degraded = 4;
+
+  map<string, AgentHealthStatus> unknown = 5;
+
+  TenantPhase priority_status = 6;
+}
+
+enum StatusCode {
+  STATUS_CODE_UNSPECIFIED = 0;
+
+  STATUS_CODE_HEALTHY = 1;
+
+  STATUS_CODE_PROGRESSING = 2;
+
+  STATUS_CODE_DEGRADED = 3;
+
+  STATUS_CODE_UNKNOWN = 4;
+}
+
+enum TenantPhase {
+  TENANT_PHASE_UNSPECIFIED = 0;
+
+  TENANT_PHASE_HEALTHY = 1;
+
+  TENANT_PHASE_PROGRESSING = 2;
+
+  TENANT_PHASE_DEGRADED = 3;
+
+  TENANT_PHASE_UNKNOWN = 4;
+}

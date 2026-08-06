@@ -1,0 +1,59 @@
+generated: '2026-08-06'
+method: generated
+source: openapi/akuity-*.json + https://docs.akuity.io/
+description: >-
+  Packaged Agent Skills for the Akuity Platform API. Every step is grounded in an
+  operationId that exists in openapi/, which was itself derived from Akuity's own
+  published protobuf service descriptors. Akuity publishes no skills, AGENTS.md
+  or llms-full.txt of its own — only the two llms.txt files captured in llms/.
+provider_published_skills: false
+skills:
+  - name: akuity-onboard-argocd-instance
+    file: akuity-onboard-argocd-instance.md
+    api: Akuity Platform API — Argo CD
+    spec: openapi/akuity-argocd.json
+    summary: >-
+      Create a managed Argo CD control plane and attach a Kubernetes cluster via
+      the Akuity Agent. The platform's core flow.
+    mutating: true
+    operations: 8
+
+  - name: akuity-audit-and-inventory
+    file: akuity-audit-and-inventory.md
+    api: Akuity Platform API — Organizations
+    spec: openapi/akuity-organization.json
+    summary: >-
+      Read the organization audit trail and the cross-cluster Kubernetes
+      inventory (KubeVision) — compliance evidence, drift review, deprecated-API
+      upgrade planning.
+    mutating: false
+    operations: 11
+
+  - name: akuity-manage-api-keys-and-roles
+    file: akuity-manage-api-keys-and-roles.md
+    api: Akuity Platform API — API Keys and Custom Roles
+    spec: openapi/akuity-apikey.json
+    summary: >-
+      Issue, scope, rotate and revoke API keys, and bind them to custom roles —
+      the credential lifecycle behind every other call.
+    mutating: true
+    operations: 16
+
+cross_cutting_rules:
+  auth: >-
+    HTTP Basic — username AKUITY_API_KEY_ID, password AKUITY_API_KEY_SECRET.
+    Every operation in every skill uses it.
+  errors: >-
+    google.rpc.Status envelope ({code, message, details}). Branch on the numeric
+    `code`, never on `message`. See errors/akuity-error-codes.yml.
+  idempotency: >-
+    Not supported. There is no idempotency key anywhere in the API. For anything
+    repeatable, use the declarative export → apply loop instead of retrying a
+    create.
+  pagination: offset/limit query parameters on list operations that support it.
+  streaming: >-
+    Operations under /api/v1/stream/ and the *ToCSV / *InCSV operations are
+    server-streaming; consume newline-delimited JSON envelopes.
+  rate_limits: >-
+    No per-request rate limits are documented. Plan quotas surface as
+    RESOURCE_EXHAUSTED (code 8).

@@ -1,0 +1,22 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/akuity-apikey.json, openapi/akuity-argocd.json, openapi/akuity-auth.json, openapi/akuity-customrole.json,
+  openapi/akuity-extension.json, openapi/akuity-kargo.json, openapi/akuity-organization.json,
+  openapi/akuity-system.json
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: 'HTTP Basic auth: username = AKUITY_API_KEY_ID, password = AKUITY_API_KEY_SECRET.'
+  sources:
+  - openapi/akuity-apikey.json
+  - openapi/akuity-argocd.json
+  - openapi/akuity-auth.json
+  - openapi/akuity-customrole.json
+  - openapi/akuity-extension.json
+  - openapi/akuity-kargo.json
+  - openapi/akuity-organization.json
+  - openapi/akuity-system.json

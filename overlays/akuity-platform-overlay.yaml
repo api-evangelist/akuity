@@ -1,0 +1,85 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Akuity Platform API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-08-06'
+  method: generated
+  source: openapi/akuity-*.json
+  extends: openapi/akuity-*.json
+  note: >-
+    One overlay for the whole derived spec set. It records the cross-cutting
+    metadata API Evangelist attaches on top of the mechanical protobuf → OpenAPI
+    transcription — provenance, error semantics, conventions, and the fact that
+    Akuity itself publishes no OpenAPI. Apply with any OpenAPI Overlay 1.0.0
+    processor against any file in openapi/. It never mutates operation semantics.
+actions:
+  - target: $.info
+    description: Stamp provenance so a consumer knows this spec is a derivation, not an Akuity artifact.
+    update:
+      x-provenance:
+        derived-by: API Evangelist
+        derived-on: '2026-08-06'
+        derived-from: >-
+          protobuf service descriptors and google.api.http annotations embedded in
+          github.com/akuity/api-client-go v0.29.0
+        provider-publishes-openapi: false
+        provider-api-reference: https://docs.akuity.io/akuity-portal/reference/api
+        provider-api-guide: https://docs.akuity.io/akuity-portal/automation/api
+      x-evidence:
+        verified-live: true
+        verified-on: '2026-08-06'
+        probes:
+          - 'GET https://akuity.cloud/api/v1/system/version -> 200 {"version":"v0.32.0-rl.1.0.20260804092436-2611577a617e.dirty"}'
+          - 'GET https://akuity.cloud/api/v1/organizations -> 401 {"code":16,"message":"unauthenticated"}'
+          - 'GET https://akuity.cloud/api/v1/system/cd/versions -> 200'
+          - 'GET https://akuity.cloud/api/v1/announcement -> 200'
+
+  - target: $.info
+    description: Legal and contact links Akuity publishes but the descriptors do not carry.
+    update:
+      termsOfService: https://akuity.io/terms-of-service
+      x-privacy-policy: https://akuity.io/privacy-policy
+      x-status-page: https://status.akuity.io/
+      x-trust-center: https://trust.akuity.io/
+
+  - target: $
+    description: External documentation pointer.
+    update:
+      externalDocs:
+        url: https://docs.akuity.io/
+        description: Akuity Platform documentation
+
+  - target: $
+    description: Cross-cutting runtime semantics captured by the enrichment pipeline.
+    update:
+      x-conventions:
+        artifact: conventions/akuity-conventions.yml
+        architecture: grpc-gateway
+        json-mapping: protojson
+        pagination: offset/limit on some list operations; no cursor convention
+        idempotency: not supported — no idempotency key anywhere in the descriptors
+        rate-limit-headers: none documented or observed
+        request-id-header: none; use cf-ray and x-version for correlation
+      x-error-catalog:
+        artifact: errors/akuity-error-codes.yml
+        envelope: google.rpc.Status
+        rfc9457: false
+      x-webhooks:
+        artifact: asyncapi/akuity-notifications-webhooks.yml
+        signed: false
+      x-lifecycle:
+        artifact: lifecycle/akuity-lifecycle.yml
+        deprecation-policy-published: false
+
+  - target: $.components.securitySchemes.basicAuth
+    description: Expand the auth description with the credential names and the CLI's device flow.
+    update:
+      x-credential-id: AKUITY_API_KEY_ID
+      x-credential-secret: AKUITY_API_KEY_SECRET
+      x-key-management: https://docs.akuity.io/akuity-portal/organizations/api-keys
+      x-alternative-flow: >-
+        OAuth 2.0 Device Authorization Grant (RFC 8628) via
+        GET /api/v1/auth/device-code and POST /api/v1/auth/device-token — used by
+        `akuity login`, not documented for third-party clients.
+      x-artifact: authentication/akuity-authentication.yml

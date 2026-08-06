@@ -1,0 +1,299 @@
+syntax = "proto3";
+
+package akuity.types.features.v1;
+
+option csharp_namespace = "Akuity.Types.Features.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/types/features/v1;featuresv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "FeaturesProto";
+
+option java_package = "com.akuity.types.features.v1";
+
+option objc_class_prefix = "ATF";
+
+option php_metadata_namespace = "Akuity\\Types\\Features\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Types\\Features\\V1";
+
+option ruby_package = "Akuity::Types::Features::V1";
+
+message SystemFeatureGates {
+  reserved 4, 6, 7, 8, 9, 10, 12, 13, 19;
+
+  bool sso = 1;
+
+  bool kargo = 2;
+
+  bool autoscaler = 3;
+
+  bool ai_assistant_stats = 5;
+
+  bool multi_cluster_k8s_dashboard = 11;
+
+  bool ai_support_engineer = 14;
+
+  bool secret_management = 15;
+
+  bool kargo_enterprise = 16;
+
+  bool aki_permission_model = 17;
+
+  bool dragonfly_db = 18;
+
+  bool k3s_db_cred_rotation = 20;
+
+  bool ui_extensions_v2 = 21;
+}
+
+message OrganizationFeatureGates {
+  optional bool sso = 1;
+
+  repeated string shards = 2;
+
+  optional bool kargo = 3;
+
+  optional bool k3s_proxy_informers = 4;
+
+  optional bool team = 5;
+
+  optional bool audit_record_export = 6;
+
+  optional bool workspaces = 7;
+
+  optional bool custom_roles = 8;
+
+  optional bool scoped_api_keys = 9;
+
+  optional bool argocd_sso = 10;
+
+  optional bool argocd_ha_control_plane = 11;
+
+  optional bool akuity_argocd_extensions = 12;
+
+  optional bool app_of_apps = 13;
+
+  optional bool application_set_controller = 14;
+
+  optional bool argocd_custom_subdomain = 15;
+
+  optional bool argocd_custom_domain = 16;
+
+  optional bool argocd_flexible_architecture = 17;
+
+  optional bool argocd_agent_state_replication = 18;
+
+  optional bool argocd_deep_links = 19;
+
+  optional bool argocd_custom_styles = 20;
+
+  optional bool config_management_plugins = 21;
+
+  optional bool audit_archive = 22;
+
+  optional bool multi_cluster_k8s_dashboard = 23;
+
+  optional bool argocd_cluster_integration = 24;
+
+  optional bool notification = 25;
+
+  optional bool cluster_autoscaler = 26;
+
+  optional bool fleet_management = 27;
+
+  optional bool pgpool = 28;
+
+  optional bool ai_support_engineer = 29;
+
+  optional bool pgbouncer = 30;
+
+  optional bool multi_factor_auth = 31;
+
+  optional bool kargo_analysis_logs = 32;
+
+  optional bool kargo_enterprise = 33;
+
+  optional bool oidc_map = 34;
+
+  optional bool eks_addon = 35;
+
+  optional bool k3s_traffic_reduction = 36;
+
+  optional bool redis_traffic_reduction = 37;
+
+  optional bool dragonfly_db = 38;
+
+  optional bool aki_ai_model_selection = 39;
+
+  optional bool relaxed_cluster_name_validation = 40;
+
+  optional bool k3s_db_cred_rotation = 41;
+
+  optional bool argocd_upbound_integration = 42;
+
+  optional bool controller_processor_autoscaling = 43;
+}
+
+message FeatureStatuses {
+  reserved 6, 8, 9;
+
+  FeatureStatus sso = 1;
+
+  FeatureStatus kargo = 2;
+
+  FeatureStatus autoscaler = 3;
+
+  FeatureStatus k3s_proxy_informers = 4;
+
+  FeatureStatus ai_assistant_stats = 5;
+
+  FeatureStatus team = 7;
+
+  FeatureStatus notification = 10;
+
+  FeatureStatus multi_cluster_k8s_dashboard = 11;
+
+  FeatureStatus cluster_autoscaler = 12;
+
+  FeatureStatus fleet_management = 13;
+
+  FeatureStatus ai_support_engineer = 14;
+
+  FeatureStatus secret_management = 15;
+
+  repeated string shards = 16;
+
+  FeatureStatus audit_record_export = 17;
+
+  FeatureStatus workspaces = 18;
+
+  FeatureStatus custom_roles = 19;
+
+  FeatureStatus scoped_api_keys = 20;
+
+  FeatureStatus argocd_sso = 21;
+
+  FeatureStatus argocd_ha_control_plane = 22;
+
+  FeatureStatus akuity_argocd_extensions = 23;
+
+  FeatureStatus app_of_apps = 24;
+
+  FeatureStatus application_set_controller = 25;
+
+  FeatureStatus argocd_custom_subdomain = 26;
+
+  FeatureStatus argocd_custom_domain = 27;
+
+  FeatureStatus argocd_flexible_architecture = 28;
+
+  FeatureStatus argocd_agent_state_replication = 29;
+
+  FeatureStatus argocd_deep_links = 30;
+
+  FeatureStatus argocd_custom_styles = 31;
+
+  FeatureStatus config_management_plugins = 32;
+
+  FeatureStatus audit_archive = 33;
+
+  FeatureStatus argocd_cluster_integration = 34;
+
+  FeatureStatus pgpool = 35;
+
+  FeatureStatus pgbouncer = 36;
+
+  FeatureStatus multi_factor_auth = 37;
+
+  FeatureStatus kargo_analysis_logs = 38;
+
+  FeatureStatus kargo_enterprise = 39;
+
+  FeatureStatus oidc_map = 40;
+
+  FeatureStatus eks_addon = 41;
+
+  FeatureStatus k3s_traffic_reduction = 42;
+
+  FeatureStatus redis_traffic_reduction = 43;
+
+  FeatureStatus aki_permission_model = 44;
+
+  FeatureStatus dragonfly_db = 45;
+
+  FeatureStatus aki_ai_model_selection = 46;
+
+  FeatureStatus relaxed_cluster_name_validation = 47;
+
+  FeatureStatus k3s_db_cred_rotation = 48;
+
+  FeatureStatus argocd_upbound_integration = 49;
+
+  FeatureStatus ui_extensions_v2 = 50;
+
+  FeatureStatus controller_processor_autoscaling = 51;
+}
+
+message OrganizationQuota {
+  int64 max_instances = 1;
+
+  int64 max_clusters = 2;
+
+  int64 max_applications = 3;
+
+  int64 max_kargo_instances = 4;
+
+  int64 max_kargo_projects = 5;
+
+  int64 max_kargo_agents = 6;
+
+  int64 audit_record_months = 7;
+
+  int64 audit_record_archive_months = 8;
+
+  int64 max_org_members = 9;
+
+  int64 max_workspaces = 10;
+
+  int64 max_kargo_stages = 11;
+
+  double max_ai_cost_per_month = 12;
+
+  int64 max_ai_tokens_per_month = 13;
+}
+
+message OrganizationUsage {
+  int64 current_instances = 1;
+
+  int64 current_clusters = 2;
+
+  int64 current_applications = 3;
+
+  int64 current_kargo_instances = 4;
+
+  int64 current_kargo_projects = 5;
+
+  int64 current_kargo_agents = 6;
+
+  int64 current_org_members = 7;
+
+  int64 current_workspaces = 8;
+
+  int64 current_kargo_stages = 9;
+
+  int64 current_ai_tokens_per_month = 10;
+
+  double current_ai_cost_per_month = 11;
+}
+
+enum FeatureStatus {
+  FEATURE_STATUS_UNSPECIFIED = 0;
+
+  FEATURE_STATUS_NOT_AVAILABLE = 1;
+
+  FEATURE_STATUS_ENABLED = 2;
+
+  FEATURE_STATUS_DISABLED = 3;
+}

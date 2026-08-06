@@ -1,0 +1,292 @@
+syntax = "proto3";
+
+package akuity.system.v1;
+
+import "google/api/annotations.proto";
+
+import "google/protobuf/empty.proto";
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option csharp_namespace = "Akuity.System.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/system/v1;systemv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "SystemProto";
+
+option java_package = "com.akuity.system.v1";
+
+option objc_class_prefix = "ASX";
+
+option php_metadata_namespace = "Akuity\\System\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\System\\V1";
+
+option ruby_package = "Akuity::System::V1";
+
+message GetVersionRequest {
+}
+
+message GetVersionResponse {
+  string version = 1;
+}
+
+message GetAgentVersionRequest {
+}
+
+message GetAgentVersionResponse {
+  string version = 1;
+}
+
+message GetSettingsRequest {
+}
+
+message GetSettingsResponse {
+  reserved 4;
+
+  string env = 1;
+
+  string domain_suffix = 2;
+
+  string sentry_dsn = 3;
+
+  NameConfig name_config = 5;
+
+  bool self_hosted = 6;
+
+  bool billing_enabled = 7;
+
+  string stripe_customer_portal_url = 8;
+
+  repeated string capabilities = 9;
+
+  int64 max_invitation_email_per_batch_count = 10;
+
+  bool instance_sub_domains_enabled = 11;
+}
+
+message NameConfig {
+  int64 min_organization_name_length = 1;
+
+  int64 min_instance_name_length = 2;
+
+  int64 min_cluster_name_length = 3;
+
+  int64 min_subdomain_name_length = 4;
+}
+
+message GetStatusResponse {
+  string status = 1;
+}
+
+message SecurityAdvisory {
+  string cve_id = 1;
+}
+
+message AKVersion {
+  string version = 1;
+
+  repeated string features = 2;
+}
+
+message ComponentVersion {
+  string version = 1;
+
+  string label = 2;
+
+  repeated SecurityAdvisory security_advisories = 3;
+
+  repeated AKVersion ak_versions = 4;
+}
+
+message GetArgoCDAgentSizeSpecResponse {
+  Spec small = 1;
+
+  Spec medium = 2;
+
+  Spec large = 3;
+
+  message Spec {
+    string controller_cpu = 1;
+
+    string controller_memory = 2;
+
+    int32 repo_server_replicas = 3;
+
+    string repo_server_cpu = 4;
+
+    string repo_server_memory = 5;
+  }
+}
+
+message GetKargoAgentSizeSpecResponse {
+  Spec small = 1;
+
+  Spec medium = 2;
+
+  Spec large = 3;
+
+  message Spec {
+    string controller_cpu = 1;
+
+    string controller_memory = 2;
+  }
+}
+
+message ListArgoCDVersionsResponse {
+  repeated ComponentVersion argocd_versions = 1;
+}
+
+message ListKargoVersionsResponse {
+  repeated ComponentVersion kargo_versions = 1;
+}
+
+message ExtensionInfo {
+  string id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  string home = 4;
+
+  string icon = 5;
+
+  repeated ExtensionVersion versions = 6;
+
+  message ExtensionVersion {
+    string version = 1;
+
+    string url = 2;
+
+    string sha256_sum = 3;
+  }
+}
+
+message ListArgoCDExtensionsResponse {
+  repeated ExtensionInfo extensions = 1;
+}
+
+message ListAgentVersionsResponse {
+  repeated string agent_versions = 1;
+}
+
+message Banner {
+  optional string title = 1;
+
+  string message = 2;
+
+  optional string closable = 3;
+
+  optional string type = 4;
+
+  repeated BannerLink links = 5;
+
+  optional bool paid_customers_only = 6;
+
+  message BannerLink {
+    string name = 1;
+
+    string url = 2;
+  }
+}
+
+message GetAnnouncementResponse {
+  Banner banner = 1;
+}
+
+message ListValidWebhookEventsRequest {
+}
+
+message ListValidWebhookEventsResponse {
+  map<string, EventFilters> events = 1;
+}
+
+message ListArgoCDImageUpadterVersionsResponse {
+  repeated string versions = 1;
+}
+
+message ListValidEmailEventsRequest {
+}
+
+message ListValidEmailEventsResponse {
+  map<string, EventFilters> events = 1;
+}
+
+message EventFilters {
+  repeated string supported_filters = 1;
+}
+
+service SystemService {
+  rpc GetVersion ( GetVersionRequest ) returns ( GetVersionResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/version" };
+  }
+
+  rpc GetAgentVersion ( GetAgentVersionRequest ) returns ( GetAgentVersionResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/agent/version" };
+  }
+
+  rpc GetSettings ( GetSettingsRequest ) returns ( GetSettingsResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/settings" };
+  }
+
+  rpc ListAgentVersions ( google.protobuf.Empty ) returns ( ListAgentVersionsResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/agent/versions" };
+  }
+
+  rpc GetStatus ( google.protobuf.Empty ) returns ( GetStatusResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/status" };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "Get the portal server status" };
+  }
+
+  rpc ListArgoCDVersions ( google.protobuf.Empty ) returns ( ListArgoCDVersionsResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/cd/versions" };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "List available Argo CD versions" };
+  }
+
+  rpc ListKargoVersions ( google.protobuf.Empty ) returns ( ListKargoVersionsResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/kargo/versions" };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "List available Kargo versions" };
+  }
+
+  rpc ListArgoCDExtensions ( google.protobuf.Empty ) returns ( ListArgoCDExtensionsResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/cd/extensions" };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "List available Argo CD extensions" };
+  }
+
+  rpc GetAnnouncement ( google.protobuf.Empty ) returns ( GetAnnouncementResponse ) {
+    option (google.api.http) = { get: "/api/v1/announcement" };
+  }
+
+  rpc ListValidWebhookEvents ( ListValidWebhookEventsRequest ) returns ( ListValidWebhookEventsResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/webhook/valid-events" };
+  }
+
+  rpc ListValidEmailEvents ( ListValidEmailEventsRequest ) returns ( ListValidEmailEventsResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/email/valid-events" };
+  }
+
+  rpc GetArgoCDAgentSizeSpec ( google.protobuf.Empty ) returns ( GetArgoCDAgentSizeSpecResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/cd/agent-size-spec" };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "Get the Argo CD agent size spec" };
+  }
+
+  rpc GetKargoAgentSizeSpec ( google.protobuf.Empty ) returns ( GetKargoAgentSizeSpecResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/kargo/agent-size-spec" };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "Get the Kargo agent size spec" };
+  }
+
+  rpc ListArgoCDImageUpadterVersions ( google.protobuf.Empty ) returns ( ListArgoCDImageUpadterVersionsResponse ) {
+    option (google.api.http) = { get: "/api/v1/system/image-updater/versions" };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "List available Argo CD image updater versions" };
+  }
+}

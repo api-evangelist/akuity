@@ -1,0 +1,1285 @@
+syntax = "proto3";
+
+package akuity.kargo.v1;
+
+import "google/api/annotations.proto";
+
+import "google/api/httpbody.proto";
+
+import "google/protobuf/struct.proto";
+
+import "google/protobuf/timestamp.proto";
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "types/events/v1/events.proto";
+
+import "types/id/v1/id.proto";
+
+import "types/misc/v1/misc.proto";
+
+import "types/secrets/v1/secrets.proto";
+
+import "types/status/health/v1/health.proto";
+
+import "types/status/reconciliation/v1/reconciliation.proto";
+
+option csharp_namespace = "Akuity.Kargo.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/kargo/v1;kargov1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "KargoProto";
+
+option java_package = "com.akuity.kargo.v1";
+
+option objc_class_prefix = "AKX";
+
+option php_metadata_namespace = "Akuity\\Kargo\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Kargo\\V1";
+
+option ruby_package = "Akuity::Kargo::V1";
+
+message GetStageSpecificStatsRequest {
+  string organization_id = 1;
+
+  PromotionFilter filter = 2;
+
+  string workspace_id = 3;
+}
+
+message GetStageSpecificStatsResponse {
+  repeated LeadTimeData lead_time_data = 1;
+
+  repeated RecoveryTimeData recovery_time_data = 2;
+}
+
+message LeadTimeData {
+  string promotion_end_time = 2;
+
+  string freight_creation_time = 3;
+
+  float lead_time = 4;
+
+  string stage_name = 5;
+}
+
+message RecoveryTimeData {
+  string phase = 1;
+
+  string phase_change_time = 2;
+
+  string stage_name = 3;
+}
+
+message GetPromotionStatsRequest {
+  string organization_id = 1;
+
+  PromotionFilter filter = 2;
+
+  akuity.types.misc.v1.GroupByInterval interval = 3;
+
+  PromotionGroupField group_by_field = 4;
+
+  string workspace_id = 5;
+}
+
+message GetPromotionEventsRequest {
+  string organization_id = 1;
+
+  PromotionFilter filter = 2;
+
+  optional int64 limit = 3;
+
+  optional int64 offset = 4;
+
+  PromotionField field = 5;
+
+  string field_like = 6;
+
+  string workspace_id = 7;
+}
+
+message PromotionFilter {
+  string start_time = 1;
+
+  optional string end_time = 2;
+
+  repeated string stage_name = 3;
+
+  repeated string projects = 4;
+
+  repeated string promotion_name = 6;
+
+  repeated string instance_id = 7;
+
+  repeated string initiated_by = 8;
+
+  repeated string instance_names = 9;
+}
+
+message PromotionStat {
+  string interval_start = 1;
+
+  map<string, uint32> count_map = 2;
+
+  map<string, float> average_map = 3;
+}
+
+message PromotionEvent {
+  string id = 1;
+
+  string instance_id = 2;
+
+  string promotion_name = 3;
+
+  string start_time = 4;
+
+  string end_time = 5;
+
+  string result_phase = 6;
+
+  string result_message = 7;
+
+  PromotionEventDetails details = 8;
+}
+
+message PromotionEventDetails {
+  string project = 1;
+
+  string stage = 2;
+
+  OperationInitiator initiated_by = 3;
+
+  string promotion_status = 4;
+
+  string freight_name = 5;
+
+  string freight_alias = 6;
+
+  string freight_creation_time = 7;
+
+  string verification_start_time = 8;
+
+  string verification_end_time = 9;
+
+  string verification_status = 10;
+
+  google.protobuf.Struct miscellaneous = 11;
+}
+
+message OperationInitiator {
+  string username = 1;
+
+  bool automated = 2;
+}
+
+message GetPromotionStatsResponse {
+  repeated PromotionStat promotion_stats = 1;
+}
+
+message GetPromotionEventsResponse {
+  repeated PromotionEvent promotion_events = 1;
+
+  int64 count = 2;
+
+  repeated string field_result = 3;
+}
+
+message UpdateInstanceAgentVersionRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  repeated string agent_names = 3;
+
+  string new_version = 4;
+
+  string workspace_id = 5;
+
+  optional bool all_agents = 6;
+}
+
+message UpdateInstanceAgentVersionResponse {
+}
+
+message RotateInstanceAgentCredentialsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  repeated string agent_names = 3;
+
+  string workspace_id = 4;
+
+  optional bool all_agents = 5;
+}
+
+message RotateInstanceAgentCredentialsResponse {
+  repeated string skipped_agents = 1;
+}
+
+message RegenerateManifestsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  repeated string agent_names = 3;
+
+  optional bool all_agents = 4;
+
+  string workspace_id = 5;
+}
+
+message RegenerateManifestsResponse {
+  repeated string skipped_agents = 1;
+}
+
+message SetAgentMaintenanceModeRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  repeated string agent_names = 3;
+
+  optional bool all_agents = 4;
+
+  string workspace_id = 5;
+
+  bool maintenance_mode = 6;
+
+  google.protobuf.Timestamp expiry = 7;
+}
+
+message SetAgentMaintenanceModeResponse {
+}
+
+message DeleteInstanceAgentRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  string workspace_id = 4;
+}
+
+message DeleteInstanceAgentResponse {
+}
+
+message DeleteInstanceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message DeleteInstanceResponse {
+}
+
+message ListKargoInstancesRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+}
+
+message ListKargoInstancesResponse {
+  repeated KargoInstance instances = 1;
+}
+
+message CreateKargoInstanceRequest {
+  string organization_id = 1;
+
+  string name = 2;
+
+  string version = 3;
+
+  optional string description = 4;
+
+  string workspace_id = 5;
+}
+
+message CreateKargoInstanceResponse {
+  KargoInstance instance = 1;
+}
+
+message GetKargoInstanceRequest {
+  string organization_id = 1;
+
+  string name = 2;
+
+  string workspace_id = 3;
+}
+
+message CertificateStatus {
+  bool is_cname_set = 1;
+
+  bool is_issued = 2;
+
+  string message = 3;
+
+  optional google.protobuf.Timestamp cname_not_set_since = 4;
+}
+
+message KargoInstance {
+  string id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  KargoInstanceSpec spec = 4;
+
+  string hostname = 5;
+
+  uint32 generation = 6;
+
+  akuity.types.status.health.v1.Status health_status = 7;
+
+  akuity.types.status.reconciliation.v1.Status reconciliation_status = 8;
+
+  optional google.protobuf.Timestamp delete_time = 9;
+
+  string owner_organization_name = 10;
+
+  string version = 11;
+
+  optional KargoControllerCM controller_cm = 12;
+
+  optional KargoWebhookCM webhook_cm = 13;
+
+  optional KargoApiCM api_cm = 14;
+
+  optional KargoApiSecret api_secret = 15;
+
+  optional KargoOidcConfig oidc_config = 16;
+
+  string subdomain = 17;
+
+  string workspace_id = 18;
+
+  optional KargoMiscellaneousSecrets miscellaneous_secrets = 19;
+
+  string fqdn = 20;
+
+  optional CertificateStatus certificate_status = 21;
+
+  optional bool unsupported_version = 22;
+}
+
+message KargoIPAllowListEntry {
+  string ip = 1;
+
+  string description = 2;
+}
+
+message KargoAgentCustomization {
+  bool auto_upgrade_disabled = 1;
+
+  google.protobuf.Struct kustomization = 2;
+}
+
+message KargoInstanceSpec {
+  bool backend_ip_allow_list_enabled = 2;
+
+  repeated KargoIPAllowListEntry ip_allow_list = 1;
+
+  KargoAgentCustomization agent_customization_defaults = 3;
+
+  string default_shard_agent = 4;
+
+  repeated string global_credentials_ns = 5;
+
+  repeated string global_service_account_ns = 6;
+
+  AkuityIntelligence akuity_intelligence = 7;
+
+  optional GarbageCollectorConfig gc_config = 8;
+
+  bool promo_controller_enabled = 9;
+
+  akuity.types.secrets.v1.SecretsManagementConfig secrets = 10;
+}
+
+message AkuityIntelligence {
+  bool ai_support_engineer_enabled = 1;
+
+  bool enabled = 2;
+
+  repeated string allowed_usernames = 3;
+
+  repeated string allowed_groups = 4;
+
+  string model_version = 5;
+}
+
+message KargoControllerCM {
+}
+
+message KargoWebhookCM {
+}
+
+message KargoApiCM {
+  bool admin_account_enabled = 1;
+
+  string admin_account_token_ttl = 4;
+}
+
+message KargoApiSecret {
+  string admin_account_password_hash = 1;
+}
+
+message KargoPredefinedAccountClaimValue {
+  repeated string values = 1;
+}
+
+message KargoPredefinedAccountData {
+  repeated string email = 1 [deprecated = true];
+
+  repeated string sub = 2 [deprecated = true];
+
+  repeated string groups = 3 [deprecated = true];
+
+  map<string, KargoPredefinedAccountClaimValue> claims = 4;
+}
+
+message KargoMiscellaneousSecrets {
+  optional DataDogRolloutsSecret datadog_rollouts_secret = 1;
+
+  optional NewRelicRolloutsSecret newrelic_rollouts_secret = 2;
+
+  optional InfluxDbRolloutsSecret influxdb_rollouts_secret = 3;
+}
+
+message DataDogRolloutsSecret {
+  string address = 1;
+
+  string api_key = 2;
+
+  string app_key = 3;
+}
+
+message NewRelicRolloutsSecret {
+  string personal_api_key = 1;
+
+  string account_id = 2;
+
+  string region = 3;
+
+  string base_url_rest = 4;
+
+  string base_url_nerdgraph = 5;
+}
+
+message InfluxDbRolloutsSecret {
+  string influxdb_address = 1;
+
+  string auth_token = 2;
+
+  string org = 3;
+}
+
+message KargoOidcConfig {
+  bool enabled = 1;
+
+  bool dex_enabled = 2;
+
+  string dex_config = 3;
+
+  map<string, Value> dex_config_secret = 4;
+
+  string issuer_url = 5;
+
+  string client_id = 6;
+
+  string cli_client_id = 7;
+
+  KargoPredefinedAccountData admin_account = 8;
+
+  KargoPredefinedAccountData viewer_account = 9;
+
+  repeated string additional_scopes = 10;
+
+  KargoPredefinedAccountData user_account = 11;
+
+  KargoPredefinedAccountData project_creator_account = 12;
+
+  message Value {
+    optional string value = 1;
+  }
+}
+
+message GarbageCollectorConfig {
+  uint32 max_retained_freight = 1;
+
+  uint32 max_retained_promotions = 2;
+
+  uint32 min_freight_deletion_age = 3;
+
+  uint32 min_promotion_deletion_age = 4;
+}
+
+message WatchKargoInstancesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  string workspace_id = 3;
+}
+
+message GetKargoInstanceResponse {
+  KargoInstance instance = 1;
+}
+
+message WatchKargoInstancesResponse {
+  KargoInstance item = 1;
+
+  akuity.types.events.v1.EventType type = 2;
+}
+
+message PatchKargoInstanceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  google.protobuf.Struct patch = 3;
+
+  string workspace_id = 4;
+}
+
+message PatchKargoInstanceResponse {
+  KargoInstance instance = 1;
+}
+
+message UpdateKargoInstanceWorkspaceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+
+  string new_workspace_id = 4;
+}
+
+message UpdateKargoInstanceWorkspaceResponse {
+  KargoInstance instance = 1;
+}
+
+message KargoAgent {
+  string id = 1;
+
+  string name = 2;
+
+  string namespace = 4 [deprecated = true];
+
+  string description = 5;
+
+  KargoAgentData data = 6;
+
+  optional google.protobuf.Timestamp delete_time = 7;
+
+  akuity.types.status.health.v1.Status health_status = 8;
+
+  akuity.types.status.reconciliation.v1.Status reconciliation_status = 9;
+
+  optional KargoAgentState agent_state = 10;
+
+  optional uint64 readonly_settings_changed_generation = 11;
+
+  optional uint64 observed_generation = 12;
+}
+
+message KargoAgentState {
+  string version = 1;
+
+  string kargo_version = 2;
+
+  optional google.protobuf.Timestamp observe_time = 3;
+
+  optional akuity.types.status.health.v1.AgentAggregatedHealthResponse status = 4;
+
+  repeated string agent_ids = 5;
+
+  uint64 last_user_applied_generation = 6;
+
+  optional akuity.types.status.reconciliation.v1.AgentUpdateStatus update_status = 7;
+}
+
+message ListKargoInstanceAgentsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  optional KargoAgentFilter filter = 3;
+
+  string workspace_id = 4;
+}
+
+message WatchKargoInstanceAgentsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  optional string agent_id = 3;
+
+  optional string min_agent_name = 4;
+
+  optional string max_agent_name = 5;
+
+  optional KargoAgentFilter filter = 6;
+
+  string workspace_id = 7;
+}
+
+message KargoAgentFilter {
+  optional string name_like = 1;
+
+  repeated akuity.types.status.health.v1.StatusCode agent_status = 2;
+
+  repeated string agent_version = 3;
+
+  repeated string kargo_version = 4;
+
+  optional int64 limit = 5;
+
+  optional int64 offset = 6;
+
+  optional string exclude_agent_version = 7;
+
+  optional bool outdated_manifest = 8;
+
+  repeated string namespace = 9;
+
+  map<string, string> labels = 10;
+
+  repeated string remote_argocd_ids = 11;
+
+  optional bool self_managed = 12;
+
+  optional bool need_reapply = 13;
+}
+
+message CreateKargoInstanceAgentRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string name = 3;
+
+  string namespace = 4 [deprecated = true];
+
+  string description = 5;
+
+  KargoAgentData data = 6;
+
+  bool upsert = 7 [deprecated = true];
+
+  string workspace_id = 8;
+}
+
+message KargoAgentData {
+  KargoAgentSize size = 1;
+
+  map<string, string> labels = 2;
+
+  map<string, string> annotations = 3;
+
+  optional bool auto_upgrade_disabled = 4;
+
+  string target_version = 5;
+
+  google.protobuf.Struct kustomization = 6;
+
+  string remote_argocd = 7;
+
+  bool akuity_managed = 8;
+
+  string namespace = 9;
+
+  string argocd_namespace = 10;
+
+  string self_managed_argocd_url = 11;
+
+  repeated string allowed_job_sa = 12;
+
+  optional bool maintenance_mode = 13;
+
+  optional google.protobuf.Timestamp maintenance_mode_expiry = 14;
+}
+
+message GetInstanceAgentCommandRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  string location_origin = 4;
+
+  string type = 6;
+
+  optional bool skip_namespace = 7;
+
+  string workspace_id = 8;
+}
+
+message GetInstanceAgentCommandResponse {
+  string command = 1;
+}
+
+message ListKargoInstanceAgentsResponse {
+  repeated KargoAgent agents = 1;
+
+  int64 total_count = 2;
+}
+
+message WatchKargoInstanceAgentsResponse {
+  KargoAgent item = 1;
+
+  akuity.types.events.v1.EventType type = 2;
+}
+
+message CreateKargoInstanceAgentResponse {
+  KargoAgent agent = 1;
+}
+
+message GetKargoInstanceAgentRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  string workspace_id = 4;
+}
+
+message GetKargoInstanceAgentResponse {
+  KargoAgent agent = 1;
+}
+
+message UpdateKargoInstanceAgentRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  string description = 4;
+
+  KargoAgentData data = 5;
+
+  string workspace_id = 6;
+}
+
+message UpdateKargoInstanceAgentResponse {
+  KargoAgent agent = 1;
+}
+
+message GetKargoInstanceAgentManifestsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  optional bool skip_namespace = 4;
+
+  string workspace_id = 5;
+}
+
+message UpdateKargoInstanceAgentsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  KargoAgentCustomization agent_customizations = 3;
+
+  string workspace_id = 4;
+}
+
+message UpdateKargoInstanceAgentsResponse {
+}
+
+message ApplyKargoInstanceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  akuity.types.id.v1.Type id_type = 3;
+
+  string workspace_id = 4;
+
+  google.protobuf.Struct kargo = 5;
+
+  repeated google.protobuf.Struct agents = 6;
+
+  repeated PruneResourceType prune_resource_types = 7;
+
+  google.protobuf.Struct kargo_configmap = 8;
+
+  google.protobuf.Struct kargo_secret = 9;
+
+  repeated google.protobuf.Struct projects = 10;
+
+  repeated google.protobuf.Struct warehouses = 11;
+
+  repeated google.protobuf.Struct stages = 12;
+
+  repeated google.protobuf.Struct analysis_templates = 13;
+
+  repeated google.protobuf.Struct promotion_tasks = 14;
+
+  repeated google.protobuf.Struct cluster_promotion_tasks = 15;
+
+  repeated google.protobuf.Struct repo_credentials = 16;
+
+  repeated google.protobuf.Struct service_accounts = 17;
+
+  repeated google.protobuf.Struct roles = 18;
+
+  repeated google.protobuf.Struct role_bindings = 19;
+
+  repeated google.protobuf.Struct configmaps = 20;
+
+  repeated google.protobuf.Struct project_configs = 21;
+
+  repeated google.protobuf.Struct message_channels = 22;
+
+  repeated google.protobuf.Struct cluster_message_channels = 23;
+
+  repeated google.protobuf.Struct event_routers = 24;
+}
+
+message ApplyKargoInstanceResponse {
+}
+
+message ExportKargoInstanceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message ExportKargoInstanceResponse {
+  google.protobuf.Struct kargo = 1;
+
+  repeated google.protobuf.Struct agents = 2;
+
+  google.protobuf.Struct kargo_configmap = 3;
+
+  repeated google.protobuf.Struct projects = 4;
+
+  repeated google.protobuf.Struct warehouses = 5;
+
+  repeated google.protobuf.Struct stages = 6;
+
+  repeated google.protobuf.Struct analysis_templates = 7;
+
+  repeated google.protobuf.Struct promotion_tasks = 8;
+
+  repeated google.protobuf.Struct cluster_promotion_tasks = 9;
+
+  repeated google.protobuf.Struct service_accounts = 10;
+
+  repeated google.protobuf.Struct roles = 11;
+
+  repeated google.protobuf.Struct role_bindings = 12;
+
+  repeated google.protobuf.Struct configmaps = 13;
+
+  repeated google.protobuf.Struct project_configs = 14;
+
+  repeated google.protobuf.Struct message_channels = 15;
+
+  repeated google.protobuf.Struct cluster_message_channels = 16;
+
+  repeated google.protobuf.Struct event_routers = 17;
+}
+
+enum PromotionField {
+  PROMOTION_FIELD_UNSPECIFIED = 0;
+
+  PROMOTION_FIELD_STAGES = 1;
+
+  PROMOTION_FIELD_PROJECTS = 2;
+
+  PROMOTION_FIELD_INITIATORS = 3;
+
+  PROMOTION_FIELD_PROMOTIONS = 4;
+
+  PROMOTION_FIELD_INSTANCE_NAMES = 5;
+}
+
+enum PromotionGroupField {
+  PROMOTION_GROUP_FIELD_UNSPECIFIED = 0;
+
+  PROMOTION_GROUP_FIELD_STAGES = 1;
+
+  PROMOTION_GROUP_FIELD_PROJECTS = 2;
+
+  PROMOTION_GROUP_FIELD_INITIATORS = 3;
+
+  PROMOTION_GROUP_FIELD_INSTANCE_NAMES = 4;
+
+  PROMOTION_GROUP_FIELD_STATUS = 5;
+}
+
+enum KargoAgentSize {
+  KARGO_AGENT_SIZE_UNSPECIFIED = 0;
+
+  KARGO_AGENT_SIZE_SMALL = 1;
+
+  KARGO_AGENT_SIZE_MEDIUM = 2;
+
+  KARGO_AGENT_SIZE_LARGE = 3;
+}
+
+enum PruneResourceType {
+  PRUNE_RESOURCE_TYPE_UNSPECIFIED = 0;
+
+  PRUNE_RESOURCE_TYPE_ALL = 1;
+
+  PRUNE_RESOURCE_TYPE_AGENTS = 2;
+
+  PRUNE_RESOURCE_TYPE_PROJECTS = 3;
+
+  PRUNE_RESOURCE_TYPE_WAREHOUSES = 4;
+
+  PRUNE_RESOURCE_TYPE_STAGES = 5;
+
+  PRUNE_RESOURCE_TYPE_ANALYSIS_TEMPLATES = 6;
+
+  PRUNE_RESOURCE_TYPE_PROMOTION_TASKS = 7;
+
+  PRUNE_RESOURCE_TYPE_CLUSTER_PROMOTION_TASKS = 8;
+
+  PRUNE_RESOURCE_TYPE_REPO_CREDENTIALS = 9;
+
+  PRUNE_RESOURCE_TYPE_SERVICE_ACCOUNTS = 10;
+
+  PRUNE_RESOURCE_TYPE_ROLES = 11;
+
+  PRUNE_RESOURCE_TYPE_ROLE_BINDINGS = 12;
+
+  PRUNE_RESOURCE_TYPE_CONFIGMAPS = 13;
+
+  PRUNE_RESOURCE_TYPE_PROJECT_CONFIGS = 14;
+
+  PRUNE_RESOURCE_TYPE_MESSAGE_CHANNELS = 15;
+
+  PRUNE_RESOURCE_TYPE_CLUSTER_MESSAGE_CHANNELS = 16;
+
+  PRUNE_RESOURCE_TYPE_EVENT_ROUTERS = 17;
+}
+
+service KargoService {
+  rpc ListKargoInstances ( ListKargoInstancesRequest ) returns ( ListKargoInstancesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/kargo/instances",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances"
+        }
+      ]
+    };
+  }
+
+  rpc WatchKargoInstances ( WatchKargoInstancesRequest ) returns ( stream WatchKargoInstancesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/kargo/instances",
+      additional_bindings: [
+        {
+          get: "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances"
+        }
+      ]
+    };
+  }
+
+  rpc CreateKargoInstance ( CreateKargoInstanceRequest ) returns ( CreateKargoInstanceResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc PatchKargoInstance ( PatchKargoInstanceRequest ) returns ( PatchKargoInstanceResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/kargo/instances/{id}",
+      body: "patch",
+      additional_bindings: [
+        {
+          patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}",
+          body: "patch"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateKargoInstanceWorkspace ( UpdateKargoInstanceWorkspaceRequest ) returns ( UpdateKargoInstanceWorkspaceResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/kargo/instances/{id}/transfer",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}/transfer",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetKargoInstance ( GetKargoInstanceRequest ) returns ( GetKargoInstanceResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/kargo/instances/{name}",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{name}"
+        }
+      ]
+    };
+  }
+
+  rpc ListKargoInstanceAgents ( ListKargoInstanceAgentsRequest ) returns ( ListKargoInstanceAgentsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents"
+        }
+      ]
+    };
+  }
+
+  rpc WatchKargoInstanceAgents ( WatchKargoInstanceAgentsRequest ) returns ( stream WatchKargoInstanceAgentsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/kargo/instances/{instance_id}/agents",
+      additional_bindings: [
+        {
+          get: "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents"
+        }
+      ]
+    };
+  }
+
+  rpc CreateKargoInstanceAgent ( CreateKargoInstanceAgentRequest ) returns ( CreateKargoInstanceAgentResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateKargoInstanceAgent ( UpdateKargoInstanceAgentRequest ) returns ( UpdateKargoInstanceAgentResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/{id}",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateKargoInstanceAgents ( UpdateKargoInstanceAgentsRequest ) returns ( UpdateKargoInstanceAgentsResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetKargoInstanceAgent ( GetKargoInstanceAgentRequest ) returns ( GetKargoInstanceAgentResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetKargoInstanceAgentManifests ( GetKargoInstanceAgentManifestsRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}/manifests",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/{id}/manifests"
+        }
+      ]
+    };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "Get manifests for the instance agent" };
+  }
+
+  rpc GetInstanceAgentCommand ( GetInstanceAgentCommandRequest ) returns ( GetInstanceAgentCommandResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}/command",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/{id}/command"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteInstance ( DeleteInstanceRequest ) returns ( DeleteInstanceResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/kargo/instances/{id}",
+      additional_bindings: [
+        {
+          delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteInstanceAgent ( DeleteInstanceAgentRequest ) returns ( DeleteInstanceAgentResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/{id}",
+      additional_bindings: [
+        {
+          delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc RotateInstanceAgentCredentials ( RotateInstanceAgentCredentialsRequest ) returns ( RotateInstanceAgentCredentialsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/rotate-credentials",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/rotate-credentials",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc RegenerateManifests ( RegenerateManifestsRequest ) returns ( RegenerateManifestsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/regenerate-manifests",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/regenerate-manifests",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc SetAgentMaintenanceMode ( SetAgentMaintenanceModeRequest ) returns ( SetAgentMaintenanceModeResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/set-maintenance-mode",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/set-maintenance-mode",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceAgentVersion ( UpdateInstanceAgentVersionRequest ) returns ( UpdateInstanceAgentVersionResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances/{instance_id}/agents/version",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{instance_id}/agents/version",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetPromotionStats ( GetPromotionStatsRequest ) returns ( GetPromotionStatsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances/promotions-stats",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/promotions-stats",
+          body: "*"
+        },
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/kargo/instances/promotions-stats",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetPromotionEvents ( GetPromotionEventsRequest ) returns ( GetPromotionEventsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances/promotions-events",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/promotions-events",
+          body: "*"
+        },
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/kargo/instances/promotions-events",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetStageSpecificStats ( GetStageSpecificStatsRequest ) returns ( GetStageSpecificStatsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/kargo/instances/stage-specific-stats",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/stage-specific-stats",
+          body: "*"
+        },
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/kargo/instances/stage-specific-stats",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ApplyKargoInstance ( ApplyKargoInstanceRequest ) returns ( ApplyKargoInstanceResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}/apply",
+      body: "*"
+    };
+  }
+
+  rpc ExportKargoInstance ( ExportKargoInstanceRequest ) returns ( ExportKargoInstanceResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/kargo/instances/{id}/export"
+    };
+  }
+}

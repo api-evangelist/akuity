@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package akuity.types.id.v1;
+
+option csharp_namespace = "Akuity.Types.Id.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/types/id/v1;idv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "IdProto";
+
+option java_package = "com.akuity.types.id.v1";
+
+option objc_class_prefix = "ATI";
+
+option php_metadata_namespace = "Akuity\\Types\\Id\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Types\\Id\\V1";
+
+option ruby_package = "Akuity::Types::Id::V1";
+
+enum Type {
+  option allow_alias = true;
+
+  UNSPECIFIED = 0;
+
+  ID = 0;
+
+  NAME = 1;
+}

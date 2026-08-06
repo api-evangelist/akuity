@@ -1,0 +1,144 @@
+generated: '2026-08-06'
+method: derived
+source: >-
+  openapi/akuity-*.json (derived from the published grpc-gateway annotations) +
+  live probes of https://akuity.cloud/api/v1/*
+description: >-
+  The Akuity Platform API does not publish an error reference. It is a
+  grpc-gateway service, so its error envelope is `google.rpc.Status` and its
+  error taxonomy is the `google.rpc.Code` enum, mapped to HTTP by the standard
+  grpc-gateway rules. The envelope below was captured live, not assumed.
+format: grpc-status
+rfc9457: false
+media_type: application/json
+
+envelope:
+  fields:
+    - name: code
+      type: integer
+      description: google.rpc.Code enum value. This is the canonical error identity — NOT the HTTP status.
+    - name: message
+      type: string
+      description: Human-readable message. Free text; not a stable identifier.
+    - name: details
+      type: array
+      items: google.protobuf.Any
+      description: Optional structured detail payloads. Empty on every response observed.
+  observed:
+    - request: GET https://akuity.cloud/api/v1/organizations
+      auth: none
+      http_status: 401
+      body: '{"code":16, "message":"unauthenticated", "details":[]}'
+      fetched: '2026-08-06'
+    - request: GET https://akuity.cloud/api/v1/openapi.json
+      auth: none
+      http_status: 404
+      body: '{"code":5, "message":"Not Found", "details":[]}'
+      fetched: '2026-08-06'
+
+problem_types:
+  - code: 0
+    name: OK
+    http_status: 200
+    meaning: Success.
+  - code: 1
+    name: CANCELLED
+    http_status: 499
+    meaning: The operation was cancelled, typically by the caller.
+    remediation: Retry if the cancellation was not intentional.
+  - code: 2
+    name: UNKNOWN
+    http_status: 500
+    meaning: Unknown server-side error.
+    remediation: Retry with backoff; if persistent, contact support with the `cf-ray` and `x-version` response headers.
+  - code: 3
+    name: INVALID_ARGUMENT
+    http_status: 400
+    meaning: The request body or query parameters failed validation.
+    remediation: Fix the request. Not retryable unchanged.
+  - code: 4
+    name: DEADLINE_EXCEEDED
+    http_status: 504
+    meaning: The upstream operation timed out.
+    remediation: Retry with backoff.
+  - code: 5
+    name: NOT_FOUND
+    http_status: 404
+    meaning: >-
+      The resource does not exist, or the route is not mounted on the public
+      gateway. Also returned for unrouted paths.
+    remediation: Verify the resource id and that the path exists in openapi/.
+  - code: 6
+    name: ALREADY_EXISTS
+    http_status: 409
+    meaning: A resource with that name/id already exists (e.g. creating a duplicate instance or custom role).
+    remediation: Choose a different name, or switch to an update/apply call.
+  - code: 7
+    name: PERMISSION_DENIED
+    http_status: 403
+    meaning: >-
+      The caller is authenticated but the API key's role (Owner/Member) or custom
+      role policy does not grant the action.
+    remediation: Grant the permission via a custom role, or use a key with a higher role.
+  - code: 8
+    name: RESOURCE_EXHAUSTED
+    http_status: 429
+    meaning: >-
+      A plan or organization quota is exhausted — Argo CD applications, Kargo
+      stages, workspaces or Akuity Intelligence AI tokens.
+    remediation: Raise the quota, buy an add-on package, or reduce usage. See https://docs.akuity.io/akuity-portal/organizations/quotas
+  - code: 9
+    name: FAILED_PRECONDITION
+    http_status: 400
+    meaning: The system is not in a state where the operation can be executed (e.g. deleting an instance with attached agents).
+    remediation: Resolve the precondition and retry.
+  - code: 10
+    name: ABORTED
+    http_status: 409
+    meaning: Concurrency conflict — a concurrent write to the same resource.
+    remediation: Re-read the resource and retry the write.
+  - code: 11
+    name: OUT_OF_RANGE
+    http_status: 400
+    meaning: A parameter (typically offset/limit) is outside its valid range.
+    remediation: Correct the pagination parameters.
+  - code: 12
+    name: UNIMPLEMENTED
+    http_status: 501
+    meaning: The RPC exists in the descriptor but is not served on this deployment.
+    remediation: Not retryable.
+  - code: 13
+    name: INTERNAL
+    http_status: 500
+    meaning: Internal server error.
+    remediation: Retry with backoff; escalate with `cf-ray` if persistent.
+  - code: 14
+    name: UNAVAILABLE
+    http_status: 503
+    meaning: The service is temporarily unavailable.
+    remediation: Retry with exponential backoff. Check https://status.akuity.io/.
+  - code: 15
+    name: DATA_LOSS
+    http_status: 500
+    meaning: Unrecoverable data loss or corruption.
+    remediation: Contact support.
+  - code: 16
+    name: UNAUTHENTICATED
+    http_status: 401
+    meaning: >-
+      No credentials, malformed Basic header, or an expired/revoked API key.
+      Confirmed live on GET /api/v1/organizations with no Authorization header.
+    remediation: >-
+      Send `Authorization: Basic base64(AKUITY_API_KEY_ID:AKUITY_API_KEY_SECRET)`.
+      Check for a trailing newline in the base64 (use `echo -n`). Rotate the key
+      via POST /api/v1/apikeys/{id}/regenerate if it was revoked.
+
+notes:
+  - >-
+    Akuity publishes no error-code reference page. Everything here is the
+    standard grpc-gateway/google.rpc contract that its own generated clients
+    depend on, plus the two envelopes captured live on 2026-08-06. Message
+    strings are not stable identifiers — clients should branch on `code`.
+  - >-
+    This is NOT RFC 9457 problem+json. Responses are `application/json` with the
+    google.rpc.Status shape and no `type`/`title`/`instance` members.

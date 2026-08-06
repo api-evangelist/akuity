@@ -1,0 +1,80 @@
+generated: '2026-08-06'
+method: searched
+source: https://docs.akuity.io/changelog/cloud
+url: https://docs.akuity.io/changelog/
+description: >-
+  Akuity keeps a dated product changelog inside its documentation, split into a
+  cloud/platform stream and an agent stream, plus three self-hosted compatibility
+  matrices. Entries are feature-level release notes; they are not versioned and
+  they do not call out breaking API changes.
+
+streams:
+  - name: platform
+    url: https://docs.akuity.io/changelog/cloud
+    cadence: irregular, roughly monthly
+  - name: agent
+    url: https://docs.akuity.io/changelog/agent
+  - name: self-hosted compatibility
+    url: https://docs.akuity.io/changelog/selfhosted/
+    matrices:
+      - https://docs.akuity.io/changelog/selfhosted/argocd-compatibility
+      - https://docs.akuity.io/changelog/selfhosted/kargo-compatibility
+      - https://docs.akuity.io/changelog/selfhosted/agent-compatibility
+
+scheme: date
+versioned_entries: false
+breaking_changes_flagged: false
+current_platform_version: v0.32.0-rl.1.0.20260804092436-2611577a617e.dirty
+
+entries:
+  - date: '2026-04-02'
+    breaking: false
+    highlights:
+      - 'GitOps Runbooks: define, manage and execute runbooks stored in Git repositories directly from the platform.'
+      - 'Alert types in notification preferences, plus an unsubscribe URL in notification emails.'
+      - 'GitLab integration in Akuity Intelligence — view and manage GitLab issues from the AI assistant.'
+      - 'Git operations in Akuity Intelligence — the assistant can make code changes and open pull requests.'
+  - date: '2026-03-05'
+    breaking: false
+    highlights:
+      - 'Organization switching across regions from a single interface.'
+      - 'User-configurable maintenance mode for Akuity-managed clusters, with auto-expiry.'
+      - 'Search in the organization members page.'
+      - 'Configurable additional and default Kustomize versions for Argo CD instances.'
+  - date: '2026-02-13'
+    breaking: false
+    highlights:
+      - 'Akuity Intelligence over-provisioned workload analysis.'
+      - 'Argo CD application context in Intelligence resource-listing functions.'
+  - date: '2026-01-22'
+    breaking: false
+    highlights:
+      - 'Instance alerts when a CNAME record is not configured (surfaces as the cname_alert_event webhook).'
+      - 'Suspend an in-flight Akuity Intelligence conversation.'
+  - date: '2026-01-21'
+    breaking: false
+    highlights:
+      - 'Kargo secrets synchronization from managed clusters to the control plane.'
+      - 'Argo CD generic secret synchronization (any secret kind).'
+      - 'Bring Your Own Model support in Akuity Intelligence.'
+      - 'Cluster-disconnected notifications (agent_health_event webhook).'
+      - 'Intelligence gains access to recent incidents, deprecated Kubernetes APIs and managed-cluster image data.'
+  - date: '2025-12-21'
+    breaking: false
+    highlights:
+      - 'Akuity Intelligence Slack integration — share AI conversations to Slack channels.'
+      - 'Akuity Intelligence scheduled tasks.'
+      - 'Argo CD applications detail page in Kargo: node grouping, resource filtering, diff view.'
+  - date: '2025-11-19'
+    breaking: false
+    highlights:
+      - 'Kargo notifications.'
+
+notes:
+  - >-
+    Window captured: 2025-11-19 through 2026-04-02, the most recent entries on
+    the cloud changelog as of 2026-08-06.
+  - >-
+    The changelog documents product features, not the REST contract. No entry in
+    the captured window announces an added, changed or removed API operation, and
+    no entry is tagged breaking.

@@ -1,0 +1,155 @@
+syntax = "proto3";
+
+package akuity.notifications.webhook.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Akuity.Notifications.Webhook.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/notifications/v1;webhookv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "WebhookProto";
+
+option java_package = "com.akuity.notifications.webhook.v1";
+
+option objc_class_prefix = "ANW";
+
+option php_metadata_namespace = "Akuity\\Notifications\\Webhook\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Notifications\\Webhook\\V1";
+
+option ruby_package = "Akuity::Notifications::Webhook::V1";
+
+message WebhookEventPayload {
+  google.protobuf.Timestamp event_time = 1;
+
+  WebhookEventType event_type = 2;
+
+  string organization_id = 3;
+
+  string event_id = 4;
+
+  oneof metadata {
+    PingEvent ping_event = 5;
+
+    UsageUpdateEvent usage_event = 6;
+
+    AuditEvent audit_event = 7;
+
+    AgentHealthEvent agent_health_event = 8;
+
+    CnameAlertEvent cname_alert_event = 9;
+  }
+}
+
+message PingEvent {
+  string notification_config_id = 1;
+}
+
+message UsageUpdateEvent {
+  string product = 1;
+
+  string usage_type = 2;
+
+  double usage_threshold = 3;
+
+  int64 max_limit = 4;
+
+  int64 usage = 5;
+}
+
+message AuditEvent {
+  string timestamp = 1;
+
+  string action = 2;
+
+  EventAuditActor actor = 3;
+
+  EventAuditObject object = 4;
+
+  EventAuditDetails details = 5;
+
+  message EventAuditActor {
+    string type = 1;
+
+    string id = 2;
+
+    optional string ip = 3;
+  }
+
+  message EventAuditObject {
+    string type = 1;
+
+    EventAuditObjId id = 2;
+
+    EventAuditParentId parent_id = 3;
+
+    message EventAuditObjId {
+      string name = 1;
+
+      string kind = 2;
+
+      string group = 3;
+    }
+
+    message EventAuditParentId {
+      string name = 1;
+
+      string parent_name = 2;
+
+      string application_name = 3;
+    }
+  }
+
+  message EventAuditDetails {
+    string message = 1;
+
+    string patch = 2;
+
+    string action_type = 3;
+  }
+}
+
+message AgentHealthEvent {
+  string instance_id = 1;
+
+  string instance_name = 2;
+
+  string cluster_id = 3;
+
+  string cluster_name = 4;
+
+  string status = 5;
+
+  google.protobuf.Timestamp timestamp = 6;
+
+  bool kargo = 7;
+}
+
+message CnameAlertEvent {
+  string instance_id = 1;
+
+  string instance_name = 2;
+
+  string fqdn = 3;
+
+  string message = 4;
+
+  bool kargo = 5;
+}
+
+enum WebhookEventType {
+  WEBHOOK_EVENT_TYPE_UNSPECIFIED = 0;
+
+  WEBHOOK_EVENT_TYPE_PING = 1;
+
+  WEBHOOK_EVENT_TYPE_AUDIT = 2;
+
+  WEBHOOK_EVENT_TYPE_USAGE = 3;
+
+  WEBHOOK_EVENT_TYPE_AGENT_HEALTH = 4;
+
+  WEBHOOK_EVENT_TYPE_CNAME_ALERT = 5;
+}

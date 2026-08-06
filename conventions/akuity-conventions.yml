@@ -1,0 +1,140 @@
+generated: '2026-08-06'
+method: derived
+source: >-
+  openapi/akuity-*.json + grpc/akuity-*.proto (google.api.http annotations) +
+  https://docs.akuity.io/akuity-portal/automation/api
+docs: https://docs.akuity.io/akuity-portal/automation/api
+description: >-
+  Cross-cutting runtime semantics of the Akuity Platform API. The public REST
+  surface at https://akuity.cloud/api/v1/ is a grpc-gateway projection of the
+  platform's protobuf services, so most conventions are gateway/protobuf
+  conventions rather than hand-authored REST conventions.
+
+architecture:
+  style: grpc-gateway
+  note: >-
+    Every REST route is generated from a `google.api.http` annotation on a gRPC
+    method. JSON bodies follow protojson (lowerCamelCase field names, int64 as
+    string, enums as their symbolic names, google.protobuf.Timestamp as RFC 3339).
+  json_mapping: protojson
+  int64_encoding: string
+  enum_encoding: symbolic-name
+  timestamp_encoding: RFC 3339 (google.protobuf.Timestamp)
+
+base_url: https://akuity.cloud/api/v1/
+extension_base_url: https://akuity.cloud/ext-api/v1/
+
+authentication:
+  primary: HTTP Basic
+  credential: AKUITY_API_KEY_ID as username, AKUITY_API_KEY_SECRET as password
+  header: 'Authorization: Basic base64(id:secret)'
+  secondary: >-
+    OAuth 2.0 Device Authorization Grant (RFC 8628) for interactive `akuity login`
+    — GET /api/v1/auth/device-code, POST /api/v1/auth/device-token,
+    POST /api/v1/auth/refresh-token. Not documented for third-party clients.
+  see: authentication/akuity-authentication.yml
+
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No idempotency key is documented and no `Idempotency-Key`-shaped header or
+    field appears anywhere in the published protobuf descriptors. Mutations are
+    plain POST/PUT/PATCH/DELETE. Declarative flows (`akuity argocd apply`,
+    the Terraform provider) obtain idempotence by re-applying a desired-state
+    manifest, not by request keys.
+  evidence: 'grep -i idempoten over all published .proto descriptors: 0 matches'
+
+pagination:
+  style: offset-limit
+  params:
+    - name: offset
+      in: query
+      type: integer
+    - name: limit
+      in: query
+      type: integer
+  response_fields: []
+  note: >-
+    Offset/limit fields appear on list-shaped requests (audit logs, Kubernetes
+    resource/image/container listings, AI conversation history). There is no
+    cursor/page-token convention and no standard envelope field for totals —
+    each response message names its own collection field. Many list RPCs
+    (ListOrganizationMembers, ListCustomRoles, ListWorkspaces) are unpaginated.
+
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata:
+  supported: false
+  note: No generic customer-defined metadata bag on platform resources.
+
+request_id_tracing:
+  header: null
+  note: >-
+    No request-id header is documented or returned. Responses carry `x-version`
+    (the platform build, e.g. v0.32.0-rl.1.0.20260804092436-…) and Cloudflare's
+    `cf-ray`, which is the only per-request correlator available to a caller.
+  observed_response_headers:
+    - x-version
+    - cf-ray
+    - cache-control
+    - strict-transport-security
+    - x-content-type-options
+    - x-frame-options
+    - permissions-policy
+
+versioning:
+  scheme: path
+  current: v1
+  note: >-
+    A single stable major, `/api/v1/`, matching the `*.v1` protobuf packages.
+    Feature evolution happens by adding RPCs and fields inside v1 (protobuf
+    wire-compatible growth) rather than by minting new URL versions. The
+    platform build version is separately readable, unauthenticated, at
+    GET /api/v1/system/version.
+  see: lifecycle/akuity-lifecycle.yml
+
+error_envelope:
+  format: google.rpc.Status
+  media_type: application/json
+  shape:
+    code: integer — google.rpc.Code enum value (5 = NOT_FOUND, 16 = UNAUTHENTICATED)
+    message: string
+    details: array of google.protobuf.Any
+  rfc9457: false
+  example_observed:
+    request: GET https://akuity.cloud/api/v1/organizations (no credentials)
+    http_status: 401
+    body: '{"code":16, "message":"unauthenticated", "details":[]}'
+  see: errors/akuity-error-codes.yml
+
+rate_limit_signaling:
+  headers: []
+  documented: false
+  note: >-
+    No RateLimit / X-RateLimit / Retry-After headers are documented and none were
+    observed on unauthenticated probes. Akuity's published limits are *resource
+    quotas* (Argo CD applications, Kargo stages, AI tokens, workspaces) enforced
+    per plan and per instance, not per-request API throttles.
+  quotas_doc: https://docs.akuity.io/akuity-portal/organizations/quotas
+
+streaming:
+  supported: true
+  note: >-
+    Several RPCs are server-streaming and the gateway emits newline-delimited
+    JSON envelopes ({"result":…} / {"error":…}) rather than a single document —
+    e.g. audit-log CSV export, Kargo analysis logs, and the Akuity Intelligence
+    chat surfaces. Marked `x-streaming: server` on the affected operations in
+    openapi/.
+
+webhooks:
+  supported: true
+  see: asyncapi/akuity-notifications-webhooks.yml
+
+cross_links:
+  errors: errors/akuity-error-codes.yml
+  lifecycle: lifecycle/akuity-lifecycle.yml
+  authentication: authentication/akuity-authentication.yml
+  conformance: conformance/akuity-conformance.yml

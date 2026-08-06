@@ -1,0 +1,87 @@
+generated: '2026-08-06'
+method: searched
+source: >-
+  https://docs.akuity.io/argocd/managing-instances/settings/extensions/ +
+  https://akuity.io/pricing + openapi/akuity-extension.json
+description: >-
+  Akuity's client-side surface is not a widget/element library — it is a set of
+  UI extensions that Akuity injects into the managed Argo CD web UI, each backed
+  by a public `/ext-api/v1/` endpoint. Registering an extension is a per-instance
+  toggle, not an npm install. There is no embeddable Akuity JS SDK, no web
+  components, and no hosted iframe/dashboard-embed product.
+family: argo-cd-ui-extensions
+loader: served by the managed Argo CD instance; no customer-side script tag
+
+components:
+  - name: Sync History
+    kind: argo-cd-ui-extension
+    description: >-
+      Adds a sync-operations history and stats view to the Argo CD application
+      page, backed by ExtensionService_GetSyncOperationsEventsForApplication and
+      ExtensionService_GetSyncOperationsStatsForApplication.
+    docs: https://docs.akuity.io/argocd/managing-instances/dashboard/sync-history
+    backing_operations:
+      - ExtensionService_GetSyncOperationsEventsForApplication
+      - ExtensionService_GetSyncOperationsStatsForApplication
+    plan: Pro and Enterprise
+
+  - name: Audit Records
+    kind: argo-cd-ui-extension
+    description: >-
+      Per-application and per-Kargo-project audit record panels, backed by
+      ExtensionService_ListAuditRecordForApplication and
+      ExtensionService_ListAuditRecordForKargoProjects.
+    backing_operations:
+      - ExtensionService_ListAuditRecordForApplication
+      - ExtensionService_ListAuditRecordForKargoProjects
+
+  - name: Argo Rollouts extension
+    kind: argo-cd-ui-extension
+    description: Progressive-delivery visualisation for Argo Rollouts inside the Argo CD UI.
+    plan: Pro and Enterprise
+
+  - name: ApplicationSet extension
+    kind: argo-cd-ui-extension
+    description: ApplicationSet generator and status views inside the Argo CD UI.
+    docs: https://docs.akuity.io/argocd/managing-instances/settings/extensions/applicationset-extension
+
+  - name: Crossplane extension
+    kind: argo-cd-ui-extension
+    description: Crossplane managed-resource views inside the Argo CD UI.
+    docs: https://docs.akuity.io/argocd/managing-instances/settings/extensions/crossplane-extension
+
+  - name: KubeVision (Insights dashboards)
+    kind: hosted-dashboard
+    description: >-
+      Akuity Intelligence insight dashboards — overview, infrastructure,
+      containers, images, deprecated APIs, stuck-in-deletion resources, explorer.
+      Surfaced both in the Akuity portal and, via
+      /ext-api/v1/argocd/extensions/kubevision/, inside the Argo CD UI.
+    docs: https://docs.akuity.io/intelligence/insights-dashboards/
+    backing_operations:
+      - OrganizationService_ListKubernetesResources
+      - OrganizationService_ListKubernetesImages
+      - OrganizationService_ListKubernetesContainers
+      - OrganizationService_GetKubernetesResourceDetail
+
+  - name: Deep Links
+    kind: argo-cd-ui-configuration
+    description: >-
+      Customer-defined contextual links rendered on Argo CD resources — the
+      closest thing Akuity ships to a customer-extensible UI slot.
+    docs: https://docs.akuity.io/argocd/managing-instances/settings/advanced/deep-links
+
+  - name: Custom Styles / Chat & Banner
+    kind: argo-cd-ui-configuration
+    description: >-
+      Per-instance CSS injection (ArgoCDService_GetInstanceCSS) and an in-UI chat
+      widget / announcement banner.
+    docs: https://docs.akuity.io/argocd/managing-instances/settings/custom-styles
+    backing_operations:
+      - ArgoCDService_GetInstanceCSS
+
+not_published:
+  - embeddable JavaScript SDK
+  - web components / custom elements
+  - hosted checkout or auth UI
+  - iframe-embeddable dashboard for third-party sites

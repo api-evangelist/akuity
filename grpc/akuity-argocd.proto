@@ -1,0 +1,3732 @@
+syntax = "proto3";
+
+package akuity.argocd.v1;
+
+import "google/api/annotations.proto";
+
+import "google/api/httpbody.proto";
+
+import "google/protobuf/empty.proto";
+
+import "google/protobuf/struct.proto";
+
+import "google/protobuf/timestamp.proto";
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "types/events/v1/events.proto";
+
+import "types/id/v1/id.proto";
+
+import "types/misc/v1/misc.proto";
+
+import "types/status/health/v1/health.proto";
+
+import "types/status/reconciliation/v1/reconciliation.proto";
+
+option csharp_namespace = "Akuity.Argocd.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/argocd/v1;argocdv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "ArgocdProto";
+
+option java_package = "com.akuity.argocd.v1";
+
+option objc_class_prefix = "AAX";
+
+option php_metadata_namespace = "Akuity\\Argocd\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Argocd\\V1";
+
+option ruby_package = "Akuity::Argocd::V1";
+
+message Repository {
+  optional string repo = 1;
+
+  optional string type = 2;
+
+  optional string project = 3;
+}
+
+message CreateInstanceRepoRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  map<string, string> data = 4;
+}
+
+message CreateInstanceRepoResponse {
+  Repository repo = 1;
+}
+
+message ListInstanceReposRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+}
+
+message ListInstanceReposResponse {
+  repeated Repository repos = 1;
+}
+
+message CreateManagedSecretRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  ManagedSecret managed_secret = 4;
+
+  map<string, string> managed_secret_data = 5;
+}
+
+message CreateManagedSecretResponse {
+}
+
+message DeleteManagedSecretRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  string name = 4;
+}
+
+message DeleteManagedSecretResponse {
+}
+
+message ListInstanceManagedSecretsRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+}
+
+message ListInstanceManagedSecretsResponse {
+  repeated ManagedSecret managed_secrets = 1;
+}
+
+message UpdateManagedSecretRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  string name = 4;
+
+  ManagedSecret managed_secret = 5;
+
+  map<string, string> managed_secret_data = 6;
+}
+
+message UpdateManagedSecretResponse {
+}
+
+message PatchManagedSecretRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  string name = 4;
+
+  ManagedSecret managed_secret = 5;
+
+  map<string, string> managed_secret_data = 6;
+}
+
+message PatchManagedSecretResponse {
+}
+
+message ListInstanceVersionsRequest {
+}
+
+message ListInstanceVersionsResponse {
+  repeated InstanceVersion versions = 1;
+}
+
+message ListInstancesRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+}
+
+message ListInstancesResponse {
+  repeated Instance instances = 1;
+}
+
+message CreateInstanceRequest {
+  string organization_id = 1;
+
+  string name = 2;
+
+  string version = 3;
+
+  optional string description = 4;
+
+  optional string shard = 5;
+
+  string workspace_id = 6;
+}
+
+message CreateInstanceResponse {
+  Instance instance = 1;
+}
+
+message GetInstanceRequest {
+  string organization_id = 1;
+
+  akuity.types.id.v1.Type id_type = 2;
+
+  string id = 3;
+
+  string workspace_id = 4;
+}
+
+message GetInstanceResponse {
+  Instance instance = 1;
+}
+
+message GetInstanceCSSRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message GetInstanceCSSResponse {
+  string css = 1;
+}
+
+message GetInstanceNotificationSettingsRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message GetInstanceNotificationSettingsResponse {
+  map<string, string> secret = 1;
+
+  map<string, string> config = 2;
+
+  string owned_by_cluster = 3;
+}
+
+message GetInstanceNotificationCatalogRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message GetInstanceNotificationCatalogResponse {
+  map<string, string> catalog = 1;
+}
+
+message GetInstanceImageUpdaterSettingsRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message GetInstanceImageUpdaterSettingsResponse {
+  map<string, string> secret = 1;
+
+  map<string, string> config = 2;
+
+  map<string, string> ssh_config = 3;
+
+  string version = 4;
+
+  string owned_by_cluster = 5;
+}
+
+message ResourceCustomizationConfig {
+  string group = 1;
+
+  string kind = 2;
+
+  string health = 3;
+
+  string actions = 4;
+
+  string ignore_differences = 5;
+
+  string known_type_fields = 6;
+
+  optional bool use_open_libs = 7;
+
+  string ignore_resource_updates = 8;
+}
+
+message GetInstanceResourceCustomizationsRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message GetInstanceResourceCustomizationsResponse {
+  repeated ResourceCustomizationConfig resource_customizations = 1;
+
+  optional bool ignore_resource_updates_enabled = 2;
+}
+
+message PatchInstanceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  google.protobuf.Struct patch = 3;
+
+  string workspace_id = 4;
+}
+
+message PatchInstanceResponse {
+  Instance instance = 1;
+}
+
+message PatchInstanceSecretRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  map<string, ValueField> secret = 3;
+
+  string workspace_id = 4;
+
+  message ValueField {
+    optional string value = 1;
+  }
+}
+
+message PatchInstanceSecretResponse {
+}
+
+message PatchInstanceNotificationSecretRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  map<string, ValueField> secret = 3;
+
+  string workspace_id = 4;
+
+  message ValueField {
+    optional string value = 1;
+  }
+}
+
+message PatchInstanceNotificationSecretResponse {
+}
+
+message PatchInstanceImageUpdaterSecretRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  map<string, ValueField> secret = 3;
+
+  string workspace_id = 4;
+
+  message ValueField {
+    optional string value = 1;
+  }
+}
+
+message PatchInstanceImageUpdaterSecretResponse {
+}
+
+message PatchInstanceAppsetSecretRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  map<string, ValueField> secret = 3;
+
+  string workspace_id = 4;
+
+  message ValueField {
+    optional string value = 1;
+  }
+}
+
+message PatchInstanceAppsetSecretResponse {
+}
+
+message GetInstanceAppsetSecretRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message GetInstanceAppsetSecretResponse {
+  map<string, string> secret = 1;
+
+  string owned_by_cluster = 2;
+}
+
+message UpdateInstanceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  Instance instance = 3;
+
+  string workspace_id = 4;
+}
+
+message UpdateInstanceResponse {
+  Instance instance = 1;
+}
+
+message UpdateInstanceWorkspaceRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+
+  string new_workspace_id = 4;
+}
+
+message UpdateInstanceWorkspaceResponse {
+}
+
+message UpdateInstanceCSSRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string css = 3;
+
+  string workspace_id = 4;
+}
+
+message UpdateInstanceCSSResponse {
+  string css = 1;
+}
+
+message UpdateInstanceNotificationConfigRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  map<string, string> config = 3;
+
+  string workspace_id = 4;
+}
+
+message UpdateInstanceNotificationConfigResponse {
+}
+
+message UpdateInstanceImageUpdaterConfigRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  map<string, string> config = 3;
+
+  string workspace_id = 4;
+
+  string version = 5;
+}
+
+message UpdateInstanceImageUpdaterConfigResponse {
+}
+
+message UpdateInstanceImageUpdaterSSHConfigRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  map<string, string> config = 3;
+
+  string workspace_id = 4;
+}
+
+message UpdateInstanceImageUpdaterSSHConfigResponse {
+}
+
+message UpdateInstanceResourceCustomizationsRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  repeated ResourceCustomizationConfig resources = 3;
+
+  string workspace_id = 4;
+
+  optional bool ignore_resource_updates_enabled = 5;
+}
+
+message UpdateInstanceResourceCustomizationsResponse {
+}
+
+message DeleteInstanceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message DeleteInstanceResponse {
+}
+
+message ListInstanceAccountsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+}
+
+message ListInstanceAccountsResponse {
+  repeated InstanceAccount accounts = 1;
+}
+
+message UpsertInstanceAccountRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string name = 3;
+
+  InstanceAccountCapabilities capabilities = 4;
+
+  optional bool disabled = 5;
+
+  string workspace_id = 6;
+}
+
+message UpsertInstanceAccountResponse {
+  InstanceAccount account = 1;
+}
+
+message UpdateInstanceAccountPasswordRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string name = 3;
+
+  string password = 4;
+
+  string workspace_id = 5;
+}
+
+message UpdateInstanceAccountPasswordResponse {
+}
+
+message RegenerateInstanceAccountPasswordRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string name = 3;
+
+  string workspace_id = 4;
+}
+
+message RegenerateInstanceAccountPasswordResponse {
+  string password = 1;
+}
+
+message DeleteInstanceAccountRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string name = 3;
+
+  string workspace_id = 4;
+}
+
+message DeleteInstanceAccountResponse {
+}
+
+message GetAIAssistantUsageStatsRequest {
+  string organization_id = 1;
+
+  repeated string instance_id = 2;
+}
+
+message GetAIAssistantUsageStatsResponse {
+  uint32 total_conversations = 1;
+
+  uint32 resolved_conversations = 3;
+}
+
+message GetSyncOperationsStatsRequest {
+  string organization_id = 1;
+
+  SyncOperationFilter filter = 2;
+
+  akuity.types.misc.v1.GroupByInterval interval = 3;
+
+  SyncOperationGroupField group_by_field = 4;
+
+  optional string group_by_label_field = 5;
+}
+
+message GetSyncOperationsEventsRequest {
+  string organization_id = 1;
+
+  SyncOperationFilter filter = 2;
+
+  optional int64 limit = 3;
+
+  optional int64 offset = 4;
+
+  SyncOperationField field = 5;
+
+  string field_like = 6;
+}
+
+message SyncOperationFilter {
+  string start_time = 1;
+
+  optional string end_time = 2;
+
+  repeated string app_name = 3;
+
+  repeated string projects = 4;
+
+  map<string, string> labels = 5;
+
+  repeated string repo = 6;
+
+  repeated string instance_id = 7;
+
+  repeated string initiated_by = 8;
+
+  repeated string instance_names = 9;
+}
+
+message Label {
+  string key = 1;
+
+  string value = 2;
+}
+
+message SyncOperationStat {
+  string interval_start = 1;
+
+  map<string, uint32> count_map = 2;
+
+  map<string, float> average_map = 3;
+}
+
+message SyncOperationEvent {
+  string id = 1;
+
+  string instance_id = 2;
+
+  string application_name = 3;
+
+  string start_time = 4;
+
+  string end_time = 5;
+
+  string result_phase = 6;
+
+  string result_message = 7;
+
+  SyncOperationEventDetails details = 8;
+
+  uint32 count = 9;
+
+  string last_occurred_timestamp = 10;
+
+  uint32 duration = 11;
+}
+
+message SyncOperationEventDetails {
+  map<string, string> labels = 1;
+
+  string project = 2;
+
+  string repository = 3;
+
+  string revision = 4;
+
+  bool prune = 5;
+
+  bool dry_run = 6;
+
+  repeated string sync_options = 7;
+
+  OperationInitiator initiated_by = 8;
+}
+
+message OperationInitiator {
+  string username = 1;
+
+  bool automated = 2;
+}
+
+message GetSyncOperationsStatsResponse {
+  repeated SyncOperationStat sync_operation_stats = 1;
+}
+
+message GetSyncOperationsEventsResponse {
+  repeated SyncOperationEvent sync_operation_events = 1;
+
+  int64 count = 2;
+
+  repeated string field_result = 3;
+}
+
+message ClusterFilter {
+  optional string name_like = 1;
+
+  repeated akuity.types.status.health.v1.TenantPhase agent_status = 2;
+
+  repeated string agent_version = 3;
+
+  repeated string argocd_version = 4;
+
+  optional int64 limit = 5;
+
+  optional int64 offset = 6;
+
+  optional string exclude_agent_version = 7;
+
+  optional bool outdated_manifest = 8;
+
+  repeated string namespace = 9;
+
+  optional bool namespace_scoped = 10;
+
+  map<string, string> labels = 11;
+
+  optional bool need_reapply = 12;
+
+  optional bool exclude_direct_cluster = 13;
+}
+
+message ListInstanceClustersRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  optional ClusterFilter filter = 3;
+
+  string workspace_id = 4;
+}
+
+message WatchInstanceClustersRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  optional string cluster_id = 3;
+
+  optional string min_cluster_name = 4;
+
+  optional string max_cluster_name = 5;
+
+  optional ClusterFilter filter = 6;
+
+  string workspace_id = 7;
+}
+
+message WatchInstancesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  string workspace_id = 3;
+}
+
+message WatchInstanceAddonsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+
+  optional string addon_id = 4;
+
+  optional AddonFilter filter = 5;
+}
+
+message WatchInstanceAddonReposRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+
+  optional string addon_repo_id = 4;
+}
+
+message WatchInstancesResponse {
+  Instance item = 1;
+
+  akuity.types.events.v1.EventType type = 2;
+}
+
+message WatchInstanceAddonsResponse {
+  Addon item = 1;
+
+  akuity.types.events.v1.EventType type = 2;
+}
+
+message WatchInstanceAddonReposResponse {
+  AddonRepo item = 1;
+
+  akuity.types.events.v1.EventType type = 2;
+}
+
+message WatchInstanceClustersResponse {
+  Cluster item = 1;
+
+  akuity.types.events.v1.EventType type = 2;
+}
+
+message ListInstanceClustersResponse {
+  repeated Cluster clusters = 1;
+
+  int64 total_count = 2;
+}
+
+message CreateInstanceClusterRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string name = 3;
+
+  string description = 4;
+
+  string namespace = 5 [deprecated = true];
+
+  bool namespace_scoped = 6 [deprecated = true];
+
+  ClusterData data = 7;
+
+  bool upsert = 8;
+
+  bool force = 9;
+
+  string workspace_id = 10;
+}
+
+message CreateInstanceClusterResponse {
+  Cluster cluster = 1;
+}
+
+message GetClusterAPIServerCADataRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_name = 3;
+
+  string server = 4;
+
+  string workspace_id = 5;
+}
+
+message GetClusterAPIServerCADataResponse {
+  string data = 1;
+}
+
+message GetInstanceClusterRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  akuity.types.id.v1.Type id_type = 3;
+
+  string id = 4;
+
+  string workspace_id = 5;
+}
+
+message GetInstanceClusterResponse {
+  Cluster cluster = 1;
+}
+
+message GetInstanceClusterInfoResponse {
+  bool has_applications = 1;
+}
+
+message GetInstanceClusterManifestsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  bool offline_installation = 4;
+
+  optional bool skip_namespace = 5;
+
+  string workspace_id = 6;
+}
+
+message UpdateInstanceClusterRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  string description = 4;
+
+  ClusterData data = 5;
+
+  bool force = 6;
+
+  string workspace_id = 7;
+}
+
+message UpdateInstanceClusterSupportAccessRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  string workspace_id = 4;
+
+  bool enable = 5;
+
+  uint32 duration_seconds = 6;
+}
+
+message UpdateInstanceClusterSupportAccessResponse {
+}
+
+message UpdateInstanceClusterResponse {
+  Cluster cluster = 1;
+}
+
+message UpdateInstanceClustersRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  optional ClusterCustomization cluster_customizations = 3;
+
+  string workspace_id = 4;
+
+  optional bool multi_cluster_k8s_dashboard_enabled = 5;
+}
+
+message UpdateInstanceClustersResponse {
+  repeated string skipped_clusters = 1;
+}
+
+message UpdateInstanceClustersAgentVersionRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  repeated string cluster_names = 3;
+
+  string new_version = 4;
+
+  optional bool all_clusters = 5;
+
+  string workspace_id = 6;
+}
+
+message RegenerateManifestsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  repeated string cluster_names = 3;
+
+  optional bool all_clusters = 4;
+
+  string workspace_id = 5;
+}
+
+message RegenerateManifestsResponse {
+  repeated string skipped_clusters = 1;
+}
+
+message SetClusterMaintenanceModeRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  repeated string cluster_names = 3;
+
+  optional bool all_clusters = 4;
+
+  string workspace_id = 5;
+
+  bool maintenance_mode = 6;
+
+  google.protobuf.Timestamp expiry = 7;
+}
+
+message SetClusterMaintenanceModeResponse {
+}
+
+message RotateInstanceClusterCredentialsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  repeated string cluster_names = 3;
+
+  optional bool all_clusters = 4;
+
+  string workspace_id = 5;
+}
+
+message RotateInstanceClusterCredentialsResponse {
+  repeated string skipped_clusters = 1;
+}
+
+message DeleteInstanceClusterRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  string workspace_id = 4;
+}
+
+message DeleteInstanceClusterResponse {
+}
+
+message ApplicationsHealth {
+  uint32 healthy_count = 1;
+
+  uint32 degraded_count = 2;
+
+  uint32 progressing_count = 3;
+
+  uint32 unknown_count = 4;
+
+  uint32 suspended_count = 5;
+
+  uint32 missing_count = 6;
+}
+
+message ApplicationsSyncStatus {
+  uint32 synced_count = 1;
+
+  uint32 out_of_sync_count = 2;
+
+  uint32 unknown_count = 3;
+}
+
+message ApplicationsStatus {
+  uint32 application_count = 1;
+
+  uint32 resources_count = 2;
+
+  uint32 sync_in_progress_count = 3;
+
+  uint32 warning_count = 4;
+
+  uint32 error_count = 5;
+
+  ApplicationsHealth health = 6;
+
+  ApplicationsSyncStatus sync_status = 7;
+
+  uint32 app_of_app_count = 8;
+}
+
+message ArgoCDConfigMap {
+  optional bool admin_enabled = 1;
+
+  ArgoCDStatusBadgeConfig status_badge = 2;
+
+  ArgoCDGoogleAnalyticsConfig google_analytics = 3;
+
+  optional bool allow_anonymous_user = 4;
+
+  ArgoCDBannerConfig banner = 5;
+
+  ArgoCDAlertConfig chat = 6;
+
+  string instance_label_key = 7;
+
+  ArgoCDKustomizeSettings kustomize_settings = 8;
+
+  ArgoCDHelmSettings helm_settings = 9;
+
+  ArgoCDResourceSettings resource_settings = 10;
+
+  string users_session_duration = 11;
+
+  string oidc_config = 12;
+
+  string dex_config = 13;
+
+  ArgoCDWebTerminalConfig web_terminal = 14;
+
+  ArgoCDDeepLinks deep_links = 15;
+
+  optional bool logs_rbac_enabled = 16;
+}
+
+message DeepLink {
+  string title = 1;
+
+  string url = 2;
+
+  optional string description = 3;
+
+  optional string icon_class = 4;
+
+  optional string if = 5;
+}
+
+message ArgoCDDeepLinks {
+  repeated DeepLink project_links = 1;
+
+  repeated DeepLink application_links = 2;
+
+  repeated DeepLink resource_links = 3;
+}
+
+message ArgoCDAlertConfig {
+  string message = 1;
+
+  string url = 2;
+}
+
+message ArgoCDBannerConfig {
+  string message = 1;
+
+  string url = 2;
+
+  optional bool permanent = 3;
+}
+
+message ArgoCDExtensionInstallEntry {
+  string id = 1;
+
+  string version = 2;
+}
+
+message ArgoCDGoogleAnalyticsConfig {
+  string tracking_id = 1;
+
+  optional bool anonymize_users = 2;
+}
+
+message ArgoCDHelmSettings {
+  optional bool enabled = 1;
+
+  string value_file_schemas = 2;
+}
+
+message ArgoCDKustomizeSettings {
+  optional bool enabled = 1;
+
+  string build_options = 2;
+}
+
+message ArgoCDStatusBadgeConfig {
+  optional bool enabled = 1;
+
+  string url = 2;
+}
+
+message ArgoCDRBACConfigMap {
+  string default_policy = 1;
+
+  string policy_csv = 2;
+
+  repeated string scopes = 3;
+
+  repeated OverlayPolicy overlay_policies = 4;
+}
+
+message OverlayPolicy {
+  string name = 1;
+
+  string policy = 2;
+}
+
+message ArgoCDResourceSettings {
+  string inclusions = 1;
+
+  string exclusions = 2;
+
+  string compare_options = 3;
+}
+
+message ArgoCDWebTerminalConfig {
+  optional bool enabled = 1;
+
+  string shells = 2;
+}
+
+message ClusterCustomization {
+  bool auto_upgrade_disabled = 1;
+
+  google.protobuf.Struct kustomization = 2;
+
+  bool app_replication = 3;
+
+  bool redis_tunneling = 4;
+
+  bool server_side_diff_enabled = 5;
+}
+
+message Instance {
+  string id = 1;
+
+  string name = 2;
+
+  string hostname = 3;
+
+  uint32 cluster_count = 4;
+
+  map<string, string> secrets = 5;
+
+  uint32 generation = 6;
+
+  uint32 recent_processed_event_id = 7;
+
+  akuity.types.status.health.v1.Status health_status = 8;
+
+  akuity.types.status.reconciliation.v1.Status reconciliation_status = 9;
+
+  optional google.protobuf.Timestamp delete_time = 10;
+
+  string owner_organization_name = 11;
+
+  string description = 12;
+
+  string version = 13;
+
+  InstanceSpec spec = 14;
+
+  optional ArgoCDConfigMap config = 15;
+
+  optional ArgoCDRBACConfigMap rbac_config = 16;
+
+  InstanceInfo info = 17;
+
+  string shard = 18;
+
+  string workspace_id = 19;
+
+  uint32 not_integration_cluster_count = 20;
+
+  optional bool unsupported_version = 21;
+}
+
+message InstanceAccount {
+  string name = 1;
+
+  InstanceAccountCapabilities capabilities = 2;
+
+  bool disabled = 3;
+}
+
+message CertificateStatus {
+  bool is_cname_set = 1;
+
+  bool is_issued = 2;
+
+  string message = 3;
+
+  optional google.protobuf.Timestamp cname_not_set_since = 4;
+}
+
+message InstanceInfo {
+  ApplicationsStatus applications_status = 1;
+
+  optional CertificateStatus certificate_status = 2;
+}
+
+message AppsetPolicy {
+  string policy = 1;
+
+  bool override_policy = 2;
+}
+
+message AgentPermissionsRule {
+  repeated string api_groups = 1;
+
+  repeated string resources = 2;
+
+  repeated string verbs = 3;
+}
+
+message CrossplaneExtensionResource {
+  string group = 1;
+}
+
+message CrossplaneExtension {
+  repeated CrossplaneExtensionResource resources = 1;
+}
+
+message AkuityIntelligenceExtension {
+  bool enabled = 1;
+
+  repeated string allowed_usernames = 2;
+
+  repeated string allowed_groups = 3;
+
+  bool ai_support_engineer_enabled = 4;
+
+  string model_version = 5;
+}
+
+message ClusterAddonsExtension {
+  bool enabled = 1;
+
+  repeated string allowed_usernames = 2;
+
+  repeated string allowed_groups = 3;
+}
+
+message TargetSelector {
+  repeated string argocd_applications = 1;
+
+  repeated string k8s_namespaces = 2;
+
+  repeated string clusters = 3;
+
+  optional string degraded_for = 4;
+}
+
+message Runbook {
+  string name = 1;
+
+  string content = 2;
+
+  TargetSelector applied_to = 3;
+
+  repeated string slack_channel_names = 4;
+}
+
+message IncidentWebhookConfig {
+  string name = 1;
+
+  string description_path = 2;
+
+  string cluster_path = 3;
+
+  string k8s_namespace_path = 4;
+
+  string argocd_application_name_path = 5;
+
+  string argocd_application_namespace_path = 6;
+}
+
+message IncidentsGroupingConfig {
+  repeated string k8s_namespaces = 1;
+
+  repeated string argocd_application_names = 2;
+}
+
+message IncidentsConfig {
+  repeated TargetSelector triggers = 1;
+
+  repeated IncidentWebhookConfig webhooks = 2;
+
+  IncidentsGroupingConfig grouping = 3;
+}
+
+message AIConfig {
+  repeated Runbook runbooks = 1;
+
+  IncidentsConfig incidents = 2;
+
+  optional string argocd_slack_service = 3;
+
+  repeated string argocd_slack_channels = 4;
+}
+
+message AdditionalAttributeRule {
+  string group = 1;
+
+  string kind = 2;
+
+  repeated string annotations = 3;
+
+  repeated string labels = 4;
+
+  string namespace = 5;
+}
+
+message KubeVisionConfig {
+  CveScanConfig cve_scan_config = 1;
+
+  AIConfig ai_config = 2;
+
+  repeated AdditionalAttributeRule additional_attributes = 3;
+}
+
+message AppInAnyNamespaceConfig {
+  bool enabled = 1;
+}
+
+message CustomDeprecatedAPI {
+  string api_version = 1;
+
+  string new_api_version = 2;
+
+  string deprecated_in_kubernetes_version = 3;
+
+  string unavailable_in_kubernetes_version = 4;
+}
+
+message CveScanConfig {
+  bool scan_enabled = 1;
+
+  string rescan_interval = 2;
+}
+
+message ObjectSelector {
+  map<string, string> match_labels = 1;
+
+  repeated LabelSelectorRequirement match_expressions = 2;
+}
+
+message LabelSelectorRequirement {
+  optional string key = 1;
+
+  optional string operator = 2;
+
+  repeated string values = 3;
+}
+
+message ManagedSecret {
+  string name = 1;
+
+  map<string, string> labels = 2;
+
+  ManagedSecretType type = 3 [deprecated = true];
+
+  ObjectSelector cluster_selector = 4;
+
+  repeated string allowed_clusters = 5;
+
+  repeated string secret_keys = 6;
+}
+
+message ClusterSecretMapping {
+  ObjectSelector clusters = 1;
+
+  ObjectSelector secrets = 2;
+}
+
+message SecretsManagementConfig {
+  repeated ClusterSecretMapping sources = 1;
+
+  repeated ClusterSecretMapping destinations = 2;
+}
+
+message ApplicationSetExtension {
+  bool enabled = 1;
+}
+
+message BucketRateLimiting {
+  bool enabled = 1;
+
+  uint32 bucket_size = 2;
+
+  uint32 bucket_qps = 3;
+}
+
+message ItemRateLimiting {
+  bool enabled = 1;
+
+  uint32 failure_cooldown = 2;
+
+  uint32 base_delay = 3;
+
+  uint32 max_delay = 4;
+
+  float backoff_factor = 5;
+}
+
+message AppReconciliationsRateLimiting {
+  BucketRateLimiting bucket_rate_limiting = 1;
+
+  ItemRateLimiting item_rate_limiting = 2;
+}
+
+message InstanceSpec {
+  reserved 28;
+
+  repeated IPAllowListEntry ip_allow_list = 1;
+
+  string subdomain = 2;
+
+  bool declarative_management_enabled = 3;
+
+  repeated ArgoCDExtensionInstallEntry extensions = 4;
+
+  ClusterCustomization cluster_customization_defaults = 5;
+
+  bool image_updater_enabled = 6;
+
+  bool backend_ip_allow_list_enabled = 7;
+
+  RepoServerDelegate repo_server_delegate = 8;
+
+  bool audit_extension_enabled = 9;
+
+  bool sync_history_extension_enabled = 11;
+
+  optional CrossplaneExtension crossplane_extension = 12;
+
+  ImageUpdaterDelegate image_updater_delegate = 13;
+
+  AppSetDelegate app_set_delegate = 14;
+
+  bool assistant_extension_enabled = 15;
+
+  AppsetPolicy appset_policy = 16;
+
+  repeated HostAliases host_aliases = 17;
+
+  repeated AgentPermissionsRule agent_permissions_rules = 18;
+
+  string fqdn = 19;
+
+  bool multi_cluster_k8s_dashboard_enabled = 20;
+
+  optional AkuityIntelligenceExtension akuity_intelligence_extension = 21;
+
+  string image_updater_version = 22;
+
+  repeated CustomDeprecatedAPI custom_deprecated_apis = 23;
+
+  KubeVisionConfig kube_vision_config = 24;
+
+  AppInAnyNamespaceConfig app_in_any_namespace_config = 25;
+
+  string basepath = 26;
+
+  bool appset_progressive_syncs_enabled = 27;
+
+  SecretsManagementConfig secrets = 29;
+
+  repeated AppsetPlugins appset_plugins = 30;
+
+  optional ApplicationSetExtension application_set_extension = 31;
+
+  optional AppReconciliationsRateLimiting app_reconciliations_rate_limiting = 32;
+
+  optional string metrics_ingress_username = 33;
+
+  optional string metrics_ingress_password_hash = 34;
+
+  optional string privileged_notification_cluster = 35;
+
+  optional ClusterAddonsExtension cluster_addons_extension = 36;
+}
+
+message AppsetPlugins {
+  string name = 1;
+
+  string token = 2;
+
+  string base_url = 3;
+
+  int32 request_timeout = 4;
+}
+
+message ManagedCluster {
+  string cluster_name = 1;
+}
+
+message RepoServerDelegate {
+  bool control_plane = 1;
+
+  ManagedCluster managed_cluster = 2;
+}
+
+message ImageUpdaterDelegate {
+  bool control_plane = 1;
+
+  ManagedCluster managed_cluster = 2;
+}
+
+message AppSetDelegate {
+  ManagedCluster managed_cluster = 1;
+}
+
+message InstanceAccountCapabilities {
+  bool login = 1;
+
+  bool api_key = 2;
+}
+
+message InstanceVersion {
+  string version = 1;
+
+  string label = 2;
+}
+
+message IPAllowListEntry {
+  string ip = 1;
+
+  string description = 2;
+}
+
+message HostAliases {
+  string ip = 1;
+
+  repeated string hostnames = 2;
+}
+
+message Resources {
+  string mem = 1;
+
+  string cpu = 2;
+}
+
+message ApplicationControllerResources {
+  Resources requests = 1;
+
+  optional Resources limits = 2;
+}
+
+message RepoServerResources {
+  Resources requests = 1;
+
+  optional Resources limits = 2;
+
+  uint32 replicas = 3;
+}
+
+message AgentResources {
+  ApplicationControllerResources application_controller = 1;
+
+  RepoServerResources repo_server = 2;
+}
+
+message AgentState {
+  string version = 1;
+
+  string argo_cd_version = 2;
+
+  optional google.protobuf.Timestamp observe_time = 3;
+
+  optional akuity.types.status.health.v1.AgentAggregatedHealthResponse status = 4;
+
+  repeated string agent_ids = 5;
+
+  uint64 last_user_applied_generation = 6;
+
+  optional AgentResources agent_resources = 7;
+
+  optional akuity.types.status.reconciliation.v1.AgentUpdateStatus update_status = 8;
+}
+
+message DirectClusterSpec {
+  DirectClusterType cluster_type = 1;
+
+  optional string kargo_instance_id = 2;
+
+  optional string server = 3;
+
+  optional string organization = 4;
+
+  optional string token = 5;
+
+  optional string ca_data = 6;
+}
+
+message ManagedClusterConfig {
+  string secret_name = 1;
+
+  string secret_key = 2;
+}
+
+message AutoScalerConfig {
+  AppControllerAutoScalingConfig application_controller = 1;
+
+  RepoServerAutoScalingConfig repo_server = 2;
+}
+
+message AppControllerAutoScalingConfig {
+  Resources resource_minimum = 1;
+
+  Resources resource_maximum = 2;
+}
+
+message RepoServerAutoScalingConfig {
+  Resources resource_minimum = 1;
+
+  Resources resource_maximum = 2;
+
+  int32 replica_maximum = 3;
+
+  int32 replica_minimum = 4;
+}
+
+message ClusterCompatibility {
+  bool ipv6_only = 1;
+}
+
+message ClusterArgoCDNotificationsSettings {
+  bool in_cluster_settings = 1;
+}
+
+message ClusterData {
+  ClusterSize size = 1;
+
+  map<string, string> labels = 2;
+
+  map<string, string> annotations = 3;
+
+  optional bool auto_upgrade_disabled = 4;
+
+  google.protobuf.Struct kustomization = 5;
+
+  optional bool app_replication = 6;
+
+  string target_version = 7;
+
+  optional bool redis_tunneling = 8;
+
+  optional DirectClusterSpec direct_cluster_spec = 9;
+
+  optional bool datadog_annotations_enabled = 10;
+
+  string namespace = 11;
+
+  bool namespace_scoped = 12;
+
+  optional bool eks_addon_enabled = 13;
+
+  optional ManagedClusterConfig managed_cluster_config = 14;
+
+  optional bool maintenance_mode = 15;
+
+  optional bool multi_cluster_k8s_dashboard_enabled = 16;
+
+  AutoScalerConfig autoscaler_config = 17;
+
+  string project = 18;
+
+  ClusterCompatibility compatibility = 19;
+
+  ClusterArgoCDNotificationsSettings argocd_notifications_settings = 20;
+
+  optional bool server_side_diff_enabled = 21;
+
+  optional google.protobuf.Timestamp maintenance_mode_expiry = 22;
+}
+
+message Cluster {
+  string id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  string namespace = 4 [deprecated = true];
+
+  bool namespace_scoped = 5 [deprecated = true];
+
+  ClusterData data = 6;
+
+  optional google.protobuf.Timestamp delete_time = 7;
+
+  optional uint64 observed_generation = 8;
+
+  optional bool credential_rotation_allowed = 9;
+
+  optional AgentState agent_state = 10;
+
+  akuity.types.status.health.v1.Status health_status = 11;
+
+  akuity.types.status.reconciliation.v1.Status reconciliation_status = 12;
+
+  optional uint64 readonly_settings_changed_generation = 13;
+
+  optional ClusterKubernetesStatus k8s_status = 14;
+
+  optional google.protobuf.Timestamp support_access_until = 15;
+}
+
+message ClusterKubernetesStatus {
+  string kubernetes_version = 1;
+
+  uint32 api_resource_count = 2;
+
+  uint32 object_count = 3;
+}
+
+message ApplyInstanceRequest {
+  string organization_id = 1;
+
+  akuity.types.id.v1.Type id_type = 2;
+
+  string id = 3;
+
+  google.protobuf.Struct argocd = 4;
+
+  google.protobuf.Struct argocd_configmap = 5;
+
+  google.protobuf.Struct argocd_rbac_configmap = 6;
+
+  google.protobuf.Struct argocd_secret = 7;
+
+  google.protobuf.Struct notifications_configmap = 8;
+
+  google.protobuf.Struct notifications_secret = 9;
+
+  google.protobuf.Struct image_updater_configmap = 10;
+
+  google.protobuf.Struct image_updater_ssh_configmap = 11;
+
+  google.protobuf.Struct image_updater_secret = 12;
+
+  repeated google.protobuf.Struct clusters = 13;
+
+  bool prune_clusters = 14 [deprecated = true];
+
+  google.protobuf.Struct argocd_known_hosts_configmap = 15;
+
+  google.protobuf.Struct argocd_tls_certs_configmap = 16;
+
+  repeated google.protobuf.Struct repo_credential_secrets = 17;
+
+  repeated google.protobuf.Struct repo_template_credential_secrets = 18;
+
+  bool prune_repo_credential_secrets = 19 [deprecated = true];
+
+  repeated google.protobuf.Struct config_management_plugins = 20;
+
+  repeated PruneResourceType prune_resource_types = 21;
+
+  google.protobuf.Struct application_set_secret = 22;
+
+  repeated google.protobuf.Struct applications = 23;
+
+  repeated google.protobuf.Struct application_sets = 24;
+
+  repeated google.protobuf.Struct app_projects = 25;
+
+  string workspace_id = 26;
+}
+
+message ApplyInstanceResponse {
+}
+
+message ExportInstanceRequest {
+  string organization_id = 1;
+
+  akuity.types.id.v1.Type id_type = 2;
+
+  string id = 3;
+
+  string workspace_id = 4;
+}
+
+message ExportInstanceResponse {
+  google.protobuf.Struct argocd = 1;
+
+  google.protobuf.Struct argocd_configmap = 2;
+
+  google.protobuf.Struct argocd_rbac_configmap = 3;
+
+  google.protobuf.Struct notifications_configmap = 4;
+
+  google.protobuf.Struct image_updater_configmap = 5;
+
+  google.protobuf.Struct image_updater_ssh_configmap = 6;
+
+  repeated google.protobuf.Struct clusters = 7;
+
+  google.protobuf.Struct argocd_known_hosts_configmap = 8;
+
+  google.protobuf.Struct argocd_tls_certs_configmap = 9;
+
+  repeated google.protobuf.Struct config_management_plugins = 10;
+
+  repeated google.protobuf.Struct applications = 11;
+
+  repeated google.protobuf.Struct application_sets = 12;
+
+  repeated google.protobuf.Struct app_projects = 13;
+}
+
+message GetInstanceClusterCommandRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string id = 3;
+
+  string location_origin = 4;
+
+  bool offline = 5;
+
+  string type = 6;
+
+  optional bool skip_namespace = 7;
+
+  optional ClusterCommandFor command_for = 8;
+
+  string workspace_id = 9;
+}
+
+message GetInstanceClusterCommandResponse {
+  string command = 1;
+
+  map<string, string> variables = 2;
+}
+
+message ConfigManagementPlugin {
+  string name = 1;
+
+  bool enabled = 2;
+
+  string image = 3;
+
+  PluginSpec spec = 4;
+}
+
+message PluginSpec {
+  string version = 1;
+
+  Command init = 2;
+
+  Command generate = 3;
+
+  Discover discover = 4;
+
+  Parameters parameters = 5;
+
+  bool preserveFileMode = 6;
+}
+
+message Command {
+  repeated string command = 1;
+
+  repeated string args = 2;
+}
+
+message Discover {
+  Find find = 1;
+
+  string fileName = 2;
+}
+
+message Find {
+  repeated string command = 1;
+
+  repeated string args = 2;
+
+  string glob = 3;
+}
+
+message Parameters {
+  repeated ParameterAnnouncement static = 1;
+
+  Dynamic dynamic = 2;
+}
+
+message Dynamic {
+  repeated string command = 1;
+
+  repeated string args = 2;
+}
+
+message ParameterAnnouncement {
+  string name = 1;
+
+  string title = 2;
+
+  string tooltip = 3;
+
+  bool required = 4;
+
+  string itemType = 5;
+
+  string collectionType = 6;
+
+  string string = 7;
+
+  repeated string array = 8;
+
+  map<string, string> map = 9;
+}
+
+message GetInstanceConfigManagementPluginsRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string workspace_id = 3;
+}
+
+message GetInstanceConfigManagementPluginsResponse {
+  repeated ConfigManagementPlugin plugins = 1;
+}
+
+message UpdateInstanceConfigManagementPluginsRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  repeated ConfigManagementPlugin plugins = 3;
+
+  string workspace_id = 4;
+}
+
+message UpdateInstanceConfigManagementPluginsResponse {
+}
+
+message ListInstanceAddonReposRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  optional int32 limit = 4;
+
+  optional int32 offset = 5;
+}
+
+message ListInstanceAddonReposResponse {
+  repeated AddonRepo addon_repos = 1;
+}
+
+message GetInstanceAddonRepoRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  string id = 4;
+}
+
+message GetInstanceAddonRepoResponse {
+  AddonRepo addon_repo = 1;
+}
+
+message CreateInstanceAddonRepoRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  RepoSpec spec = 4;
+}
+
+message CreateInstanceAddonRepoResponse {
+  AddonRepo addon_repo = 1;
+}
+
+message DeleteInstanceAddonRepoRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  string id = 4;
+}
+
+message DeleteInstanceAddonRepoResponse {
+}
+
+message RefreshInstanceAddonRepoRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  string id = 4;
+}
+
+message RefreshInstanceAddonRepoResponse {
+  AddonRepo addon_repo = 1;
+}
+
+message AddonRepo {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string instance_id = 3;
+
+  RepoSpec spec = 4;
+
+  uint32 generation = 5;
+
+  RepoStatus status = 7;
+
+  optional google.protobuf.Timestamp delete_time = 8;
+}
+
+message RepoSpec {
+  string repo_url = 1;
+
+  string revision = 2;
+}
+
+message RepoStatus {
+  string last_sync_time = 1;
+
+  string last_sync_commit = 2;
+
+  uint32 addon_count = 3;
+
+  uint32 processed_generation = 5;
+
+  akuity.types.status.reconciliation.v1.Status reconciliation_status = 6;
+}
+
+message GetInstanceAddonRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  string id = 4;
+
+  string instance_name = 5;
+}
+
+message GetInstanceAddonResponse {
+  Addon addon = 1;
+}
+
+message DeleteInstanceAddonRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  string id = 4;
+
+  string instance_name = 5;
+}
+
+message DeleteInstanceAddonResponse {
+}
+
+message AddonFilter {
+  optional SortAddons sort_by = 1;
+
+  optional bool enabled = 2;
+
+  optional string name = 3;
+
+  optional AddonType addon_type = 4;
+
+  optional string cluster_name_like = 7;
+
+  map<string, string> cluster_labels = 8;
+}
+
+message ListInstanceAddonsRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string instance_id = 3;
+
+  optional int32 limit = 4;
+
+  optional int32 offset = 5;
+
+  optional AddonFilter filter = 6;
+}
+
+message ListInstanceAddonsResponse {
+  repeated Addon addons = 1;
+
+  int32 total_count = 2;
+}
+
+message UpdateInstanceAddonRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string workspace_id = 3;
+
+  string instance_id = 4;
+
+  Addon addon = 5;
+}
+
+message UpdateInstanceAddonResponse {
+  Addon addon = 1;
+}
+
+message PatchInstanceAddonRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string workspace_id = 3;
+
+  string instance_id = 4;
+
+  google.protobuf.Struct patch = 5;
+}
+
+message PatchInstanceAddonResponse {
+  Addon addon = 1;
+}
+
+message ClearAddonStatusSourceHistoryRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string workspace_id = 3;
+
+  string instance_id = 4;
+}
+
+message ClearAddonStatusSourceHistoryResponse {
+  Addon addon = 1;
+}
+
+message RefreshInstanceAddonRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string workspace_id = 3;
+
+  string instance_id = 4;
+}
+
+message RefreshInstanceAddonResponse {
+  Addon addon = 1;
+}
+
+message ManifestSource {
+  optional KustomizeSource kustomize_source = 1;
+
+  optional HelmSource helm_source = 2;
+
+  optional string path = 3;
+}
+
+message KustomizeSource {
+  repeated KustomizeImage images = 1;
+
+  repeated KustomizeHelmChart helm_charts = 2;
+}
+
+message KustomizeImage {
+  string name = 1;
+
+  string newTag = 2;
+
+  string newName = 3;
+
+  string tagSuffix = 4;
+
+  string digest = 5;
+}
+
+message KustomizeHelmChart {
+  string name = 1;
+
+  string version = 2;
+}
+
+message HelmSource {
+  map<string, string> values = 1;
+
+  repeated ChartDependency dependencies = 2;
+}
+
+message ClusterSelector {
+  repeated Selector name_filters = 1;
+
+  repeated Selector label_filters = 2;
+}
+
+message Selector {
+  optional string key = 1;
+
+  SelectorOperator selector_operator = 2;
+
+  repeated string values = 3;
+}
+
+message AddonSpec {
+  string name = 1;
+
+  map<string, ManifestSource> cluster_overrides = 2;
+
+  map<string, ManifestSource> env_overrides = 3;
+
+  string addon_type = 4;
+
+  bool enabled = 5;
+
+  ClusterSelector cluster_selector = 6;
+
+  AppTemplate app_template = 7;
+
+  ManifestSource default_manifest = 8;
+
+  optional HelmValues helm_values = 9;
+
+  repeated PatchCustomization patch_customizations = 10;
+}
+
+message PatchCustomization {
+  ClusterSelector cluster_selector = 1;
+
+  google.protobuf.Struct patch = 2;
+
+  string description = 3;
+}
+
+message HelmValues {
+  repeated string yaml_paths = 1;
+}
+
+message ChartDependency {
+  string name = 1;
+
+  string version = 2;
+
+  string repository = 3;
+
+  optional string repository_name = 4;
+}
+
+message AppCreationOptions {
+  OnConflictAction on_conflict = 1;
+}
+
+message AppDeletionOptions {
+  bool non_cascade = 1;
+}
+
+message AppSyncOptions {
+  bool auto_sync = 1;
+
+  bool auto_heal = 2;
+
+  bool prune_resources = 3;
+
+  repeated string sync_options_list = 4;
+}
+
+message AppTemplate {
+  string name_template = 1;
+
+  AppCreationOptions creation_options = 2;
+
+  AppDeletionOptions deletion_options = 3;
+
+  AppSyncOptions sync_options = 4;
+
+  string project_template = 5;
+
+  string namespace_template = 6;
+
+  optional HelmOptions helm_options = 7;
+
+  optional KustomizeOptions kustomize_options = 8;
+}
+
+message HelmOptions {
+  string release_name_template = 1;
+
+  bool pass_credentials = 2;
+
+  bool skip_crds = 3;
+}
+
+message KustomizeOptions {
+  string name_prefix_template = 1;
+
+  string name_suffix_template = 2;
+}
+
+message StatusSourceUpdate {
+  google.protobuf.Timestamp start_timestamp = 1;
+
+  bool cancelled = 2;
+
+  SourceInfo sources = 3;
+
+  string initiator = 4;
+}
+
+message SourceUpdateResult {
+  google.protobuf.Timestamp start_timestamp = 1;
+
+  google.protobuf.Timestamp completed_timestamp = 2;
+
+  int32 attempts = 3;
+
+  bool cancelled = 4;
+
+  string error = 5;
+
+  string commit_sha = 6;
+
+  google.protobuf.Struct changes = 7;
+
+  string initiator = 8;
+}
+
+message SourceInfo {
+  optional ManifestSource default_manifest = 1;
+
+  map<string, ManifestSource> cluster_overrides = 2;
+
+  map<string, ManifestSource> env_overrides = 3;
+}
+
+message AddonStatus {
+  string last_sync_time = 1;
+
+  string last_sync_commit = 2;
+
+  uint32 cluster_count = 3;
+
+  akuity.types.status.reconciliation.v1.Status reconciliation_status = 4;
+
+  uint32 processed_generation = 5;
+
+  ApplicationsHealth health = 6;
+
+  ApplicationsSyncStatus sync_status = 7;
+
+  SourceUpdateResult last_source_update_status = 10;
+
+  map<string, AddonHealthStatus> cluster_overrides = 11;
+
+  map<string, AddonHealthStatus> env_overrides = 12;
+
+  bool has_error = 13;
+}
+
+message ListInstanceAddonErrorsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+
+  string id = 4;
+
+  optional int32 limit = 5;
+
+  optional int32 offset = 6;
+}
+
+message ListInstanceAddonErrorsResponse {
+  map<string, AddonErrorList> errors = 1;
+
+  int32 total_count = 2;
+}
+
+message AddonErrorList {
+  repeated AddonError errors = 1;
+}
+
+message AddonError {
+  string type = 1;
+
+  string error = 2;
+}
+
+message AddonHealthStatus {
+  ApplicationsHealth health = 1;
+
+  ApplicationsSyncStatus sync_status = 2;
+}
+
+message AddonCondition {
+  string message = 1;
+
+  string reason = 2;
+
+  google.protobuf.Timestamp last_transition_time = 3;
+
+  bool status = 4;
+}
+
+message ClusterAddonStatusOperation {
+  string revision = 1;
+
+  bool prune = 2;
+
+  repeated string sync_options = 3;
+
+  string initiator = 4;
+}
+
+message StatusOperation {
+  ClusterAddonStatusOperation cluster_addon_status_operation = 1;
+
+  ClusterSelector cluster_selector = 2;
+}
+
+message Addon {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string instance_id = 3;
+
+  string repo_id = 4;
+
+  AddonSpec spec = 5;
+
+  StatusOperation status_operation = 6;
+
+  uint32 generation = 7;
+
+  AddonStatus status = 9;
+
+  optional google.protobuf.Timestamp delete_time = 10;
+
+  StatusSourceUpdate status_source_update = 11;
+
+  string workspace_id = 12;
+
+  string addon_marketplace_installs_id = 13;
+
+  AddonMarketplaceStatus addon_marketplace_install_status_info = 14;
+}
+
+message AddonMarketplaceInstallRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+
+  AddonMarketplaceInstallConfig config = 4;
+}
+
+message AddonMarketplaceInstallResponse {
+  AddonMarketplaceInstall addon_install = 1;
+}
+
+message UpdateAddonMarketplaceInstallRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+
+  string id = 4;
+
+  bool refresh = 5;
+
+  repeated ChartDependency dependencies = 6;
+
+  bool force = 7;
+}
+
+message UpdateAddonMarketplaceInstallResponse {
+  AddonMarketplaceInstall addon_install = 1;
+}
+
+message DeleteAddonMarketplaceInstallRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+
+  string id = 4;
+}
+
+message DeleteAddonMarketplaceInstallResponse {
+}
+
+message ListAddonMarketplaceInstallsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+
+  AddonMarketplaceInstallFilter filter = 4;
+
+  optional uint32 limit = 5;
+
+  optional uint32 offset = 6;
+}
+
+message WatchAddonMarketplaceInstallsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string workspace_id = 3;
+}
+
+message WatchAddonMarketplaceInstallsResponse {
+  AddonMarketplaceInstall item = 1;
+
+  akuity.types.events.v1.EventType type = 2;
+}
+
+message AddonMarketplaceInstallFilter {
+  optional string id = 1;
+
+  optional string repo_url = 4;
+
+  optional string revision = 5;
+
+  optional string addon_name = 6;
+
+  repeated ChartDependency dependency = 7;
+
+  bool chart_dep_or_relation = 8;
+}
+
+message ListAddonMarketplaceInstallsResponse {
+  repeated AddonMarketplaceInstall addon_installs = 1;
+
+  uint32 total_count = 2;
+}
+
+message AddonMarketplaceInstall {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string instance_id = 3;
+
+  AddonMarketplaceInstallConfig config = 4;
+
+  AddonMarketplaceStatus status_info = 5;
+
+  bool addon_found = 6;
+
+  bool checksum_matched = 7;
+
+  optional google.protobuf.Timestamp delete_time = 8;
+}
+
+message AddonMarketplaceInstallConfig {
+  string repo_url = 1;
+
+  string revision = 2;
+
+  string addon_name = 3;
+
+  HelmChartInstallConfig helm_chart_config = 4;
+
+  string type = 5;
+
+  AddonMarketplaceInstallOverrides overrides = 6;
+}
+
+message AddonMarketplaceInstallOverrides {
+  repeated string envs = 1;
+
+  repeated string clusters = 2;
+}
+
+message HelmChartInstallConfig {
+  repeated ChartDependency dependencies = 1;
+
+  string description = 2;
+
+  string name = 3;
+
+  string version = 4;
+}
+
+message AddonMarketplaceStatus {
+  repeated AddonEvent event_list = 1;
+
+  string last_processed_hash = 2;
+
+  bool processing = 3;
+}
+
+message AddonEvent {
+  string type = 1;
+
+  string message = 2;
+
+  google.protobuf.Timestamp time = 3;
+
+  repeated ChartDependency dependencies = 4;
+}
+
+enum SyncOperationField {
+  SYNC_OPERATION_FIELD_UNSPECIFIED = 0;
+
+  SYNC_OPERATION_FIELD_APPS = 1;
+
+  SYNC_OPERATION_FIELD_PROJECTS = 2;
+
+  SYNC_OPERATION_FIELD_INITIATORS = 3;
+
+  SYNC_OPERATION_FIELD_REPOS = 4;
+
+  SYNC_OPERATION_FIELD_INSTANCE_NAMES = 5;
+}
+
+enum SyncOperationGroupField {
+  SYNC_OPERATION_GROUP_FIELD_UNSPECIFIED = 0;
+
+  SYNC_OPERATION_GROUP_FIELD_APPS = 1;
+
+  SYNC_OPERATION_GROUP_FIELD_PROJECTS = 2;
+
+  SYNC_OPERATION_GROUP_FIELD_INITIATORS = 3;
+
+  SYNC_OPERATION_GROUP_FIELD_INSTANCE_NAMES = 4;
+
+  SYNC_OPERATION_GROUP_FIELD_STATUS = 5;
+}
+
+enum ManagedSecretType {
+  MANAGED_SECRET_TYPE_UNSPECIFIED = 0;
+
+  MANAGED_SECRET_TYPE_REPO_CREDS = 1;
+
+  MANAGED_SECRET_TYPE_REPOSITORY = 2;
+}
+
+enum ClusterSize {
+  CLUSTER_SIZE_UNSPECIFIED = 0;
+
+  CLUSTER_SIZE_SMALL = 1;
+
+  CLUSTER_SIZE_MEDIUM = 2;
+
+  CLUSTER_SIZE_LARGE = 3;
+
+  CLUSTER_SIZE_AUTO = 4;
+}
+
+enum DirectClusterType {
+  DIRECT_CLUSTER_TYPE_UPBOUND = 0;
+
+  DIRECT_CLUSTER_TYPE_KARGO = 1;
+}
+
+enum PruneResourceType {
+  PRUNE_RESOURCE_TYPE_UNSPECIFIED = 0;
+
+  PRUNE_RESOURCE_TYPE_ALL = 1;
+
+  PRUNE_RESOURCE_TYPE_CLUSTERS = 2;
+
+  PRUNE_RESOURCE_TYPE_REPO_CREDENTIAL_SECRETS = 3;
+
+  PRUNE_RESOURCE_TYPE_CONFIG_MANAGEMENT_PLUGINS = 4;
+
+  PRUNE_RESOURCE_TYPE_APPLICATIONS = 5;
+
+  PRUNE_RESOURCE_TYPE_APPLICATION_SETS = 6;
+
+  PRUNE_RESOURCE_TYPE_APP_PROJECTS = 7;
+}
+
+enum ClusterCommandFor {
+  CLUSTER_COMMAND_FOR_UNSPECIFIED = 0;
+
+  CLUSTER_COMMAND_FOR_KUBECTL = 1;
+
+  CLUSTER_COMMAND_FOR_EKS = 2;
+
+  CLUSTER_COMMAND_FOR_AKUITY_CLI = 3;
+}
+
+enum SortAddons {
+  SORT_ADDONS_UNSPECIFIED = 0;
+
+  SORT_ADDONS_BY_NAME_ASCENDING = 1;
+
+  SORT_ADDONS_BY_NAME_DESCENDING = 2;
+}
+
+enum AddonType {
+  ADDON_TYPE_UNSPECIFIED = 0;
+
+  ADDON_TYPE_HELM = 1;
+
+  ADDON_TYPE_KUSTOMIZE = 2;
+}
+
+enum SelectorOperator {
+  SELECTOR_OPERATOR_UNSPECIFIED = 0;
+
+  SELECTOR_OPERATOR_IN = 1;
+
+  SELECTOR_OPERATOR_NOT_IN = 2;
+}
+
+enum OnConflictAction {
+  ON_CONFLICT_ACTION_UNSPECIFIED = 0;
+
+  ON_CONFLICT_ACTION_SKIP = 1;
+
+  ON_CONFLICT_ACTION_OVERWRITE = 2;
+}
+
+service ArgoCDService {
+  rpc ListInstanceVersions ( ListInstanceVersionsRequest ) returns ( ListInstanceVersionsResponse ) {
+    option (google.api.http) = { get: "/api/v1/argocd/versions" };
+  }
+
+  rpc ListInstances ( ListInstancesRequest ) returns ( ListInstancesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances"
+        },
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/argocd/instances"
+        }
+      ]
+    };
+  }
+
+  rpc WatchInstances ( WatchInstancesRequest ) returns ( stream WatchInstancesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/argocd/instances",
+      additional_bindings: [
+        {
+          get: "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances"
+        }
+      ]
+    };
+  }
+
+  rpc CreateInstance ( CreateInstanceRequest ) returns ( CreateInstanceResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstance ( GetInstanceRequest ) returns ( GetInstanceResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}"
+        },
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/argocd/instances/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceCSS ( GetInstanceCSSRequest ) returns ( GetInstanceCSSResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/css",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/css"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceNotificationSettings ( GetInstanceNotificationSettingsRequest ) returns ( GetInstanceNotificationSettingsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/notifications",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/notifications"
+        },
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/argocd/instances/{id}/notifications"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceNotificationCatalog ( GetInstanceNotificationCatalogRequest ) returns ( GetInstanceNotificationCatalogResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/notifications/catalog",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/notifications/catalog"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceImageUpdaterSettings ( GetInstanceImageUpdaterSettingsRequest ) returns ( GetInstanceImageUpdaterSettingsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/image-updater",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/image-updater"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceResourceCustomizations ( GetInstanceResourceCustomizationsRequest ) returns ( GetInstanceResourceCustomizationsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/resource-customizations",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/resource-customizations"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceConfigManagementPlugins ( GetInstanceConfigManagementPluginsRequest ) returns ( GetInstanceConfigManagementPluginsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/config-management-plugins",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/config-management-plugins"
+        }
+      ]
+    };
+  }
+
+  rpc PatchInstance ( PatchInstanceRequest ) returns ( PatchInstanceResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/argocd/instances/{id}",
+      body: "patch",
+      additional_bindings: [
+        {
+          patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}",
+          body: "patch"
+        },
+        {
+          patch: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/argocd/instances/{id}",
+          body: "patch"
+        }
+      ]
+    };
+  }
+
+  rpc PatchInstanceSecret ( PatchInstanceSecretRequest ) returns ( PatchInstanceSecretResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/secret",
+      body: "*",
+      additional_bindings: [
+        {
+          patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/secret",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc PatchInstanceNotificationSecret ( PatchInstanceNotificationSecretRequest ) returns ( PatchInstanceNotificationSecretResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/notifications/secret",
+      body: "*",
+      additional_bindings: [
+        {
+          patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/notifications/secret",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc PatchInstanceImageUpdaterSecret ( PatchInstanceImageUpdaterSecretRequest ) returns ( PatchInstanceImageUpdaterSecretResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/image-updater/secret",
+      body: "*",
+      additional_bindings: [
+        {
+          patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/image-updater/secret",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceAppsetSecret ( GetInstanceAppsetSecretRequest ) returns ( GetInstanceAppsetSecretResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/appset/secret",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/appset/secret"
+        }
+      ]
+    };
+  }
+
+  rpc PatchInstanceAppsetSecret ( PatchInstanceAppsetSecretRequest ) returns ( PatchInstanceAppsetSecretResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/appset/secret",
+      body: "*",
+      additional_bindings: [
+        {
+          patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/appset/secret",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstance ( UpdateInstanceRequest ) returns ( UpdateInstanceResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceWorkspace ( UpdateInstanceWorkspaceRequest ) returns ( UpdateInstanceWorkspaceResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/transfer",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/transfer",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceCSS ( UpdateInstanceCSSRequest ) returns ( UpdateInstanceCSSResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/css",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/css",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceNotificationConfig ( UpdateInstanceNotificationConfigRequest ) returns ( UpdateInstanceNotificationConfigResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/notifications",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/notifications",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceImageUpdaterConfig ( UpdateInstanceImageUpdaterConfigRequest ) returns ( UpdateInstanceImageUpdaterConfigResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/image-updater/config",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/image-updater/config",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceImageUpdaterSSHConfig ( UpdateInstanceImageUpdaterSSHConfigRequest ) returns ( UpdateInstanceImageUpdaterSSHConfigResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/image-updater/ssh-config",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/image-updater/ssh-config",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceResourceCustomizations ( UpdateInstanceResourceCustomizationsRequest ) returns ( UpdateInstanceResourceCustomizationsResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/resource-customizations",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/resource-customizations",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceConfigManagementPlugins ( UpdateInstanceConfigManagementPluginsRequest ) returns ( UpdateInstanceConfigManagementPluginsResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/config-management-plugins",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/config-management-plugins",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteInstance ( DeleteInstanceRequest ) returns ( DeleteInstanceResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/argocd/instances/{id}",
+      additional_bindings: [
+        {
+          delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc ListInstanceAccounts ( ListInstanceAccountsRequest ) returns ( ListInstanceAccountsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/accounts",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/accounts"
+        }
+      ]
+    };
+  }
+
+  rpc UpsertInstanceAccount ( UpsertInstanceAccountRequest ) returns ( UpsertInstanceAccountResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/accounts/{name}",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/accounts/{name}",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceAccountPassword ( UpdateInstanceAccountPasswordRequest ) returns ( UpdateInstanceAccountPasswordResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/accounts/{name}/password",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/accounts/{name}/password",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc RegenerateInstanceAccountPassword ( RegenerateInstanceAccountPasswordRequest ) returns ( RegenerateInstanceAccountPasswordResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/accounts/{name}/regenerate-password",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/accounts/{name}/regenerate-password",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteInstanceAccount ( DeleteInstanceAccountRequest ) returns ( DeleteInstanceAccountResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/accounts/{name}",
+      additional_bindings: [
+        {
+          delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/accounts/{name}"
+        }
+      ]
+    };
+  }
+
+  rpc ListInstanceClusters ( ListInstanceClustersRequest ) returns ( ListInstanceClustersResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters"
+        }
+      ]
+    };
+  }
+
+  rpc WatchInstanceClusters ( WatchInstanceClustersRequest ) returns ( stream WatchInstanceClustersResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/argocd/instances/{instance_id}/clusters",
+      additional_bindings: [
+        {
+          get: "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters"
+        }
+      ]
+    };
+  }
+
+  rpc CreateInstanceCluster ( CreateInstanceClusterRequest ) returns ( CreateInstanceClusterResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetClusterAPIServerCAData ( GetClusterAPIServerCADataRequest ) returns ( GetClusterAPIServerCADataResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/utils/cluster-ca-data",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/utils/cluster-ca-data"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceCluster ( GetInstanceClusterRequest ) returns ( GetInstanceClusterResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/{id}",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceClusterInfo ( GetInstanceClusterRequest ) returns ( GetInstanceClusterInfoResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/{id}/info",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/{id}/info"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceClusterManifests ( GetInstanceClusterManifestsRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/{id}/manifests",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/{id}/manifests"
+        }
+      ]
+    };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "Get manifests for the instance cluster" };
+  }
+
+  rpc UpdateInstanceCluster ( UpdateInstanceClusterRequest ) returns ( UpdateInstanceClusterResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/{id}",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/{id}",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceClusterSupportAccess ( UpdateInstanceClusterSupportAccessRequest ) returns ( UpdateInstanceClusterSupportAccessResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/{id}/support-access",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/{id}/support-access",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceClusters ( UpdateInstanceClustersRequest ) returns ( UpdateInstanceClustersResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/clusters",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/clusters",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceClustersAgentVersion ( UpdateInstanceClustersAgentVersionRequest ) returns ( google.protobuf.Empty ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/agent-version",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/agent-version",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc RotateInstanceClusterCredentials ( RotateInstanceClusterCredentialsRequest ) returns ( RotateInstanceClusterCredentialsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/rotate-credentials",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/rotate-credentials",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc RegenerateManifests ( RegenerateManifestsRequest ) returns ( RegenerateManifestsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/regenerate-manifests",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/regenerate-manifests",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc SetClusterMaintenanceMode ( SetClusterMaintenanceModeRequest ) returns ( SetClusterMaintenanceModeResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/set-maintenance-mode",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/set-maintenance-mode",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteInstanceCluster ( DeleteInstanceClusterRequest ) returns ( DeleteInstanceClusterResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/{id}",
+      additional_bindings: [
+        {
+          delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceClusterCommand ( GetInstanceClusterCommandRequest ) returns ( GetInstanceClusterCommandResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_id}/clusters/{id}/command",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/clusters/{id}/command"
+        }
+      ]
+    };
+  }
+
+  rpc GetAIAssistantUsageStats ( GetAIAssistantUsageStatsRequest ) returns ( GetAIAssistantUsageStatsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/ai-assistant-usage-stats",
+      body: "*"
+    };
+  }
+
+  rpc GetSyncOperationsStats ( GetSyncOperationsStatsRequest ) returns ( GetSyncOperationsStatsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/sync-operations-stats",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/argocd/instances/sync-operations-stats",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetSyncOperationsEvents ( GetSyncOperationsEventsRequest ) returns ( GetSyncOperationsEventsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/sync-operations-events",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/argocd/instances/sync-operations-events",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ApplyInstance ( ApplyInstanceRequest ) returns ( ApplyInstanceResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/apply",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/apply",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ExportInstance ( ExportInstanceRequest ) returns ( ExportInstanceResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/argocd/instances/{id}/export",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{id}/export"
+        }
+      ]
+    };
+  }
+
+  rpc ListInstanceAddonRepos ( ListInstanceAddonReposRequest ) returns ( ListInstanceAddonReposResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-repos",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-repos"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceAddonRepo ( GetInstanceAddonRepoRequest ) returns ( GetInstanceAddonRepoResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-repos/{id}",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-repos/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc CreateInstanceAddonRepo ( CreateInstanceAddonRepoRequest ) returns ( CreateInstanceAddonRepoResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-repos",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-repos",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc RefreshInstanceAddonRepo ( RefreshInstanceAddonRepoRequest ) returns ( RefreshInstanceAddonRepoResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-repos/{id}/refresh",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-repos/{id}/refresh",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteInstanceAddonRepo ( DeleteInstanceAddonRepoRequest ) returns ( DeleteInstanceAddonRepoResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-repos/{id}",
+      additional_bindings: [
+        {
+          delete: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-repos/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc ListInstanceAddons ( ListInstanceAddonsRequest ) returns ( ListInstanceAddonsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addons",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addons"
+        }
+      ]
+    };
+  }
+
+  rpc ListInstanceAddonErrors ( ListInstanceAddonErrorsRequest ) returns ( ListInstanceAddonErrorsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-errors/{id}",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-errors/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetInstanceAddon ( GetInstanceAddonRequest ) returns ( GetInstanceAddonResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addons/{id}",
+      additional_bindings: [
+        {
+          get: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_name}/addons/{id}"
+        },
+        {
+          get: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addons/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteInstanceAddon ( DeleteInstanceAddonRequest ) returns ( DeleteInstanceAddonResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addons/{id}",
+      additional_bindings: [
+        {
+          delete: "/api/v1/orgs/{organization_id}/argocd/instances/{instance_name}/addons/{id}"
+        },
+        {
+          delete: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addons/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc RefreshInstanceAddon ( RefreshInstanceAddonRequest ) returns ( RefreshInstanceAddonResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addons/{id}/refresh",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addons/{id}/refresh",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateInstanceAddon ( UpdateInstanceAddonRequest ) returns ( UpdateInstanceAddonResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addons/{id}",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addons/{id}",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc PatchInstanceAddon ( PatchInstanceAddonRequest ) returns ( PatchInstanceAddonResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addons/{id}",
+      body: "patch",
+      additional_bindings: [
+        {
+          patch: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addons/{id}",
+          body: "patch"
+        }
+      ]
+    };
+  }
+
+  rpc ClearAddonStatusSourceHistory ( ClearAddonStatusSourceHistoryRequest ) returns ( ClearAddonStatusSourceHistoryResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addons/{id}/clear-operation-history",
+      body: "*",
+      additional_bindings: [
+        {
+          patch: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addons/{id}/clear-operation-history",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc WatchInstanceAddons ( WatchInstanceAddonsRequest ) returns ( stream WatchInstanceAddonsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addons",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/addons/stream/orgs/{organization_id}/argocd/instances/{instance_id}/addons"
+        }
+      ]
+    };
+  }
+
+  rpc WatchInstanceAddonRepos ( WatchInstanceAddonReposRequest ) returns ( stream WatchInstanceAddonReposResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-repos",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/addons/stream/orgs/{organization_id}/argocd/instances/{instance_id}/addon-repos"
+        }
+      ]
+    };
+  }
+
+  rpc AddonMarketplaceInstall ( AddonMarketplaceInstallRequest ) returns ( AddonMarketplaceInstallResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-marketplace-installs",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-marketplace-installs",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ListAddonMarketplaceInstalls ( ListAddonMarketplaceInstallsRequest ) returns ( ListAddonMarketplaceInstallsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/list-addon-marketplace-installs",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/list-addon-marketplace-installs",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc WatchAddonMarketplaceInstalls ( WatchAddonMarketplaceInstallsRequest ) returns ( stream WatchAddonMarketplaceInstallsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-marketplace-installs",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/addons/stream/orgs/{organization_id}/argocd/instances/{instance_id}/addon-marketplace-installs"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateAddonMarketplaceInstall ( UpdateAddonMarketplaceInstallRequest ) returns ( UpdateAddonMarketplaceInstallResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-marketplace-installs/{id}",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-marketplace-installs/{id}",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ListInstanceRepos ( ListInstanceReposRequest ) returns ( ListInstanceReposResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/repos"
+    };
+  }
+
+  rpc CreateInstanceRepo ( CreateInstanceRepoRequest ) returns ( CreateInstanceRepoResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/repos",
+      body: "*"
+    };
+  }
+
+  rpc DeleteAddonMarketplaceInstall ( DeleteAddonMarketplaceInstallRequest ) returns ( DeleteAddonMarketplaceInstallResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/addon-marketplace-installs/{id}",
+      additional_bindings: [
+        {
+          delete: "/ext-api/v1/argocd/extensions/addons/orgs/{organization_id}/argocd/instances/{instance_id}/addon-marketplace-installs/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc ListInstanceManagedSecrets ( ListInstanceManagedSecretsRequest ) returns ( ListInstanceManagedSecretsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/managed-secrets"
+    };
+  }
+
+  rpc CreateManagedSecret ( CreateManagedSecretRequest ) returns ( CreateManagedSecretResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/managed-secrets",
+      body: "*"
+    };
+  }
+
+  rpc DeleteManagedSecret ( DeleteManagedSecretRequest ) returns ( DeleteManagedSecretResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/managed-secrets/{name}"
+    };
+  }
+
+  rpc UpdateManagedSecret ( UpdateManagedSecretRequest ) returns ( UpdateManagedSecretResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/managed-secrets/{name}",
+      body: "*"
+    };
+  }
+
+  rpc PatchManagedSecret ( PatchManagedSecretRequest ) returns ( PatchManagedSecretResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/argocd/instances/{instance_id}/managed-secrets/{name}",
+      body: "*"
+    };
+  }
+}

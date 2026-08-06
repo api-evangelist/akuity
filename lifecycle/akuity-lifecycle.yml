@@ -1,0 +1,99 @@
+generated: '2026-08-06'
+method: searched
+source: >-
+  https://docs.akuity.io/changelog/ + https://status.akuity.io/ +
+  https://docs.akuity.io/changelog/selfhosted/ + openapi/akuity-*.json
+description: >-
+  Versioning, release, compatibility and operational-status posture of the
+  Akuity Platform API and the products behind it.
+
+versioning:
+  api_scheme: path
+  api_current: v1
+  api_base: https://akuity.cloud/api/v1/
+  note: >-
+    One stable REST major since launch, aligned with the `*.v1` protobuf packages
+    (akuity.organization.v1, akuity.argocd.v1, akuity.kargo.v1, akuity.aims.v1,
+    akuity.apikey.v1, akuity.auth.v1, akuity.customrole.v1, akuity.extension.v1,
+    akuity.system.v1). New capability arrives as new RPCs/fields inside v1.
+  platform_build_version:
+    endpoint: GET https://akuity.cloud/api/v1/system/version
+    auth: none
+    observed: v0.32.0-rl.1.0.20260804092436-2611577a617e.dirty
+    fetched: '2026-08-06'
+  component_version_endpoints:
+    - GET /api/v1/system/cd/versions      # available Argo CD versions
+    - GET /api/v1/system/kargo/versions   # available Kargo versions
+    - GET /api/v1/system/agent/versions   # available Akuity Agent versions
+    - GET /api/v1/system/image-updater/versions
+
+deprecation_policy:
+  published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    Akuity publishes no API deprecation policy, no Sunset/Deprecation response
+    headers, and no operation in the published protobuf descriptors carries a
+    `deprecated` option. What it does publish are forward-looking *compatibility
+    matrices* for self-hosted deployments, which serve a related but different
+    purpose.
+  compatibility_matrices:
+    - https://docs.akuity.io/changelog/selfhosted/argocd-compatibility
+    - https://docs.akuity.io/changelog/selfhosted/kargo-compatibility
+    - https://docs.akuity.io/changelog/selfhosted/agent-compatibility
+
+change_log:
+  url: https://docs.akuity.io/changelog/
+  cloud: https://docs.akuity.io/changelog/cloud
+  agent: https://docs.akuity.io/changelog/agent
+  dated: true
+  see: changelog/akuity-changelog.yml
+
+status_page:
+  url: https://status.akuity.io/
+  provider: Atlassian Statuspage
+  machine_readable:
+    summary: https://status.akuity.io/api/v2/summary.json
+    status: https://status.akuity.io/api/v2/status.json
+    components: https://status.akuity.io/api/v2/components.json
+  observed:
+    fetched: '2026-08-06'
+    indicator: none
+    description: All Systems Operational
+  components:
+    - Website
+    - Akuity Platform
+    - Third Parties
+    - 'Auth0 US-3 User Authentication'
+    - 'Auth0 US-3 Email Delivery'
+    - 'Auth0 EU User Authentication'
+    - 'Auth0 EU Multi-factor Authentication'
+    - 'GitHub'
+    - 'Quay.io Registry'
+  note: >-
+    The component list is itself a disclosure: Akuity's identity plane runs on
+    Auth0 (US-3 and EU tenants) and its images ship from Quay.io.
+
+sla:
+  published: false
+  note: >-
+    No public uptime SLA document. The pricing page lists "CVE notifications and
+    SLA on resolution" as an Enterprise-only feature, i.e. a vulnerability
+    remediation SLA negotiated per contract rather than a published uptime
+    commitment.
+  reference: https://akuity.io/pricing
+
+support:
+  community: https://akuity.community/
+  contact: https://akuity.io/connect-with-akuity
+  email: info@akuity.io
+  enterprise: >-
+    Dedicated Customer Success Manager and a real-time support channel are
+    Enterprise-plan features.
+  technical_contacts: https://docs.akuity.io/akuity-portal/organizations/technical-contacts
+
+roadmap:
+  published: false
+  note: No public product roadmap page. https://akuity.io/roadmap returns 404 (probed 2026-08-06).

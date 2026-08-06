@@ -1,0 +1,90 @@
+generated: '2026-08-06'
+method: searched
+source: https://docs.akuity.io/akuity-portal/reference/cli/
+docs: https://docs.akuity.io/akuity-portal/reference/cli/akuity
+description: >-
+  `akuity` is Akuity's first-party CLI for the Akuity Platform. It talks to the
+  same https://akuity.cloud API surface captured in openapi/, and it is the
+  primary interface for declarative management of Argo CD and Kargo instances.
+
+name: akuity
+official: true
+binary: akuity
+source_language: go
+
+global_flags:
+  - flag: --server
+    default: https://akuity.cloud
+    description: The server url of the Akuity cloud.
+  - flag: --insecure-skip-tls-verify
+    description: If true, the server's certificate will not be checked for validity.
+  - flag: --no-color
+    default: 'true'
+    description: Disable colored output.
+  - flag: -h, --help
+
+authentication:
+  interactive: >-
+    `akuity login` runs the OAuth 2.0 Device Authorization Grant against
+    /api/v1/auth/device-code and /api/v1/auth/device-token.
+  non_interactive: >-
+    AKUITY_API_KEY_ID + AKUITY_API_KEY_SECRET, the same credential pair the REST
+    API takes as HTTP Basic.
+  see: authentication/akuity-authentication.yml
+
+command_groups:
+  - group: argocd
+    description: Interact with Argo CD resources on the platform.
+    subcommands:
+      - instance (create, delete, get, list, update, versions)
+      - cluster (create, delete, get, get-agent-manifests, list, update, upgrade)
+      - addon (list, sync, update, cluster-customization {add, delete, get, list, update})
+      - addon-repo (create, delete, list)
+      - apply
+      - diff
+      - export
+  - group: kargo
+    description: Interact with Kargo resources on the platform.
+    subcommands:
+      - instance (create, delete, get, list, update, versions)
+      - agent (create, delete, get, get-manifests, list, update, upgrade)
+      - apply
+      - diff
+      - export
+  - group: organization
+    description: Organization inspection.
+    subcommands:
+      - get
+      - list
+  - group: config
+    description: Configure the Akuity CLI.
+    subcommands:
+      - set
+  - group: auth
+    description: Session management.
+    subcommands:
+      - login
+      - logout
+      - whoami
+  - group: meta
+    subcommands:
+      - version
+
+key_flows:
+  - name: Declarative management
+    description: >-
+      `akuity argocd export` / `akuity kargo export` dump the current state as
+      Kubernetes-like manifests; `diff` shows the delta against a manifest
+      directory; `apply` reconciles it. This is the GitOps-of-the-control-plane
+      loop, and it is the reason the API has no idempotency keys — desired-state
+      re-application is the idempotence mechanism.
+    docs: https://docs.akuity.io/akuity-portal/automation/declarative-management
+  - name: Cluster onboarding
+    description: >-
+      `akuity argocd cluster create` then `akuity argocd cluster get-agent-manifests`
+      emits the Akuity Agent manifests to apply to the target Kubernetes cluster.
+  - name: Agent upgrade
+    description: '`akuity argocd cluster upgrade` / `akuity kargo agent upgrade`.'
+
+reference_index: https://docs.akuity.io/akuity-portal/reference/cli/
+command_pages: 62

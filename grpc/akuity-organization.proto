@@ -1,0 +1,4983 @@
+syntax = "proto3";
+
+package akuity.organization.v1;
+
+import "accesscontrol/v1/accesscontrol.proto";
+
+import "apikey/v1/apikey.proto";
+
+import "google/api/annotations.proto";
+
+import "google/api/httpbody.proto";
+
+import "google/protobuf/struct.proto";
+
+import "google/protobuf/timestamp.proto";
+
+import "google/type/date.proto";
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "types/features/v1/features.proto";
+
+import "types/id/v1/id.proto";
+
+import "types/k8s/v1/k8s.proto";
+
+option csharp_namespace = "Akuity.Organization.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/organization/v1;organizationv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "OrganizationProto";
+
+option java_package = "com.akuity.organization.v1";
+
+option objc_class_prefix = "AOX";
+
+option php_metadata_namespace = "Akuity\\Organization\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Organization\\V1";
+
+option ruby_package = "Akuity::Organization::V1";
+
+message AITool {
+  string name = 1;
+
+  string description = 2;
+
+  bool mutable = 3;
+
+  string display_name = 4;
+
+  repeated string availability_requirements = 5;
+}
+
+message ListAIToolsRequest {
+  string organization_id = 1;
+}
+
+message ListAIToolsResponse {
+  repeated AITool tools = 1;
+}
+
+message DeleteOrganizationDomainRequest {
+  string organization_id = 1;
+
+  string domain = 2;
+}
+
+message DeleteOrganizationDomainResponse {
+}
+
+message VerifyOrganizationDomainsRequest {
+  string organization_id = 1;
+
+  repeated string domains = 2;
+}
+
+message VerifyOrganizationDomainsResponse {
+  repeated DomainVerification domains = 1;
+}
+
+message ListOrganizationDomainsRequest {
+  string organization_id = 1;
+}
+
+message ListOrganizationDomainsResponse {
+  repeated DomainVerification domains = 1;
+}
+
+message ListAuthenticatedUserOrganizationsRequest {
+}
+
+message ListAuthenticatedUserOrganizationsResponse {
+  repeated Organization organizations = 1;
+}
+
+message GetOrganizationRequest {
+  akuity.types.id.v1.Type id_type = 1;
+
+  string id = 2;
+}
+
+message GetOrganizationResponse {
+  Organization organization = 1;
+}
+
+message ListOrganizationAPIKeysRequest {
+  string id = 1;
+}
+
+message ListOrganizationAPIKeysResponse {
+  repeated akuity.apikey.v1.APIKey api_keys = 1;
+}
+
+message CreateOrganizationAPIKeyRequest {
+  string id = 1;
+
+  string description = 2;
+
+  akuity.accesscontrol.v1.Permissions permissions = 3;
+
+  string expire_in_duration = 4;
+}
+
+message CreateOrganizationAPIKeyResponse {
+  akuity.apikey.v1.APIKey api_key = 1;
+}
+
+message ListWorkspaceAPIKeysRequest {
+  string id = 1;
+
+  string workspace_id = 2;
+}
+
+message ListWorkspaceAPIKeysResponse {
+  repeated akuity.apikey.v1.APIKey api_keys = 1;
+
+  string workspace_id = 2;
+}
+
+message CreateWorkspaceAPIKeyRequest {
+  string id = 1;
+
+  string description = 2;
+
+  akuity.accesscontrol.v1.Permissions permissions = 3;
+
+  string expire_in_duration = 4;
+
+  string workspace_id = 5;
+}
+
+message CreateWorkspaceAPIKeyResponse {
+  akuity.apikey.v1.APIKey api_key = 1;
+
+  string workspace_id = 2;
+}
+
+message ObjectFilter {
+  repeated string object_name = 1;
+
+  repeated string object_kind = 2;
+
+  repeated string object_group = 3;
+
+  repeated string object_parent_name = 4;
+
+  repeated string object_parent_parent_name = 5;
+
+  repeated string object_parent_application_name = 6;
+
+  optional bool enabled = 7;
+
+  repeated string object_parent_kargo_project_name = 8;
+
+  optional bool include_child_objects = 9;
+}
+
+message AuditFilters {
+  repeated string actor_id = 1;
+
+  optional ObjectFilter k8s_resource = 2;
+
+  optional ObjectFilter argocd_application = 3;
+
+  optional ObjectFilter argocd_cluster = 4;
+
+  optional ObjectFilter argocd_instance = 5;
+
+  optional ObjectFilter argocd_project = 6;
+
+  optional ObjectFilter member = 7;
+
+  optional ObjectFilter organization_invite = 8;
+
+  repeated string action = 9;
+
+  repeated string actor_type = 10;
+
+  optional string start_time = 11;
+
+  optional string end_time = 12;
+
+  optional uint32 limit = 13;
+
+  optional uint32 offset = 14;
+
+  optional ObjectFilter kargo_instance = 15;
+
+  optional ObjectFilter kargo_agent = 16;
+
+  optional ObjectFilter kargo_promotion = 17;
+
+  optional ObjectFilter kargo_freight = 18;
+
+  optional ObjectFilter custom_roles = 19;
+
+  optional ObjectFilter notification_cfg = 20;
+
+  optional ObjectFilter api_keys = 21;
+
+  optional ObjectFilter addons = 22;
+
+  optional ObjectFilter addon_repos = 23;
+
+  optional ObjectFilter addon_marketplace_install = 24;
+
+  optional ObjectFilter workspace = 25;
+
+  optional ObjectFilter workspace_member = 26;
+
+  optional ObjectFilter organization = 27;
+}
+
+message AuditLogArchiveFilters {
+  optional string start_date = 1;
+
+  optional string end_date = 2;
+
+  optional uint32 limit = 3;
+
+  optional uint32 offset = 4;
+}
+
+message AuditLog {
+  string timestamp = 1;
+
+  string action = 2;
+
+  AuditActor actor = 3;
+
+  AuditObject object = 4;
+
+  AuditDetails details = 5;
+
+  uint32 count = 6;
+
+  string last_occurred_timestamp = 7;
+
+  message AuditActor {
+    string type = 1;
+
+    string id = 2;
+
+    optional string ip = 3;
+  }
+
+  message AuditObject {
+    string type = 1;
+
+    AuditObjId id = 2;
+
+    AuditParentId parent_id = 3;
+
+    message AuditObjId {
+      string name = 1;
+
+      string kind = 2;
+
+      string group = 3;
+    }
+
+    message AuditParentId {
+      string name = 1;
+
+      string parent_name = 2;
+
+      string application_name = 3;
+    }
+  }
+
+  message AuditDetails {
+    string message = 1;
+
+    string patch = 2;
+
+    string action_type = 3;
+  }
+}
+
+message AuditLogArchive {
+  google.type.Date start_date = 1;
+
+  google.type.Date end_date = 2;
+
+  string presigned_url_expiration = 4;
+
+  string presigned_url = 5;
+
+  uint32 records = 6;
+}
+
+message GetAuditLogsRequest {
+  string id = 1;
+
+  AuditFilters filters = 2;
+}
+
+message ListAuditLogsArchivesRequest {
+  string id = 1;
+
+  AuditLogArchiveFilters filters = 2;
+}
+
+message GetAuditLogsResponse {
+  repeated AuditLog items = 1;
+
+  uint32 total_count = 2;
+}
+
+message ListAuditLogsArchivesResponse {
+  repeated AuditLogArchive archives = 1;
+
+  uint32 total_archives_count = 2;
+}
+
+message GetAuditLogsInCSVRequest {
+  string id = 1;
+
+  AuditFilters filters = 2;
+}
+
+message Organization {
+  string id = 1;
+
+  string name = 2;
+
+  int64 max_instances = 4 [deprecated = true];
+
+  int64 max_clusters = 5 [deprecated = true];
+
+  google.protobuf.Timestamp create_time = 6;
+
+  akuity.accesscontrol.v1.Permissions permissions = 7;
+
+  int64 max_applications = 8 [deprecated = true];
+
+  optional OrganizationStatus status = 9;
+
+  akuity.types.features.v1.OrganizationQuota quota = 10;
+
+  string plan = 11;
+
+  optional akuity.types.features.v1.OrganizationUsage usage = 12;
+
+  MFASettings mfa_settings = 13;
+
+  AISettings ai_settings = 14;
+}
+
+message OrganizationStatus {
+  string state = 1;
+
+  bool trial = 2;
+
+  uint64 expiry = 3;
+
+  bool billing_updating = 4;
+}
+
+message MFASettings {
+  bool enabled = 1;
+}
+
+message AIToolPolicyTarget {
+  string action_name = 1;
+
+  string action_args = 2;
+
+  AIToolPolicyActionType action_type = 3;
+
+  repeated string clusters = 4;
+
+  repeated string k8s_namespaces = 5;
+
+  repeated string argocd_applications = 6;
+
+  repeated string kargo_projects = 7;
+
+  repeated string runbooks = 8;
+}
+
+message AIToolPolicy {
+  AIToolPolicyAction action = 1;
+
+  AIToolPolicyTarget target = 2;
+}
+
+message AICustomModel {
+  string prefix_id = 1;
+
+  string provider = 2;
+
+  repeated string models = 3;
+
+  string api_base = 4;
+
+  string api_key = 5;
+}
+
+message AISettings {
+  reserved 1;
+
+  string model_version = 2;
+
+  repeated AIToolPolicy tool_policies = 3;
+
+  repeated AICustomModel custom_models = 4;
+}
+
+message GetUserRoleInOrganizationRequest {
+  string id = 1;
+}
+
+message GetUserRoleInOrganizationResponse {
+  string role = 1;
+}
+
+message CreateOrganizationRequest {
+  string name = 1;
+}
+
+message CreateOrganizationResponse {
+  Organization organization = 1;
+}
+
+message UpdateOrganizationRequest {
+  string id = 1;
+
+  string name = 2;
+
+  MFASettings mfa = 3;
+
+  AISettings ai = 4;
+}
+
+message UpdateOrganizationResponse {
+}
+
+message UpdateOrganizationContextRequest {
+  string organization = 1;
+}
+
+message UpdateOrganizationContextResponse {
+}
+
+message DeleteOrganizationRequest {
+  string id = 1;
+}
+
+message DeleteOrganizationResponse {
+}
+
+message OrganizationMember {
+  string id = 1;
+
+  string email = 2;
+
+  string role = 3;
+}
+
+message OrganizationInvitee {
+  string id = 1;
+
+  string email = 2;
+
+  string role = 3;
+
+  optional InviteMembersInfo info = 4;
+}
+
+message ListOrganizationMembersRequest {
+  string id = 1;
+}
+
+message ListOrganizationMembersResponse {
+  repeated OrganizationMember members = 1;
+}
+
+message AssignWorkspace {
+  string name = 1;
+
+  WorkspaceMemberRole role = 2;
+}
+
+message InviteMembersInfo {
+  repeated string teams = 1;
+
+  repeated AssignWorkspace workspaces = 2;
+}
+
+message InviteMembersRequest {
+  string id = 1;
+
+  repeated string emails = 2;
+
+  string role = 3;
+
+  InviteMembersInfo info = 4;
+}
+
+message InviteMembersResponse {
+}
+
+message ListOrganizationInviteesRequest {
+  string id = 1;
+}
+
+message ListOrganizationInviteesResponse {
+  repeated OrganizationInvitee invitees = 1;
+}
+
+message UninviteOrganizationMemberRequest {
+  string id = 1;
+
+  string email = 2;
+}
+
+message UninviteOrganizationMemberResponse {
+}
+
+message RemoveOrganizationMemberRequest {
+  string id = 1;
+
+  string member_id = 2;
+}
+
+message RemoveOrganizationMemberResponse {
+}
+
+message UpdateOrganizationMemberRoleRequest {
+  string id = 1;
+
+  string member_id = 2;
+
+  string role = 3;
+}
+
+message UpdateOrganizationMemberRoleResponse {
+}
+
+message JoinOrganizationRequest {
+  string id = 1;
+}
+
+message JoinOrganizationResponse {
+  Organization organization = 1;
+}
+
+message RejectOrganizationRequest {
+  string id = 1;
+}
+
+message RejectOrganizationResponse {
+}
+
+message GetCustomerDetailsRequest {
+  string id = 1;
+}
+
+message BillingMetadata {
+  string name = 1;
+}
+
+message BillingDetails {
+  string email = 1;
+
+  bool has_active_subscription = 2;
+
+  BillingMetadata metadata = 3;
+
+  string customer_id = 4;
+
+  string billing_authority = 5;
+
+  bool manual = 6;
+
+  string last_four_card_digits = 7;
+
+  repeated SubscriptionAddon addons = 8;
+}
+
+message GetCustomerDetailsResponse {
+  BillingDetails billing_details = 1;
+}
+
+message UpdateBillingDetailsRequest {
+  string id = 1;
+
+  BillingDetails billing_details = 2;
+}
+
+message UpdateBillingDetailsResponse {
+}
+
+message BillingCheckoutRequest {
+  string id = 1;
+
+  string billing_name = 2;
+
+  string billing_email = 3;
+
+  string plan = 4;
+
+  repeated SubscriptionAddon addons = 5;
+}
+
+message BillingCheckoutResponse {
+  string url = 1;
+}
+
+message UpdateSubscriptionRequest {
+  string id = 1;
+
+  string plan = 2;
+
+  repeated SubscriptionAddon addons = 3;
+}
+
+message SubscriptionAddon {
+  string name = 1;
+
+  uint32 quantity = 2;
+
+  uint32 included_quantity = 3;
+
+  string display_name = 4;
+
+  optional uint32 unit_price = 5;
+
+  optional uint32 minimum_quantity = 6;
+
+  optional uint32 maximum_quantity = 7;
+
+  optional string description = 8;
+}
+
+message UpdateSubscriptionResponse {
+}
+
+message Plan {
+  string name = 1;
+
+  bool deprecated = 2;
+}
+
+message ListAvailablePlansRequest {
+  string id = 1;
+}
+
+message ListAvailablePlansResponse {
+  repeated Plan plans = 1;
+}
+
+message GetAvailableAddonsRequest {
+  string id = 1;
+
+  string plan = 2;
+}
+
+message GetAvailableAddonsResponse {
+  repeated SubscriptionAddon addons = 1;
+}
+
+message GetSSOConfigurationRequest {
+  string id = 1;
+}
+
+message GetSSOConfigurationResponse {
+  bool auto_add_member = 1;
+
+  oneof options {
+    AzureADSSOOptions azure_ad = 2;
+
+    OktaSSOOptions okta = 3;
+
+    GoogleWorkspaceSSOOptions google_workspace = 4;
+
+    OIDCSSOOptions oidc = 5;
+
+    SAMLSSOOptions saml = 6;
+  }
+
+  repeated string group_claims = 7;
+
+  bool enforce_sso = 8;
+}
+
+message EnsureSSOConfigurationRequest {
+  string id = 1;
+
+  bool auto_add_member = 2;
+
+  oneof options {
+    AzureADSSOOptions azure_ad = 3;
+
+    OktaSSOOptions okta = 4;
+
+    GoogleWorkspaceSSOOptions google_workspace = 5;
+
+    OIDCSSOOptions oidc = 6;
+
+    SAMLSSOOptions saml = 7;
+  }
+
+  repeated string group_claims = 8;
+
+  bool enforce_sso = 9;
+}
+
+message EnsureSSOConfigurationResponse {
+  bool auto_add_member = 1;
+
+  oneof options {
+    AzureADSSOOptions azure_ad = 2;
+
+    OktaSSOOptions okta = 3;
+
+    GoogleWorkspaceSSOOptions google_workspace = 4;
+
+    OIDCSSOOptions oidc = 5;
+
+    SAMLSSOOptions saml = 6;
+  }
+
+  repeated string group_claims = 7;
+
+  bool enforce_sso = 8;
+}
+
+message DeleteSSOConfigurationRequest {
+  string id = 1;
+}
+
+message DeleteSSOConfigurationResponse {
+}
+
+message AzureADSSOOptions {
+  string client_id = 1;
+
+  string client_secret = 2;
+
+  string azure_ad_domain = 3;
+
+  string domain_alias = 4 [deprecated = true];
+
+  repeated string domain_aliases = 5;
+}
+
+message GoogleWorkspaceSSOOptions {
+  string client_id = 1;
+
+  string client_secret = 2;
+
+  string google_workspace_domain = 3;
+
+  repeated string domain_aliases = 4;
+}
+
+message OIDCSSOBackChannel {
+  string client_secret = 1;
+
+  string issuer = 2;
+
+  string authorization_endpoint = 3;
+
+  string token_endpoint = 4;
+
+  string jwks_uri = 5;
+}
+
+message OIDCSSOFrontChannel {
+  string issuer = 1;
+
+  string authorization_endpoint = 2;
+
+  string jwks_uri = 3;
+}
+
+message OIDCSSOOptions {
+  string discovery_url = 1;
+
+  string client_id = 2;
+
+  string domain = 3;
+
+  repeated string domain_aliases = 4;
+
+  oneof channel {
+    OIDCSSOBackChannel back = 5;
+
+    OIDCSSOFrontChannel front = 6;
+  }
+
+  bool groups_scope_enabled = 7 [deprecated = true];
+
+  repeated string scopes = 8;
+}
+
+message OktaSSOOptions {
+  string client_id = 1;
+
+  string client_secret = 2;
+
+  string okta_domain = 3;
+
+  string domain_alias = 4 [deprecated = true];
+
+  repeated string domain_aliases = 5;
+}
+
+message SAMLSSOConnectionDetails {
+  string sign_in_endpoint = 1;
+
+  bool disable_sign_out = 2;
+
+  optional string sign_out_endpoint = 3;
+
+  string base64_encoded_signing_cert = 4;
+
+  bool sign_request = 5;
+
+  SAMLSignatureAlgorithm signature_algorithm = 6;
+
+  SAMLDigestAlgorithm digest_algorithm = 7;
+
+  SAMLProtocolBinding protocol_binding = 8;
+}
+
+message SAMLSSOOptions {
+  string domain = 1;
+
+  repeated string domain_aliases = 2;
+
+  oneof options {
+    SAMLSSOConnectionDetails connection_details = 3;
+
+    string metadata_xml = 4;
+  }
+}
+
+message GetOIDCMapRequest {
+  string id = 1;
+}
+
+message GetOIDCMapResponse {
+  map<string, string> entries = 1;
+}
+
+message UpdateOIDCMapRequest {
+  string id = 1;
+
+  map<string, string> entries = 2;
+}
+
+message UpdateOIDCMapResponse {
+}
+
+message GetTeamOIDCMapRequest {
+  string organization_id = 1;
+}
+
+message GetTeamOIDCMapResponse {
+  map<string, string> entries = 1;
+}
+
+message UpdateTeamOIDCMapRequest {
+  string organization_id = 1;
+
+  map<string, string> entries = 2;
+}
+
+message UpdateTeamOIDCMapResponse {
+}
+
+message CreateCustomRoleRequest {
+  string organization_id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  string policy = 4;
+}
+
+message CreateCustomRoleResponse {
+  CustomRole custom_role = 1;
+}
+
+message UpdateCustomRoleRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string description = 4;
+
+  string policy = 5;
+}
+
+message UpdateCustomRoleResponse {
+  CustomRole custom_role = 1;
+}
+
+message GetCustomRoleRequest {
+  string organization_id = 1;
+
+  string id = 2;
+}
+
+message GetCustomRoleResponse {
+  CustomRole custom_role = 1;
+}
+
+message ListCustomRolesRequest {
+  string organization_id = 1;
+
+  optional uint32 limit = 2;
+
+  optional uint32 offset = 3;
+}
+
+message ListCustomRolesResponse {
+  repeated CustomRole custom_roles = 1;
+
+  int64 total_count = 2;
+}
+
+message DeleteCustomRoleRequest {
+  string id = 1;
+
+  string organization_id = 2;
+}
+
+message DeleteCustomRoleResponse {
+}
+
+message CustomRole {
+  string id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  string policy = 4;
+}
+
+message Permission {
+  string role = 1;
+
+  string object = 2;
+
+  string action = 3;
+
+  string resource = 4;
+}
+
+message GetOrganizationPermissionsRequest {
+  string id = 1;
+}
+
+message GetOrganizationPermissionsResponse {
+  repeated Permission permissions = 1;
+
+  string raw_permissions = 2;
+}
+
+message Team {
+  string name = 1;
+
+  string description = 2;
+
+  google.protobuf.Timestamp create_time = 3;
+
+  int64 member_count = 4;
+}
+
+message UserTeam {
+  Team team = 1;
+
+  bool is_member = 2;
+
+  repeated string custom_roles = 3;
+}
+
+message CreateTeamRequest {
+  string organization_id = 1;
+
+  string name = 2;
+
+  optional string description = 3;
+
+  repeated string custom_roles = 4;
+}
+
+message CreateTeamResponse {
+  UserTeam user_team = 1;
+}
+
+message UpdateTeamRequest {
+  string organization_id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  repeated string custom_roles = 4;
+}
+
+message UpdateTeamResponse {
+  UserTeam user_team = 1;
+}
+
+message GetTeamRequest {
+  string organization_id = 1;
+
+  string name = 2;
+}
+
+message GetTeamResponse {
+  UserTeam user_team = 1;
+}
+
+message ListTeamsRequest {
+  string organization_id = 1;
+
+  optional int64 limit = 2;
+
+  optional int64 offset = 3;
+}
+
+message ListTeamsResponse {
+  repeated UserTeam user_teams = 1;
+
+  int64 count = 2;
+}
+
+message DeleteTeamRequest {
+  string organization_id = 1;
+
+  string name = 2;
+}
+
+message DeleteTeamResponse {
+}
+
+message TeamMember {
+  string id = 1;
+
+  string email = 2;
+}
+
+message AddTeamMemberRequest {
+  string organization_id = 1;
+
+  string team_name = 2;
+
+  string user_id = 3;
+}
+
+message AddTeamMemberResponse {
+  TeamMember team_member = 1;
+}
+
+message GetTeamMemberRequest {
+  string organization_id = 1;
+
+  string team_name = 2;
+
+  string id = 3;
+}
+
+message GetTeamMemberResponse {
+  TeamMember team_member = 1;
+}
+
+message ListTeamMembersRequest {
+  string organization_id = 1;
+
+  string team_name = 2;
+
+  optional int64 limit = 3;
+
+  optional int64 offset = 4;
+}
+
+message ListTeamMembersResponse {
+  repeated TeamMember team_members = 1;
+
+  int64 count = 2;
+}
+
+message RemoveTeamMemberRequest {
+  string organization_id = 1;
+
+  string team_name = 2;
+
+  string id = 3;
+}
+
+message RemoveTeamMemberResponse {
+}
+
+message UpdateArgocdInstancesQuotaRequest {
+  string organization_id = 1;
+
+  map<string, int32> instance_quota = 2;
+}
+
+message UpdateArgocdInstancesQuotaResponse {
+}
+
+message InstanceQuotaSummary {
+  string id = 1;
+
+  string name = 2;
+}
+
+message InstanceQuota {
+  InstanceQuotaSummary instance = 1;
+
+  int32 current_apps_count = 2;
+
+  int32 max_apps_count = 3;
+}
+
+message ListArgocdInstancesQuotaRequest {
+  string organization_id = 1;
+}
+
+message ListArgocdInstancesQuotaResponse {
+  repeated InstanceQuota instances = 1;
+}
+
+message UpdateKargoInstancesQuotaRequest {
+  string organization_id = 1;
+
+  map<string, int32> instance_quota = 2;
+}
+
+message UpdateKargoInstancesQuotaResponse {
+}
+
+message KargoInstanceQuota {
+  InstanceQuotaSummary instance = 1;
+
+  int32 current_stage_count = 2;
+
+  int32 max_stage_count = 3;
+}
+
+message ListKargoInstancesQuotaRequest {
+  string organization_id = 1;
+}
+
+message ListKargoInstancesQuotaResponse {
+  repeated KargoInstanceQuota instances = 1;
+}
+
+message WorkspaceArgoCDInstance {
+  string id = 1;
+
+  string name = 2;
+}
+
+message WorkspaceKargoInstance {
+  string id = 1;
+
+  string name = 2;
+}
+
+message Workspace {
+  string id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  google.protobuf.Timestamp create_time = 4;
+
+  repeated WorkspaceArgoCDInstance argocd_instances = 5;
+
+  repeated WorkspaceKargoInstance kargo_instances = 6;
+
+  uint32 team_member_count = 7;
+
+  uint32 user_member_count = 8;
+
+  bool is_default = 9;
+}
+
+message WorkspaceUserMember {
+  string id = 1;
+
+  string email = 2;
+}
+
+message WorkspaceTeamMember {
+  string id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  google.protobuf.Timestamp create_time = 4;
+
+  int64 member_count = 5;
+}
+
+message WorkspaceMember {
+  string id = 1;
+
+  WorkspaceMemberRole role = 2;
+
+  oneof member {
+    WorkspaceUserMember user = 3;
+
+    WorkspaceTeamMember team = 4;
+  }
+}
+
+message WorkspaceMemberRef {
+  WorkspaceMemberRole role = 1;
+
+  oneof member {
+    string user_id = 2;
+
+    string user_email = 3;
+
+    string team_name = 4;
+  }
+}
+
+message CreateWorkspaceRequest {
+  string organization_id = 1;
+
+  string name = 2;
+
+  optional string description = 3;
+}
+
+message CreateWorkspaceResponse {
+  Workspace workspace = 1;
+}
+
+message ListWorkspacesRequest {
+  string organization_id = 1;
+
+  optional uint32 limit = 2;
+
+  optional uint32 offset = 3;
+}
+
+message ListWorkspacesResponse {
+  repeated Workspace workspaces = 1;
+}
+
+message GetWorkspaceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+}
+
+message GetWorkspaceResponse {
+  Workspace workspace = 1;
+}
+
+message UpdateWorkspaceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  optional string description = 4;
+}
+
+message UpdateWorkspaceResponse {
+  Workspace workspace = 1;
+}
+
+message DeleteWorkspaceRequest {
+  string organization_id = 1;
+
+  string id = 2;
+}
+
+message DeleteWorkspaceResponse {
+}
+
+message AddWorkspaceMemberRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  WorkspaceMemberRef member_ref = 3;
+}
+
+message AddWorkspaceMemberResponse {
+  WorkspaceMember workspace_member = 1;
+}
+
+message ListWorkspaceMembersRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  optional uint32 limit = 3;
+
+  optional uint32 offset = 4;
+}
+
+message ListWorkspaceMembersResponse {
+  repeated WorkspaceMember workspace_members = 1;
+
+  uint32 team_member_count = 2;
+
+  uint32 user_member_count = 3;
+}
+
+message UpdateWorkspaceMembersRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  repeated WorkspaceMemberRef member_refs = 3;
+}
+
+message UpdateWorkspaceMembersResponse {
+  repeated WorkspaceMember workspace_members = 1;
+}
+
+message GetWorkspaceMemberRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+}
+
+message GetWorkspaceMemberResponse {
+  WorkspaceMember workspace_member = 1;
+}
+
+message UpdateWorkspaceMemberRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+
+  WorkspaceMemberRole role = 4;
+}
+
+message UpdateWorkspaceMemberResponse {
+  WorkspaceMember workspace_member = 1;
+}
+
+message RemoveWorkspaceMemberRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+}
+
+message RemoveWorkspaceMemberResponse {
+}
+
+message CancelSubscriptionRequest {
+  string organization_id = 1;
+}
+
+message CancelSubscriptionResponse {
+}
+
+message ListKubernetesResourceTypesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+}
+
+message ListKubernetesResourceTypesResponse {
+  string instance_id = 1;
+
+  repeated akuity.types.k8s.v1.ResourceType resource_types = 2;
+}
+
+message ListKubernetesResourcesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  repeated string namespaces = 4;
+
+  string kind = 5;
+
+  string group = 6;
+
+  optional uint32 limit = 7;
+
+  optional uint32 offset = 8;
+
+  optional string owner_id = 9;
+
+  optional string name_contains = 10;
+
+  optional string order_by = 11;
+
+  string version = 12;
+
+  optional string where = 13;
+
+  optional bool has_deletion_timestamp = 14;
+
+  optional bool tree_view = 15;
+
+  optional string name = 16;
+
+  optional string tree_view_name_contains = 17;
+
+  repeated string tree_view_resource_kinds = 18;
+
+  repeated HealthStatus tree_view_health_statuses = 19;
+
+  repeated HealthStatus health_statuses = 20;
+
+  repeated string labels = 21;
+
+  repeated string annotations = 22;
+}
+
+message ListKubernetesResourcesResponse {
+  repeated ClusterResource resources = 1;
+
+  uint32 count = 2;
+}
+
+message SpotlightSearchKubernetesResourcesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  optional string query = 3;
+
+  optional uint32 limit = 4;
+
+  optional uint32 offset = 5;
+
+  optional bool ai_search = 6;
+
+  optional string kargo_instance_id = 7;
+}
+
+message SpotlightSearchKubernetesResourcesResponse {
+  repeated ClusterResource resources = 1;
+
+  uint32 count = 2;
+}
+
+message GetKubernetesResourceDetailRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+}
+
+message GetKubernetesResourceDetailResponse {
+  ClusterResource resource = 1;
+
+  repeated akuity.types.k8s.v1.ResourceType child_types = 2;
+
+  repeated PodInfo pod_info = 3;
+
+  repeated ResourceReferenceInfo owner_info = 4;
+}
+
+message IDInfo {
+  string id = 1;
+
+  string name = 2;
+}
+
+message PodInfo {
+  IDInfo pod = 1;
+
+  repeated IDInfo containers = 2;
+}
+
+message GetKubernetesContainerRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string container_id = 4;
+}
+
+message GetKubernetesContainerResponse {
+  Container container = 1;
+}
+
+message ListKubernetesNamespacesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  optional string node_name = 4;
+}
+
+message ListKubernetesNamespacesResponse {
+  repeated string namespaces = 1;
+}
+
+message ListKubernetesContainersRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  optional string pod_id = 4;
+
+  optional string order_by = 5;
+
+  optional string image = 6;
+
+  optional string image_tag = 7;
+
+  optional uint32 limit = 8;
+
+  optional uint32 offset = 9;
+
+  optional string name_contains = 10;
+
+  optional ContainerStatus status = 11;
+
+  optional ContainerType type = 12;
+
+  optional string image_digest = 13;
+
+  optional string namespace = 14;
+
+  optional string pod_name = 15;
+}
+
+message EnabledCluster {
+  string instance_id = 1;
+
+  string instance_name = 2;
+
+  string cluster_id = 3;
+
+  string cluster_name = 4;
+
+  bool is_degraded = 5;
+
+  bool metric_server_unavailable = 6;
+
+  bool is_enabled = 7;
+
+  string shard = 8;
+
+  optional string last_refresh_time = 9;
+
+  optional string last_connect_time = 10;
+
+  map<string, string> labels = 11;
+
+  bool is_direct_cluster = 12;
+}
+
+message ListKubernetesEnabledClustersRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  optional bool has_deprecated_apis = 3;
+}
+
+message ListKubernetesEnabledClustersResponse {
+  repeated EnabledCluster clusters = 1;
+}
+
+message Container {
+  string name = 1;
+
+  ContainerStatus status = 2;
+
+  ContainerType type = 3;
+
+  optional double cpu_limit = 4;
+
+  optional double cpu_request = 5;
+
+  optional double memory_limit = 6;
+
+  optional double memory_request = 7;
+
+  string image = 8;
+
+  string image_tag = 9;
+
+  string pod_name = 10;
+
+  string pod_id = 11;
+
+  string cluster_id = 12;
+
+  string instance_id = 13;
+
+  string id = 14;
+
+  string image_digest = 15;
+
+  optional double cpu_usage = 16;
+
+  optional double memory_usage = 17;
+
+  optional string start_time = 18;
+
+  optional string node_name = 19;
+
+  string namespace = 20;
+}
+
+message ListKubernetesContainersResponse {
+  repeated Container containers = 1;
+
+  uint32 count = 2;
+}
+
+message ListKubernetesImagesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  optional string order_by = 4;
+
+  optional uint32 limit = 5;
+
+  optional uint32 offset = 6;
+
+  optional string name_contains = 7;
+
+  optional string digest = 8;
+}
+
+message ListKubernetesImagesResponse {
+  repeated Image images = 1;
+
+  uint32 count = 2;
+}
+
+message GetKubernetesImageDetailRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string image_id = 4;
+}
+
+message GetKubernetesImageDetailResponse {
+  Image image = 1;
+}
+
+message Image {
+  string name = 1;
+
+  string tag = 2;
+
+  uint32 container_count = 3;
+
+  string digest = 4;
+
+  optional ImageCVEScanResult cve_scan_result = 5;
+}
+
+message ImageCVEScanResult {
+  repeated ImageCVE cves = 1;
+
+  uint32 cve_count = 2;
+
+  google.protobuf.Timestamp cve_last_scan_time = 3;
+}
+
+message ImageCVE {
+  string vulnerability_id = 1;
+
+  string title = 2;
+
+  string description = 3;
+
+  string severity = 4;
+
+  string primary_url = 5;
+
+  string status = 6;
+
+  string installed_version = 7;
+
+  string fixed_version = 8;
+}
+
+message ClusterResource {
+  string instance_id = 1;
+
+  string cluster_id = 2;
+
+  string name = 3;
+
+  string namespace = 4;
+
+  string group = 5;
+
+  string version = 6;
+
+  string kind = 7;
+
+  map<string, string> columns = 8;
+
+  optional ArgoCDApplicationInfo argocd_application_info = 9;
+
+  string create_time = 10;
+
+  optional string owner_id = 11;
+
+  string uid = 12;
+
+  optional bool has_child_objects = 13;
+
+  optional akuity.types.k8s.v1.ResourceCategory category = 14;
+
+  optional akuity.types.k8s.v1.DeprecatedInfo deprecated_info = 15;
+
+  optional string delete_time = 16;
+
+  repeated string reference_resources = 17;
+
+  map<string, string> labels = 18;
+
+  map<string, string> annotations = 19;
+}
+
+message ArgoCDApplicationInfo {
+  string name = 1;
+
+  SyncStatus sync_status = 2;
+
+  HealthStatus health_status = 3;
+
+  string link = 4;
+}
+
+message ResourceReferenceInfo {
+  reserved 5;
+
+  string id = 1;
+
+  optional string name = 2;
+
+  optional string namespace = 3;
+
+  akuity.types.k8s.v1.GroupVersionKind group_version_kind = 4;
+}
+
+message ListNotificationConfigsRequest {
+  string organization_id = 1;
+
+  optional int64 limit = 2;
+
+  optional int64 offset = 3;
+
+  repeated DeliveryMethod delivery_methods = 4;
+}
+
+message ListNotificationConfigsResponse {
+  repeated NotificationConfig notification_configs = 1;
+}
+
+message GetKubernetesManifestRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+}
+
+message GetKubernetesManifestResponse {
+  google.protobuf.Struct object = 1;
+
+  ClusterResource resource = 2;
+}
+
+message GetKubernetesLogsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+
+  optional int64 since_seconds = 5;
+
+  optional google.protobuf.Timestamp since_time = 6;
+
+  optional int64 tail_lines = 7;
+
+  optional bool follow = 8;
+
+  optional google.protobuf.Timestamp until_time = 9;
+
+  optional bool previous = 10;
+
+  optional string filter = 11;
+}
+
+message GetKubernetesLogsResponse {
+  string content = 1;
+
+  bool last = 2;
+
+  string timestamp = 3;
+
+  string pod_name = 4;
+
+  string container_name = 5;
+}
+
+message KubernetesEventsData {
+  string uid = 1;
+
+  string type = 2;
+
+  string reason = 3;
+
+  string message = 4;
+
+  int32 count = 5;
+
+  google.protobuf.Timestamp first_timestamp = 6;
+
+  google.protobuf.Timestamp last_timestamp = 7;
+
+  google.protobuf.Timestamp event_timestamp = 8;
+}
+
+message GetKubernetesEventsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+}
+
+message GetKubernetesEventsResponse {
+  repeated KubernetesEventsData events = 1;
+}
+
+message ListKubernetesAuditLogsRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+
+  optional google.protobuf.Timestamp start_time = 5;
+
+  optional google.protobuf.Timestamp end_time = 6;
+
+  repeated string actor_id = 7;
+
+  repeated string action = 8;
+
+  optional uint32 limit = 9;
+
+  optional uint32 offset = 10;
+}
+
+message ListKubernetesAuditLogsResponse {
+  repeated AuditLog items = 1;
+
+  uint32 count = 2;
+}
+
+message ListKubernetesNodesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  repeated NodeGroupBy group_by = 4;
+
+  optional NodeFiller filler = 5;
+}
+
+message KubernetesNode {
+  string id = 1;
+
+  string name = 2;
+
+  optional double fill_value = 3;
+
+  repeated string groups = 4;
+
+  optional string hostname = 5;
+
+  optional string cri = 6;
+
+  optional string availability_zone = 7;
+
+  optional string region = 8;
+
+  optional string platform = 9;
+
+  optional string kubelet_version = 10;
+
+  string cluster_name = 11;
+
+  optional double usage_cpu = 12;
+
+  optional double usage_memory = 13;
+
+  optional int64 allocated_pods = 14;
+
+  string instance_name = 15;
+
+  string instance_id = 16;
+}
+
+message ListKubernetesPodsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  repeated PodGroupBy group_by = 4;
+
+  optional PodFiller filler = 5;
+}
+
+message KubernetesPod {
+  string id = 1;
+
+  string name = 2;
+
+  string namespace = 3;
+
+  string cluster_name = 4;
+
+  optional double fill_value = 5;
+
+  repeated string groups = 6;
+
+  string instance_name = 7;
+
+  string instance_id = 8;
+}
+
+message ListKubernetesPodsResponse {
+  repeated KubernetesPod pods = 1;
+
+  FillValueUnit fill_value_unit = 2;
+
+  double min_fill_value = 3;
+
+  double max_fill_value = 4;
+}
+
+message KubernetesPodDetail {
+  string id = 1;
+
+  string name = 2;
+
+  string namespace = 3;
+
+  string node_name = 4;
+
+  string cluster_name = 5;
+
+  string region = 6;
+
+  string availability_zone = 7;
+
+  KubernetesPodStatus status = 8;
+
+  optional double usage_cpu = 9;
+
+  optional double usage_memory = 10;
+
+  string instance_name = 11;
+
+  string instance_id = 12;
+}
+
+message GetKubernetesPodRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string pod_id = 4;
+}
+
+message GetKubernetesPodResponse {
+  KubernetesPodDetail pod = 1;
+}
+
+message ListArgoCDApplicationsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  optional ApplicationFiller filler = 4;
+
+  optional string cluster_label_selector = 5;
+
+  optional string search = 6;
+
+  repeated ApplicationGroupBy group_by = 7;
+}
+
+message ArgoCDApplication {
+  string name = 1;
+
+  string namespace = 2;
+
+  string cluster_name = 3;
+
+  repeated string groups = 4;
+
+  string instance_name = 5;
+
+  string instance_id = 6;
+
+  optional HealthStatus health_status = 7;
+
+  optional SyncStatus sync_status = 8;
+
+  string link = 9;
+}
+
+message ListArgoCDApplicationsResponse {
+  repeated ArgoCDApplication applications = 1;
+}
+
+message ListKubernetesNodesResponse {
+  repeated KubernetesNode nodes = 1;
+
+  FillValueUnit fill_value_unit = 2;
+
+  double min_fill_value = 3;
+
+  double max_fill_value = 4;
+}
+
+message GetKubernetesNodeRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string node_id = 4;
+}
+
+message GetKubernetesClusterDetailRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+}
+
+message GetKubernetesClusterDetailResponse {
+  string id = 1;
+
+  string name = 2;
+
+  double cpu_allocatable = 3;
+
+  optional double cpu_usage = 4;
+
+  double cpu_request = 5;
+
+  double memory_allocatable = 6;
+
+  optional double memory_usage = 7;
+
+  double memory_request = 8;
+
+  uint32 pod_allocatable = 9;
+
+  uint32 pod_running = 10;
+
+  uint32 pod_total = 11;
+
+  uint32 node_count = 12;
+}
+
+message GetKubernetesSummaryRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  optional string kargo_instance_id = 3;
+}
+
+message GetKubernetesSummaryResponse {
+  uint32 instance_count = 1;
+
+  uint32 cluster_count = 2;
+
+  uint32 api_resource_count = 3;
+
+  uint32 object_count = 4;
+
+  uint32 node_count = 5;
+
+  uint32 pod_count = 6;
+
+  uint32 container_count = 7;
+
+  uint32 image_count = 8;
+
+  uint32 deprecated_api_count = 9;
+
+  uint32 cve_count = 10;
+
+  uint32 stuck_in_deletion_count = 11;
+
+  uint32 incident_count = 12;
+
+  ScheduledTaskOverview scheduled_task_overview = 13;
+}
+
+message ScheduledTaskOverview {
+  uint32 active_task_count = 1;
+
+  uint32 total_task_count = 2;
+}
+
+message GetKubernetesNodeResponse {
+  KubernetesNode node = 1;
+}
+
+message ListKubernetesNamespacesDetailsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  repeated NamespaceGroupBy group_by = 4;
+
+  optional NamespaceFiller filler = 5;
+}
+
+message NamespaceDetail {
+  string name = 1;
+
+  string cluster_id = 2;
+
+  string instance_id = 3;
+
+  optional double fill_value = 4;
+
+  repeated string groups = 5;
+
+  string id = 6;
+
+  optional double usage_cpu = 7;
+
+  optional double usage_memory = 8;
+
+  optional int32 pod_count = 9;
+
+  optional int32 running_pod_count = 10;
+
+  optional double request_cpu = 11;
+
+  optional double request_memory = 12;
+}
+
+message ListKubernetesNamespacesDetailsResponse {
+  repeated NamespaceDetail namespaces_details = 1;
+
+  FillValueUnit fill_value_unit = 2;
+
+  double min_fill_value = 3;
+
+  double max_fill_value = 4;
+}
+
+message GetKubernetesNamespaceDetailRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string namespace_id = 4;
+}
+
+message GetKubernetesNamespaceDetailResponse {
+  NamespaceDetail namespace_detail = 1;
+}
+
+message ListKubernetesDeprecatedAPIsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  optional string order_by = 4;
+
+  optional string group = 5;
+
+  optional string version = 6;
+
+  optional string kind = 7;
+
+  optional uint32 limit = 8;
+
+  optional uint32 offset = 9;
+
+  optional string api_version_contains = 10;
+
+  optional akuity.types.k8s.v1.DeprecatedInfoSeverity severity = 11;
+}
+
+message ListKubernetesDeprecatedAPIsResponse {
+  repeated akuity.types.k8s.v1.DeprecatedInfo apis = 1;
+
+  uint32 total_count = 3;
+}
+
+message ResourceID {
+  string api_version = 1;
+
+  string kind = 2;
+
+  string namespace = 3;
+
+  string name = 4;
+}
+
+message AssistantMessage {
+  string role = 1;
+
+  string content = 2;
+
+  string name = 3;
+
+  repeated AssistantToolCall tool_calls = 5;
+
+  string tool_call_id = 6;
+}
+
+message AssistantToolCall {
+  string id = 1;
+
+  string function_name = 2;
+
+  string arguments = 3;
+}
+
+message GetKubernetesAssistantSuggestionRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+
+  string application_name = 5;
+
+  string state = 6;
+
+  repeated AssistantMessage messages = 7;
+
+  ResourceID resource = 8;
+
+  string question = 9;
+
+  string application_namespace = 10;
+}
+
+message GetKubernetesAssistantSuggestionResponse {
+  string state = 1;
+
+  repeated AssistantMessage messages = 2;
+
+  repeated string suggested_questions = 3;
+}
+
+message ResolveKubernetesAssistantConversationRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+
+  bool resolved = 5;
+
+  string state = 6;
+}
+
+message ResolveKubernetesAssistantConversationResponse {
+  string state = 1;
+}
+
+message ListKubernetesTimelineEventsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  repeated string namespaces = 4;
+
+  repeated string timeline_resource_ids = 5;
+
+  optional google.protobuf.Timestamp start_time = 6;
+
+  optional google.protobuf.Timestamp end_time = 7;
+
+  repeated string application_names = 8;
+}
+
+message ListKubernetesTimelineEventsResponse {
+  repeated TimelineEvent events = 1;
+}
+
+message TimelineEvent {
+  string id = 1;
+
+  string timeline_resource_id = 2;
+
+  string cluster_id = 3;
+
+  string instance_id = 4;
+
+  TimelineEventType event_type = 5;
+
+  TimelineEventSeverity severity = 6;
+
+  string reason = 7;
+
+  string message = 8;
+
+  google.protobuf.Timestamp timestamp = 9;
+
+  optional google.protobuf.Timestamp last_timestamp = 10;
+
+  uint32 count = 11;
+
+  optional string argocd_application_link = 12;
+
+  optional string old_value = 13;
+
+  optional string new_value = 14;
+}
+
+message ListKubernetesTimelineResourcesRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated string cluster_ids = 3;
+
+  repeated string namespaces = 4;
+
+  optional string group = 5;
+
+  optional string kind = 6;
+
+  optional uint32 limit = 7;
+
+  optional uint32 offset = 8;
+}
+
+message ListKubernetesTimelineResourcesResponse {
+  repeated TimelineResource resources = 1;
+
+  uint32 count = 2;
+}
+
+message TimelineResource {
+  string instance_id = 1;
+
+  string cluster_id = 2;
+
+  string timeline_resource_id = 3;
+}
+
+message GetKubeVisionUsageRequest {
+  string organization_id = 1;
+
+  optional google.protobuf.Timestamp start_time = 2;
+
+  optional google.protobuf.Timestamp end_time = 3;
+}
+
+message GetKubeVisionUsageResponse {
+  repeated KubeVisionUsage usage = 1;
+}
+
+message AIUsage {
+  uint32 tokens = 1;
+
+  double cost = 4;
+}
+
+message KubeVisionUsage {
+  google.protobuf.Timestamp timestamp = 1;
+
+  uint32 instance_count = 2;
+
+  uint32 cluster_count = 3;
+
+  uint32 api_resource_count = 4;
+
+  uint32 object_count = 5;
+
+  uint32 node_count = 6;
+
+  uint32 pod_count = 7;
+
+  uint32 container_count = 8;
+
+  AIUsage ai_usage = 9;
+
+  uint32 application_count = 10;
+}
+
+message GetNotificationConfigRequest {
+  string organization_id = 1;
+
+  string id = 2;
+}
+
+message GetNotificationConfigResponse {
+  NotificationConfig notification_config = 1;
+}
+
+message WebhookNotificationFilter {
+  repeated string events = 1;
+
+  bool filter_argocd_instance_names = 2;
+
+  repeated string argocd_instance_names = 3;
+
+  bool filter_kargo_instance_names = 4;
+
+  repeated string kargo_instance_names = 5;
+
+  bool filter_argocd_cluster_names = 6;
+
+  repeated string argocd_cluster_names = 7;
+
+  bool filter_kargo_agent_names = 8;
+
+  repeated string kargo_agent_names = 9;
+}
+
+message WebhookNotificationCreatePayload {
+  string url = 2;
+
+  string secret = 3;
+
+  repeated string events = 4 [deprecated = true];
+
+  WebhookNotificationFilter filter = 5;
+}
+
+message EmailNotificationCreatePayload {
+  repeated string emails = 1;
+
+  WebhookNotificationFilter filter = 2;
+}
+
+message CreateNotificationConfigRequest {
+  string organization_id = 1;
+
+  string name = 2;
+
+  oneof payload {
+    WebhookNotificationCreatePayload webhook = 3;
+
+    EmailNotificationCreatePayload email = 4;
+  }
+}
+
+message CreateNotificationConfigResponse {
+  NotificationConfig notification_config = 1;
+}
+
+message WebhookNotificationUpdatePayload {
+  string url = 1;
+
+  bool use_previous_secret = 2;
+
+  string secret = 3;
+
+  repeated string events = 4 [deprecated = true];
+
+  bool active = 5;
+
+  WebhookNotificationFilter filter = 6;
+}
+
+message EmailNotificationUpdatePayload {
+  repeated string emails = 1;
+
+  bool active = 2;
+
+  WebhookNotificationFilter filter = 3;
+}
+
+message UpdateNotificationConfigRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  oneof payload {
+    WebhookNotificationUpdatePayload webhook = 3;
+
+    EmailNotificationUpdatePayload email = 5;
+  }
+
+  string name = 4;
+}
+
+message UpdateNotificationConfigResponse {
+  NotificationConfig notification_config = 1;
+}
+
+message DeleteNotificationConfigRequest {
+  string organization_id = 1;
+
+  string id = 2;
+}
+
+message DeleteNotificationConfigResponse {
+}
+
+message PingNotificationConfigRequest {
+  string organization_id = 1;
+
+  string id = 2;
+}
+
+message PingNotificationConfigResponse {
+}
+
+message RedeliverNotificationRequest {
+  string organization_id = 1;
+
+  string config_id = 2;
+
+  string id = 3;
+}
+
+message RedeliverNotificationResponse {
+}
+
+message ListNotificationDeliveryHistoryRequest {
+  string organization_id = 1;
+
+  string id = 2;
+
+  optional int64 limit = 3;
+
+  optional int64 offset = 4;
+}
+
+message ListNotificationDeliveryHistoryResponse {
+  repeated NotificationDelivery history = 1;
+
+  uint64 total_history_count = 2;
+}
+
+message GetNotificationDeliveryHistoryDetailRequest {
+  string organization_id = 1;
+
+  string config_id = 2;
+
+  string id = 3;
+}
+
+message GetNotificationDeliveryHistoryDetailResponse {
+  NotificationDeliveryDetail detail = 1;
+}
+
+message WebhookNotificationDeliveryMetadataSummary {
+  optional int64 status_code = 1;
+
+  optional string error = 2;
+
+  google.protobuf.Timestamp start_time = 3;
+
+  google.protobuf.Timestamp end_time = 4;
+}
+
+message EmailNotificationDeliveryMetadataSummary {
+  optional string error = 1;
+
+  google.protobuf.Timestamp attempt_time = 2;
+
+  optional string target_email_address = 3;
+}
+
+message EmailNotificationDeliveryMetadata {
+  optional string error = 1;
+
+  google.protobuf.Timestamp attempt_time = 2;
+
+  optional string target_email_address = 3;
+}
+
+message WebhookNotificationDeliveryMetadata {
+  optional int64 status_code = 1;
+
+  optional string response = 2;
+
+  optional string error = 3;
+
+  google.protobuf.Timestamp start_time = 4;
+
+  google.protobuf.Timestamp end_time = 5;
+
+  map<string, string> response_headers = 6;
+
+  map<string, string> request_headers = 7;
+
+  optional string request = 8;
+}
+
+message NotificationDeliverySummary {
+  string id = 1;
+
+  string event_id = 2;
+
+  string event_type = 3;
+
+  NotificationDeliveryStatus delivery_status = 4;
+
+  google.protobuf.Timestamp initial_delivery_time = 5;
+
+  uint64 retry_count = 6;
+
+  oneof metadata {
+    WebhookNotificationDeliveryMetadataSummary webhook = 7;
+
+    EmailNotificationDeliveryMetadataSummary email = 9;
+  }
+
+  bool redelivered = 8;
+}
+
+message NotificationDelivery {
+  string id = 1;
+
+  string event_id = 2;
+
+  string event_type = 3;
+
+  NotificationDeliveryStatus delivery_status = 4;
+
+  google.protobuf.Timestamp initial_delivery_time = 5;
+
+  uint64 retry_count = 6;
+
+  oneof metadata {
+    WebhookNotificationDeliveryMetadata webhook = 7;
+
+    EmailNotificationDeliveryMetadata email = 9;
+  }
+
+  bool redelivered = 8;
+}
+
+message WebhookNotificationDeliveryDetail {
+  repeated WebhookNotificationDeliveryMetadata webhook = 1;
+}
+
+message EmailNotificationDeliveryDetail {
+  repeated EmailNotificationDeliveryMetadata email = 1;
+}
+
+message NotificationDeliveryDetail {
+  string id = 1;
+
+  string event_id = 2;
+
+  string event_type = 3;
+
+  NotificationDeliveryStatus delivery_status = 4;
+
+  google.protobuf.Timestamp initial_delivery_time = 5;
+
+  uint64 retry_count = 6;
+
+  oneof detail {
+    WebhookNotificationDeliveryDetail webhook = 7;
+
+    EmailNotificationDeliveryDetail email = 9;
+  }
+
+  bool redelivered = 8;
+}
+
+message NotificationConfig {
+  string id = 1;
+
+  oneof config {
+    WebhookConfig webhook = 2;
+
+    EmailConfig email = 6;
+  }
+
+  DeliveryMethod delivery_method = 3;
+
+  string name = 4;
+
+  optional NotificationDeliverySummary last_delivery = 5;
+}
+
+message WebhookConfig {
+  string url = 1;
+
+  string secret = 2;
+
+  repeated string events = 3 [deprecated = true];
+
+  bool active = 4;
+
+  WebhookNotificationFilter filter = 5;
+}
+
+message EmailConfig {
+  repeated string emails = 1;
+
+  bool active = 2;
+
+  WebhookNotificationFilter filter = 3;
+}
+
+message CreateWorkspaceCustomRoleRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string name = 3;
+
+  string description = 4;
+
+  string policy = 5;
+}
+
+message CreateWorkspaceCustomRoleResponse {
+  CustomRole custom_role = 1;
+
+  string workspace_id = 2;
+}
+
+message UpdateWorkspaceCustomRoleRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string description = 5;
+
+  string policy = 6;
+}
+
+message UpdateWorkspaceCustomRoleResponse {
+  CustomRole custom_role = 1;
+
+  string workspace_id = 2;
+}
+
+message GetWorkspaceCustomRoleRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+}
+
+message GetWorkspaceCustomRoleResponse {
+  CustomRole custom_role = 1;
+
+  string workspace_id = 2;
+}
+
+message ListWorkspaceCustomRolesRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  optional uint32 limit = 3;
+
+  optional uint32 offset = 4;
+}
+
+message ListWorkspaceCustomRolesResponse {
+  repeated CustomRole custom_roles = 1;
+
+  string workspace_id = 2;
+
+  int64 total_count = 3;
+}
+
+message DeleteWorkspaceCustomRoleRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+}
+
+message DeleteWorkspaceCustomRoleResponse {
+}
+
+message DomainVerification {
+  string domain = 1;
+
+  bool verified = 2;
+}
+
+message GetAIModelsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  optional string kargo_instance_id = 3;
+}
+
+message GetAIModelsResponse {
+  string main_model = 1;
+
+  repeated string models = 2;
+}
+
+message GetAIProviderModelsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  optional string kargo_instance_id = 3;
+
+  string provider = 4;
+
+  string api_base = 5;
+
+  string api_key = 6;
+}
+
+message GetAIProviderModelsResponse {
+  repeated string models = 1;
+}
+
+message CreateAIConversationRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  repeated AIMessageContext contexts = 3;
+
+  bool incident = 4;
+
+  optional KargoPromotionAnalysis kargo_promotion_analysis = 5;
+
+  optional string kargo_instance_id = 6;
+
+  optional ScheduledTask scheduled_task = 7;
+}
+
+message KargoPromotionAnalysis {
+  string project = 1;
+
+  string stage = 2;
+
+  string freight = 3;
+
+  optional bool re_analyze = 4;
+}
+
+message CreateAIConversationResponse {
+  AIConversation conversation = 1;
+}
+
+message CreateIncidentRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  string webhook_name = 3;
+
+  google.protobuf.Struct body = 4;
+}
+
+message CreateIncidentResponse {
+}
+
+message ResolveIncidentsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  optional string kargo_instance_id = 3;
+
+  repeated string incident_ids = 4;
+
+  optional bool apply_to_all = 5;
+
+  bool resolved = 6;
+
+  optional string title_contains = 7;
+
+  optional IncidentStatus incident_status = 8;
+
+  optional string application = 9;
+
+  optional string namespace = 10;
+
+  optional string cluster_id = 11;
+
+  optional string kargo_project = 12;
+}
+
+message ResolveIncidentsResponse {
+}
+
+message UpdateAIConversationRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string title = 3;
+
+  optional string instance_id = 4;
+
+  bool public = 5;
+
+  optional IncidentConfig incident = 6;
+
+  repeated AIMessageContext contexts = 7;
+
+  optional string kargo_instance_id = 8;
+
+  optional ScheduledTask scheduled_task = 9;
+}
+
+message ShareAIConversationRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string instance_id = 3;
+
+  optional string kargo_instance_id = 4;
+
+  string slack_channel_name = 5;
+}
+
+message ShareAIConversationResponse {
+  SlackInfo slack_info = 1;
+}
+
+message UnshareAIConversationRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  string instance_id = 3;
+
+  optional string kargo_instance_id = 4;
+}
+
+message UnshareAIConversationResponse {
+}
+
+message SuspendAIConversationRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  optional string instance_id = 3;
+
+  optional string kargo_instance_id = 4;
+}
+
+message SuspendAIConversationResponse {
+}
+
+message IncidentConfig {
+  bool resolved = 1;
+}
+
+message UpdateAIConversationResponse {
+}
+
+message DeleteAIConversationRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  optional string instance_id = 3;
+
+  optional string kargo_instance_id = 4;
+}
+
+message DeleteAIConversationResponse {
+}
+
+message GetAIConversationRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  optional string instance_id = 3;
+
+  optional string kargo_instance_id = 4;
+}
+
+message GetAIConversationResponse {
+  AIConversation conversation = 1;
+}
+
+message GetAIConversationStreamRequest {
+  string id = 1;
+
+  string organization_id = 2;
+
+  optional string instance_id = 3;
+
+  optional string kargo_instance_id = 4;
+}
+
+message GetAIConversationStreamResponse {
+  AIConversation conversation = 1;
+}
+
+message ListAIConversationsRequest {
+  string organization_id = 1;
+
+  optional string instance_id = 2;
+
+  optional bool incident_only = 3;
+
+  optional IncidentStatus incident_status = 4;
+
+  optional string application = 5;
+
+  optional string namespace = 6;
+
+  optional string title_contains = 7;
+
+  optional uint32 offset = 8;
+
+  optional uint32 limit = 9;
+
+  optional string cluster_id = 10;
+
+  optional string kargo_project = 11;
+
+  optional string kargo_instance_id = 12;
+
+  optional bool scheduled_task_only = 13;
+
+  optional ScheduledTaskStatus scheduled_task_status = 14;
+
+  optional string start_time = 15;
+
+  optional string end_time = 16;
+
+  optional bool has_user_interactions = 17;
+}
+
+message ListAIConversationsResponse {
+  repeated AIConversation conversations = 1;
+
+  uint32 count = 2;
+}
+
+message CreateAIMessageRequest {
+  string conversation_id = 1;
+
+  string organization_id = 2;
+
+  string content = 3;
+
+  repeated AIMessageContext contexts = 4;
+
+  optional string instance_id = 5;
+
+  optional string kargo_instance_id = 6;
+
+  repeated AIMessageRunbook runbooks = 7;
+}
+
+message CreateAIMessageResponse {
+}
+
+message SetAIToolApprovalStatusRequest {
+  string conversation_id = 1;
+
+  string organization_id = 2;
+
+  string message_id = 3;
+
+  string tool_call_id = 4;
+
+  AIToolApprovalStatus status = 5;
+
+  optional string instance_id = 6;
+
+  optional string kargo_instance_id = 7;
+}
+
+message SetAIToolApprovalStatusResponse {
+}
+
+message ListAIConversationSuggestionsRequest {
+  string conversation_id = 1;
+
+  string organization_id = 2;
+
+  repeated AIMessageContext contexts = 3;
+
+  optional string instance_id = 4;
+
+  optional string kargo_instance_id = 5;
+}
+
+message ListAIConversationSuggestionsResponse {
+  repeated AIConversationSuggestion suggestions = 1;
+}
+
+message ArgoCDAppContext {
+  string instance_id = 1;
+
+  string name = 2;
+
+  string namespace = 3;
+}
+
+message K8SNamespaceContext {
+  string instance_id = 1;
+
+  string cluster_id = 2;
+
+  string name = 3;
+}
+
+message KargoProjectContext {
+  string instance_id = 1;
+
+  string name = 2;
+}
+
+message ArgoCDInstanceContext {
+  string instance_id = 1;
+}
+
+message ArgoCDClusterContext {
+  string instance_id = 1;
+
+  string cluster_id = 2;
+}
+
+message AIMessageContext {
+  optional ArgoCDAppContext argo_cd_app = 1;
+
+  optional K8SNamespaceContext k8s_namespace = 2;
+
+  optional KargoProjectContext kargo_project = 3;
+
+  optional ArgoCDInstanceContext argo_cd_instance = 4;
+
+  optional ArgoCDClusterContext argo_cd_cluster = 5;
+}
+
+message AIConversationStep {
+  string name = 1;
+
+  AIConversationStepStatus status = 2;
+
+  google.protobuf.Timestamp start_time = 3;
+
+  google.protobuf.Timestamp end_time = 4;
+
+  optional string summary = 5;
+
+  string id = 6;
+
+  string parent_message_id = 7;
+
+  string function_name = 8;
+
+  string function_arguments = 9;
+}
+
+message AIMessage {
+  reserved 7;
+
+  google.protobuf.Timestamp create_time = 1;
+
+  string role = 3;
+
+  string content = 4;
+
+  string thinking_process = 5;
+
+  repeated AISuggestedChange suggested_changes = 6;
+
+  string id = 8;
+
+  repeated AIConversationStep steps = 9;
+
+  string username = 10;
+
+  bool owned_by_me = 11;
+
+  optional bool is_useful = 12;
+
+  repeated AIMessageAdditionalContent additional_content = 13;
+
+  optional bool is_scheduled_task_report = 14;
+}
+
+message AIMessageAdditionalContent {
+  AIMessageAdditionalContentType type = 1;
+
+  string content = 2;
+
+  optional string button_title = 3;
+
+  optional string button_prompt = 4;
+
+  string content_title = 5;
+}
+
+message AISuggestedChange {
+  AIMessageContext context = 1;
+
+  string old = 2;
+
+  string new = 3;
+
+  string patch = 4;
+
+  bool applied = 5;
+}
+
+message Incident {
+  optional google.protobuf.Timestamp resolved_at = 1;
+
+  optional string summary = 2;
+
+  optional string root_cause = 3;
+
+  optional string resolution = 4;
+
+  optional string application = 6;
+
+  optional string namespace = 7;
+
+  string instance_id = 8;
+
+  optional string cluster_id = 9;
+
+  optional string instance_hostname = 10;
+
+  optional uint32 incident_number = 11;
+}
+
+message FreightStageStatus {
+  string stage = 1;
+
+  bool verified = 2;
+
+  bool exists = 3;
+
+  bool rolled_back = 4;
+}
+
+message ScheduledTask {
+  string schedule = 1;
+
+  ScheduledTaskStatus status = 2;
+
+  string job_description = 3;
+
+  optional uint32 execution_count = 4;
+
+  optional google.protobuf.Timestamp last_execution_time = 5;
+
+  optional google.protobuf.Timestamp next_execution_time = 6;
+
+  optional uint32 scheduled_task_number = 7;
+
+  string title = 8;
+
+  optional string cron_expression = 9;
+
+  repeated string slack_channel_names = 10;
+}
+
+message PromotionAnalysis {
+  optional google.protobuf.Timestamp finish_time = 1;
+
+  optional string project = 2;
+
+  optional string instance_id = 3;
+
+  optional string freight = 4;
+
+  optional string stage = 5;
+
+  optional string summary = 6;
+
+  optional string risk_level = 7;
+
+  optional string decision = 8;
+
+  optional string commit_diff_url = 9;
+
+  optional string current_freight = 10;
+
+  repeated FreightStageStatus freight_stage_statuses = 11;
+}
+
+message AIMessageRunbook {
+  string instance_id = 1;
+
+  string name = 2;
+}
+
+message SlackInfo {
+  string instance_id = 1;
+
+  string channel_name = 2;
+
+  string channel_id = 3;
+
+  string thread_id = 4;
+
+  string permalink = 5;
+}
+
+message AIConversation {
+  string id = 1;
+
+  string title = 2;
+
+  google.protobuf.Timestamp create_time = 3;
+
+  google.protobuf.Timestamp last_update_time = 4;
+
+  repeated AIMessage messages = 5;
+
+  bool processing = 6;
+
+  bool public = 7;
+
+  bool owned_by_me = 8;
+
+  repeated AIMessageContext contexts = 9;
+
+  string processing_error = 10;
+
+  optional Incident incident = 11;
+
+  repeated string feedbacks = 12;
+
+  optional PromotionAnalysis promotion_analysis = 13;
+
+  string instance_id = 14;
+
+  repeated AIMessageRunbook runbooks = 15;
+
+  bool has_user_interactions = 16;
+
+  optional SlackInfo slack_info = 17;
+
+  string kargo_instance_id = 18;
+
+  optional ScheduledTask scheduled_task = 19;
+
+  bool processing_error_is_fatal = 20;
+
+  bool suspended = 21;
+}
+
+message UserMFAStatus {
+  string email = 1;
+
+  bool enabled = 2;
+
+  string role = 3;
+}
+
+message ListUsersMFAStatusRequest {
+  string organization_id = 1;
+}
+
+message ListUsersMFAStatusResponse {
+  repeated UserMFAStatus user_mfa_status = 1;
+}
+
+message RequestMFAResetRequest {
+  string organization_id = 1;
+
+  string email = 2;
+}
+
+message RequestMFAResetResponse {
+}
+
+message AIConversationSuggestion {
+  string description = 1;
+
+  string prompt = 2;
+}
+
+message UpdateAIMessageFeedbackRequest {
+  string organization_id = 1;
+
+  string conversation_id = 2;
+
+  string message_id = 3;
+
+  bool is_useful = 4;
+
+  optional string instance_id = 5;
+
+  optional string kargo_instance_id = 6;
+}
+
+message UpdateAIMessageFeedbackResponse {
+}
+
+message UpdateAIConversationFeedbackRequest {
+  string organization_id = 1;
+
+  string conversation_id = 2;
+
+  optional string instance_id = 3;
+
+  string feedback = 4;
+
+  optional string kargo_instance_id = 5;
+}
+
+message UpdateAIConversationFeedbackResponse {
+}
+
+message GetFeatureStatusesRequest {
+  string id = 1;
+}
+
+message GetFeatureStatusesResponse {
+  akuity.types.features.v1.FeatureStatuses feature_statuses = 1;
+}
+
+message DeleteKubernetesResourceRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+}
+
+message DeleteKubernetesResourceResponse {
+}
+
+message GetKubernetesResourceDiffRequest {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string cluster_id = 3;
+
+  string resource_id = 4;
+}
+
+message GetKubernetesResourceDiffResponse {
+  repeated KubernetesResourceDiffItem items = 1;
+}
+
+message KubernetesResourceDiffItem {
+  string group = 1;
+
+  string kind = 2;
+
+  string namespace = 3;
+
+  string name = 4;
+
+  string target_state = 5;
+
+  string live_state = 6;
+
+  string normalized_live_state = 7;
+
+  string predicted_live_state = 8;
+
+  string resource_version = 9;
+}
+
+enum AIToolPolicyAction {
+  AI_TOOL_POLICY_ACTION_UNSPECIFIED = 0;
+
+  AI_TOOL_POLICY_ACTION_APPROVE = 1;
+
+  AI_TOOL_POLICY_ACTION_REQUIRE_APPROVAL = 2;
+}
+
+enum AIToolPolicyActionType {
+  AI_TOOL_POLICY_ACTION_TYPE_UNSPECIFIED = 0;
+
+  AI_TOOL_POLICY_ACTION_TYPE_MUTABLE = 1;
+
+  AI_TOOL_POLICY_ACTION_TYPE_READONLY = 2;
+}
+
+enum SAMLDigestAlgorithm {
+  SAML_DIGEST_ALGORITHM_UNSPECIFIED = 0;
+
+  SAML_DIGEST_ALGORITHM_SHA256 = 1;
+
+  SAML_DIGEST_ALGORITHM_SHA1 = 2;
+}
+
+enum SAMLSignatureAlgorithm {
+  SAML_SIGNATURE_ALGORITHM_UNSPECIFIED = 0;
+
+  SAML_SIGNATURE_ALGORITHM_RSA_SHA256 = 1;
+
+  SAML_SIGNATURE_ALGORITHM_RSA_SHA1 = 2;
+}
+
+enum SAMLProtocolBinding {
+  SAML_PROTOCOL_BINDING_UNSPECIFIED = 0;
+
+  SAML_PROTOCOL_BINDING_HTTP_REDIRECT = 1;
+
+  SAML_PROTOCOL_BINDING_HTTP_POST = 2;
+}
+
+enum WorkspaceMemberRole {
+  WORKSPACE_MEMBER_ROLE_UNSPECIFIED = 0;
+
+  WORKSPACE_MEMBER_ROLE_MEMBER = 1;
+
+  WORKSPACE_MEMBER_ROLE_ADMIN = 2;
+}
+
+enum ContainerStatus {
+  CONTAINER_STATUS_UNSPECIFIED = 0;
+
+  CONTAINER_STATUS_RUNNING = 1;
+
+  CONTAINER_STATUS_ERROR = 2;
+
+  CONTAINER_STATUS_COMPLETED = 3;
+
+  CONTAINER_STATUS_PENDING = 4;
+}
+
+enum ContainerType {
+  CONTAINER_TYPE_UNSPECIFIED = 0;
+
+  CONTAINER_TYPE_CONTAINER = 1;
+
+  CONTAINER_TYPE_INIT_CONTAINER = 2;
+
+  CONTAINER_TYPE_SIDECAR_CONTAINER = 3;
+
+  CONTAINER_TYPE_EPHEMERAL_CONTAINER = 4;
+}
+
+enum SyncStatus {
+  SYNC_STATUS_UNSPECIFIED = 0;
+
+  SYNC_STATUS_SYNCED = 1;
+
+  SYNC_STATUS_OUT_OF_SYNC = 2;
+
+  SYNC_STATUS_UNKNOWN = 3;
+}
+
+enum HealthStatus {
+  HEALTH_STATUS_UNSPECIFIED = 0;
+
+  HEALTH_STATUS_HEALTHY = 1;
+
+  HEALTH_STATUS_DEGRADED = 2;
+
+  HEALTH_STATUS_MISSING = 3;
+
+  HEALTH_STATUS_UNKNOWN = 4;
+
+  HEALTH_STATUS_PROGRESSING = 5;
+
+  HEALTH_STATUS_SUSPENDED = 6;
+}
+
+enum DeliveryMethod {
+  DELIVERY_METHOD_UNSPECIFIED = 0;
+
+  DELIVERY_METHOD_WEBHOOK = 1;
+
+  DELIVERY_METHOD_EMAIL = 2;
+}
+
+enum NodeGroupBy {
+  NODE_GROUP_BY_UNSPECIFIED = 0;
+
+  NODE_GROUP_BY_CLUSTER = 1;
+
+  NODE_GROUP_BY_AVAILABILITY_ZONE = 2;
+
+  NODE_GROUP_BY_REGION = 3;
+
+  NODE_GROUP_BY_HOSTNAME = 4;
+}
+
+enum NodeFiller {
+  NODE_FILLER_UNSPECIFIED = 0;
+
+  NODE_FILLER_USAGE_CPU = 1;
+
+  NODE_FILLER_USAGE_MEMORY = 2;
+
+  NODE_FILLER_ALLOCATED_PODS = 3;
+
+  NODE_FILLER_USAGE_PODS = 4;
+}
+
+enum PodGroupBy {
+  POD_GROUP_BY_UNSPECIFIED = 0;
+
+  POD_GROUP_BY_CLUSTER = 1;
+
+  POD_GROUP_BY_AVAILABILITY_ZONE = 2;
+
+  POD_GROUP_BY_REGION = 3;
+
+  POD_GROUP_BY_NODE = 4;
+}
+
+enum PodFiller {
+  POD_FILLER_UNSPECIFIED = 0;
+
+  POD_FILLER_USAGE_CPU = 1;
+
+  POD_FILLER_USAGE_MEMORY = 2;
+
+  POD_FILLER_STATUS = 3;
+}
+
+enum KubernetesPodStatus {
+  KUBERNETES_POD_STATUS_UNSPECIFIED = 0;
+
+  KUBERNETES_POD_STATUS_PENDING = 1;
+
+  KUBERNETES_POD_STATUS_RUNNING = 2;
+
+  KUBERNETES_POD_STATUS_SUCCEEDED = 3;
+
+  KUBERNETES_POD_STATUS_FAILED = 4;
+}
+
+enum ApplicationFiller {
+  APPLICATION_FILLER_UNSPECIFIED = 0;
+
+  APPLICATION_FILLER_HEALTH_STATUS = 1;
+
+  APPLICATION_FILLER_SYNC_STATUS = 2;
+}
+
+enum ApplicationGroupBy {
+  APPLICATION_GROUP_BY_UNSPECIFIED = 0;
+
+  APPLICATION_GROUP_BY_CLUSTER = 1;
+}
+
+enum FillValueUnit {
+  FILL_VALUE_UNIT_UNSPECIFIED = 0;
+
+  FILL_VALUE_UNIT_PERCENTAGE = 1;
+
+  FILL_VALUE_UNIT_COUNT = 2;
+}
+
+enum NamespaceGroupBy {
+  NAMESPACE_GROUP_BY_UNSPECIFIED = 0;
+
+  NAMESPACE_GROUP_BY_CLUSTER = 1;
+}
+
+enum NamespaceFiller {
+  NAMESPACE_FILLER_UNSPECIFIED = 0;
+
+  NAMESPACE_FILLER_USAGE_CPU = 1;
+
+  NAMESPACE_FILLER_USAGE_MEMORY = 2;
+
+  NAMESPACE_FILLER_USAGE_TO_REQUEST_CPU = 3;
+
+  NAMESPACE_FILLER_USAGE_TO_REQUEST_MEMORY = 4;
+}
+
+enum TimelineEventType {
+  TIMELINE_EVENT_TYPE_UNSPECIFIED = 0;
+
+  TIMELINE_EVENT_TYPE_AUDIT_LOG = 1;
+
+  TIMELINE_EVENT_TYPE_SYNC_OPERATION = 2;
+
+  TIMELINE_EVENT_TYPE_HEALTH_CHANGED = 3;
+
+  TIMELINE_EVENT_TYPE_SPEC_CHANGED = 4;
+
+  TIMELINE_EVENT_TYPE_NODE = 5;
+
+  TIMELINE_EVENT_TYPE_KARGO_PROMOTION = 6;
+}
+
+enum TimelineEventSeverity {
+  TIMELINE_EVENT_SEVERITY_UNSPECIFIED = 0;
+
+  TIMELINE_EVENT_SEVERITY_INFO = 1;
+
+  TIMELINE_EVENT_SEVERITY_WARNING = 2;
+
+  TIMELINE_EVENT_SEVERITY_CRITICAL = 3;
+}
+
+enum NotificationDeliveryStatus {
+  NOTIFICATION_DELIVERY_STATUS_UNSPECIFIED = 0;
+
+  NOTIFICATION_DELIVERY_STATUS_SUCCESS = 1;
+
+  NOTIFICATION_DELIVERY_STATUS_FAILURE = 2;
+}
+
+enum AIToolApprovalStatus {
+  AI_TOOL_APPROVAL_STATUS_UNSPECIFIED = 0;
+
+  AI_TOOL_APPROVAL_STATUS_APPROVED = 1;
+
+  AI_TOOL_APPROVAL_STATUS_REJECTED = 2;
+}
+
+enum AIConversationStepStatus {
+  AI_CONVERSATION_STEP_STATUS_UNSPECIFIED = 0;
+
+  AI_CONVERSATION_STEP_STATUS_RUNNING = 1;
+
+  AI_CONVERSATION_STEP_STATUS_FAILED = 2;
+
+  AI_CONVERSATION_STEP_STATUS_SUCCEEDED = 3;
+
+  AI_CONVERSATION_STEP_STATUS_PENDING_APPROVAL = 4;
+}
+
+enum AIMessageAdditionalContentType {
+  AI_MESSAGE_ADDITIONAL_CONTENT_TYPE_UNSPECIFIED = 0;
+
+  AI_MESSAGE_ADDITIONAL_CONTENT_TYPE_DIFF = 1;
+
+  AI_MESSAGE_ADDITIONAL_CONTENT_TYPE_MARKDOWN = 2;
+}
+
+enum IncidentStatus {
+  INCIDENT_STATUS_UNSPECIFIED = 0;
+
+  INCIDENT_STATUS_RESOLVED = 1;
+
+  INCIDENT_STATUS_UNRESOLVED = 2;
+}
+
+enum ScheduledTaskStatus {
+  SCHEDULED_TASK_STATUS_UNSPECIFIED = 0;
+
+  SCHEDULED_TASK_STATUS_ACTIVE = 1;
+
+  SCHEDULED_TASK_STATUS_SUSPENDED = 2;
+}
+
+service OrganizationService {
+  rpc ListAuthenticatedUserOrganizations ( ListAuthenticatedUserOrganizationsRequest ) returns ( ListAuthenticatedUserOrganizationsResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations" };
+  }
+
+  rpc GetOrganization ( GetOrganizationRequest ) returns ( GetOrganizationResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations/{id}" };
+  }
+
+  rpc GetOrganizationPermissions ( GetOrganizationPermissionsRequest ) returns ( GetOrganizationPermissionsResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations/{id}/permissions" };
+  }
+
+  rpc CreateOrganization ( CreateOrganizationRequest ) returns ( CreateOrganizationResponse ) {
+    option (google.api.http) = { post: "/api/v1/organizations", body: "*" };
+  }
+
+  rpc UpdateOrganization ( UpdateOrganizationRequest ) returns ( UpdateOrganizationResponse ) {
+    option (google.api.http) = { put: "/api/v1/organizations/{id}", body: "*" };
+  }
+
+  rpc DeleteOrganization ( DeleteOrganizationRequest ) returns ( DeleteOrganizationResponse ) {
+    option (google.api.http) = { delete: "/api/v1/organizations/{id}" };
+  }
+
+  rpc ListOrganizationMembers ( ListOrganizationMembersRequest ) returns ( ListOrganizationMembersResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations/{id}/members" };
+  }
+
+  rpc ListOrganizationInvitees ( ListOrganizationInviteesRequest ) returns ( ListOrganizationInviteesResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations/{id}/invitees" };
+  }
+
+  rpc GetUserRoleInOrganization ( GetUserRoleInOrganizationRequest ) returns ( GetUserRoleInOrganizationResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations/{id}/role" };
+  }
+
+  rpc InviteMembers ( InviteMembersRequest ) returns ( InviteMembersResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{id}/members/invite",
+      body: "*"
+    };
+  }
+
+  rpc UninviteOrganizationMember ( UninviteOrganizationMemberRequest ) returns ( UninviteOrganizationMemberResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{id}/members/uninvite",
+      body: "*"
+    };
+  }
+
+  rpc RemoveOrganizationMember ( RemoveOrganizationMemberRequest ) returns ( RemoveOrganizationMemberResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/organizations/{id}/members/{member_id}"
+    };
+  }
+
+  rpc UpdateOrganizationMemberRole ( UpdateOrganizationMemberRoleRequest ) returns ( UpdateOrganizationMemberRoleResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/organizations/{id}/members/{member_id}",
+      body: "*"
+    };
+  }
+
+  rpc JoinOrganization ( JoinOrganizationRequest ) returns ( JoinOrganizationResponse ) {
+    option (google.api.http) = { post: "/api/v1/organizations/{id}/join" };
+  }
+
+  rpc RejectOrganization ( RejectOrganizationRequest ) returns ( RejectOrganizationResponse ) {
+    option (google.api.http) = { post: "/api/v1/organizations/{id}/reject" };
+  }
+
+  rpc ListOrganizationAPIKeys ( ListOrganizationAPIKeysRequest ) returns ( ListOrganizationAPIKeysResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations/{id}/apikeys" };
+  }
+
+  rpc CreateOrganizationAPIKey ( CreateOrganizationAPIKeyRequest ) returns ( CreateOrganizationAPIKeyResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{id}/apikeys",
+      body: "*"
+    };
+  }
+
+  rpc ListWorkspaceAPIKeys ( ListWorkspaceAPIKeysRequest ) returns ( ListWorkspaceAPIKeysResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{id}/workspaces/{workspace_id}/apikeys"
+    };
+  }
+
+  rpc CreateWorkspaceAPIKey ( CreateWorkspaceAPIKeyRequest ) returns ( CreateWorkspaceAPIKeyResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{id}/workspaces/{workspace_id}/apikeys",
+      body: "*"
+    };
+  }
+
+  rpc GetAuditLogs ( GetAuditLogsRequest ) returns ( GetAuditLogsResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations/{id}/audit-logs" };
+  }
+
+  rpc ListAuditLogsArchives ( ListAuditLogsArchivesRequest ) returns ( ListAuditLogsArchivesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{id}/audit-logs-archives"
+    };
+  }
+
+  rpc GetAuditLogsInCSV ( GetAuditLogsInCSVRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{id}/csv-audit-logs"
+    };
+
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = { summary: "Get organization audit logs in CSV" };
+  }
+
+  rpc GetCustomerDetails ( GetCustomerDetailsRequest ) returns ( GetCustomerDetailsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{id}/billing/customer"
+    };
+  }
+
+  rpc UpdateBillingDetails ( UpdateBillingDetailsRequest ) returns ( UpdateBillingDetailsResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/organizations/{id}/billing",
+      body: "*"
+    };
+  }
+
+  rpc BillingCheckout ( BillingCheckoutRequest ) returns ( BillingCheckoutResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{id}/checkout",
+      body: "*"
+    };
+  }
+
+  rpc UpdateSubscription ( UpdateSubscriptionRequest ) returns ( UpdateSubscriptionResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/organizations/{id}/billing/subscription",
+      body: "*"
+    };
+  }
+
+  rpc ListAvailablePlans ( ListAvailablePlansRequest ) returns ( ListAvailablePlansResponse ) {
+    option (google.api.http) = { get: "/api/v1/billing/plans" };
+  }
+
+  rpc GetAvailableAddons ( GetAvailableAddonsRequest ) returns ( GetAvailableAddonsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{id}/billing/{plan}/addons"
+    };
+  }
+
+  rpc GetSSOConfiguration ( GetSSOConfigurationRequest ) returns ( GetSSOConfigurationResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{id}/sso/configuration"
+    };
+  }
+
+  rpc EnsureSSOConfiguration ( EnsureSSOConfigurationRequest ) returns ( EnsureSSOConfigurationResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/organizations/{id}/sso/configuration",
+      body: "*"
+    };
+  }
+
+  rpc DeleteSSOConfiguration ( DeleteSSOConfigurationRequest ) returns ( DeleteSSOConfigurationResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/organizations/{id}/sso/configuration"
+    };
+  }
+
+  rpc GetFeatureStatuses ( GetFeatureStatusesRequest ) returns ( GetFeatureStatusesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{id}/feature-statuses"
+    };
+  }
+
+  rpc GetOIDCMap ( GetOIDCMapRequest ) returns ( GetOIDCMapResponse ) {
+    option (google.api.http) = { get: "/api/v1/organizations/{id}/oidc-map" };
+  }
+
+  rpc UpdateOIDCMap ( UpdateOIDCMapRequest ) returns ( UpdateOIDCMapResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/organizations/{id}/oidc-map",
+      body: "*"
+    };
+  }
+
+  rpc GetTeamOIDCMap ( GetTeamOIDCMapRequest ) returns ( GetTeamOIDCMapResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{organization_id}/teams-oidc-map"
+    };
+  }
+
+  rpc UpdateTeamOIDCMap ( UpdateTeamOIDCMapRequest ) returns ( UpdateTeamOIDCMapResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/organizations/{organization_id}/teams-oidc-map",
+      body: "*"
+    };
+  }
+
+  rpc CreateCustomRole ( CreateCustomRoleRequest ) returns ( CreateCustomRoleResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{organization_id}/custom-roles",
+      body: "*"
+    };
+  }
+
+  rpc UpdateCustomRole ( UpdateCustomRoleRequest ) returns ( UpdateCustomRoleResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/organizations/{organization_id}/custom-roles/{id}",
+      body: "*"
+    };
+  }
+
+  rpc GetCustomRole ( GetCustomRoleRequest ) returns ( GetCustomRoleResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{organization_id}/custom-roles/{id}"
+    };
+  }
+
+  rpc ListCustomRoles ( ListCustomRolesRequest ) returns ( ListCustomRolesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{organization_id}/custom-roles"
+    };
+  }
+
+  rpc DeleteCustomRole ( DeleteCustomRoleRequest ) returns ( DeleteCustomRoleResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/organizations/{organization_id}/custom-roles/{id}"
+    };
+  }
+
+  rpc CreateWorkspaceCustomRole ( CreateWorkspaceCustomRoleRequest ) returns ( CreateWorkspaceCustomRoleResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{organization_id}/workspaces/{workspace_id}/custom-roles",
+      body: "*"
+    };
+  }
+
+  rpc UpdateWorkspaceCustomRole ( UpdateWorkspaceCustomRoleRequest ) returns ( UpdateWorkspaceCustomRoleResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/organizations/{organization_id}/workspaces/{workspace_id}/custom-roles/{id}",
+      body: "*"
+    };
+  }
+
+  rpc GetWorkspaceCustomRole ( GetWorkspaceCustomRoleRequest ) returns ( GetWorkspaceCustomRoleResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{organization_id}/workspaces/{workspace_id}/custom-roles/{id}"
+    };
+  }
+
+  rpc ListWorkspaceCustomRoles ( ListWorkspaceCustomRolesRequest ) returns ( ListWorkspaceCustomRolesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{organization_id}/workspaces/{workspace_id}/custom-roles"
+    };
+  }
+
+  rpc DeleteWorkspaceCustomRole ( DeleteWorkspaceCustomRoleRequest ) returns ( DeleteWorkspaceCustomRoleResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/organizations/{organization_id}/workspaces/{workspace_id}/custom-roles/{id}"
+    };
+  }
+
+  rpc CreateTeam ( CreateTeamRequest ) returns ( CreateTeamResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/teams",
+      body: "*"
+    };
+  }
+
+  rpc UpdateTeam ( UpdateTeamRequest ) returns ( UpdateTeamResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/teams/{name}",
+      body: "*"
+    };
+  }
+
+  rpc GetTeam ( GetTeamRequest ) returns ( GetTeamResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/teams/{name}"
+    };
+  }
+
+  rpc ListTeams ( ListTeamsRequest ) returns ( ListTeamsResponse ) {
+    option (google.api.http) = { get: "/api/v1/orgs/{organization_id}/teams" };
+  }
+
+  rpc DeleteTeam ( DeleteTeamRequest ) returns ( DeleteTeamResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/teams/{name}"
+    };
+  }
+
+  rpc AddTeamMember ( AddTeamMemberRequest ) returns ( AddTeamMemberResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/teams/{team_name}/members",
+      body: "*"
+    };
+  }
+
+  rpc GetTeamMember ( GetTeamMemberRequest ) returns ( GetTeamMemberResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/teams/{team_name}/members/{id}"
+    };
+  }
+
+  rpc ListTeamMembers ( ListTeamMembersRequest ) returns ( ListTeamMembersResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/teams/{team_name}/members"
+    };
+  }
+
+  rpc RemoveTeamMember ( RemoveTeamMemberRequest ) returns ( RemoveTeamMemberResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/teams/{team_name}/members/{id}"
+    };
+  }
+
+  rpc UpdateArgocdInstancesQuota ( UpdateArgocdInstancesQuotaRequest ) returns ( UpdateArgocdInstancesQuotaResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/instances/quota",
+      body: "*"
+    };
+  }
+
+  rpc ListArgocdInstancesQuota ( ListArgocdInstancesQuotaRequest ) returns ( ListArgocdInstancesQuotaResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/instances/quota"
+    };
+  }
+
+  rpc UpdateKargoInstancesQuota ( UpdateKargoInstancesQuotaRequest ) returns ( UpdateKargoInstancesQuotaResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/kargo-instances/quota",
+      body: "*"
+    };
+  }
+
+  rpc ListKargoInstancesQuota ( ListKargoInstancesQuotaRequest ) returns ( ListKargoInstancesQuotaResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/kargo-instances/quota"
+    };
+  }
+
+  rpc CreateWorkspace ( CreateWorkspaceRequest ) returns ( CreateWorkspaceResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces",
+      body: "*"
+    };
+  }
+
+  rpc ListWorkspaces ( ListWorkspacesRequest ) returns ( ListWorkspacesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces"
+    };
+  }
+
+  rpc GetWorkspace ( GetWorkspaceRequest ) returns ( GetWorkspaceResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{id}"
+    };
+  }
+
+  rpc UpdateWorkspace ( UpdateWorkspaceRequest ) returns ( UpdateWorkspaceResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/workspaces/{id}",
+      body: "*"
+    };
+  }
+
+  rpc DeleteWorkspace ( DeleteWorkspaceRequest ) returns ( DeleteWorkspaceResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/workspaces/{id}"
+    };
+  }
+
+  rpc AddWorkspaceMember ( AddWorkspaceMemberRequest ) returns ( AddWorkspaceMemberResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/member",
+      body: "*"
+    };
+  }
+
+  rpc ListWorkspaceMembers ( ListWorkspaceMembersRequest ) returns ( ListWorkspaceMembersResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/members"
+    };
+  }
+
+  rpc UpdateWorkspaceMembers ( UpdateWorkspaceMembersRequest ) returns ( UpdateWorkspaceMembersResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/members",
+      body: "*"
+    };
+  }
+
+  rpc GetWorkspaceMember ( GetWorkspaceMemberRequest ) returns ( GetWorkspaceMemberResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/members/{id}"
+    };
+  }
+
+  rpc UpdateWorkspaceMember ( UpdateWorkspaceMemberRequest ) returns ( UpdateWorkspaceMemberResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/members/{id}",
+      body: "*"
+    };
+  }
+
+  rpc RemoveWorkspaceMember ( RemoveWorkspaceMemberRequest ) returns ( RemoveWorkspaceMemberResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/workspaces/{workspace_id}/members/{id}"
+    };
+  }
+
+  rpc CancelSubscription ( CancelSubscriptionRequest ) returns ( CancelSubscriptionResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{organization_id}/billing/subscription/cancel",
+      body: "*"
+    };
+  }
+
+  rpc ListKubernetesResourceTypes ( ListKubernetesResourceTypesRequest ) returns ( ListKubernetesResourceTypesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/resource-types",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resource-types"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesResources ( ListKubernetesResourcesRequest ) returns ( ListKubernetesResourcesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/resources",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resources"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesResourcesToCSV ( ListKubernetesResourcesRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/k8s/resources-csv",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/stream/orgs/{organization_id}/k8s/resources-csv"
+        }
+      ]
+    };
+  }
+
+  rpc SpotlightSearchKubernetesResources ( SpotlightSearchKubernetesResourcesRequest ) returns ( SpotlightSearchKubernetesResourcesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/spotlight-search",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/spotlight-search"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesResourceDetail ( GetKubernetesResourceDetailRequest ) returns ( GetKubernetesResourceDetailResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/resources/{resource_id}/detail",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resources/{resource_id}/detail"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesContainer ( GetKubernetesContainerRequest ) returns ( GetKubernetesContainerResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/containers/{container_id}",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/containers/{container_id}"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesNamespaces ( ListKubernetesNamespacesRequest ) returns ( ListKubernetesNamespacesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/namespaces",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/namespaces"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesImages ( ListKubernetesImagesRequest ) returns ( ListKubernetesImagesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/images",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/images"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesImagesToCSV ( ListKubernetesImagesRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/k8s/images-csv",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/stream/orgs/{organization_id}/k8s/images-csv"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesImageDetail ( GetKubernetesImageDetailRequest ) returns ( GetKubernetesImageDetailResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/images/detail",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/images/detail"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesContainers ( ListKubernetesContainersRequest ) returns ( ListKubernetesContainersResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/containers",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/containers"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesContainersToCSV ( ListKubernetesContainersRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/k8s/containers-csv",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/stream/orgs/{organization_id}/k8s/containers-csv"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesEnabledClusters ( ListKubernetesEnabledClustersRequest ) returns ( ListKubernetesEnabledClustersResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/clusters",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/clusters"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesResourceDiff ( GetKubernetesResourceDiffRequest ) returns ( GetKubernetesResourceDiffResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/resources/{resource_id}/diff",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resources/{resource_id}/diff"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesManifest ( GetKubernetesManifestRequest ) returns ( GetKubernetesManifestResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/resources/{resource_id}/manifest",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resources/{resource_id}/manifest"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteKubernetesResource ( DeleteKubernetesResourceRequest ) returns ( DeleteKubernetesResourceResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/k8s/instances/{instance_id}/clusters/{cluster_id}/resources/{resource_id}",
+      additional_bindings: [
+        {
+          delete: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/instances/{instance_id}/clusters/{cluster_id}/resources/{resource_id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesLogs ( GetKubernetesLogsRequest ) returns ( stream GetKubernetesLogsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/k8s/resources/{resource_id}/logs",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/stream/orgs/{organization_id}/k8s/resources/{resource_id}/logs"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesEvents ( GetKubernetesEventsRequest ) returns ( GetKubernetesEventsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/resources/{resource_id}/events",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resources/{resource_id}/events"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesAuditLogs ( ListKubernetesAuditLogsRequest ) returns ( ListKubernetesAuditLogsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/resources/{resource_id}/audit-logs",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resources/{resource_id}/audit-logs"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesNodes ( ListKubernetesNodesRequest ) returns ( ListKubernetesNodesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/nodes",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/nodes"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesNode ( GetKubernetesNodeRequest ) returns ( GetKubernetesNodeResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/nodes/{node_id}",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/nodes/{node_id}"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesNamespacesDetails ( ListKubernetesNamespacesDetailsRequest ) returns ( ListKubernetesNamespacesDetailsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/namespaces-details",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/namespaces-details"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesNamespaceDetail ( GetKubernetesNamespaceDetailRequest ) returns ( GetKubernetesNamespaceDetailResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/namespaces-details/{namespace_id}",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/namespaces-details/{namespace_id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesClusterDetail ( GetKubernetesClusterDetailRequest ) returns ( GetKubernetesClusterDetailResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/instances/{instance_id}/clusters/{cluster_id}/detail",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/instances/{instance_id}/clusters/{cluster_id}/detail"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesSummary ( GetKubernetesSummaryRequest ) returns ( GetKubernetesSummaryResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/summary",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/summary"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesPods ( ListKubernetesPodsRequest ) returns ( ListKubernetesPodsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/pods",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/pods"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesPod ( GetKubernetesPodRequest ) returns ( GetKubernetesPodResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/pods/{pod_id}",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/pods/{pod_id}"
+        }
+      ]
+    };
+  }
+
+  rpc ListArgoCDApplications ( ListArgoCDApplicationsRequest ) returns ( ListArgoCDApplicationsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/applications",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/applications"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesDeprecatedAPIs ( ListKubernetesDeprecatedAPIsRequest ) returns ( ListKubernetesDeprecatedAPIsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/deprecated-apis",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/deprecated-apis"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesDeprecatedAPIsToCSV ( ListKubernetesDeprecatedAPIsRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/k8s/deprecated-apis-csv",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/stream/orgs/{organization_id}/k8s/deprecated-apis-csv"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubernetesAssistantSuggestion ( GetKubernetesAssistantSuggestionRequest ) returns ( GetKubernetesAssistantSuggestionResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/k8s/resources/{resource_id}/assistant-suggestion",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resources/{resource_id}/assistant-suggestion",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ResolveKubernetesAssistantConversation ( ResolveKubernetesAssistantConversationRequest ) returns ( ResolveKubernetesAssistantConversationResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/k8s/resources/{resource_id}/resolve-assistant-conversation",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/resources/{resource_id}/resolve-assistant-conversation",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesTimelineEvents ( ListKubernetesTimelineEventsRequest ) returns ( ListKubernetesTimelineEventsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/timeline-events",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/timeline-events"
+        }
+      ]
+    };
+  }
+
+  rpc ListKubernetesTimelineResources ( ListKubernetesTimelineResourcesRequest ) returns ( ListKubernetesTimelineResourcesResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/timeline-resources",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/k8s/timeline-resources"
+        }
+      ]
+    };
+  }
+
+  rpc GetKubeVisionUsage ( GetKubeVisionUsageRequest ) returns ( GetKubeVisionUsageResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/k8s/usage"
+    };
+  }
+
+  rpc GetKubeVisionUsageToCSV ( GetKubeVisionUsageRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/k8s/usage-csv"
+    };
+  }
+
+  rpc ListNotificationConfigs ( ListNotificationConfigsRequest ) returns ( ListNotificationConfigsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/notification-configs"
+    };
+  }
+
+  rpc GetNotificationConfig ( GetNotificationConfigRequest ) returns ( GetNotificationConfigResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/notification-configs/{id}"
+    };
+  }
+
+  rpc CreateNotificationConfig ( CreateNotificationConfigRequest ) returns ( CreateNotificationConfigResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/notification-configs",
+      body: "*"
+    };
+  }
+
+  rpc UpdateNotificationConfig ( UpdateNotificationConfigRequest ) returns ( UpdateNotificationConfigResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/notification-configs/{id}",
+      body: "*"
+    };
+  }
+
+  rpc DeleteNotificationConfig ( DeleteNotificationConfigRequest ) returns ( DeleteNotificationConfigResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/notification-configs/{id}"
+    };
+  }
+
+  rpc ListNotificationDeliveryHistory ( ListNotificationDeliveryHistoryRequest ) returns ( ListNotificationDeliveryHistoryResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/notification-configs/{id}/delivery-history"
+    };
+  }
+
+  rpc GetNotificationDeliveryHistoryDetail ( GetNotificationDeliveryHistoryDetailRequest ) returns ( GetNotificationDeliveryHistoryDetailResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/notification-configs/{config_id}/delivery-history/{id}"
+    };
+  }
+
+  rpc PingNotificationConfig ( PingNotificationConfigRequest ) returns ( PingNotificationConfigResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/notification-configs/{id}/ping",
+      body: "*"
+    };
+  }
+
+  rpc RedeliverNotification ( RedeliverNotificationRequest ) returns ( RedeliverNotificationResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/notification-configs/{config_id}/notifications/{id}/redeliver",
+      body: "*"
+    };
+  }
+
+  rpc ListOrganizationDomains ( ListOrganizationDomainsRequest ) returns ( ListOrganizationDomainsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{organization_id}/domains"
+    };
+  }
+
+  rpc DeleteOrganizationDomain ( DeleteOrganizationDomainRequest ) returns ( DeleteOrganizationDomainResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/organizations/{organization_id}/domains/{domain}"
+    };
+  }
+
+  rpc VerifyOrganizationDomains ( VerifyOrganizationDomainsRequest ) returns ( VerifyOrganizationDomainsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{organization_id}/domains",
+      body: "*"
+    };
+  }
+
+  rpc GetAIModels ( GetAIModelsRequest ) returns ( GetAIModelsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/ai/models",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/models"
+        }
+      ]
+    };
+  }
+
+  rpc GetAIProviderModels ( GetAIProviderModelsRequest ) returns ( GetAIProviderModelsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/ai/provider-models/{provider}",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/provider-models/{provider}"
+        }
+      ]
+    };
+  }
+
+  rpc CreateAIConversation ( CreateAIConversationRequest ) returns ( CreateAIConversationResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/ai/conversations",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc CreateIncident ( CreateIncidentRequest ) returns ( CreateIncidentResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/ai/incidents",
+      body: "body"
+    };
+  }
+
+  rpc ResolveIncidents ( ResolveIncidentsRequest ) returns ( ResolveIncidentsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/ai/incidents/resolve",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/incidents/resolve",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateAIConversation ( UpdateAIConversationRequest ) returns ( UpdateAIConversationResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/ai/conversations/{id}",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{id}",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ShareAIConversation ( ShareAIConversationRequest ) returns ( ShareAIConversationResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/ai/conversations/{id}/share",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{id}/share",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UnshareAIConversation ( UnshareAIConversationRequest ) returns ( UnshareAIConversationResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/ai/conversations/{id}/unshare",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{id}/unshare",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc SuspendAIConversation ( SuspendAIConversationRequest ) returns ( SuspendAIConversationResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/ai/conversations/{id}/suspend",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{id}/suspend",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteAIConversation ( DeleteAIConversationRequest ) returns ( DeleteAIConversationResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/orgs/{organization_id}/ai/conversations/{id}",
+      additional_bindings: [
+        {
+          delete: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetAIConversation ( GetAIConversationRequest ) returns ( GetAIConversationResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/ai/conversations/{id}",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{id}"
+        }
+      ]
+    };
+  }
+
+  rpc GetAIConversationStream ( GetAIConversationStreamRequest ) returns ( stream GetAIConversationStreamResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/stream/orgs/{organization_id}/ai/conversations/{id}/messages",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/stream/orgs/{organization_id}/ai/conversations/{id}/messages"
+        }
+      ]
+    };
+  }
+
+  rpc ListAIConversations ( ListAIConversationsRequest ) returns ( ListAIConversationsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/ai/conversations",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations"
+        }
+      ]
+    };
+  }
+
+  rpc CreateAIMessage ( CreateAIMessageRequest ) returns ( CreateAIMessageResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/ai/conversations/{conversation_id}/messages",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{conversation_id}/messages",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc SetAIToolApprovalStatus ( SetAIToolApprovalStatusRequest ) returns ( SetAIToolApprovalStatusResponse ) {
+    option (google.api.http) = {
+      put: "/api/v1/orgs/{organization_id}/ai/conversations/{conversation_id}/tools/{tool_call_id}/approval-status",
+      body: "*",
+      additional_bindings: [
+        {
+          put: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{conversation_id}/tools/{tool_call_id}/approval-status",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ListUsersMFAStatus ( ListUsersMFAStatusRequest ) returns ( ListUsersMFAStatusResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{organization_id}/users-mfa-status"
+    };
+  }
+
+  rpc RequestMFAReset ( RequestMFAResetRequest ) returns ( RequestMFAResetResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{organization_id}/users/{email}/mfa/reset",
+      body: "*"
+    };
+  }
+
+  rpc ListAIConversationSuggestions ( ListAIConversationSuggestionsRequest ) returns ( ListAIConversationSuggestionsResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/orgs/{organization_id}/ai/conversations/{conversation_id}/suggestions",
+      body: "*",
+      additional_bindings: [
+        {
+          post: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{conversation_id}/suggestions",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ListAITools ( ListAIToolsRequest ) returns ( ListAIToolsResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/orgs/{organization_id}/ai/tools",
+      additional_bindings: [
+        {
+          get: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/tools"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateAIMessageFeedback ( UpdateAIMessageFeedbackRequest ) returns ( UpdateAIMessageFeedbackResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/ai/conversations/{conversation_id}/feedback",
+      body: "*",
+      additional_bindings: [
+        {
+          patch: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{conversation_id}/feedback",
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateAIConversationFeedback ( UpdateAIConversationFeedbackRequest ) returns ( UpdateAIConversationFeedbackResponse ) {
+    option (google.api.http) = {
+      patch: "/api/v1/orgs/{organization_id}/ai/conversations/{conversation_id}/conversation-feedback",
+      body: "*",
+      additional_bindings: [
+        {
+          patch: "/ext-api/v1/argocd/extensions/kubevision/orgs/{organization_id}/ai/conversations/{conversation_id}/conversation-feedback",
+          body: "*"
+        }
+      ]
+    };
+  }
+}

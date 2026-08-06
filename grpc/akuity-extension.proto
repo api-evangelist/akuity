@@ -1,0 +1,204 @@
+syntax = "proto3";
+
+package akuity.extension.v1;
+
+import "argocd/v1/argocd.proto";
+
+import "google/api/annotations.proto";
+
+import "google/api/httpbody.proto";
+
+import "google/api/visibility.proto";
+
+import "kargo/v1/kargo.proto";
+
+import "organization/v1/organization.proto";
+
+import "types/features/v1/features.proto";
+
+import "types/misc/v1/misc.proto";
+
+option csharp_namespace = "Akuity.Extension.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/extension/v1;extensionv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "ExtensionProto";
+
+option java_package = "com.akuity.extension.v1";
+
+option objc_class_prefix = "AEX";
+
+option php_metadata_namespace = "Akuity\\Extension\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Extension\\V1";
+
+option ruby_package = "Akuity::Extension::V1";
+
+message ListAuditRecordForKargoProjectsRequest {
+  akuity.organization.v1.AuditFilters filters = 1;
+
+  string project_name = 2;
+}
+
+message ListAuditRecordForKargoProjectsResponse {
+  repeated akuity.organization.v1.AuditLog items = 1;
+
+  uint32 total_count = 2;
+}
+
+message ListAuditRecordForApplicationRequest {
+  akuity.organization.v1.AuditFilters filters = 1;
+}
+
+message ListAuditRecordForApplicationResponse {
+  repeated akuity.organization.v1.AuditLog items = 1;
+
+  uint32 total_count = 2;
+}
+
+message GetSyncOperationsStatsForApplicationRequest {
+  akuity.argocd.v1.SyncOperationFilter filter = 1;
+
+  akuity.types.misc.v1.GroupByInterval interval = 2;
+
+  akuity.argocd.v1.SyncOperationGroupField group_by_field = 3;
+}
+
+message GetSyncOperationsStatsForApplicationResponse {
+  repeated akuity.argocd.v1.SyncOperationStat sync_operation_stats = 1;
+}
+
+message GetSyncOperationsEventsForApplicationRequest {
+  akuity.argocd.v1.SyncOperationFilter filter = 1;
+
+  optional int64 limit = 2;
+
+  optional int64 offset = 3;
+
+  akuity.argocd.v1.SyncOperationField field = 4;
+
+  string field_like = 6;
+}
+
+message GetSyncOperationsEventsForApplicationResponse {
+  repeated akuity.argocd.v1.SyncOperationEvent sync_operation_events = 1;
+
+  int64 count = 2;
+
+  repeated string field_result = 3;
+}
+
+message GetExtensionSettingsRequest {
+}
+
+message GetExtensionSettingsResponse {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  akuity.kargo.v1.AkuityIntelligence akuity_intelligence = 3;
+}
+
+message Settings {
+  reserved 9, 10, 13;
+
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  string instance_version = 3;
+
+  bool audit_extension_enabled = 4;
+
+  bool sync_history_extension_enabled = 5;
+
+  bool assistant_extension_enabled = 6;
+
+  akuity.argocd.v1.CrossplaneExtension crossplane_extension = 7;
+
+  akuity.argocd.v1.AkuityIntelligenceExtension akuity_intelligence_extension = 8;
+
+  Config config = 11;
+
+  akuity.argocd.v1.KubeVisionConfig kube_vision_config = 12;
+
+  akuity.types.features.v1.FeatureStatuses feature_statuses = 14;
+
+  akuity.argocd.v1.ApplicationSetExtension application_set_extension = 15;
+
+  akuity.argocd.v1.ClusterAddonsExtension cluster_addons_extension = 16;
+
+  string portal_url = 17;
+
+  string organization_name = 18;
+
+  string workspace_id = 19;
+
+  string instance_name = 20;
+}
+
+message KargoSettings {
+  string organization_id = 1;
+
+  string instance_id = 2;
+
+  akuity.types.features.v1.FeatureStatuses feature_statuses = 3;
+
+  akuity.kargo.v1.AkuityIntelligence akuity_intelligence = 4;
+
+  string portal_url = 5;
+
+  string organization_name = 6;
+}
+
+message Config {
+  string env = 1;
+
+  string argocd_extension_sentry_dsn = 2;
+}
+
+message GetKargoAnalysisLogsRequest {
+  string project_name = 1;
+
+  string analysis_run = 2;
+
+  string container_name = 3;
+
+  string job_name = 4;
+
+  string job_namespace = 5;
+
+  string shard = 6;
+}
+
+service ExtensionService {
+  option (google.api.api_visibility) = { restriction: "INTERNAL" };
+
+  rpc ListAuditRecordForApplication ( ListAuditRecordForApplicationRequest ) returns ( ListAuditRecordForApplicationResponse ) {
+    option (google.api.http) = { post: "/ext-api/v1/argocd/extensions/audit-records", body: "*" };
+  }
+
+  rpc GetSyncOperationsStatsForApplication ( GetSyncOperationsStatsForApplicationRequest ) returns ( GetSyncOperationsStatsForApplicationResponse ) {
+    option (google.api.http) = { post: "/ext-api/v1/argocd/extensions/sync-operations-stats", body: "*" };
+  }
+
+  rpc GetSyncOperationsEventsForApplication ( GetSyncOperationsEventsForApplicationRequest ) returns ( GetSyncOperationsEventsForApplicationResponse ) {
+    option (google.api.http) = { post: "/ext-api/v1/argocd/extensions/sync-operations-events", body: "*" };
+  }
+
+  rpc GetExtensionSettings ( GetExtensionSettingsRequest ) returns ( GetExtensionSettingsResponse ) {
+    option (google.api.http) = { get: "/ext-api/v1/kargo/extensions/settings" };
+  }
+
+  rpc GetKargoAnalysisLogs ( GetKargoAnalysisLogsRequest ) returns ( stream google.api.HttpBody ) {
+    option (google.api.http) = {
+      get: "/ext-api/v1/kargo/extensions/logs/{project_name}/{analysis_run}/{shard}/{job_namespace}/{job_name}/{container_name}"
+    };
+  }
+
+  rpc ListAuditRecordForKargoProjects ( ListAuditRecordForKargoProjectsRequest ) returns ( ListAuditRecordForKargoProjectsResponse ) {
+    option (google.api.http) = { post: "/ext-api/v1/kargo/extensions/audit-records", body: "*" };
+  }
+}

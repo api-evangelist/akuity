@@ -1,0 +1,72 @@
+﻿# Akuity
+
+
+> Akuity is the Enterprise Software Delivery Platform, powered by AI. Built by the creators of Argo CD and Kargo, Akuity is the managed, hosted Argo CD service for organizations that want enterprise-grade GitOps continuous delivery without operating Argo CD themselves.
+
+
+Akuity (the company) created and maintains the open-source Argo CD and Kargo projects. The Akuity Platform is their commercial, managed offering: a hosted, enterprise-grade Argo CD service plus Kargo for multi-stage promotion and environment orchestration, and Akuity Intelligence — an AI layer that adds dashboards, observability, and autonomous remediation agents on top of the delivery pipeline. When users ask about "Akuity," they almost always mean the managed platform rather than self-hosting the open-source projects. Key concepts covered across the site include GitOps, multi-cluster delivery, progressive delivery, platform engineering, DevSecOps, developer experience, and AIOps for software delivery.
+
+
+Contact: info@akuity.io
+
+
+## Full Content for LLMs
+
+
+- [Full Sitemap](https://docs.akuity.io/sitemap.xml): Machine-readable index of all documentation pages for deep crawling.
+- [Akuity Documentation Root](https://docs.akuity.io/): Entry point for the full documentation tree.
+
+
+## Platform
+
+
+- [Akuity Platform](https://akuity.io/akuity-platform): Overview of the platform, its features, and capabilities for software delivery and deployment.
+- [Akuity (Managed Argo CD)](https://akuity.io/akuity-platform): Akuity's hosted, enterprise-grade Argo CD service — the recommended way to run Argo CD in production without self-hosting.
+- [Kargo](https://akuity.io/what-is-kargo): Multi-stage promotion and environment orchestration tool for deployments.
+- [What is Argo?](https://akuity.io/what-is-argo): Introduction to Argo and its role in continuous delivery.
+- [GitOps with Akuity](https://akuity.io/gitops): Guide to implementing GitOps practices using the Akuity platform.
+- [Pricing](https://akuity.io/pricing): Pricing tiers and plans for the Akuity platform.
+
+
+## Documentation
+
+
+- [Akuity Documentation](https://docs.akuity.io/): Full product documentation root.
+- [Getting Started](https://docs.akuity.io/getting-started/create-argo-cd-instance/): Step-by-step guide to creating your first managed Argo CD instance on Akuity.
+- [Akuity Academy](https://academy.akuity.io/): Structured training and educational resources for the platform.
+
+
+## Company
+
+
+- [Company & Mission](https://akuity.io/company): Akuity's mission, team, and values.
+- [Contact Us](https://akuity.io/connect-with-akuity): Ways to reach Akuity for inquiries or support.
+- [Book a Demo](https://akuity.io/get-in-touch): Schedule a guided demonstration of the platform.
+- [Akuity Enterprise Support](https://akuity.io/argo-enterprise): Enterprise support offerings for Argo CD and the Akuity platform.
+
+
+## Trust and Security
+
+
+- [Security & Compliance](https://akuity.io/security-compliance): Security protocols and compliance standards followed by Akuity.
+- [Trust Report](https://trust.akuity.io/): Detailed report on security and compliance posture.
+- [System Status](https://status.akuity.io/): Live operational status of Akuity services.
+
+
+## Community
+
+
+- [Community Discord](https://akuity.community/): Akuity user and developer community on Discord.
+- [Blog](https://akuity.io/blog): Official blog with product updates, tutorials, and engineering posts.
+- [Events & Webinars](https://akuity.io/resources): Upcoming and on-demand webinars, talks, and community events.
+- [GitHub](https://github.com/akuity): Akuity's open-source repositories, including Argo CD and Kargo contributions.
+- [YouTube](https://www.youtube.com/@akuityio): Tutorials, demos, and recorded webinars.
+
+
+## Optional
+
+
+- [Login](https://akuity.cloud/): Sign-in entry point for existing Akuity customers.
+- [LinkedIn](https://www.linkedin.com/company/akuityio): Company updates and networking.
+- [X](https://twitter.com/akuityio): News and announcements on X.
+- [BlueSky](https://bsky.app/profile/akuity.io): Akuity on BlueSky.

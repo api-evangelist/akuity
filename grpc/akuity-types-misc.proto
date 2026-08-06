@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package akuity.types.misc.v1;
+
+option csharp_namespace = "Akuity.Types.Misc.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/types/misc/v1;miscv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "MiscProto";
+
+option java_package = "com.akuity.types.misc.v1";
+
+option objc_class_prefix = "ATM";
+
+option php_metadata_namespace = "Akuity\\Types\\Misc\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Types\\Misc\\V1";
+
+option ruby_package = "Akuity::Types::Misc::V1";
+
+enum GroupByInterval {
+  GROUP_BY_INTERVAL_UNSPECIFIED = 0;
+
+  GROUP_BY_INTERVAL_MINUTE = 1;
+
+  GROUP_BY_INTERVAL_HOUR = 2;
+
+  GROUP_BY_INTERVAL_DAY = 3;
+
+  GROUP_BY_INTERVAL_WEEK = 4;
+
+  GROUP_BY_INTERVAL_MONTH = 5;
+
+  GROUP_BY_INTERVAL_YEAR = 6;
+}

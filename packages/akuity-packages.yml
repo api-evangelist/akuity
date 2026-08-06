@@ -1,0 +1,89 @@
+generated: '2026-08-06'
+method: searched
+source: https://github.com/akuity + https://registry.terraform.io/providers/akuity/akp + https://pkg.go.dev/github.com/akuity/api-client-go
+description: >-
+  First-party Akuity client libraries, infrastructure providers and tooling.
+  Akuity ships no npm/PyPI/Maven/NuGet client — the platform is consumed through
+  the Go API client, the `akuity` CLI, the Terraform provider and the Crossplane
+  provider.
+packages:
+  - name: github.com/akuity/api-client-go
+    language: go
+    registry: pkg.go.dev
+    url: https://pkg.go.dev/github.com/akuity/api-client-go
+    source: https://github.com/akuity/api-client-go
+    official: true
+    kind: sdk
+    latest_version: v0.29.0
+    description: >-
+      Go package with the Akuity Platform API client. Ships generated protobuf
+      types, gRPC stubs and grpc-gateway HTTP clients for every public service
+      (organization, argocd, kargo, aims, apikey, auth, customrole, extension,
+      system).
+    x-evidence:
+      fetched: '2026-08-06'
+      url: https://proxy.golang.org/github.com/akuity/api-client-go/@latest
+      note: resolved to v0.29.0 by the Go module proxy during this run
+
+  - name: akuity/akp
+    language: hcl
+    registry: registry.terraform.io
+    url: https://registry.terraform.io/providers/akuity/akp/latest
+    source: https://github.com/akuity/terraform-provider-akp
+    docs: https://docs.akuity.io/akuity-portal/reference/terraform-provider
+    official: true
+    kind: infrastructure-provider
+    latest_version: 0.14.0
+    published_at: '2026-07-21'
+    downloads: 398894
+    tier: community
+    description: Terraform provider for managing Akuity Platform resources declaratively.
+
+  - name: provider-crossplane-akuity
+    language: go
+    registry: marketplace.upbound.io
+    url: https://docs.akuity.io/akuity-portal/reference/crossplane-provider
+    source: https://github.com/akuity/provider-crossplane-akuity
+    official: true
+    kind: infrastructure-provider
+    description: Crossplane provider exposing Akuity Platform resources as Crossplane managed resources.
+
+  - name: akuity
+    language: go
+    registry: null
+    url: https://docs.akuity.io/akuity-portal/reference/cli/akuity
+    official: true
+    kind: cli
+    description: >-
+      The `akuity` command-line interface for the Akuity Platform — Argo CD and
+      Kargo instance/cluster/agent management, declarative apply/diff/export, and
+      device-code login. See cli/akuity-cli.yml.
+
+  - name: github.com/akuity/grpc-gateway-client
+    language: go
+    registry: pkg.go.dev
+    url: https://pkg.go.dev/github.com/akuity/grpc-gateway-client
+    source: https://github.com/akuity/grpc-gateway-client
+    official: true
+    kind: tooling
+    description: >-
+      Akuity's own grpc-gateway HTTP client generator — the code generator that
+      produces the REST clients inside api-client-go. Open source, reusable
+      outside Akuity.
+
+not_found:
+  - registry: npm
+    query: akuity
+    result: >-
+      No first-party Akuity client. Matches are third-party Argo CD MCP servers
+      (argoproj-labs/mcp-for-argocd forks) and a community Pulumi package
+      (@ediri/akp), none published by Akuity.
+    checked: '2026-08-06'
+  - registry: pypi
+    query: akuity
+    result: 404
+    checked: '2026-08-06'
+  - registry: crates.io
+    query: akuity
+    result: 0 results
+    checked: '2026-08-06'

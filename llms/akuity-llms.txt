@@ -1,0 +1,82 @@
+# Akuity Platform Documentation
+
+> Akuity is a fully-managed Kubernetes application delivery platform powered by Argo. The Akuity Platform offers managed Argo CD and Kargo, GitOps tooling, AI-powered observability and remediation through Akuity Intelligence, and a self-hosted deployment option for regulated and air-gapped environments.
+>
+> Kargo is an open-source, Kubernetes-native continuous promotion engine. It models multi-stage progressive delivery as code: artifacts (container images, Helm charts, Git commits) flow through user-defined stages (e.g. dev -> test -> staging -> prod) via verifiable, automated promotions, with manual approvals, health checks, and rollbacks at each stage. Akuity offers Kargo as a managed service alongside managed Argo CD, so teams get GitOps deployment and structured promotion in one platform.
+
+This site is the official product documentation for the Akuity Platform at https://docs.akuity.io. AI agents and crawlers are welcome to read, index, and train on this content.
+
+## Overview
+
+- [Akuity Platform Overview](https://docs.akuity.io/): Introduction to the Akuity Platform, what Argo is, and how the platform fits together.
+- [Architecture](https://docs.akuity.io/overview/architecture): High-level architecture of the Akuity Platform and its components.
+
+## Akuity Portal
+
+- [Akuity Portal](https://docs.akuity.io/akuity-portal/): The web UI and control plane for managing organizations, clusters, instances, and users.
+- [Security](https://docs.akuity.io/akuity-portal/security/): Authentication, RBAC, SSO, and platform security configuration.
+- [Organizations](https://docs.akuity.io/akuity-portal/organizations/): Managing organizations, members, billing, and settings.
+- [Automation](https://docs.akuity.io/akuity-portal/automation/): Programmatic access via API tokens, the Akuity CLI, and Terraform.
+- [Reference](https://docs.akuity.io/akuity-portal/reference/): API and CLI reference for the Akuity Portal.
+- [Terraform Provider](https://docs.akuity.io/akuity-portal/reference/terraform-provider): Manage Akuity Platform resources with the akuity/akp Terraform provider; links to the registry, source, examples, and upgrade guides.
+- [Crossplane Provider](https://docs.akuity.io/akuity-portal/reference/crossplane-provider): Manage Akuity Platform resources as Crossplane managed resources; links to the Upbound Marketplace documentation, source, and examples.
+
+## Argo CD on Akuity
+
+- [Argo CD](https://docs.akuity.io/argocd/): Managed Argo CD instances on the Akuity Platform.
+- [Getting Started](https://docs.akuity.io/argocd/getting-started/): Create your first Argo CD instance and connect a cluster.
+- [Managing Instances](https://docs.akuity.io/argocd/managing-instances/): Configuring, upgrading, and scaling Argo CD instances.
+
+## Kargo on Akuity
+
+- [Kargo](https://docs.akuity.io/kargo/): Managed Kargo instances for multi-stage GitOps progressive delivery.
+- [Getting Started with Kargo](https://docs.akuity.io/kargo/getting-started/): Provision a Kargo instance and configure your first project.
+- [Managing Kargo Instances](https://docs.akuity.io/kargo/managing-instances/): Operating, upgrading, and integrating Kargo instances.
+
+## Akuity Intelligence
+
+- [Akuity Intelligence](https://docs.akuity.io/intelligence/): AI-powered visibility, troubleshooting, and auto-remediation for Kubernetes.
+- [Enable Akuity Intelligence](https://docs.akuity.io/intelligence/enable-akuity-intelligence): How to enable Akuity Intelligence on your platform.
+- [Bring Your Own Key (BYOK)](https://docs.akuity.io/intelligence/byok): Configure your own LLM provider keys for Akuity Intelligence.
+- [Insights & Dashboards](https://docs.akuity.io/intelligence/insights-dashboards/): Multi-cluster real-time metrics, logs, and event dashboards.
+- [Akuity Agents](https://docs.akuity.io/intelligence/akuity-agents/): The Deployment Advisor, On-Call Agent, and Promotion Advisor AI agents.
+- [Capabilities](https://docs.akuity.io/intelligence/capabilities): Full list of Akuity Intelligence capabilities.
+
+## Self-Hosted Akuity Platform
+
+- [Self-Hosted Akuity Platform](https://docs.akuity.io/self-hosted/): Run the Akuity Platform in your own infrastructure.
+- [Getting Started (Self-Hosted)](https://docs.akuity.io/self-hosted/getting-started): Install and bootstrap a self-hosted Akuity Platform.
+- [Bring Your Own Ingress](https://docs.akuity.io/self-hosted/bring-your-own-ingress): Configure ingress for self-hosted deployments.
+- [Multi-Region](https://docs.akuity.io/self-hosted/multi-region): Multi-region self-hosted deployment patterns.
+- [Images List](https://docs.akuity.io/self-hosted/images-list): Container images required for air-gapped installs.
+- [Helm Values Reference](https://docs.akuity.io/self-hosted/helm-values-reference): Reference for the Akuity Platform Helm chart values.
+
+## Tutorials
+
+- [Tutorials](https://docs.akuity.io/tutorials/): End-to-end walkthroughs for common Akuity Platform workflows.
+- [Intro to Argo CD](https://docs.akuity.io/tutorials/intro-to-argo-cd/): Argo CD fundamentals using the Akuity Platform.
+- [Intro to Argo CD on EKS](https://docs.akuity.io/tutorials/intro-to-argo-cd-eks/): Deploying Argo CD on AWS EKS via Akuity.
+- [Intro to Argo CD with GitHub Actions](https://docs.akuity.io/tutorials/intro-to-argo-cd-github-actions/): CI/CD integration with GitHub Actions.
+- [Advanced GitOps](https://docs.akuity.io/tutorials/adv-gitops/): Patterns for managing many clusters and apps at scale.
+- [Migrating from Argo CD](https://docs.akuity.io/tutorials/migrating-from-argocd/): Migrate self-managed Argo CD to the Akuity Platform.
+- [EKS Add-on Agent Install](https://docs.akuity.io/tutorials/eks-addon-agent-install/): Installing the Akuity Agent as an EKS add-on.
+
+## Changelog
+
+- [Changelogs](https://docs.akuity.io/changelog/): Release notes for all Akuity products.
+- [Akuity Cloud Changelog](https://docs.akuity.io/changelog/cloud): Updates to the hosted Akuity Platform.
+- [Akuity Agent Changelog](https://docs.akuity.io/changelog/agent): Releases of the Akuity cluster agent.
+- [Self-Hosted Changelog](https://docs.akuity.io/changelog/selfhosted/): Releases of the self-hosted Akuity Platform.
+
+## Support
+
+- [FAQ](https://docs.akuity.io/faq): Frequently asked questions about the Akuity Platform.
+- [Troubleshooting](https://docs.akuity.io/troubleshooting/): Diagnostic steps and KB articles for common issues.
+
+## Optional
+
+- [API Reference (OpenAPI)](https://docs.akuity.io/apidocs.swagger.yaml): OpenAPI/Swagger spec for the Akuity Platform API.
+- [Sitemap](https://docs.akuity.io/sitemap.xml): Full XML sitemap of all documentation pages.
+- [Akuity.io](https://akuity.io/): Akuity company site, product overviews, and blog.
+- [Argo CD Project Docs](https://argo-cd.readthedocs.io/): Upstream Argo CD documentation.
+- [Kargo Project Docs](https://docs.kargo.io/): Upstream Kargo documentation.

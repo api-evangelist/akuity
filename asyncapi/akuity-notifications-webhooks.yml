@@ -1,0 +1,138 @@
+generated: '2026-08-06'
+method: searched
+source: >-
+  https://docs.akuity.io/akuity-portal/reference/notifications +
+  https://docs.akuity.io/akuity-portal/organizations/notifications +
+  grpc/akuity-notifications-webhook.proto
+docs: https://docs.akuity.io/akuity-portal/reference/notifications
+description: >-
+  Akuity's outbound event surface. Organizations register a webhook endpoint in
+  Notification settings and Akuity POSTs a single `WebhookEventPayload` envelope
+  for every subscribed event. Akuity publishes a field-level schema table for the
+  payload but no AsyncAPI document; the authoritative shape is the
+  akuity.notifications.webhook.v1 protobuf, captured verbatim in
+  grpc/akuity-notifications-webhook.proto.
+asyncapi_published: false
+format: webhook-catalog
+
+delivery:
+  direction: outbound
+  transport: HTTPS POST
+  content_type: application/json
+  encoding: protojson
+  endpoint: customer-supplied
+  configuration_ui: Organization → Notification Center → Settings
+  configuration_docs: https://docs.akuity.io/akuity-portal/organizations/notifications
+  signing:
+    documented: false
+    note: >-
+      No webhook signature header, shared secret or timestamp-verification scheme
+      is documented for platform notification webhooks. Receivers cannot
+      cryptographically verify origin from the published material.
+  retries:
+    documented: false
+  other_channels:
+    - email
+    - Akuity Platform UI (Notification Center)
+
+envelope:
+  message: akuity.notifications.webhook.v1.WebhookEventPayload
+  fields:
+    - name: event_time
+      type: google.protobuf.Timestamp
+      description: The time the event was triggered.
+    - name: event_type
+      type: WebhookEventType
+      description: Discriminator for the oneof metadata field.
+    - name: organization_id
+      type: string
+    - name: event_id
+      type: string
+    - name: metadata
+      type: oneof
+      description: Exactly one of ping_event, usage_event, audit_event, agent_health_event, cname_alert_event.
+
+events:
+  - type: WEBHOOK_EVENT_TYPE_PING
+    field: ping_event
+    payload: PingEvent
+    description: Test/verification ping fired when a notification config is exercised.
+    schema:
+      notification_config_id: string — the organization notification config that triggered the ping
+
+  - type: WEBHOOK_EVENT_TYPE_AUDIT
+    field: audit_event
+    payload: AuditEvent
+    description: >-
+      An auditable action occurred in the organization — team, team_member,
+      custom_role, kargo_instance and similar objects.
+    schema:
+      timestamp: string
+      action: string — the action performed
+      actor: 'EventAuditActor {type, id, ip?}'
+      object: 'EventAuditObject {type, id{name,kind,group}, parent_id{name,parent_name,application_name}}'
+      details: 'EventAuditDetails {message, patch, action_type}'
+    related_api: GET /api/v1/organizations/{id}/audit-logs
+
+  - type: WEBHOOK_EVENT_TYPE_USAGE
+    field: usage_event
+    payload: UsageUpdateEvent
+    description: A plan/quota usage threshold was crossed.
+    schema:
+      product: string — e.g. "ArgoCD", "Kargo", "Akuity Agent"
+      usage_type: string — e.g. "applications", "projects"
+      usage_threshold: double
+      max_limit: int64
+      usage: int64
+    related_api: GET /api/v1/organizations/{id}/argocd-instances-quota
+
+  - type: WEBHOOK_EVENT_TYPE_AGENT_HEALTH
+    field: agent_health_event
+    payload: AgentHealthEvent
+    description: An Akuity Agent connected to or disconnected from the control plane.
+    schema:
+      instance_id: string
+      instance_name: string
+      cluster_id: string
+      cluster_name: string
+      status: string — "connected" or "disconnected"
+      timestamp: google.protobuf.Timestamp
+      kargo: bool — true for a Kargo agent, false for an Argo CD cluster
+
+  - type: WEBHOOK_EVENT_TYPE_CNAME_ALERT
+    field: cname_alert_event
+    payload: CnameAlertEvent
+    description: >-
+      A custom-domain CNAME record for an instance is missing, misconfigured or
+      expiring. Shipped in the 2026-01-22 platform release.
+    schema:
+      instance_id: string
+      instance_name: string
+      fqdn: string
+      message: string
+      kargo: bool
+
+  - type: WEBHOOK_EVENT_TYPE_UNSPECIFIED
+    field: null
+    description: Zero value; never emitted.
+
+notification_categories:
+  - Product Updates (new-product-version, custom)
+  - Usage Alerts (audit, free-trial-expiring, usage)
+  - Instance Alerts (agent-health, cname-alert)
+
+related_but_distinct:
+  - name: Argo CD Git webhooks (inbound)
+    direction: inbound
+    description: >-
+      A separate, INBOUND surface: an Argo CD instance can receive push events
+      from Bitbucket, Bitbucket Server, GitHub, GitLab and Gogs at
+      https://<instance>.cd.akuity.cloud/api/webhook to trigger an immediate
+      refresh instead of waiting for the three-minute poll. Optional shared
+      secret. This is upstream Argo CD behaviour surfaced by Akuity, not an
+      Akuity event feed.
+    docs: https://docs.akuity.io/argocd/managing-instances/settings/webhooks
+
+  - name: Kargo notifications
+    description: Kargo-side notification configuration, shipped 2025-11-19.
+    docs: https://docs.akuity.io/argocd/managing-instances/settings/features/notifications

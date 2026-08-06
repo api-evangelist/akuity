@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package akuity.apikey.v1;
+
+import "accesscontrol/v1/accesscontrol.proto";
+
+import "google/api/annotations.proto";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Akuity.Apikey.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/apikey/v1;apikeyv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "ApikeyProto";
+
+option java_package = "com.akuity.apikey.v1";
+
+option objc_class_prefix = "AAX";
+
+option php_metadata_namespace = "Akuity\\Apikey\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Apikey\\V1";
+
+option ruby_package = "Akuity::Apikey::V1";
+
+message GetWorkspaceAPIKeyRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+}
+
+message GetWorkspaceAPIKeyResponse {
+  APIKey api_key = 1;
+}
+
+message DeleteWorkspaceAPIKeyRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+}
+
+message DeleteWorkspaceAPIKeyResponse {
+}
+
+message RegenerateWorkspaceAPIKeySecretRequest {
+  string organization_id = 1;
+
+  string workspace_id = 2;
+
+  string id = 3;
+
+  string expiry = 4;
+}
+
+message RegenerateWorkspaceAPIKeySecretResponse {
+  APIKey api_key = 1;
+}
+
+message GetAPIKeyRequest {
+  string id = 1;
+}
+
+message GetAPIKeyResponse {
+  APIKey api_key = 1;
+}
+
+message DeleteAPIKeyRequest {
+  string id = 1;
+}
+
+message DeleteAPIKeyResponse {
+}
+
+message RegenerateAPIKeySecretRequest {
+  string id = 1;
+
+  string expiry = 2;
+}
+
+message RegenerateAPIKeySecretResponse {
+  APIKey api_key = 1;
+}
+
+message APIKey {
+  string id = 1;
+
+  string description = 2;
+
+  optional string secret = 3;
+
+  string organization_id = 4;
+
+  akuity.accesscontrol.v1.Permissions permissions = 5;
+
+  google.protobuf.Timestamp create_time = 6;
+
+  google.protobuf.Timestamp expire_time = 7;
+}
+
+service APIKeyService {
+  rpc GetAPIKey ( GetAPIKeyRequest ) returns ( GetAPIKeyResponse ) {
+    option (google.api.http) = { get: "/api/v1/apikeys/{id}" };
+  }
+
+  rpc DeleteAPIKey ( DeleteAPIKeyRequest ) returns ( DeleteAPIKeyResponse ) {
+    option (google.api.http) = { delete: "/api/v1/apikeys/{id}" };
+  }
+
+  rpc RegenerateAPIKeySecret ( RegenerateAPIKeySecretRequest ) returns ( RegenerateAPIKeySecretResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/apikeys/{id}/regenerate",
+      body: "*"
+    };
+  }
+
+  rpc GetWorkspaceAPIKey ( GetWorkspaceAPIKeyRequest ) returns ( GetWorkspaceAPIKeyResponse ) {
+    option (google.api.http) = {
+      get: "/api/v1/organizations/{organization_id}/workspaces/{workspace_id}/apikeys/{id}"
+    };
+  }
+
+  rpc DeleteWorkspaceAPIKey ( DeleteWorkspaceAPIKeyRequest ) returns ( DeleteWorkspaceAPIKeyResponse ) {
+    option (google.api.http) = {
+      delete: "/api/v1/organizations/{organization_id}/workspaces/{workspace_id}/apikeys/{id}"
+    };
+  }
+
+  rpc RegenerateWorkspaceAPIKeySecret ( RegenerateWorkspaceAPIKeySecretRequest ) returns ( RegenerateWorkspaceAPIKeySecretResponse ) {
+    option (google.api.http) = {
+      post: "/api/v1/organizations/{organization_id}/workspaces/{workspace_id}/apikeys/{id}/regenerate",
+      body: "*"
+    };
+  }
+}

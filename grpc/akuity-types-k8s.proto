@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package akuity.types.k8s.v1;
+
+option csharp_namespace = "Akuity.Types.K8s.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/types/k8s/v1;k8sv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "K8sProto";
+
+option java_package = "com.akuity.types.k8s.v1";
+
+option objc_class_prefix = "ATK";
+
+option php_metadata_namespace = "Akuity\\Types\\K8s\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Types\\K8s\\V1";
+
+option ruby_package = "Akuity::Types::K8s::V1";
+
+message ResourceType {
+  GroupVersionKind group_version_kind = 1;
+
+  repeated ColumnInfo columns = 2;
+
+  optional ResourceCategory category = 3;
+
+  optional DeprecatedInfo deprecated_info = 4;
+
+  bool cluster_scoped = 5;
+}
+
+message DeprecatedInfo {
+  bool deprecated = 1;
+
+  string message = 2;
+
+  optional string deprecated_in = 3;
+
+  optional string unavailable_in = 4;
+
+  optional GroupVersionKind migrate_to = 5;
+
+  optional string cluster_id = 6;
+
+  optional GroupVersionKind group_version_kind = 7;
+
+  optional uint32 resource_count = 8;
+
+  optional string kubernetes_version = 9;
+
+  optional string instance_id = 10;
+
+  DeprecatedInfoSeverity severity = 11;
+}
+
+message GroupVersionKind {
+  string group = 1;
+
+  string version = 2;
+
+  string kind = 3;
+}
+
+message ColumnInfo {
+  string name = 1;
+
+  string title = 2;
+}
+
+message ResourceAttribute {
+  string key = 1;
+
+  string value = 2;
+}
+
+enum DeprecatedInfoSeverity {
+  DEPRECATED_INFO_SEVERITY_UNSPECIFIED = 0;
+
+  DEPRECATED_INFO_SEVERITY_LOW = 1;
+
+  DEPRECATED_INFO_SEVERITY_MEDIUM = 2;
+
+  DEPRECATED_INFO_SEVERITY_HIGH = 3;
+
+  DEPRECATED_INFO_SEVERITY_CRITICAL = 4;
+}
+
+enum ResourceCategory {
+  RESOURCE_CATEGORY_UNSPECIFIED = 0;
+
+  RESOURCE_CATEGORY_WORKLOADS = 1;
+
+  RESOURCE_CATEGORY_NETWORKING = 2;
+
+  RESOURCE_CATEGORY_STORAGE = 3;
+
+  RESOURCE_CATEGORY_CONFIGURATION = 4;
+
+  RESOURCE_CATEGORY_RESOURCE_POLICY = 5;
+
+  RESOURCE_CATEGORY_RBAC = 6;
+
+  RESOURCE_CATEGORY_CLUSTER_MANAGEMENT = 7;
+
+  RESOURCE_CATEGORY_ADMISSION = 8;
+
+  RESOURCE_CATEGORY_CUSTOM_RESOURCE = 9;
+
+  RESOURCE_CATEGORY_OTHERS = 10;
+}

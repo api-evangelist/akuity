@@ -42,5 +42,23 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Akuity is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.hiive.com/securities/akuity-stock
+Akuity is the enterprise software delivery company founded by the creators of Argo CD and Kargo. The Akuity Platform is its commercial, fully-managed offering: hosted, enterprise-grade Argo CD control planes for GitOps continuous delivery, managed Kargo for multi-stage progressive promotion, the Akuity Agent for connecting target Kubernetes clusters, and Akuity Intelligence — an AI layer adding multi-cluster insight dashboards, on-call and promotion advisor agents, and AI-assisted remediation.
+
+- Website: https://akuity.io
+- Documentation: https://docs.akuity.io
+- API guide: https://docs.akuity.io/akuity-portal/automation/api
+- API base URL: https://akuity.cloud/api/v1/
+- GitHub: https://github.com/akuity
+- Status: https://status.akuity.io/
+- Trust Center: https://trust.akuity.io/
+
+## A note on the specifications in `openapi/`
+
+Akuity publishes no OpenAPI document, and its documentation's "API Reference"
+page renders as an empty stub. The eight OpenAPI files in `openapi/` are API
+Evangelist derivations, transcribed mechanically from the protobuf service
+descriptors and `google.api.http` annotations that Akuity itself publishes in
+`github.com/akuity/api-client-go` (v0.29.0). Every path, method, parameter and
+schema comes from that published module; nothing was invented. The `grpc/`
+directory holds the same contract in its native `.proto` form. Sample operations
+were verified live against `https://akuity.cloud` on 2026-08-06.

@@ -1,0 +1,170 @@
+generated: '2026-08-06'
+method: searched
+source: >-
+  https://akuity.io/security-compliance + https://trust.akuity.io/ +
+  openapi/akuity-*.json + grpc/akuity-*.proto
+description: >-
+  What the Akuity Platform conforms to, and — just as usefully — what it does
+  not. Compliance claims are lifted verbatim from Akuity's own Security and
+  Compliance page (last updated 2026-01-30 per that page); protocol claims are
+  derived from the published protobuf/grpc-gateway descriptors and live probes.
+
+compliance:
+  - id: soc2-type-ii
+    name: SOC 2 Type II
+    conforms: true
+    evidence: >-
+      "Independently audited controls covering the Security Trust Service
+      Criteria, with operational effectiveness validated over time." —
+      https://akuity.io/security-compliance
+    reports_available_at: https://trust.akuity.io
+  - id: iso-27001-2022
+    name: ISO/IEC 27001:2022
+    conforms: true
+    evidence: >-
+      "Certified Information Security Management System (ISMS)." —
+      https://akuity.io/security-compliance
+  - id: pci-dss-4-0-1
+    name: PCI DSS v4.0.1 (Service Provider)
+    conforms: true
+    evidence: >-
+      "Report on Compliance (ROC) completed, validating platform and operational
+      controls against the latest PCI standard." — https://akuity.io/security-compliance
+  - id: hipaa
+    name: HIPAA
+    conforms: partial
+    evidence: >-
+      "Administrative, technical, and operational safeguards aligned with HIPAA
+      requirements." Akuity describes itself as HIPAA-*aligned*, not certified.
+  - id: csa-star-level-1
+    name: CSA STAR Level 1
+    conforms: true
+    evidence: 'Public self-assessment aligned with the Cloud Controls Matrix (CCM).'
+  - id: gdpr
+    name: GDPR
+    conforms: partial
+    evidence: >-
+      "Platform and operational practices designed to support data protection and
+      privacy principles under GDPR." Alignment, plus US and EU data-residency
+      regions.
+
+standards:
+  - id: grpc
+    name: gRPC
+    conforms: true
+    evidence: >-
+      All nine public services are gRPC services; api-client-go ships generated
+      gRPC stubs (*_grpc.pb.go) for each.
+  - id: grpc-gateway
+    name: grpc-gateway (google.api.http transcoding)
+    conforms: true
+    evidence: >-
+      Every public REST route is generated from a `google.api.http` annotation.
+      482 HTTP operations across 9 services in grpc/akuity-*.proto.
+  - id: protobuf
+    name: Protocol Buffers 3
+    conforms: true
+    evidence: 'syntax = "proto3" in every published descriptor.'
+  - id: google-rpc-status
+    name: google.rpc.Status / google.rpc.Code error model
+    conforms: true
+    evidence: >-
+      Live: GET https://akuity.cloud/api/v1/organizations returned 401 with
+      {"code":16, "message":"unauthenticated", "details":[]} on 2026-08-06.
+  - id: rfc7617
+    name: RFC 7617 HTTP Basic authentication
+    conforms: true
+    evidence: >-
+      "The API allows you to authenticate via HTTP basic auth using the
+      Authorization Header." — https://docs.akuity.io/akuity-portal/automation/api
+  - id: rfc8628
+    name: RFC 8628 OAuth 2.0 Device Authorization Grant
+    conforms: true
+    evidence: >-
+      GET /api/v1/auth/device-code and POST /api/v1/auth/device-token in
+      akuity.auth.v1 — the flow behind `akuity login`. Not documented for
+      third-party clients.
+  - id: oidc
+    name: OpenID Connect
+    conforms: true
+    evidence: >-
+      Organization SSO is OIDC-based (GetOIDCMap/UpdateOIDCMap,
+      GetSSOConfiguration/EnsureSSOConfiguration,
+      GET /api/v1/oidc/provider-details). Identity plane runs on Auth0 per the
+      status page components.
+    docs: https://docs.akuity.io/akuity-portal/organizations/sso
+  - id: saml
+    name: SAML SSO
+    conforms: unknown
+    evidence: >-
+      SSO is documented generically; the published descriptors expose only OIDC
+      mapping RPCs. Not asserted.
+  - id: rfc9457
+    name: RFC 9457 Problem Details for HTTP APIs
+    conforms: false
+    evidence: >-
+      Errors use the google.rpc.Status envelope with application/json, not
+      application/problem+json. See errors/akuity-error-codes.yml.
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    evidence: >-
+      Akuity publishes no OpenAPI document. https://akuity.cloud/api/v1/openapi.json
+      returns {"code":5,"message":"Not Found"}; /openapi.json, /openapi.yaml,
+      /swagger.json and /api-docs are 404 on akuity.io and docs.akuity.io. The
+      documentation's "API Reference" page
+      (https://docs.akuity.io/akuity-portal/reference/api) renders as an empty
+      stub with no operations. The specs in openapi/ are API Evangelist
+      derivations from Akuity's own published protobuf descriptors, not an
+      Akuity artifact.
+  - id: asyncapi
+    name: AsyncAPI
+    conforms: false
+    evidence: >-
+      No AsyncAPI document. The webhook surface is documented as a prose schema
+      table at https://docs.akuity.io/akuity-portal/reference/notifications and
+      captured in asyncapi/akuity-notifications-webhooks.yml.
+  - id: idempotency-key
+    name: Idempotency keys
+    conforms: false
+    evidence: 'Zero matches for /idempoten/i across all published protobuf descriptors.'
+  - id: pagination
+    name: Standard pagination
+    conforms: partial
+    evidence: >-
+      Offset/limit query parameters on some list RPCs (audit logs, Kubernetes
+      resource/image/container listings); many list operations are unpaginated
+      and there is no cursor convention.
+  - id: rate-limit-headers
+    name: RateLimit header fields (draft-ietf-httpapi-ratelimit-headers)
+    conforms: false
+    evidence: No RateLimit/X-RateLimit/Retry-After headers documented or observed.
+  - id: security-txt
+    name: RFC 9116 security.txt
+    conforms: false
+    evidence: >-
+      404 on akuity.io/.well-known/security.txt and /security.txt. The 200 at
+      trust.akuity.io is a Vanta SPA catch-all (disproved with a control path);
+      the 200 at status.akuity.io is Atlassian's own file. See
+      well-known/akuity-well-known.yml.
+  - id: a2a-agent-card
+    name: A2A Agent Card
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json 404 on akuity.io,
+      docs.akuity.io, akuity.cloud, academy.akuity.io and status.akuity.io.
+
+infrastructure:
+  cloud: Amazon Web Services
+  data_residency:
+    - United States
+    - European Union
+  transport: TLS 1.2 or higher for all external communication
+  edge: Cloudflare (observed via cf-ray / server headers on akuity.cloud)
+  identity: Auth0 (US-3 and EU tenants, per status page components)
+  image_registry: Quay.io
+  supply_chain:
+    signed_images: https://docs.akuity.io/akuity-portal/security/verifying-images
+    distroless_report: https://docs.akuity.io/akuity-portal/security/distroless_report
+  byok: https://docs.akuity.io/akuity-portal/security/byok
+  private_link: https://docs.akuity.io/akuity-portal/security/private-link

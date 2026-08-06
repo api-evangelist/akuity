@@ -1,0 +1,525 @@
+{
+  "components": {
+    "schemas": {
+      "Status": {
+        "properties": {
+          "code": {
+            "description": "gRPC status code (google.rpc.Code)",
+            "format": "int32",
+            "type": "integer"
+          },
+          "details": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "google.rpc.Status",
+        "type": "object"
+      },
+      "akuity_customrole_v1_CreateCustomRoleRequest": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "policy": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.customrole.v1.CreateCustomRoleRequest",
+        "type": "object"
+      },
+      "akuity_customrole_v1_CreateCustomRoleResponse": {
+        "properties": {
+          "customRole": {
+            "$ref": "#/components/schemas/akuity_customrole_v1_CustomRole"
+          }
+        },
+        "title": "akuity.customrole.v1.CreateCustomRoleResponse",
+        "type": "object"
+      },
+      "akuity_customrole_v1_CustomRole": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "policy": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.customrole.v1.CustomRole",
+        "type": "object"
+      },
+      "akuity_customrole_v1_DeleteCustomRoleResponse": {
+        "title": "akuity.customrole.v1.DeleteCustomRoleResponse",
+        "type": "object"
+      },
+      "akuity_customrole_v1_GetCustomRoleResponse": {
+        "properties": {
+          "customRole": {
+            "$ref": "#/components/schemas/akuity_customrole_v1_CustomRole"
+          }
+        },
+        "title": "akuity.customrole.v1.GetCustomRoleResponse",
+        "type": "object"
+      },
+      "akuity_customrole_v1_ListCustomRolesResponse": {
+        "properties": {
+          "customRoles": {
+            "items": {
+              "$ref": "#/components/schemas/akuity_customrole_v1_CustomRole"
+            },
+            "type": "array"
+          }
+        },
+        "title": "akuity.customrole.v1.ListCustomRolesResponse",
+        "type": "object"
+      },
+      "akuity_customrole_v1_UpdateCustomRoleRequest": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "policy": {
+            "type": "string"
+          }
+        },
+        "title": "akuity.customrole.v1.UpdateCustomRoleRequest",
+        "type": "object"
+      },
+      "akuity_customrole_v1_UpdateCustomRoleResponse": {
+        "properties": {
+          "customRole": {
+            "$ref": "#/components/schemas/akuity_customrole_v1_CustomRole"
+          }
+        },
+        "title": "akuity.customrole.v1.UpdateCustomRoleResponse",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "description": "HTTP Basic auth: username = AKUITY_API_KEY_ID, password = AKUITY_API_KEY_SECRET.",
+        "scheme": "basic",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "info@akuity.io",
+      "name": "Akuity",
+      "url": "https://docs.akuity.io/akuity-portal/automation/api"
+    },
+    "description": "The Custom Roles surface of the Akuity Platform REST API (grpc-gateway projection of customrole/v1). Derived mechanically from the protobuf service descriptors and google.api.http annotations published in the akuity/api-client-go Go module.",
+    "title": "Akuity Platform API — Custom Roles",
+    "version": "v1"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/customroles": {
+      "get": {
+        "operationId": "CustomRoleService_ListCustomRoles",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organizationId",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_customrole_v1_ListCustomRolesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "List Custom Roles",
+        "tags": [
+          "CustomRoleService"
+        ],
+        "x-grpc-method": "akuity.customrole.v1.CustomRoleService/ListCustomRoles"
+      },
+      "post": {
+        "operationId": "CustomRoleService_CreateCustomRole",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_customrole_v1_CreateCustomRoleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_customrole_v1_CreateCustomRoleResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Create Custom Role",
+        "tags": [
+          "CustomRoleService"
+        ],
+        "x-grpc-method": "akuity.customrole.v1.CustomRoleService/CreateCustomRole"
+      }
+    },
+    "/api/v1/customroles/{id}": {
+      "delete": {
+        "operationId": "CustomRoleService_DeleteCustomRole",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_customrole_v1_DeleteCustomRoleResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Delete Custom Role",
+        "tags": [
+          "CustomRoleService"
+        ],
+        "x-grpc-method": "akuity.customrole.v1.CustomRoleService/DeleteCustomRole"
+      },
+      "get": {
+        "operationId": "CustomRoleService_GetCustomRole",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_customrole_v1_GetCustomRoleResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Get Custom Role",
+        "tags": [
+          "CustomRoleService"
+        ],
+        "x-grpc-method": "akuity.customrole.v1.CustomRoleService/GetCustomRole"
+      },
+      "patch": {
+        "operationId": "CustomRoleService_UpdateCustomRole",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/akuity_customrole_v1_UpdateCustomRoleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/akuity_customrole_v1_UpdateCustomRoleResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "unauthenticated"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            },
+            "description": "gRPC status error"
+          }
+        },
+        "summary": "Update Custom Role",
+        "tags": [
+          "CustomRoleService"
+        ],
+        "x-grpc-method": "akuity.customrole.v1.CustomRoleService/UpdateCustomRole"
+      }
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "servers": [
+    {
+      "description": "Akuity Platform (SaaS)",
+      "url": "https://akuity.cloud"
+    }
+  ]
+}

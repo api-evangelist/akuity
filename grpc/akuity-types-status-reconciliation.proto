@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package akuity.types.status.reconciliation.v1;
+
+option csharp_namespace = "Akuity.Types.Status.Reconciliation.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/types/status/reconciliation/v1;reconciliationv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "ReconciliationProto";
+
+option java_package = "com.akuity.types.status.reconciliation.v1";
+
+option objc_class_prefix = "ATSR";
+
+option php_metadata_namespace = "Akuity\\Types\\Status\\Reconciliation\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Types\\Status\\Reconciliation\\V1";
+
+option ruby_package = "Akuity::Types::Status::Reconciliation::V1";
+
+message Status {
+  StatusCode code = 1;
+
+  string message = 2;
+}
+
+enum AgentUpdateStatus {
+  AGENT_UPDATE_STATUS_UNSPECIFIED = 0;
+
+  AGENT_UPDATE_STATUS_UPDATED = 1;
+
+  AGENT_UPDATE_STATUS_IN_PROGRESS = 2;
+
+  AGENT_UPDATE_STATUS_DELAYED = 3;
+}
+
+enum StatusCode {
+  STATUS_CODE_UNSPECIFIED = 0;
+
+  STATUS_CODE_SUCCESSFUL = 1;
+
+  STATUS_CODE_PROGRESSING = 2;
+
+  STATUS_CODE_FAILED = 3;
+}

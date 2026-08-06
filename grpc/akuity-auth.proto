@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package akuity.auth.v1;
+
+import "google/api/annotations.proto";
+
+option csharp_namespace = "Akuity.Auth.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/auth/v1;authv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "AuthProto";
+
+option java_package = "com.akuity.auth.v1";
+
+option objc_class_prefix = "AAX";
+
+option php_metadata_namespace = "Akuity\\Auth\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Auth\\V1";
+
+option ruby_package = "Akuity::Auth::V1";
+
+message GetDeviceCodeRequest {
+}
+
+message GetDeviceCodeResponse {
+  string device_code = 1;
+
+  string user_code = 2;
+
+  string verification_uri = 3;
+
+  string verification_uri_complete = 4;
+
+  int32 expires_in_seconds = 5;
+
+  int32 interval_seconds = 6;
+}
+
+message GetDeviceTokenRequest {
+  string device_code = 1;
+}
+
+message GetDeviceTokenResponse {
+  string access_token = 1;
+}
+
+message RefreshAccessTokenRequest {
+}
+
+message RefreshAccessTokenResponse {
+}
+
+message GetOIDCProviderDetailsRequest {
+  string discovery_url = 1;
+}
+
+message GetOIDCProviderDetailsResponse {
+  string issuer = 1;
+
+  string authorization_endpoint = 2;
+
+  string token_endpoint = 3;
+
+  string userinfo_endpoint = 4;
+
+  string jwks_uri = 5;
+}
+
+service AuthService {
+  rpc GetDeviceCode ( GetDeviceCodeRequest ) returns ( GetDeviceCodeResponse ) {
+    option (google.api.http) = { get: "/api/v1/auth/device-code" };
+  }
+
+  rpc GetDeviceToken ( GetDeviceTokenRequest ) returns ( GetDeviceTokenResponse ) {
+    option (google.api.http) = { post: "/api/v1/auth/device-token", body: "*" };
+  }
+
+  rpc RefreshAccessToken ( RefreshAccessTokenRequest ) returns ( RefreshAccessTokenResponse ) {
+    option (google.api.http) = { post: "/api/v1/auth/refresh-token", body: "*" };
+  }
+
+  rpc GetOIDCProviderDetails ( GetOIDCProviderDetailsRequest ) returns ( GetOIDCProviderDetailsResponse ) {
+    option (google.api.http) = { get: "/api/v1/oidc/provider-details" };
+  }
+}

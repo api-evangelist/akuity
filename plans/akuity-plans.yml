@@ -1,0 +1,88 @@
+generated: '2026-08-06'
+method: searched
+source: https://akuity.io/pricing
+url: https://akuity.io/pricing
+description: >-
+  Akuity Platform commercial plans. Two published tiers plus a free trial; the
+  metered units are Argo CD applications, Kargo stages and Akuity Intelligence AI
+  tokens, not API calls.
+currency: USD
+billing_period: month
+metered_units:
+  - Argo CD applications
+  - Kargo stages
+  - Akuity Intelligence AI tokens
+  - control planes
+  - workspaces
+
+plans:
+  - name: Free trial
+    price: 0
+    description: >-
+      "Try it for free" self-serve trial. Six months free for qualifying startups
+      and early-stage companies. Trial expiry is itself a notification event
+      (free-trial-expiring).
+
+  - name: Pro
+    price: 495
+    price_qualifier: starts at
+    period: month
+    description: GitOps for businesses scaling with Kubernetes.
+    includes:
+      argocd_control_planes: 1
+      kargo_control_planes: 1
+      argocd_applications: 50
+      kargo_stages: 50
+      ai_tokens: 25000000
+      workspaces: 3
+      target_clusters: unlimited
+      users: unlimited
+      audit_records_searchable: 6 months
+      audit_archive_retention: 1 year
+    features:
+      - Akuity Intelligence (insights dashboards, on-call agent/runbooks, promotion advisor, deployment advisor)
+      - System accounts (login or API)
+      - Argo CD notifications
+      - Custom subdomain (acme.cd.akuity.cloud)
+      - Custom roles
+      - Scoped API keys
+      - Argo CD SSO
+      - HA control plane
+      - Akuity extensions (Rollouts, Sync History, ApplicationSet)
+    add_ons:
+      - description: 10 additional Argo CD applications + 10 Kargo stages + 5M AI tokens
+        price: 99
+        period: month
+        ceiling: 1500 applications total
+
+  - name: Enterprise
+    price: null
+    price_qualifier: contact sales
+    description: Enterprise-grade GitOps for Kubernetes.
+    includes:
+      argocd_control_planes: custom
+      kargo_control_planes: custom
+      argocd_applications: custom
+      kargo_stages: custom
+      workspaces: custom
+      ai_tokens: custom
+      audit_records_searchable: 1 year
+      audit_archive_retention: 2 years
+    features:
+      - Everything in Pro
+      - Self-hosted and on-prem deployment
+      - CVE notifications and an SLA on resolution
+      - Dedicated Customer Success Manager
+      - Real-time support channel
+      - Enterprise SSO
+      - Bring your own encryption keys (BYOK)
+      - Volume pricing, fast-track feature option, optional subject-matter-expert support
+
+notes:
+  - >-
+    There is no free/hobby permanent tier and no usage-based API pricing. The API
+    is included with the plan; nothing in the pricing surface meters HTTP calls.
+  - >-
+    Quota exhaustion is an API-visible condition — RESOURCE_EXHAUSTED (code 8)
+    and the usage webhook event. See errors/akuity-error-codes.yml and
+    asyncapi/akuity-notifications-webhooks.yml.

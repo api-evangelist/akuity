@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package akuity.accesscontrol.v1;
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option csharp_namespace = "Akuity.Accesscontrol.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/accesscontrol/v1;accesscontrolv1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "AccesscontrolProto";
+
+option java_package = "com.akuity.accesscontrol.v1";
+
+option objc_class_prefix = "AAX";
+
+option php_metadata_namespace = "Akuity\\Accesscontrol\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Accesscontrol\\V1";
+
+option ruby_package = "Akuity::Accesscontrol::V1";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: { title: "Akuity Platform API", version: "1.0" }
+};
+
+message Permissions {
+  repeated string actions = 1;
+
+  repeated string roles = 2;
+
+  repeated string custom_roles = 3;
+}

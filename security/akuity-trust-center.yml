@@ -1,0 +1,118 @@
+generated: '2026-08-06'
+method: searched
+source: https://akuity.io/security-compliance + https://trust.akuity.io/
+url: https://trust.akuity.io/
+provider: Vanta
+description: >-
+  Akuity operates a Vanta-hosted Trust Center at trust.akuity.io holding audit
+  reports and supporting documentation, and a server-rendered Security and
+  Compliance page at akuity.io/security-compliance that names every framework in
+  plain text. The named certifications below are quoted from that page, which was
+  last updated 2026-01-30 per its own byline.
+
+trust_center:
+  url: https://trust.akuity.io/
+  platform: Vanta
+  machine_readable: false
+  note: >-
+    The trust center is a client-rendered single-page app. It returns HTTP 200
+    with the same HTML shell for every path, including paths that do not exist,
+    so nothing on it is machine-readable and none of its 200s are evidence on
+    their own. The certifications below were therefore read from the
+    server-rendered akuity.io/security-compliance page instead.
+  documents_available: audit reports and supporting documentation, on request
+
+certifications:
+  - name: SOC 2 Type II
+    status: certified
+    scope: Security Trust Service Criteria, operational effectiveness validated over time
+  - name: ISO/IEC 27001:2022
+    status: certified
+    scope: Information Security Management System (ISMS)
+  - name: PCI DSS v4.0.1
+    status: assessed
+    role: Service Provider
+    scope: Report on Compliance (ROC) completed
+    clarification: >-
+      "Akuity is assessed as a service provider and does not store, process, or
+      transmit cardholder data on behalf of customers."
+  - name: HIPAA
+    status: aligned
+    clarification: >-
+      "Akuity supports HIPAA-regulated workloads through aligned safeguards but
+      is not a covered entity."
+  - name: CSA STAR Level 1
+    status: self-assessment
+    clarification: 'Level 1 self-assessment based on publicly available documentation, aligned with the Cloud Controls Matrix.'
+  - name: GDPR
+    status: aligned
+    scope: Platform and operational practices designed to support GDPR data-protection principles
+
+data_residency:
+  - region: United States
+    detail: Deployed across multiple availability zones.
+  - region: European Union
+    detail: >-
+      Fully self-contained EU region. Primary in Frankfurt, Germany with a
+      secondary backup region in Ireland. Customer data, including logs and
+      telemetry, remains within the EU.
+
+encryption:
+  in_transit: TLS 1.2 or higher
+  at_rest: AES-256 for databases, object storage and backups
+  key_management: AWS KMS, separation of duties, no shared or hard-coded keys
+  byok: https://docs.akuity.io/akuity-portal/security/byok
+
+data_handling:
+  sells_customer_data: false
+  uses_customer_data_for_advertising: false
+  trains_ai_on_customer_data: false
+  ai_clarification: >-
+    "Akuity does not use customer data to train machine learning or AI models
+    without explicit customer consent." Akuity Intelligence uses live platform
+    context (logs, events, manifests, deployment history) at inference time.
+  support_access: limited, approved, time-bound, logged, revoked on completion
+  deletion: >-
+    Documented retention and deletion policies; customer data securely deleted
+    within defined timeframes on termination or request, with confirmation of
+    deletion available on request.
+
+operational_controls:
+  secure_sdlc:
+    - Mandatory peer review for all code changes
+    - Version-controlled change management
+    - Automated testing and security checks in CI/CD
+    - Dependency scanning and vulnerability detection
+    - Separation of duties between development and production access
+  monitoring:
+    - Centralized logging across infrastructure and applications
+    - Audit logging for administrative and access activities
+    - Continuous monitoring for anomalous behaviour
+  business_continuity:
+    - Continuous backups of customer data
+    - Backups stored in a secondary region
+    - Documented and regularly tested disaster recovery procedures
+  employee_security:
+    - Background checks prior to access
+    - Mandatory security and privacy training
+    - Additional secure coding training for engineers
+  third_party_risk:
+    - Risk-based vendor assessment
+    - Review of third-party security attestations
+    - Least-privilege vendor access
+
+infrastructure:
+  cloud: Amazon Web Services
+  network:
+    - WAF and DDoS protection
+    - Strictly controlled network access
+    - Segmented networks and access boundaries
+    - Logical isolation between customer environments
+  private_link: https://docs.akuity.io/akuity-portal/security/private-link
+  networking_requirements: https://docs.akuity.io/akuity-portal/security/akp-networking-requirements
+
+security_contact: security@akuity.io
+see_also:
+  - security/akuity-vulnerability-disclosure.yml
+  - security/akuity-domain-security.yml
+  - conformance/akuity-conformance.yml

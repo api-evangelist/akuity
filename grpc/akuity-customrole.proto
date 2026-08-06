@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package akuity.customrole.v1;
+
+import "google/api/annotations.proto";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Akuity.Customrole.V1";
+
+option go_package = "github.com/akuityio/akuity-platform/pkg/api/gen/customrole/v1;customrolev1";
+
+option java_multiple_files = true;
+
+option java_outer_classname = "CustomroleProto";
+
+option java_package = "com.akuity.customrole.v1";
+
+option objc_class_prefix = "ACX";
+
+option php_metadata_namespace = "Akuity\\Customrole\\V1\\GPBMetadata";
+
+option php_namespace = "Akuity\\Customrole\\V1";
+
+option ruby_package = "Akuity::Customrole::V1";
+
+message CreateCustomRoleRequest {
+  string name = 1;
+
+  string description = 2;
+
+  string policy = 3;
+
+  string organization_id = 4;
+}
+
+message CreateCustomRoleResponse {
+  CustomRole custom_role = 1;
+}
+
+message UpdateCustomRoleRequest {
+  string id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  string policy = 4;
+
+  string organization_id = 5;
+}
+
+message UpdateCustomRoleResponse {
+  CustomRole custom_role = 1;
+}
+
+message GetCustomRoleRequest {
+  string id = 1;
+}
+
+message GetCustomRoleResponse {
+  CustomRole custom_role = 1;
+}
+
+message ListCustomRolesRequest {
+  string organization_id = 3;
+}
+
+message ListCustomRolesResponse {
+  repeated CustomRole custom_roles = 1;
+}
+
+message DeleteCustomRoleRequest {
+  string id = 1;
+}
+
+message DeleteCustomRoleResponse {
+}
+
+message CustomRole {
+  string id = 1;
+
+  string name = 2;
+
+  string description = 3;
+
+  string policy = 4;
+
+  string organization_id = 5;
+}
+
+service CustomRoleService {
+  rpc CreateCustomRole ( CreateCustomRoleRequest ) returns ( CreateCustomRoleResponse ) {
+    option (google.api.http) = { post: "/api/v1/customroles", body: "*" };
+  }
+
+  rpc UpdateCustomRole ( UpdateCustomRoleRequest ) returns ( UpdateCustomRoleResponse ) {
+    option (google.api.http) = { patch: "/api/v1/customroles/{id}", body: "*" };
+  }
+
+  rpc GetCustomRole ( GetCustomRoleRequest ) returns ( GetCustomRoleResponse ) {
+    option (google.api.http) = { get: "/api/v1/customroles/{id}" };
+  }
+
+  rpc ListCustomRoles ( ListCustomRolesRequest ) returns ( ListCustomRolesResponse ) {
+    option (google.api.http) = { get: "/api/v1/customroles" };
+  }
+
+  rpc DeleteCustomRole ( DeleteCustomRoleRequest ) returns ( DeleteCustomRoleResponse ) {
+    option (google.api.http) = { delete: "/api/v1/customroles/{id}" };
+  }
+}
