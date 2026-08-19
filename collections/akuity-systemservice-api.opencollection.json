@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akuity Platform API — System System Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SystemService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Announcement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/announcement"
+          },
+          "docs": "Get Announcement"
+        },
+        {
+          "info": {
+            "name": "Get Agent Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/agent/version"
+          },
+          "docs": "Get Agent Version"
+        },
+        {
+          "info": {
+            "name": "List Agent Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/agent/versions"
+          },
+          "docs": "List Agent Versions"
+        },
+        {
+          "info": {
+            "name": "Get Argo CDAgent Size Spec",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/cd/agent-size-spec"
+          },
+          "docs": "Get Argo CDAgent Size Spec"
+        },
+        {
+          "info": {
+            "name": "List Argo CDExtensions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/cd/extensions"
+          },
+          "docs": "List Argo CDExtensions"
+        },
+        {
+          "info": {
+            "name": "List Argo CDVersions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/cd/versions"
+          },
+          "docs": "List Argo CDVersions"
+        },
+        {
+          "info": {
+            "name": "List Valid Email Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/email/valid-events"
+          },
+          "docs": "List Valid Email Events"
+        },
+        {
+          "info": {
+            "name": "List Argo CDImage Upadter Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/image-updater/versions"
+          },
+          "docs": "List Argo CDImage Upadter Versions"
+        },
+        {
+          "info": {
+            "name": "Get Kargo Agent Size Spec",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/kargo/agent-size-spec"
+          },
+          "docs": "Get Kargo Agent Size Spec"
+        },
+        {
+          "info": {
+            "name": "List Kargo Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/kargo/versions"
+          },
+          "docs": "List Kargo Versions"
+        },
+        {
+          "info": {
+            "name": "Get Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/settings"
+          },
+          "docs": "Get Settings"
+        },
+        {
+          "info": {
+            "name": "Get Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/status"
+          },
+          "docs": "Get Status"
+        },
+        {
+          "info": {
+            "name": "Get Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/version"
+          },
+          "docs": "Get Version"
+        },
+        {
+          "info": {
+            "name": "List Valid Webhook Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/system/webhook/valid-events"
+          },
+          "docs": "List Valid Webhook Events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

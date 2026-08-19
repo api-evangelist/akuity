@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akuity Platform API — Extension Extension Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ExtensionService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Audit Record For Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/audit-records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Audit Record For Application"
+        },
+        {
+          "info": {
+            "name": "Get Sync Operations Events For Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/sync-operations-events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Sync Operations Events For Application"
+        },
+        {
+          "info": {
+            "name": "Get Sync Operations Stats For Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/sync-operations-stats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Sync Operations Stats For Application"
+        },
+        {
+          "info": {
+            "name": "List Audit Record For Kargo Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/kargo/extensions/audit-records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Audit Record For Kargo Projects"
+        },
+        {
+          "info": {
+            "name": "Get Kargo Analysis Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/kargo/extensions/logs/:project_name/:analysis_run/:shard/:job_namespace/:job_name/:container_name",
+            "params": [
+              {
+                "name": "project_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "analysis_run",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "shard",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "job_namespace",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "job_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "container_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Kargo Analysis Logs"
+        },
+        {
+          "info": {
+            "name": "Get Extension Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/kargo/extensions/settings"
+          },
+          "docs": "Get Extension Settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

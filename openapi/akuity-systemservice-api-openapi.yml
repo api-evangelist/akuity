@@ -1,0 +1,831 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: info@akuity.io
+    name: Akuity
+    url: https://docs.akuity.io/akuity-portal/automation/api
+  description: The System surface of the Akuity Platform REST API (grpc-gateway projection of system/v1). Derived mechanically from the protobuf service descriptors and google.api.http annotations published in the akuity/api-client-go Go module.
+  title: Akuity Platform API — System System Service API
+  version: v1
+servers:
+- description: Akuity Platform (SaaS)
+  url: https://akuity.cloud
+security:
+- basicAuth: []
+tags:
+- name: SystemService
+paths:
+  /api/v1/announcement:
+    get:
+      operationId: SystemService_GetAnnouncement
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_GetAnnouncementResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Announcement
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/GetAnnouncement
+  /api/v1/system/agent/version:
+    get:
+      operationId: SystemService_GetAgentVersion
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_GetAgentVersionResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Agent Version
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/GetAgentVersion
+  /api/v1/system/agent/versions:
+    get:
+      operationId: SystemService_ListAgentVersions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_ListAgentVersionsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Agent Versions
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/ListAgentVersions
+  /api/v1/system/cd/agent-size-spec:
+    get:
+      operationId: SystemService_GetArgoCDAgentSizeSpec
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Argo CDAgent Size Spec
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/GetArgoCDAgentSizeSpec
+  /api/v1/system/cd/extensions:
+    get:
+      operationId: SystemService_ListArgoCDExtensions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_ListArgoCDExtensionsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Argo CDExtensions
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/ListArgoCDExtensions
+  /api/v1/system/cd/versions:
+    get:
+      operationId: SystemService_ListArgoCDVersions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_ListArgoCDVersionsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Argo CDVersions
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/ListArgoCDVersions
+  /api/v1/system/email/valid-events:
+    get:
+      operationId: SystemService_ListValidEmailEvents
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_ListValidEmailEventsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Valid Email Events
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/ListValidEmailEvents
+  /api/v1/system/image-updater/versions:
+    get:
+      operationId: SystemService_ListArgoCDImageUpadterVersions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_ListArgoCDImageUpadterVersionsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Argo CDImage Upadter Versions
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/ListArgoCDImageUpadterVersions
+  /api/v1/system/kargo/agent-size-spec:
+    get:
+      operationId: SystemService_GetKargoAgentSizeSpec
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Kargo Agent Size Spec
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/GetKargoAgentSizeSpec
+  /api/v1/system/kargo/versions:
+    get:
+      operationId: SystemService_ListKargoVersions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_ListKargoVersionsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Kargo Versions
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/ListKargoVersions
+  /api/v1/system/settings:
+    get:
+      operationId: SystemService_GetSettings
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_GetSettingsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Settings
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/GetSettings
+  /api/v1/system/status:
+    get:
+      operationId: SystemService_GetStatus
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_GetStatusResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Status
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/GetStatus
+  /api/v1/system/version:
+    get:
+      operationId: SystemService_GetVersion
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_GetVersionResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Version
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/GetVersion
+  /api/v1/system/webhook/valid-events:
+    get:
+      operationId: SystemService_ListValidWebhookEvents
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_system_v1_ListValidWebhookEventsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Valid Webhook Events
+      tags:
+      - SystemService
+      x-grpc-method: akuity.system.v1.SystemService/ListValidWebhookEvents
+components:
+  schemas:
+    akuity_system_v1_ListArgoCDExtensionsResponse:
+      properties:
+        extensions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_ExtensionInfo'
+          type: array
+      title: akuity.system.v1.ListArgoCDExtensionsResponse
+      type: object
+    akuity_system_v1_GetAgentVersionResponse:
+      properties:
+        version:
+          type: string
+      title: akuity.system.v1.GetAgentVersionResponse
+      type: object
+    akuity_system_v1_SecurityAdvisory:
+      properties:
+        cveId:
+          type: string
+      title: akuity.system.v1.SecurityAdvisory
+      type: object
+    akuity_system_v1_GetKargoAgentSizeSpecResponse:
+      properties:
+        large:
+          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
+        medium:
+          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
+        small:
+          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
+      title: akuity.system.v1.GetKargoAgentSizeSpecResponse
+      type: object
+    akuity_system_v1_EventFilters:
+      properties:
+        supportedFilters:
+          items:
+            type: string
+          type: array
+      title: akuity.system.v1.EventFilters
+      type: object
+    akuity_system_v1_GetSettingsResponse:
+      properties:
+        billingEnabled:
+          type: boolean
+        capabilities:
+          items:
+            type: string
+          type: array
+        domainSuffix:
+          type: string
+        env:
+          type: string
+        instanceSubDomainsEnabled:
+          type: boolean
+        maxInvitationEmailPerBatchCount:
+          format: int64
+          type: string
+        nameConfig:
+          $ref: '#/components/schemas/akuity_system_v1_NameConfig'
+        selfHosted:
+          type: boolean
+        sentryDsn:
+          type: string
+        stripeCustomerPortalUrl:
+          type: string
+      title: akuity.system.v1.GetSettingsResponse
+      type: object
+    akuity_system_v1_ListKargoVersionsResponse:
+      properties:
+        kargoVersions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_ComponentVersion'
+          type: array
+      title: akuity.system.v1.ListKargoVersionsResponse
+      type: object
+    akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec:
+      properties:
+        controllerCpu:
+          type: string
+        controllerMemory:
+          type: string
+        repoServerCpu:
+          type: string
+        repoServerMemory:
+          type: string
+        repoServerReplicas:
+          format: int32
+          type: integer
+      title: akuity.system.v1.GetArgoCDAgentSizeSpecResponse.Spec
+      type: object
+    akuity_system_v1_ListArgoCDVersionsResponse:
+      properties:
+        argocdVersions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_ComponentVersion'
+          type: array
+      title: akuity.system.v1.ListArgoCDVersionsResponse
+      type: object
+    akuity_system_v1_ComponentVersion:
+      properties:
+        akVersions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_AKVersion'
+          type: array
+        label:
+          type: string
+        securityAdvisories:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_SecurityAdvisory'
+          type: array
+        version:
+          type: string
+      title: akuity.system.v1.ComponentVersion
+      type: object
+    akuity_system_v1_AKVersion:
+      properties:
+        features:
+          items:
+            type: string
+          type: array
+        version:
+          type: string
+      title: akuity.system.v1.AKVersion
+      type: object
+    akuity_system_v1_ListValidEmailEventsResponse:
+      properties:
+        events:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_system_v1_EventFilters'
+          type: object
+      title: akuity.system.v1.ListValidEmailEventsResponse
+      type: object
+    akuity_system_v1_GetArgoCDAgentSizeSpecResponse:
+      properties:
+        large:
+          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
+        medium:
+          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
+        small:
+          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
+      title: akuity.system.v1.GetArgoCDAgentSizeSpecResponse
+      type: object
+    akuity_system_v1_ExtensionInfo:
+      properties:
+        description:
+          type: string
+        home:
+          type: string
+        icon:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        versions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_ExtensionInfo_ExtensionVersion'
+          type: array
+      title: akuity.system.v1.ExtensionInfo
+      type: object
+    akuity_system_v1_Banner_BannerLink:
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+      title: akuity.system.v1.Banner.BannerLink
+      type: object
+    akuity_system_v1_GetAnnouncementResponse:
+      properties:
+        banner:
+          $ref: '#/components/schemas/akuity_system_v1_Banner'
+      title: akuity.system.v1.GetAnnouncementResponse
+      type: object
+    akuity_system_v1_ListAgentVersionsResponse:
+      properties:
+        agentVersions:
+          items:
+            type: string
+          type: array
+      title: akuity.system.v1.ListAgentVersionsResponse
+      type: object
+    akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec:
+      properties:
+        controllerCpu:
+          type: string
+        controllerMemory:
+          type: string
+      title: akuity.system.v1.GetKargoAgentSizeSpecResponse.Spec
+      type: object
+    akuity_system_v1_GetStatusResponse:
+      properties:
+        status:
+          type: string
+      title: akuity.system.v1.GetStatusResponse
+      type: object
+    akuity_system_v1_ListValidWebhookEventsResponse:
+      properties:
+        events:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_system_v1_EventFilters'
+          type: object
+      title: akuity.system.v1.ListValidWebhookEventsResponse
+      type: object
+    Status:
+      properties:
+        code:
+          description: gRPC status code (google.rpc.Code)
+          format: int32
+          type: integer
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        message:
+          type: string
+      title: google.rpc.Status
+      type: object
+    akuity_system_v1_GetVersionResponse:
+      properties:
+        version:
+          type: string
+      title: akuity.system.v1.GetVersionResponse
+      type: object
+    akuity_system_v1_NameConfig:
+      properties:
+        minClusterNameLength:
+          format: int64
+          type: string
+        minInstanceNameLength:
+          format: int64
+          type: string
+        minOrganizationNameLength:
+          format: int64
+          type: string
+        minSubdomainNameLength:
+          format: int64
+          type: string
+      title: akuity.system.v1.NameConfig
+      type: object
+    akuity_system_v1_ListArgoCDImageUpadterVersionsResponse:
+      properties:
+        versions:
+          items:
+            type: string
+          type: array
+      title: akuity.system.v1.ListArgoCDImageUpadterVersionsResponse
+      type: object
+    akuity_system_v1_Banner:
+      properties:
+        closable:
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_Banner_BannerLink'
+          type: array
+        message:
+          type: string
+        paidCustomersOnly:
+          type: boolean
+        title:
+          type: string
+        type:
+          type: string
+      title: akuity.system.v1.Banner
+      type: object
+    akuity_system_v1_ExtensionInfo_ExtensionVersion:
+      properties:
+        sha256Sum:
+          type: string
+        url:
+          type: string
+        version:
+          type: string
+      title: akuity.system.v1.ExtensionInfo.ExtensionVersion
+      type: object
+  securitySchemes:
+    basicAuth:
+      description: 'HTTP Basic auth: username = AKUITY_API_KEY_ID, password = AKUITY_API_KEY_SECRET.'
+      scheme: basic
+      type: http

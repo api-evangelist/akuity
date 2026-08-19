@@ -1,0 +1,748 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: info@akuity.io
+    name: Akuity
+    url: https://docs.akuity.io/akuity-portal/automation/api
+  description: The Extension surface of the Akuity Platform REST API (grpc-gateway projection of extension/v1). Derived mechanically from the protobuf service descriptors and google.api.http annotations published in the akuity/api-client-go Go module.
+  title: Akuity Platform API — Extension Extension Service API
+  version: v1
+servers:
+- description: Akuity Platform (SaaS)
+  url: https://akuity.cloud
+security:
+- basicAuth: []
+tags:
+- name: ExtensionService
+paths:
+  /ext-api/v1/argocd/extensions/audit-records:
+    post:
+      operationId: ExtensionService_ListAuditRecordForApplication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/akuity_extension_v1_ListAuditRecordForApplicationRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_extension_v1_ListAuditRecordForApplicationResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Audit Record For Application
+      tags:
+      - ExtensionService
+      x-grpc-method: akuity.extension.v1.ExtensionService/ListAuditRecordForApplication
+  /ext-api/v1/argocd/extensions/sync-operations-events:
+    post:
+      operationId: ExtensionService_GetSyncOperationsEventsForApplication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/akuity_extension_v1_GetSyncOperationsEventsForApplicationRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_extension_v1_GetSyncOperationsEventsForApplicationResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Sync Operations Events For Application
+      tags:
+      - ExtensionService
+      x-grpc-method: akuity.extension.v1.ExtensionService/GetSyncOperationsEventsForApplication
+  /ext-api/v1/argocd/extensions/sync-operations-stats:
+    post:
+      operationId: ExtensionService_GetSyncOperationsStatsForApplication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/akuity_extension_v1_GetSyncOperationsStatsForApplicationRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_extension_v1_GetSyncOperationsStatsForApplicationResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Sync Operations Stats For Application
+      tags:
+      - ExtensionService
+      x-grpc-method: akuity.extension.v1.ExtensionService/GetSyncOperationsStatsForApplication
+  /ext-api/v1/kargo/extensions/audit-records:
+    post:
+      operationId: ExtensionService_ListAuditRecordForKargoProjects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/akuity_extension_v1_ListAuditRecordForKargoProjectsRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_extension_v1_ListAuditRecordForKargoProjectsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: List Audit Record For Kargo Projects
+      tags:
+      - ExtensionService
+      x-grpc-method: akuity.extension.v1.ExtensionService/ListAuditRecordForKargoProjects
+  /ext-api/v1/kargo/extensions/logs/{project_name}/{analysis_run}/{shard}/{job_namespace}/{job_name}/{container_name}:
+    get:
+      operationId: ExtensionService_GetKargoAnalysisLogs
+      parameters:
+      - in: path
+        name: project_name
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: analysis_run
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: shard
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: job_namespace
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: job_name
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: container_name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: Raw HTTP body (see google.api.HttpBody)
+                type: string
+          description: OK (server-streaming; grpc-gateway emits a newline-delimited JSON stream of result/error envelopes)
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Kargo Analysis Logs
+      tags:
+      - ExtensionService
+      x-grpc-method: akuity.extension.v1.ExtensionService/GetKargoAnalysisLogs
+      x-streaming: server
+  /ext-api/v1/kargo/extensions/settings:
+    get:
+      operationId: ExtensionService_GetExtensionSettings
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_extension_v1_GetExtensionSettingsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Extension Settings
+      tags:
+      - ExtensionService
+      x-grpc-method: akuity.extension.v1.ExtensionService/GetExtensionSettings
+components:
+  schemas:
+    akuity_argocd_v1_SyncOperationEvent:
+      properties:
+        applicationName:
+          type: string
+        count:
+          format: int64
+          type: integer
+        details:
+          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationEventDetails'
+        duration:
+          format: int64
+          type: integer
+        endTime:
+          type: string
+        id:
+          type: string
+        instanceId:
+          type: string
+        lastOccurredTimestamp:
+          type: string
+        resultMessage:
+          type: string
+        resultPhase:
+          type: string
+        startTime:
+          type: string
+      title: akuity.argocd.v1.SyncOperationEvent
+      type: object
+    akuity_argocd_v1_OperationInitiator:
+      properties:
+        automated:
+          type: boolean
+        username:
+          type: string
+      title: akuity.argocd.v1.OperationInitiator
+      type: object
+    akuity_extension_v1_GetSyncOperationsEventsForApplicationResponse:
+      properties:
+        count:
+          format: int64
+          type: string
+        fieldResult:
+          items:
+            type: string
+          type: array
+        syncOperationEvents:
+          items:
+            $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationEvent'
+          type: array
+      title: akuity.extension.v1.GetSyncOperationsEventsForApplicationResponse
+      type: object
+    akuity_organization_v1_AuditLog_AuditObject_AuditObjId:
+      properties:
+        group:
+          type: string
+        kind:
+          type: string
+        name:
+          type: string
+      title: akuity.organization.v1.AuditLog.AuditObject.AuditObjId
+      type: object
+    akuity_organization_v1_AuditLog_AuditObject_AuditParentId:
+      properties:
+        applicationName:
+          type: string
+        name:
+          type: string
+        parentName:
+          type: string
+      title: akuity.organization.v1.AuditLog.AuditObject.AuditParentId
+      type: object
+    akuity_extension_v1_ListAuditRecordForKargoProjectsResponse:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/akuity_organization_v1_AuditLog'
+          type: array
+        totalCount:
+          format: int64
+          type: integer
+      title: akuity.extension.v1.ListAuditRecordForKargoProjectsResponse
+      type: object
+    akuity_argocd_v1_SyncOperationStat:
+      properties:
+        averageMap:
+          additionalProperties:
+            format: float
+            type: number
+          type: object
+        countMap:
+          additionalProperties:
+            format: int64
+            type: integer
+          type: object
+        intervalStart:
+          type: string
+      title: akuity.argocd.v1.SyncOperationStat
+      type: object
+    akuity_extension_v1_GetExtensionSettingsResponse:
+      properties:
+        akuityIntelligence:
+          $ref: '#/components/schemas/akuity_kargo_v1_AkuityIntelligence'
+        instanceId:
+          type: string
+        organizationId:
+          type: string
+      title: akuity.extension.v1.GetExtensionSettingsResponse
+      type: object
+    akuity_organization_v1_AuditLog_AuditDetails:
+      properties:
+        actionType:
+          type: string
+        message:
+          type: string
+        patch:
+          type: string
+      title: akuity.organization.v1.AuditLog.AuditDetails
+      type: object
+    akuity_extension_v1_GetSyncOperationsStatsForApplicationResponse:
+      properties:
+        syncOperationStats:
+          items:
+            $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationStat'
+          type: array
+      title: akuity.extension.v1.GetSyncOperationsStatsForApplicationResponse
+      type: object
+    akuity_extension_v1_ListAuditRecordForApplicationResponse:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/akuity_organization_v1_AuditLog'
+          type: array
+        totalCount:
+          format: int64
+          type: integer
+      title: akuity.extension.v1.ListAuditRecordForApplicationResponse
+      type: object
+    akuity_argocd_v1_SyncOperationField:
+      enum:
+      - SYNC_OPERATION_FIELD_UNSPECIFIED
+      - SYNC_OPERATION_FIELD_APPS
+      - SYNC_OPERATION_FIELD_PROJECTS
+      - SYNC_OPERATION_FIELD_INITIATORS
+      - SYNC_OPERATION_FIELD_REPOS
+      - SYNC_OPERATION_FIELD_INSTANCE_NAMES
+      type: string
+    akuity_extension_v1_ListAuditRecordForKargoProjectsRequest:
+      properties:
+        filters:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditFilters'
+        projectName:
+          type: string
+      title: akuity.extension.v1.ListAuditRecordForKargoProjectsRequest
+      type: object
+    akuity_organization_v1_ObjectFilter:
+      properties:
+        enabled:
+          type: boolean
+        includeChildObjects:
+          type: boolean
+        objectGroup:
+          items:
+            type: string
+          type: array
+        objectKind:
+          items:
+            type: string
+          type: array
+        objectName:
+          items:
+            type: string
+          type: array
+        objectParentApplicationName:
+          items:
+            type: string
+          type: array
+        objectParentKargoProjectName:
+          items:
+            type: string
+          type: array
+        objectParentName:
+          items:
+            type: string
+          type: array
+        objectParentParentName:
+          items:
+            type: string
+          type: array
+      title: akuity.organization.v1.ObjectFilter
+      type: object
+    akuity_extension_v1_GetSyncOperationsEventsForApplicationRequest:
+      properties:
+        field:
+          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationField'
+        fieldLike:
+          type: string
+        filter:
+          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationFilter'
+        limit:
+          format: int64
+          type: string
+        offset:
+          format: int64
+          type: string
+      title: akuity.extension.v1.GetSyncOperationsEventsForApplicationRequest
+      type: object
+    akuity_argocd_v1_SyncOperationEventDetails:
+      properties:
+        dryRun:
+          type: boolean
+        initiatedBy:
+          $ref: '#/components/schemas/akuity_argocd_v1_OperationInitiator'
+        labels:
+          additionalProperties:
+            type: string
+          type: object
+        project:
+          type: string
+        prune:
+          type: boolean
+        repository:
+          type: string
+        revision:
+          type: string
+        syncOptions:
+          items:
+            type: string
+          type: array
+      title: akuity.argocd.v1.SyncOperationEventDetails
+      type: object
+    Status:
+      properties:
+        code:
+          description: gRPC status code (google.rpc.Code)
+          format: int32
+          type: integer
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        message:
+          type: string
+      title: google.rpc.Status
+      type: object
+    akuity_organization_v1_AuditLog:
+      properties:
+        action:
+          type: string
+        actor:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditActor'
+        count:
+          format: int64
+          type: integer
+        details:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditDetails'
+        lastOccurredTimestamp:
+          type: string
+        object:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditObject'
+        timestamp:
+          type: string
+      title: akuity.organization.v1.AuditLog
+      type: object
+    akuity_types_misc_v1_GroupByInterval:
+      enum:
+      - GROUP_BY_INTERVAL_UNSPECIFIED
+      - GROUP_BY_INTERVAL_MINUTE
+      - GROUP_BY_INTERVAL_HOUR
+      - GROUP_BY_INTERVAL_DAY
+      - GROUP_BY_INTERVAL_WEEK
+      - GROUP_BY_INTERVAL_MONTH
+      - GROUP_BY_INTERVAL_YEAR
+      type: string
+    akuity_argocd_v1_SyncOperationFilter:
+      properties:
+        appName:
+          items:
+            type: string
+          type: array
+        endTime:
+          type: string
+        initiatedBy:
+          items:
+            type: string
+          type: array
+        instanceId:
+          items:
+            type: string
+          type: array
+        instanceNames:
+          items:
+            type: string
+          type: array
+        labels:
+          additionalProperties:
+            type: string
+          type: object
+        projects:
+          items:
+            type: string
+          type: array
+        repo:
+          items:
+            type: string
+          type: array
+        startTime:
+          type: string
+      title: akuity.argocd.v1.SyncOperationFilter
+      type: object
+    akuity_kargo_v1_AkuityIntelligence:
+      properties:
+        aiSupportEngineerEnabled:
+          type: boolean
+        allowedGroups:
+          items:
+            type: string
+          type: array
+        allowedUsernames:
+          items:
+            type: string
+          type: array
+        enabled:
+          type: boolean
+        modelVersion:
+          type: string
+      title: akuity.kargo.v1.AkuityIntelligence
+      type: object
+    akuity_organization_v1_AuditLog_AuditActor:
+      properties:
+        id:
+          type: string
+        ip:
+          type: string
+        type:
+          type: string
+      title: akuity.organization.v1.AuditLog.AuditActor
+      type: object
+    akuity_extension_v1_ListAuditRecordForApplicationRequest:
+      properties:
+        filters:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditFilters'
+      title: akuity.extension.v1.ListAuditRecordForApplicationRequest
+      type: object
+    akuity_argocd_v1_SyncOperationGroupField:
+      enum:
+      - SYNC_OPERATION_GROUP_FIELD_UNSPECIFIED
+      - SYNC_OPERATION_GROUP_FIELD_APPS
+      - SYNC_OPERATION_GROUP_FIELD_PROJECTS
+      - SYNC_OPERATION_GROUP_FIELD_INITIATORS
+      - SYNC_OPERATION_GROUP_FIELD_INSTANCE_NAMES
+      - SYNC_OPERATION_GROUP_FIELD_STATUS
+      type: string
+    akuity_organization_v1_AuditFilters:
+      properties:
+        action:
+          items:
+            type: string
+          type: array
+        actorId:
+          items:
+            type: string
+          type: array
+        actorType:
+          items:
+            type: string
+          type: array
+        addonMarketplaceInstall:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        addonRepos:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        addons:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        apiKeys:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        argocdApplication:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        argocdCluster:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        argocdInstance:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        argocdProject:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        customRoles:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        endTime:
+          type: string
+        k8sResource:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        kargoAgent:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        kargoFreight:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        kargoInstance:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        kargoPromotion:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        limit:
+          format: int64
+          type: integer
+        member:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        notificationCfg:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        offset:
+          format: int64
+          type: integer
+        organization:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        organizationInvite:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        startTime:
+          type: string
+        workspace:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+        workspaceMember:
+          $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
+      title: akuity.organization.v1.AuditFilters
+      type: object
+    akuity_organization_v1_AuditLog_AuditObject:
+      properties:
+        id:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditObject_AuditObjId'
+        parentId:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditObject_AuditParentId'
+        type:
+          type: string
+      title: akuity.organization.v1.AuditLog.AuditObject
+      type: object
+    akuity_extension_v1_GetSyncOperationsStatsForApplicationRequest:
+      properties:
+        filter:
+          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationFilter'
+        groupByField:
+          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationGroupField'
+        interval:
+          $ref: '#/components/schemas/akuity_types_misc_v1_GroupByInterval'
+      title: akuity.extension.v1.GetSyncOperationsStatsForApplicationRequest
+      type: object
+  securitySchemes:
+    basicAuth:
+      description: 'HTTP Basic auth: username = AKUITY_API_KEY_ID, password = AKUITY_API_KEY_SECRET.'
+      scheme: basic
+      type: http

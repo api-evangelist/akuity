@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akuity Platform API — Auth Auth Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AuthService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/auth/device-code"
+          },
+          "docs": "Get Device Code"
+        },
+        {
+          "info": {
+            "name": "Get Device Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/auth/device-token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Device Token"
+        },
+        {
+          "info": {
+            "name": "Refresh Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/auth/refresh-token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh Access Token"
+        },
+        {
+          "info": {
+            "name": "Get OIDCProvider Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/oidc/provider-details",
+            "params": [
+              {
+                "name": "discoveryUrl",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get OIDCProvider Details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

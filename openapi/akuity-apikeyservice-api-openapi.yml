@@ -1,0 +1,429 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: info@akuity.io
+    name: Akuity
+    url: https://docs.akuity.io/akuity-portal/automation/api
+  description: The API Keys surface of the Akuity Platform REST API (grpc-gateway projection of apikey/v1). Derived mechanically from the protobuf service descriptors and google.api.http annotations published in the akuity/api-client-go Go module.
+  title: Akuity Platform API — API Keys API Key Service API
+  version: v1
+servers:
+- description: Akuity Platform (SaaS)
+  url: https://akuity.cloud
+security:
+- basicAuth: []
+tags:
+- name: APIKeyService
+paths:
+  /api/v1/apikeys/{id}:
+    delete:
+      operationId: APIKeyService_DeleteAPIKey
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_apikey_v1_DeleteAPIKeyResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Delete APIKey
+      tags:
+      - APIKeyService
+      x-grpc-method: akuity.apikey.v1.APIKeyService/DeleteAPIKey
+    get:
+      operationId: APIKeyService_GetAPIKey
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_apikey_v1_GetAPIKeyResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get APIKey
+      tags:
+      - APIKeyService
+      x-grpc-method: akuity.apikey.v1.APIKeyService/GetAPIKey
+  /api/v1/apikeys/{id}/regenerate:
+    post:
+      operationId: APIKeyService_RegenerateAPIKeySecret
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/akuity_apikey_v1_RegenerateAPIKeySecretRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_apikey_v1_RegenerateAPIKeySecretResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Regenerate APIKey Secret
+      tags:
+      - APIKeyService
+      x-grpc-method: akuity.apikey.v1.APIKeyService/RegenerateAPIKeySecret
+  /api/v1/organizations/{organization_id}/workspaces/{workspace_id}/apikeys/{id}:
+    delete:
+      operationId: APIKeyService_DeleteWorkspaceAPIKey
+      parameters:
+      - in: path
+        name: organization_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: workspace_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_apikey_v1_DeleteWorkspaceAPIKeyResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Delete Workspace APIKey
+      tags:
+      - APIKeyService
+      x-grpc-method: akuity.apikey.v1.APIKeyService/DeleteWorkspaceAPIKey
+    get:
+      operationId: APIKeyService_GetWorkspaceAPIKey
+      parameters:
+      - in: path
+        name: organization_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: workspace_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_apikey_v1_GetWorkspaceAPIKeyResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Workspace APIKey
+      tags:
+      - APIKeyService
+      x-grpc-method: akuity.apikey.v1.APIKeyService/GetWorkspaceAPIKey
+  /api/v1/organizations/{organization_id}/workspaces/{workspace_id}/apikeys/{id}/regenerate:
+    post:
+      operationId: APIKeyService_RegenerateWorkspaceAPIKeySecret
+      parameters:
+      - in: path
+        name: organization_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: workspace_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Regenerate Workspace APIKey Secret
+      tags:
+      - APIKeyService
+      x-grpc-method: akuity.apikey.v1.APIKeyService/RegenerateWorkspaceAPIKeySecret
+components:
+  schemas:
+    akuity_apikey_v1_DeleteWorkspaceAPIKeyResponse:
+      title: akuity.apikey.v1.DeleteWorkspaceAPIKeyResponse
+      type: object
+    akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretRequest:
+      properties:
+        expiry:
+          type: string
+        id:
+          type: string
+        organizationId:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretRequest
+      type: object
+    akuity_apikey_v1_GetAPIKeyResponse:
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
+      title: akuity.apikey.v1.GetAPIKeyResponse
+      type: object
+    akuity_apikey_v1_GetWorkspaceAPIKeyResponse:
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
+      title: akuity.apikey.v1.GetWorkspaceAPIKeyResponse
+      type: object
+    akuity_apikey_v1_RegenerateAPIKeySecretRequest:
+      properties:
+        expiry:
+          type: string
+        id:
+          type: string
+      title: akuity.apikey.v1.RegenerateAPIKeySecretRequest
+      type: object
+    akuity_apikey_v1_APIKey:
+      properties:
+        createTime:
+          format: date-time
+          type: string
+        description:
+          type: string
+        expireTime:
+          format: date-time
+          type: string
+        id:
+          type: string
+        organizationId:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/akuity_accesscontrol_v1_Permissions'
+        secret:
+          type: string
+      title: akuity.apikey.v1.APIKey
+      type: object
+    Status:
+      properties:
+        code:
+          description: gRPC status code (google.rpc.Code)
+          format: int32
+          type: integer
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        message:
+          type: string
+      title: google.rpc.Status
+      type: object
+    akuity_accesscontrol_v1_Permissions:
+      properties:
+        actions:
+          items:
+            type: string
+          type: array
+        customRoles:
+          items:
+            type: string
+          type: array
+        roles:
+          items:
+            type: string
+          type: array
+      title: akuity.accesscontrol.v1.Permissions
+      type: object
+    akuity_apikey_v1_DeleteAPIKeyResponse:
+      title: akuity.apikey.v1.DeleteAPIKeyResponse
+      type: object
+    akuity_apikey_v1_RegenerateAPIKeySecretResponse:
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
+      title: akuity.apikey.v1.RegenerateAPIKeySecretResponse
+      type: object
+    akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretResponse:
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
+      title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretResponse
+      type: object
+  securitySchemes:
+    basicAuth:
+      description: 'HTTP Basic auth: username = AKUITY_API_KEY_ID, password = AKUITY_API_KEY_SECRET.'
+      scheme: basic
+      type: http

@@ -1,0 +1,259 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: info@akuity.io
+    name: Akuity
+    url: https://docs.akuity.io/akuity-portal/automation/api
+  description: The Auth surface of the Akuity Platform REST API (grpc-gateway projection of auth/v1). Derived mechanically from the protobuf service descriptors and google.api.http annotations published in the akuity/api-client-go Go module.
+  title: Akuity Platform API — Auth Auth Service API
+  version: v1
+servers:
+- description: Akuity Platform (SaaS)
+  url: https://akuity.cloud
+security:
+- basicAuth: []
+tags:
+- name: AuthService
+paths:
+  /api/v1/auth/device-code:
+    get:
+      operationId: AuthService_GetDeviceCode
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_auth_v1_GetDeviceCodeResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Device Code
+      tags:
+      - AuthService
+      x-grpc-method: akuity.auth.v1.AuthService/GetDeviceCode
+  /api/v1/auth/device-token:
+    post:
+      operationId: AuthService_GetDeviceToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/akuity_auth_v1_GetDeviceTokenRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_auth_v1_GetDeviceTokenResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get Device Token
+      tags:
+      - AuthService
+      x-grpc-method: akuity.auth.v1.AuthService/GetDeviceToken
+  /api/v1/auth/refresh-token:
+    post:
+      operationId: AuthService_RefreshAccessToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/akuity_auth_v1_RefreshAccessTokenRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_auth_v1_RefreshAccessTokenResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Refresh Access Token
+      tags:
+      - AuthService
+      x-grpc-method: akuity.auth.v1.AuthService/RefreshAccessToken
+  /api/v1/oidc/provider-details:
+    get:
+      operationId: AuthService_GetOIDCProviderDetails
+      parameters:
+      - in: query
+        name: discoveryUrl
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/akuity_auth_v1_GetOIDCProviderDetailsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: unauthenticated
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: permission denied
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: not found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: gRPC status error
+      summary: Get OIDCProvider Details
+      tags:
+      - AuthService
+      x-grpc-method: akuity.auth.v1.AuthService/GetOIDCProviderDetails
+components:
+  schemas:
+    akuity_auth_v1_GetDeviceTokenResponse:
+      properties:
+        accessToken:
+          type: string
+      title: akuity.auth.v1.GetDeviceTokenResponse
+      type: object
+    akuity_auth_v1_RefreshAccessTokenRequest:
+      title: akuity.auth.v1.RefreshAccessTokenRequest
+      type: object
+    akuity_auth_v1_GetDeviceTokenRequest:
+      properties:
+        deviceCode:
+          type: string
+      title: akuity.auth.v1.GetDeviceTokenRequest
+      type: object
+    akuity_auth_v1_GetDeviceCodeResponse:
+      properties:
+        deviceCode:
+          type: string
+        expiresInSeconds:
+          format: int32
+          type: integer
+        intervalSeconds:
+          format: int32
+          type: integer
+        userCode:
+          type: string
+        verificationUri:
+          type: string
+        verificationUriComplete:
+          type: string
+      title: akuity.auth.v1.GetDeviceCodeResponse
+      type: object
+    akuity_auth_v1_GetOIDCProviderDetailsResponse:
+      properties:
+        authorizationEndpoint:
+          type: string
+        issuer:
+          type: string
+        jwksUri:
+          type: string
+        tokenEndpoint:
+          type: string
+        userinfoEndpoint:
+          type: string
+      title: akuity.auth.v1.GetOIDCProviderDetailsResponse
+      type: object
+    akuity_auth_v1_RefreshAccessTokenResponse:
+      title: akuity.auth.v1.RefreshAccessTokenResponse
+      type: object
+    Status:
+      properties:
+        code:
+          description: gRPC status code (google.rpc.Code)
+          format: int32
+          type: integer
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        message:
+          type: string
+      title: google.rpc.Status
+      type: object
+  securitySchemes:
+    basicAuth:
+      description: 'HTTP Basic auth: username = AKUITY_API_KEY_ID, password = AKUITY_API_KEY_SECRET.'
+      scheme: basic
+      type: http

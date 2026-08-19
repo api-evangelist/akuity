@@ -1,0 +1,1548 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akuity Platform API — Kargo Kargo Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "KargoService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Kargo Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kargo Instances"
+        },
+        {
+          "info": {
+            "name": "Create Kargo Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Kargo Instance"
+        },
+        {
+          "info": {
+            "name": "Get Promotion Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/promotions-events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Promotion Events"
+        },
+        {
+          "info": {
+            "name": "Get Promotion Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/promotions-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Promotion Stats"
+        },
+        {
+          "info": {
+            "name": "Get Stage Specific Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/stage-specific-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Stage Specific Stats"
+        },
+        {
+          "info": {
+            "name": "Patch Kargo Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Kargo Instance"
+        },
+        {
+          "info": {
+            "name": "Delete Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance"
+        },
+        {
+          "info": {
+            "name": "Update Kargo Instance Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:id/transfer",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Kargo Instance Workspace"
+        },
+        {
+          "info": {
+            "name": "List Kargo Instance Agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kargo Instance Agents"
+        },
+        {
+          "info": {
+            "name": "Create Kargo Instance Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Kargo Instance Agent"
+        },
+        {
+          "info": {
+            "name": "Update Kargo Instance Agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Kargo Instance Agents"
+        },
+        {
+          "info": {
+            "name": "Regenerate Manifests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/regenerate-manifests",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Regenerate Manifests"
+        },
+        {
+          "info": {
+            "name": "Rotate Instance Agent Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/rotate-credentials",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rotate Instance Agent Credentials"
+        },
+        {
+          "info": {
+            "name": "Set Agent Maintenance Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/set-maintenance-mode",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Agent Maintenance Mode"
+        },
+        {
+          "info": {
+            "name": "Update Instance Agent Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/version",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Agent Version"
+        },
+        {
+          "info": {
+            "name": "Get Kargo Instance Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kargo Instance Agent"
+        },
+        {
+          "info": {
+            "name": "Update Kargo Instance Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Kargo Instance Agent"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance Agent"
+        },
+        {
+          "info": {
+            "name": "Get Instance Agent Command",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/:id/command",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locationOrigin",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "skipNamespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Agent Command"
+        },
+        {
+          "info": {
+            "name": "Get Kargo Instance Agent Manifests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:instance_id/agents/:id/manifests",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "skipNamespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kargo Instance Agent Manifests"
+        },
+        {
+          "info": {
+            "name": "Get Kargo Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo/instances/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kargo Instance"
+        },
+        {
+          "info": {
+            "name": "List Kargo Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Kargo Instances"
+        },
+        {
+          "info": {
+            "name": "Create Kargo Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Kargo Instance"
+        },
+        {
+          "info": {
+            "name": "Get Promotion Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/promotions-events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Promotion Events"
+        },
+        {
+          "info": {
+            "name": "Get Promotion Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/promotions-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Promotion Stats"
+        },
+        {
+          "info": {
+            "name": "Get Stage Specific Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/stage-specific-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Stage Specific Stats"
+        },
+        {
+          "info": {
+            "name": "Patch Kargo Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Kargo Instance"
+        },
+        {
+          "info": {
+            "name": "Delete Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Instance"
+        },
+        {
+          "info": {
+            "name": "Apply Kargo Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:id/apply",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply Kargo Instance"
+        },
+        {
+          "info": {
+            "name": "Export Kargo Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:id/export",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export Kargo Instance"
+        },
+        {
+          "info": {
+            "name": "Update Kargo Instance Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:id/transfer",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Kargo Instance Workspace"
+        },
+        {
+          "info": {
+            "name": "List Kargo Instance Agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Kargo Instance Agents"
+        },
+        {
+          "info": {
+            "name": "Create Kargo Instance Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Kargo Instance Agent"
+        },
+        {
+          "info": {
+            "name": "Update Kargo Instance Agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Kargo Instance Agents"
+        },
+        {
+          "info": {
+            "name": "Regenerate Manifests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/regenerate-manifests",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Regenerate Manifests"
+        },
+        {
+          "info": {
+            "name": "Rotate Instance Agent Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/rotate-credentials",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rotate Instance Agent Credentials"
+        },
+        {
+          "info": {
+            "name": "Set Agent Maintenance Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/set-maintenance-mode",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Agent Maintenance Mode"
+        },
+        {
+          "info": {
+            "name": "Update Instance Agent Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/version",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Agent Version"
+        },
+        {
+          "info": {
+            "name": "Get Kargo Instance Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Kargo Instance Agent"
+        },
+        {
+          "info": {
+            "name": "Update Kargo Instance Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Kargo Instance Agent"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Instance Agent"
+        },
+        {
+          "info": {
+            "name": "Get Instance Agent Command",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/:id/command",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locationOrigin",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "skipNamespace",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Agent Command"
+        },
+        {
+          "info": {
+            "name": "Get Kargo Instance Agent Manifests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents/:id/manifests",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "skipNamespace",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kargo Instance Agent Manifests"
+        },
+        {
+          "info": {
+            "name": "Get Kargo Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Kargo Instance"
+        },
+        {
+          "info": {
+            "name": "Watch Kargo Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/kargo/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Kargo Instances"
+        },
+        {
+          "info": {
+            "name": "Watch Kargo Instance Agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/kargo/instances/:instance_id/agents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minAgentName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxAgentName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Kargo Instance Agents"
+        },
+        {
+          "info": {
+            "name": "Watch Kargo Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/workspaces/:workspace_id/kargo/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Kargo Instances"
+        },
+        {
+          "info": {
+            "name": "Watch Kargo Instance Agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/workspaces/:workspace_id/kargo/instances/:instance_id/agents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minAgentName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxAgentName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Kargo Instance Agents"
+        },
+        {
+          "info": {
+            "name": "Get Promotion Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/kargo/instances/promotions-events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Promotion Events"
+        },
+        {
+          "info": {
+            "name": "Get Promotion Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/kargo/instances/promotions-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Promotion Stats"
+        },
+        {
+          "info": {
+            "name": "Get Stage Specific Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/kargo/instances/stage-specific-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Stage Specific Stats"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

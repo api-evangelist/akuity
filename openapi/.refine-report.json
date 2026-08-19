@@ -1,0 +1,38 @@
+{
+  "provider": "akuity",
+  "sources": [
+    "akuity-apikeyservice-api-openapi.yml",
+    "akuity-argocdservice-api-openapi.yml",
+    "akuity-authservice-api-openapi.yml",
+    "akuity-customroleservice-api-openapi.yml",
+    "akuity-extensionservice-api-openapi.yml",
+    "akuity-kargoservice-api-openapi.yml",
+    "akuity-organizationservice-api-openapi.yml",
+    "akuity-systemservice-api-openapi.yml"
+  ],
+  "outputs": [
+    "akuity-apikeyservice-api-openapi.yml",
+    "akuity-argocdservice-api-openapi.yml",
+    "akuity-authservice-api-openapi.yml",
+    "akuity-customroleservice-api-openapi.yml",
+    "akuity-extensionservice-api-openapi.yml",
+    "akuity-kargoservice-api-openapi.yml",
+    "akuity-organizationservice-api-openapi.yml",
+    "akuity-systemservice-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "akuity-apikeyservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-argocdservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-authservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-customroleservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-extensionservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-kargoservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-organizationservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-systemservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

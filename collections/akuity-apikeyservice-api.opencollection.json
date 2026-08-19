@@ -1,0 +1,171 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akuity Platform API — API Keys API Key Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "APIKeyService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get APIKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/apikeys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get APIKey"
+        },
+        {
+          "info": {
+            "name": "Delete APIKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/apikeys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete APIKey"
+        },
+        {
+          "info": {
+            "name": "Regenerate APIKey Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/apikeys/:id/regenerate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Regenerate APIKey Secret"
+        },
+        {
+          "info": {
+            "name": "Get Workspace APIKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/workspaces/:workspace_id/apikeys/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Workspace APIKey"
+        },
+        {
+          "info": {
+            "name": "Delete Workspace APIKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/workspaces/:workspace_id/apikeys/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Workspace APIKey"
+        },
+        {
+          "info": {
+            "name": "Regenerate Workspace APIKey Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/workspaces/:workspace_id/apikeys/:id/regenerate",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Regenerate Workspace APIKey Secret"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -2,108 +2,107 @@ generated: '2026-08-06'
 method: derived
 status: candidate
 source: openapi/akuity-*.json
-description: >-
-  Akuity does NOT publish an MCP server for the Akuity Platform API. It is an MCP
-  *client*: Akuity Intelligence connects to customer-supplied MCP servers and
-  folds their tools into its own tool-calling framework. This file is an API
-  Evangelist candidate tool surface derived from the platform's own REST
-  operations — it is not an endpoint anyone can call, and no `MCPServer` pointer
-  is wired in apis.yml.
-
+description: 'Akuity does NOT publish an MCP server for the Akuity Platform API. It is an MCP *client*:
+  Akuity Intelligence connects to customer-supplied MCP servers and folds their tools into its own tool-calling
+  framework. This file is an API Evangelist candidate tool surface derived from the platform''s own REST
+  operations — it is not an endpoint anyone can call, and no `MCPServer` pointer is wired in apis.yml.'
 official_server:
   exists: false
   probes:
-    - url: https://akuity.cloud/mcp
-      method: POST tools/list
-      status: 403
-      note: Cloudflare challenge on an unrouted path; no MCP endpoint.
-    - url: https://mcp.akuity.io/mcp
-      method: POST tools/list
-      status: 000
-      note: DNS does not resolve.
-    - url: https://akuity.io/mcp
-      method: POST tools/list
-      status: 404
-    - url: https://docs.akuity.io/mcp
-      method: POST tools/list
-      status: 403
+  - url: https://akuity.cloud/mcp
+    method: POST tools/list
+    status: 403
+    note: Cloudflare challenge on an unrouted path; no MCP endpoint.
+  - url: https://mcp.akuity.io/mcp
+    method: POST tools/list
+    status: 0
+    note: DNS does not resolve.
+  - url: https://akuity.io/mcp
+    method: POST tools/list
+    status: 404
+  - url: https://docs.akuity.io/mcp
+    method: POST tools/list
+    status: 403
   checked: '2026-08-06'
-
 akuity_as_mcp_client:
   docs: https://docs.akuity.io/intelligence/mcp-servers/custom-mcp-servers
-  summary: >-
-    Akuity Intelligence lets an organization register a Custom MCP Server (name,
-    server URL, transport, credentials), discover its tools, and bind context
-    mappings so tool parameters are pre-filled from the active Argo CD
-    Application / Instance / Cluster, Kargo Project or Kubernetes Namespace.
+  summary: Akuity Intelligence lets an organization register a Custom MCP Server (name, server URL, transport,
+    credentials), discover its tools, and bind context mappings so tool parameters are pre-filled from
+    the active Argo CD Application / Instance / Cluster, Kargo Project or Kubernetes Namespace.
   transports:
-    - Streamable HTTP (recommended)
-    - SSE (legacy)
+  - Streamable HTTP (recommended)
+  - SSE (legacy)
   credentials: bearer token, API key header, or basic auth — stored server-side, never redisplayed
   context_types:
-    - Argo CD Application
-    - Argo CD Instance
-    - Argo CD Cluster
-    - Kargo Project
-    - Kubernetes Namespace
-  note: >-
-    This is the inverse of what the MCPServer check scores. Akuity consumes MCP;
-    it does not expose its own platform as MCP.
-
+  - Argo CD Application
+  - Argo CD Instance
+  - Argo CD Cluster
+  - Kargo Project
+  - Kubernetes Namespace
+  note: This is the inverse of what the MCPServer check scores. Akuity consumes MCP; it does not expose
+    its own platform as MCP.
 third_party_adjacent:
-  - name: argocd-mcp
-    npm: argocd-mcp
-    source: https://github.com/argoproj-labs/mcp-for-argocd
-    official: false
-    note: >-
-      An Argo CD MCP server in argoproj-labs, published to npm by an Akuity
-      employee account (alexander-akuity). It targets the open-source Argo CD API,
-      not the Akuity Platform API, and is not an Akuity product.
-
+- name: argocd-mcp
+  npm: argocd-mcp
+  source: https://github.com/argoproj-labs/mcp-for-argocd
+  official: false
+  note: An Argo CD MCP server in argoproj-labs, published to npm by an Akuity employee account (alexander-akuity).
+    It targets the open-source Argo CD API, not the Akuity Platform API, and is not an Akuity product.
 candidate_tools:
-  note: >-
-    Grouped by the derived OpenAPI documents. Each candidate tool would inherit
-    its inputSchema from the named operation's parameters/requestBody in
-    openapi/. Read-only tools first; mutating tools are flagged.
+  note: Grouped by the derived OpenAPI documents. Each candidate tool would inherit its inputSchema from
+    the named operation's parameters/requestBody in openapi/. Read-only tools first; mutating tools are
+    flagged.
   tools:
-    - name: akuity_list_organizations
-      rest: [OrganizationService_ListAuthenticatedUserOrganizations]
-      mutating: false
-    - name: akuity_get_organization
-      rest: [OrganizationService_GetOrganization]
-      mutating: false
-    - name: akuity_list_argocd_instances
-      rest: [ArgoCDService_ListInstances]
-      mutating: false
-    - name: akuity_get_argocd_instance
-      rest: [ArgoCDService_GetInstance]
-      mutating: false
-    - name: akuity_list_kargo_instances
-      rest: [KargoService_ListKargoInstances]
-      mutating: false
-    - name: akuity_get_audit_logs
-      rest: [OrganizationService_GetAuditLogs]
-      mutating: false
-    - name: akuity_list_kubernetes_resources
-      rest: [OrganizationService_ListKubernetesResources]
-      mutating: false
-    - name: akuity_list_kubernetes_images
-      rest: [OrganizationService_ListKubernetesImages]
-      mutating: false
-    - name: akuity_system_version
-      rest: [SystemService_GetVersion]
-      mutating: false
-      anonymous: true
-    - name: akuity_list_available_versions
-      rest:
-        - SystemService_ListArgoCDVersions
-        - SystemService_ListKargoVersions
-        - SystemService_ListAgentVersions
-      mutating: false
-      anonymous: true
+  - name: akuity_list_organizations
+    rest:
+    - OrganizationService_ListAuthenticatedUserOrganizations
+    mutating: false
+  - name: akuity_get_organization
+    rest:
+    - OrganizationService_GetOrganization
+    mutating: false
+  - name: akuity_list_argocd_instances
+    rest:
+    - ArgoCDService_ListInstances
+    mutating: false
+  - name: akuity_get_argocd_instance
+    rest:
+    - ArgoCDService_GetInstance
+    mutating: false
+  - name: akuity_list_kargo_instances
+    rest:
+    - KargoService_ListKargoInstances
+    mutating: false
+  - name: akuity_get_audit_logs
+    rest:
+    - OrganizationService_GetAuditLogs
+    mutating: false
+  - name: akuity_list_kubernetes_resources
+    rest:
+    - OrganizationService_ListKubernetesResources
+    mutating: false
+  - name: akuity_list_kubernetes_images
+    rest:
+    - OrganizationService_ListKubernetesImages
+    mutating: false
+  - name: akuity_system_version
+    rest:
+    - SystemService_GetVersion
+    mutating: false
+    anonymous: true
+  - name: akuity_list_available_versions
+    rest:
+    - SystemService_ListArgoCDVersions
+    - SystemService_ListKargoVersions
+    - SystemService_ListAgentVersions
+    mutating: false
+    anonymous: true
   excluded:
-    reason: >-
-      Instance/cluster/agent create, update, delete and upgrade operations are
-      deliberately omitted from the candidate surface. They mutate production
-      delivery infrastructure and belong behind the declarative apply/diff flow,
-      not behind an unattended agent tool call.
+    reason: Instance/cluster/agent create, update, delete and upgrade operations are deliberately omitted
+      from the candidate surface. They mutate production delivery infrastructure and belong behind the
+      declarative apply/diff flow, not behind an unattended agent tool call.
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census

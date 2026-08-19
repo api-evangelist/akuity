@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akuity Platform API — Custom Roles Custom Role Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CustomRoleService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/customroles",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Custom Roles"
+        },
+        {
+          "info": {
+            "name": "Create Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/customroles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Custom Role"
+        },
+        {
+          "info": {
+            "name": "Get Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/customroles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Custom Role"
+        },
+        {
+          "info": {
+            "name": "Update Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/customroles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Custom Role"
+        },
+        {
+          "info": {
+            "name": "Delete Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/customroles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Custom Role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

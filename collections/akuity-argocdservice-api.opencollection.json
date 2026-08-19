@@ -1,0 +1,4943 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akuity Platform API — Argo CD Argo CD Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ArgoCDService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Instance Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/argocd/versions"
+          },
+          "docs": "List Instance Versions"
+        },
+        {
+          "info": {
+            "name": "List Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instances"
+        },
+        {
+          "info": {
+            "name": "Create Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Instance"
+        },
+        {
+          "info": {
+            "name": "Get AIAssistant Usage Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/ai-assistant-usage-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get AIAssistant Usage Stats"
+        },
+        {
+          "info": {
+            "name": "Get Sync Operations Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/sync-operations-events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Sync Operations Events"
+        },
+        {
+          "info": {
+            "name": "Get Sync Operations Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/sync-operations-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Sync Operations Stats"
+        },
+        {
+          "info": {
+            "name": "Get Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance"
+        },
+        {
+          "info": {
+            "name": "Update Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance"
+        },
+        {
+          "info": {
+            "name": "Patch Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance"
+        },
+        {
+          "info": {
+            "name": "Delete Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance"
+        },
+        {
+          "info": {
+            "name": "Apply Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/apply",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply Instance"
+        },
+        {
+          "info": {
+            "name": "Get Instance Appset Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/appset/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Appset Secret"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Appset Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/appset/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Appset Secret"
+        },
+        {
+          "info": {
+            "name": "Update Instance Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Clusters"
+        },
+        {
+          "info": {
+            "name": "Get Instance Config Management Plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/config-management-plugins",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Config Management Plugins"
+        },
+        {
+          "info": {
+            "name": "Update Instance Config Management Plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/config-management-plugins",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Config Management Plugins"
+        },
+        {
+          "info": {
+            "name": "Get Instance CSS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/css",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance CSS"
+        },
+        {
+          "info": {
+            "name": "Update Instance CSS",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/css",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance CSS"
+        },
+        {
+          "info": {
+            "name": "Export Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/export",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Export Instance"
+        },
+        {
+          "info": {
+            "name": "Get Instance Image Updater Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/image-updater",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Image Updater Settings"
+        },
+        {
+          "info": {
+            "name": "Update Instance Image Updater Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/image-updater/config",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Image Updater Config"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Image Updater Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/image-updater/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Image Updater Secret"
+        },
+        {
+          "info": {
+            "name": "Update Instance Image Updater SSHConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/image-updater/ssh-config",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Image Updater SSHConfig"
+        },
+        {
+          "info": {
+            "name": "Get Instance Notification Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/notifications",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Notification Settings"
+        },
+        {
+          "info": {
+            "name": "Update Instance Notification Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/notifications",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Notification Config"
+        },
+        {
+          "info": {
+            "name": "Get Instance Notification Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/notifications/catalog",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Notification Catalog"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Notification Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/notifications/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Notification Secret"
+        },
+        {
+          "info": {
+            "name": "Get Instance Resource Customizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/resource-customizations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Resource Customizations"
+        },
+        {
+          "info": {
+            "name": "Update Instance Resource Customizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/resource-customizations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Resource Customizations"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Secret"
+        },
+        {
+          "info": {
+            "name": "Update Instance Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:id/transfer",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Workspace"
+        },
+        {
+          "info": {
+            "name": "List Instance Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/accounts",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instance Accounts"
+        },
+        {
+          "info": {
+            "name": "Upsert Instance Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/accounts/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert Instance Account"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/accounts/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance Account"
+        },
+        {
+          "info": {
+            "name": "Update Instance Account Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/accounts/:name/password",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Account Password"
+        },
+        {
+          "info": {
+            "name": "Regenerate Instance Account Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/accounts/:name/regenerate-password",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Regenerate Instance Account Password"
+        },
+        {
+          "info": {
+            "name": "List Instance Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instance Clusters"
+        },
+        {
+          "info": {
+            "name": "Create Instance Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Instance Cluster"
+        },
+        {
+          "info": {
+            "name": "Update Instance Clusters Agent Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/agent-version",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Clusters Agent Version"
+        },
+        {
+          "info": {
+            "name": "Regenerate Manifests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/regenerate-manifests",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Regenerate Manifests"
+        },
+        {
+          "info": {
+            "name": "Rotate Instance Cluster Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/rotate-credentials",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rotate Instance Cluster Credentials"
+        },
+        {
+          "info": {
+            "name": "Set Cluster Maintenance Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/set-maintenance-mode",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Cluster Maintenance Mode"
+        },
+        {
+          "info": {
+            "name": "Get Instance Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Cluster"
+        },
+        {
+          "info": {
+            "name": "Update Instance Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Cluster"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance Cluster"
+        },
+        {
+          "info": {
+            "name": "Get Instance Cluster Command",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/:id/command",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locationOrigin",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offline",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "skipNamespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commandFor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Cluster Command"
+        },
+        {
+          "info": {
+            "name": "Get Instance Cluster Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/:id/info",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Cluster Info"
+        },
+        {
+          "info": {
+            "name": "Get Instance Cluster Manifests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/:id/manifests",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offlineInstallation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "skipNamespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Cluster Manifests"
+        },
+        {
+          "info": {
+            "name": "Update Instance Cluster Support Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_id/clusters/:id/support-access",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Cluster Support Access"
+        },
+        {
+          "info": {
+            "name": "Get Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_name/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/instances/:instance_name/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Get Cluster APIServer CAData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/argocd/utils/cluster-ca-data",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "server",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Cluster APIServer CAData"
+        },
+        {
+          "info": {
+            "name": "List Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Instances"
+        },
+        {
+          "info": {
+            "name": "Create Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Instance"
+        },
+        {
+          "info": {
+            "name": "Get Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance"
+        },
+        {
+          "info": {
+            "name": "Update Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance"
+        },
+        {
+          "info": {
+            "name": "Patch Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance"
+        },
+        {
+          "info": {
+            "name": "Delete Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Instance"
+        },
+        {
+          "info": {
+            "name": "Apply Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/apply",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply Instance"
+        },
+        {
+          "info": {
+            "name": "Get Instance Appset Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/appset/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Instance Appset Secret"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Appset Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/appset/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Appset Secret"
+        },
+        {
+          "info": {
+            "name": "Update Instance Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Clusters"
+        },
+        {
+          "info": {
+            "name": "Get Instance Config Management Plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/config-management-plugins",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Instance Config Management Plugins"
+        },
+        {
+          "info": {
+            "name": "Update Instance Config Management Plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/config-management-plugins",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Config Management Plugins"
+        },
+        {
+          "info": {
+            "name": "Get Instance CSS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/css",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Instance CSS"
+        },
+        {
+          "info": {
+            "name": "Update Instance CSS",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/css",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance CSS"
+        },
+        {
+          "info": {
+            "name": "Export Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/export",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Export Instance"
+        },
+        {
+          "info": {
+            "name": "Get Instance Image Updater Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/image-updater",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Instance Image Updater Settings"
+        },
+        {
+          "info": {
+            "name": "Update Instance Image Updater Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/image-updater/config",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Image Updater Config"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Image Updater Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/image-updater/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Image Updater Secret"
+        },
+        {
+          "info": {
+            "name": "Update Instance Image Updater SSHConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/image-updater/ssh-config",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Image Updater SSHConfig"
+        },
+        {
+          "info": {
+            "name": "Get Instance Notification Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/notifications",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Instance Notification Settings"
+        },
+        {
+          "info": {
+            "name": "Update Instance Notification Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/notifications",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Notification Config"
+        },
+        {
+          "info": {
+            "name": "Get Instance Notification Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/notifications/catalog",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Instance Notification Catalog"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Notification Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/notifications/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Notification Secret"
+        },
+        {
+          "info": {
+            "name": "Get Instance Resource Customizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/resource-customizations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Instance Resource Customizations"
+        },
+        {
+          "info": {
+            "name": "Update Instance Resource Customizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/resource-customizations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Resource Customizations"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/secret",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Secret"
+        },
+        {
+          "info": {
+            "name": "Update Instance Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:id/transfer",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Workspace"
+        },
+        {
+          "info": {
+            "name": "List Instance Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/accounts",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Instance Accounts"
+        },
+        {
+          "info": {
+            "name": "Upsert Instance Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/accounts/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert Instance Account"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/accounts/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Instance Account"
+        },
+        {
+          "info": {
+            "name": "Update Instance Account Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/accounts/:name/password",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Account Password"
+        },
+        {
+          "info": {
+            "name": "Regenerate Instance Account Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/accounts/:name/regenerate-password",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Regenerate Instance Account Password"
+        },
+        {
+          "info": {
+            "name": "List Instance Addon Errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-errors/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instance Addon Errors"
+        },
+        {
+          "info": {
+            "name": "Addon Marketplace Install",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-marketplace-installs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Addon Marketplace Install"
+        },
+        {
+          "info": {
+            "name": "Update Addon Marketplace Install",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-marketplace-installs/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Addon Marketplace Install"
+        },
+        {
+          "info": {
+            "name": "Delete Addon Marketplace Install",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-marketplace-installs/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Addon Marketplace Install"
+        },
+        {
+          "info": {
+            "name": "List Instance Addon Repos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-repos",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instance Addon Repos"
+        },
+        {
+          "info": {
+            "name": "Create Instance Addon Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-repos",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Instance Addon Repo"
+        },
+        {
+          "info": {
+            "name": "Get Instance Addon Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-repos/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Instance Addon Repo"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Addon Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-repos/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Instance Addon Repo"
+        },
+        {
+          "info": {
+            "name": "Refresh Instance Addon Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-repos/:id/refresh",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh Instance Addon Repo"
+        },
+        {
+          "info": {
+            "name": "List Instance Addons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addons",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instance Addons"
+        },
+        {
+          "info": {
+            "name": "Get Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Update Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Clear Addon Status Source History",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addons/:id/clear-operation-history",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clear Addon Status Source History"
+        },
+        {
+          "info": {
+            "name": "Refresh Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addons/:id/refresh",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh Instance Addon"
+        },
+        {
+          "info": {
+            "name": "List Instance Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Instance Clusters"
+        },
+        {
+          "info": {
+            "name": "Create Instance Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Instance Cluster"
+        },
+        {
+          "info": {
+            "name": "Update Instance Clusters Agent Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/agent-version",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Clusters Agent Version"
+        },
+        {
+          "info": {
+            "name": "Regenerate Manifests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/regenerate-manifests",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Regenerate Manifests"
+        },
+        {
+          "info": {
+            "name": "Rotate Instance Cluster Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/rotate-credentials",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rotate Instance Cluster Credentials"
+        },
+        {
+          "info": {
+            "name": "Set Cluster Maintenance Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/set-maintenance-mode",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Cluster Maintenance Mode"
+        },
+        {
+          "info": {
+            "name": "Get Instance Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Cluster"
+        },
+        {
+          "info": {
+            "name": "Update Instance Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Cluster"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Instance Cluster"
+        },
+        {
+          "info": {
+            "name": "Get Instance Cluster Command",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/:id/command",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locationOrigin",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offline",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "skipNamespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commandFor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Cluster Command"
+        },
+        {
+          "info": {
+            "name": "Get Instance Cluster Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/:id/info",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Cluster Info"
+        },
+        {
+          "info": {
+            "name": "Get Instance Cluster Manifests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/:id/manifests",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offlineInstallation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "skipNamespace",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Cluster Manifests"
+        },
+        {
+          "info": {
+            "name": "Update Instance Cluster Support Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters/:id/support-access",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Cluster Support Access"
+        },
+        {
+          "info": {
+            "name": "List Addon Marketplace Installs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/list-addon-marketplace-installs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Addon Marketplace Installs"
+        },
+        {
+          "info": {
+            "name": "List Instance Managed Secrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/managed-secrets",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Instance Managed Secrets"
+        },
+        {
+          "info": {
+            "name": "Create Managed Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/managed-secrets",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Managed Secret"
+        },
+        {
+          "info": {
+            "name": "Update Managed Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/managed-secrets/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Managed Secret"
+        },
+        {
+          "info": {
+            "name": "Patch Managed Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/managed-secrets/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Managed Secret"
+        },
+        {
+          "info": {
+            "name": "Delete Managed Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/managed-secrets/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Managed Secret"
+        },
+        {
+          "info": {
+            "name": "List Instance Repos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/repos",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Instance Repos"
+        },
+        {
+          "info": {
+            "name": "Create Instance Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/repos",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Instance Repo"
+        },
+        {
+          "info": {
+            "name": "Get Cluster APIServer CAData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/argocd/utils/cluster-ca-data",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "server",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Cluster APIServer CAData"
+        },
+        {
+          "info": {
+            "name": "Watch Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/argocd/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Instances"
+        },
+        {
+          "info": {
+            "name": "Watch Instance Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/argocd/instances/:instance_id/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minClusterName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxClusterName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Instance Clusters"
+        },
+        {
+          "info": {
+            "name": "Watch Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/workspaces/:workspace_id/argocd/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Instances"
+        },
+        {
+          "info": {
+            "name": "Watch Addon Marketplace Installs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-marketplace-installs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Watch Addon Marketplace Installs"
+        },
+        {
+          "info": {
+            "name": "Watch Instance Addon Repos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addon-repos",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "addonRepoId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Instance Addon Repos"
+        },
+        {
+          "info": {
+            "name": "Watch Instance Addons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/addons",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "addonId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Instance Addons"
+        },
+        {
+          "info": {
+            "name": "Watch Instance Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/workspaces/:workspace_id/argocd/instances/:instance_id/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minClusterName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxClusterName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Instance Clusters"
+        },
+        {
+          "info": {
+            "name": "List Instance Addon Errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-errors/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instance Addon Errors"
+        },
+        {
+          "info": {
+            "name": "Addon Marketplace Install",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-marketplace-installs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Addon Marketplace Install"
+        },
+        {
+          "info": {
+            "name": "Update Addon Marketplace Install",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-marketplace-installs/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Addon Marketplace Install"
+        },
+        {
+          "info": {
+            "name": "Delete Addon Marketplace Install",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-marketplace-installs/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Addon Marketplace Install"
+        },
+        {
+          "info": {
+            "name": "List Instance Addon Repos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-repos",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instance Addon Repos"
+        },
+        {
+          "info": {
+            "name": "Create Instance Addon Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-repos",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Instance Addon Repo"
+        },
+        {
+          "info": {
+            "name": "Get Instance Addon Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-repos/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Addon Repo"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Addon Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-repos/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance Addon Repo"
+        },
+        {
+          "info": {
+            "name": "Refresh Instance Addon Repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addon-repos/:id/refresh",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh Instance Addon Repo"
+        },
+        {
+          "info": {
+            "name": "List Instance Addons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addons",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instance Addons"
+        },
+        {
+          "info": {
+            "name": "Get Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instanceName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Update Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Patch Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Delete Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addons/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instanceName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Instance Addon"
+        },
+        {
+          "info": {
+            "name": "Clear Addon Status Source History",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addons/:id/clear-operation-history",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clear Addon Status Source History"
+        },
+        {
+          "info": {
+            "name": "Refresh Instance Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/addons/:id/refresh",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh Instance Addon"
+        },
+        {
+          "info": {
+            "name": "List Addon Marketplace Installs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/orgs/:organization_id/argocd/instances/:instance_id/list-addon-marketplace-installs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Addon Marketplace Installs"
+        },
+        {
+          "info": {
+            "name": "Watch Addon Marketplace Installs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/stream/orgs/:organization_id/argocd/instances/:instance_id/addon-marketplace-installs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Addon Marketplace Installs"
+        },
+        {
+          "info": {
+            "name": "Watch Instance Addon Repos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/stream/orgs/:organization_id/argocd/instances/:instance_id/addon-repos",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "addonRepoId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Instance Addon Repos"
+        },
+        {
+          "info": {
+            "name": "Watch Instance Addons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/addons/stream/orgs/:organization_id/argocd/instances/:instance_id/addons",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "addonId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Watch Instance Addons"
+        },
+        {
+          "info": {
+            "name": "List Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/argocd/instances",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Instances"
+        },
+        {
+          "info": {
+            "name": "Get Sync Operations Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/argocd/instances/sync-operations-events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Sync Operations Events"
+        },
+        {
+          "info": {
+            "name": "Get Sync Operations Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/argocd/instances/sync-operations-stats",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Sync Operations Stats"
+        },
+        {
+          "info": {
+            "name": "Get Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance"
+        },
+        {
+          "info": {
+            "name": "Patch Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/argocd/instances/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch Instance"
+        },
+        {
+          "info": {
+            "name": "Get Instance Notification Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/argocd/instances/:id/notifications",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Instance Notification Settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

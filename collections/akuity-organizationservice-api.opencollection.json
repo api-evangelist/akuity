@@ -1,0 +1,6431 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akuity Platform API — Organization Organization Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OrganizationService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/billing/plans",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Available Plans"
+        },
+        {
+          "info": {
+            "name": "List Authenticated User Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations"
+          },
+          "docs": "List Authenticated User Organizations"
+        },
+        {
+          "info": {
+            "name": "Create Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Organization"
+        },
+        {
+          "info": {
+            "name": "Get Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Organization"
+        },
+        {
+          "info": {
+            "name": "Update Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Organization"
+        },
+        {
+          "info": {
+            "name": "Delete Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Organization"
+        },
+        {
+          "info": {
+            "name": "List Organization APIKeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/apikeys",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Organization APIKeys"
+        },
+        {
+          "info": {
+            "name": "Create Organization APIKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/apikeys",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Organization APIKey"
+        },
+        {
+          "info": {
+            "name": "Get Audit Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/audit-logs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Audit Logs"
+        },
+        {
+          "info": {
+            "name": "List Audit Logs Archives",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/audit-logs-archives",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Audit Logs Archives"
+        },
+        {
+          "info": {
+            "name": "Update Billing Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/billing",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Billing Details"
+        },
+        {
+          "info": {
+            "name": "Get Customer Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/billing/customer",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Customer Details"
+        },
+        {
+          "info": {
+            "name": "Update Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/billing/subscription",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Subscription"
+        },
+        {
+          "info": {
+            "name": "Get Available Addons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/billing/:plan/addons",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "plan",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Available Addons"
+        },
+        {
+          "info": {
+            "name": "Billing Checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/checkout",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Billing Checkout"
+        },
+        {
+          "info": {
+            "name": "Get Audit Logs In CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/csv-audit-logs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Audit Logs In CSV"
+        },
+        {
+          "info": {
+            "name": "Get Feature Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/feature-statuses",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Feature Statuses"
+        },
+        {
+          "info": {
+            "name": "List Organization Invitees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/invitees",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Organization Invitees"
+        },
+        {
+          "info": {
+            "name": "Join Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/join",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Join Organization"
+        },
+        {
+          "info": {
+            "name": "List Organization Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/members",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Organization Members"
+        },
+        {
+          "info": {
+            "name": "Invite Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/members/invite",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invite Members"
+        },
+        {
+          "info": {
+            "name": "Uninvite Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/members/uninvite",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uninvite Organization Member"
+        },
+        {
+          "info": {
+            "name": "Update Organization Member Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/members/:member_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Organization Member Role"
+        },
+        {
+          "info": {
+            "name": "Remove Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/members/:member_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Organization Member"
+        },
+        {
+          "info": {
+            "name": "Get OIDCMap",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/oidc-map",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get OIDCMap"
+        },
+        {
+          "info": {
+            "name": "Update OIDCMap",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/oidc-map",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update OIDCMap"
+        },
+        {
+          "info": {
+            "name": "Get Organization Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/permissions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Organization Permissions"
+        },
+        {
+          "info": {
+            "name": "Reject Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/reject",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject Organization"
+        },
+        {
+          "info": {
+            "name": "Get User Role In Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/role",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get User Role In Organization"
+        },
+        {
+          "info": {
+            "name": "Get SSOConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/sso/configuration",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get SSOConfiguration"
+        },
+        {
+          "info": {
+            "name": "Ensure SSOConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/sso/configuration",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ensure SSOConfiguration"
+        },
+        {
+          "info": {
+            "name": "Delete SSOConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/sso/configuration",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete SSOConfiguration"
+        },
+        {
+          "info": {
+            "name": "List Workspace APIKeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/workspaces/:workspace_id/apikeys",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Workspace APIKeys"
+        },
+        {
+          "info": {
+            "name": "Create Workspace APIKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:id/workspaces/:workspace_id/apikeys",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Workspace APIKey"
+        },
+        {
+          "info": {
+            "name": "Cancel Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/billing/subscription/cancel",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel Subscription"
+        },
+        {
+          "info": {
+            "name": "List Custom Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/custom-roles",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Custom Roles"
+        },
+        {
+          "info": {
+            "name": "Create Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/custom-roles",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Custom Role"
+        },
+        {
+          "info": {
+            "name": "Get Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/custom-roles/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Custom Role"
+        },
+        {
+          "info": {
+            "name": "Update Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/custom-roles/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Custom Role"
+        },
+        {
+          "info": {
+            "name": "Delete Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/custom-roles/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Custom Role"
+        },
+        {
+          "info": {
+            "name": "List Organization Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/domains",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Organization Domains"
+        },
+        {
+          "info": {
+            "name": "Verify Organization Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/domains",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify Organization Domains"
+        },
+        {
+          "info": {
+            "name": "Delete Organization Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/domains/:domain",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Organization Domain"
+        },
+        {
+          "info": {
+            "name": "Get Team OIDCMap",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/teams-oidc-map",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Team OIDCMap"
+        },
+        {
+          "info": {
+            "name": "Update Team OIDCMap",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/teams-oidc-map",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Team OIDCMap"
+        },
+        {
+          "info": {
+            "name": "List Users MFAStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/users-mfa-status",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Users MFAStatus"
+        },
+        {
+          "info": {
+            "name": "Request MFAReset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/users/:email/mfa/reset",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request MFAReset"
+        },
+        {
+          "info": {
+            "name": "List Workspace Custom Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/workspaces/:workspace_id/custom-roles",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Workspace Custom Roles"
+        },
+        {
+          "info": {
+            "name": "Create Workspace Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/workspaces/:workspace_id/custom-roles",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Workspace Custom Role"
+        },
+        {
+          "info": {
+            "name": "Get Workspace Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/workspaces/:workspace_id/custom-roles/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Workspace Custom Role"
+        },
+        {
+          "info": {
+            "name": "Update Workspace Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/workspaces/:workspace_id/custom-roles/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Workspace Custom Role"
+        },
+        {
+          "info": {
+            "name": "Delete Workspace Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/organizations/:organization_id/workspaces/:workspace_id/custom-roles/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Workspace Custom Role"
+        },
+        {
+          "info": {
+            "name": "List AIConversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidentOnly",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidentStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "application",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "titleContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoProject",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scheduledTaskOnly",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scheduledTaskStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasUserInteractions",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List AIConversations"
+        },
+        {
+          "info": {
+            "name": "Create AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create AIConversation"
+        },
+        {
+          "info": {
+            "name": "Update AIConversation Feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:conversation_id/conversation-feedback",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update AIConversation Feedback"
+        },
+        {
+          "info": {
+            "name": "Update AIMessage Feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:conversation_id/feedback",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update AIMessage Feedback"
+        },
+        {
+          "info": {
+            "name": "Create AIMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:conversation_id/messages",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create AIMessage"
+        },
+        {
+          "info": {
+            "name": "List AIConversation Suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:conversation_id/suggestions",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List AIConversation Suggestions"
+        },
+        {
+          "info": {
+            "name": "Set AITool Approval Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:conversation_id/tools/:tool_call_id/approval-status",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tool_call_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set AITool Approval Status"
+        },
+        {
+          "info": {
+            "name": "Get AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get AIConversation"
+        },
+        {
+          "info": {
+            "name": "Update AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update AIConversation"
+        },
+        {
+          "info": {
+            "name": "Delete AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete AIConversation"
+        },
+        {
+          "info": {
+            "name": "Share AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:id/share",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Share AIConversation"
+        },
+        {
+          "info": {
+            "name": "Suspend AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:id/suspend",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Suspend AIConversation"
+        },
+        {
+          "info": {
+            "name": "Unshare AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/conversations/:id/unshare",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unshare AIConversation"
+        },
+        {
+          "info": {
+            "name": "Create Incident",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/incidents",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Incident"
+        },
+        {
+          "info": {
+            "name": "Resolve Incidents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/incidents/resolve",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve Incidents"
+        },
+        {
+          "info": {
+            "name": "Get AIModels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/models",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get AIModels"
+        },
+        {
+          "info": {
+            "name": "Get AIProvider Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/provider-models/:provider",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apiBase",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get AIProvider Models"
+        },
+        {
+          "info": {
+            "name": "List AITools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/ai/tools",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List AITools"
+        },
+        {
+          "info": {
+            "name": "List Argocd Instances Quota",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/instances/quota",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Argocd Instances Quota"
+        },
+        {
+          "info": {
+            "name": "Update Argocd Instances Quota",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/instances/quota",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Argocd Instances Quota"
+        },
+        {
+          "info": {
+            "name": "List Argo CDApplications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/applications",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filler",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterLabelSelector",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Argo CDApplications"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Enabled Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasDeprecatedApis",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Enabled Clusters"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Containers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/containers",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "podId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "image",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageTag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageDigest",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "podName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Containers"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Container",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/containers/:container_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "container_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Container"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Deprecated APIs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/deprecated-apis",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apiVersionContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Deprecated APIs"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/images",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "digest",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Images"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Image Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/images/detail",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Image Detail"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Cluster Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/instances/:instance_id/clusters/:cluster_id/detail",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Cluster Detail"
+        },
+        {
+          "info": {
+            "name": "Delete Kubernetes Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/instances/:instance_id/clusters/:cluster_id/resources/:resource_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Kubernetes Resource"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Namespaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/namespaces",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nodeName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Namespaces"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Namespaces Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/namespaces-details",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filler",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Namespaces Details"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Namespace Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/namespaces-details/:namespace_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "namespace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Namespace Detail"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/nodes",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filler",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Nodes"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/nodes/:node_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Node"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Pods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/pods",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filler",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Pods"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Pod",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/pods/:pod_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pod_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Pod"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Resource Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resource-types",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Resource Types"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resources",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ownerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "where",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasDeletionTimestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeView",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewNameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewResourceKinds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewHealthStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "healthStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labels",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "annotations",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Resources"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Assistant Suggestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resources/:resource_id/assistant-suggestion",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Kubernetes Assistant Suggestion"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Audit Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resources/:resource_id/audit-logs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "actorId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Audit Logs"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Resource Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resources/:resource_id/detail",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Resource Detail"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Resource Diff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resources/:resource_id/diff",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Resource Diff"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resources/:resource_id/events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Events"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Manifest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resources/:resource_id/manifest",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Manifest"
+        },
+        {
+          "info": {
+            "name": "Resolve Kubernetes Assistant Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/resources/:resource_id/resolve-assistant-conversation",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve Kubernetes Assistant Conversation"
+        },
+        {
+          "info": {
+            "name": "Spotlight Search Kubernetes Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/spotlight-search",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "aiSearch",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Spotlight Search Kubernetes Resources"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/summary",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Summary"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Timeline Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/timeline-events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timelineResourceIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "applicationNames",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Timeline Events"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Timeline Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/timeline-resources",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Timeline Resources"
+        },
+        {
+          "info": {
+            "name": "Get Kube Vision Usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/k8s/usage",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Kube Vision Usage"
+        },
+        {
+          "info": {
+            "name": "List Kargo Instances Quota",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo-instances/quota",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Kargo Instances Quota"
+        },
+        {
+          "info": {
+            "name": "Update Kargo Instances Quota",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/kargo-instances/quota",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Kargo Instances Quota"
+        },
+        {
+          "info": {
+            "name": "List Notification Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "deliveryMethods",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Notification Configs"
+        },
+        {
+          "info": {
+            "name": "Create Notification Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Notification Config"
+        },
+        {
+          "info": {
+            "name": "Get Notification Delivery History Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs/:config_id/delivery-history/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Notification Delivery History Detail"
+        },
+        {
+          "info": {
+            "name": "Redeliver Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs/:config_id/notifications/:id/redeliver",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Redeliver Notification"
+        },
+        {
+          "info": {
+            "name": "Get Notification Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Notification Config"
+        },
+        {
+          "info": {
+            "name": "Update Notification Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Notification Config"
+        },
+        {
+          "info": {
+            "name": "Delete Notification Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Notification Config"
+        },
+        {
+          "info": {
+            "name": "List Notification Delivery History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs/:id/delivery-history",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Notification Delivery History"
+        },
+        {
+          "info": {
+            "name": "Ping Notification Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/notification-configs/:id/ping",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ping Notification Config"
+        },
+        {
+          "info": {
+            "name": "List Teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Teams"
+        },
+        {
+          "info": {
+            "name": "Create Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Team"
+        },
+        {
+          "info": {
+            "name": "Get Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Team"
+        },
+        {
+          "info": {
+            "name": "Update Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Team"
+        },
+        {
+          "info": {
+            "name": "Delete Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams/:name",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Team"
+        },
+        {
+          "info": {
+            "name": "List Team Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams/:team_name/members",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Team Members"
+        },
+        {
+          "info": {
+            "name": "Add Team Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams/:team_name/members",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Team Member"
+        },
+        {
+          "info": {
+            "name": "Get Team Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams/:team_name/members/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Team Member"
+        },
+        {
+          "info": {
+            "name": "Remove Team Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/teams/:team_name/members/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Team Member"
+        },
+        {
+          "info": {
+            "name": "List Workspaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Workspaces"
+        },
+        {
+          "info": {
+            "name": "Create Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Workspace"
+        },
+        {
+          "info": {
+            "name": "Get Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Workspace"
+        },
+        {
+          "info": {
+            "name": "Update Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Workspace"
+        },
+        {
+          "info": {
+            "name": "Delete Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Workspace"
+        },
+        {
+          "info": {
+            "name": "Add Workspace Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/member",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Workspace Member"
+        },
+        {
+          "info": {
+            "name": "List Workspace Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/members",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Workspace Members"
+        },
+        {
+          "info": {
+            "name": "Update Workspace Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/members",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Workspace Members"
+        },
+        {
+          "info": {
+            "name": "Get Workspace Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/members/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Workspace Member"
+        },
+        {
+          "info": {
+            "name": "Update Workspace Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/members/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Workspace Member"
+        },
+        {
+          "info": {
+            "name": "Remove Workspace Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/api/v1/orgs/:organization_id/workspaces/:workspace_id/members/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Workspace Member"
+        },
+        {
+          "info": {
+            "name": "Get AIConversation Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/ai/conversations/:id/messages",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get AIConversation Stream"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Containers To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/k8s/containers-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "podId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "image",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageTag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageDigest",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "podName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Containers To CSV"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Deprecated APIs To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/k8s/deprecated-apis-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apiVersionContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Deprecated APIs To CSV"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Images To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/k8s/images-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "digest",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Images To CSV"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Resources To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/k8s/resources-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ownerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "where",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasDeletionTimestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeView",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewNameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewResourceKinds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewHealthStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "healthStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labels",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "annotations",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Resources To CSV"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/k8s/resources/:resource_id/logs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sinceSeconds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tailLines",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "follow",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "previous",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Logs"
+        },
+        {
+          "info": {
+            "name": "Get Kube Vision Usage To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/api/v1/stream/orgs/:organization_id/k8s/usage-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Kube Vision Usage To CSV"
+        },
+        {
+          "info": {
+            "name": "List AIConversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidentOnly",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidentStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "application",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "titleContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoProject",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scheduledTaskOnly",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scheduledTaskStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasUserInteractions",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List AIConversations"
+        },
+        {
+          "info": {
+            "name": "Create AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create AIConversation"
+        },
+        {
+          "info": {
+            "name": "Update AIConversation Feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:conversation_id/conversation-feedback",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update AIConversation Feedback"
+        },
+        {
+          "info": {
+            "name": "Update AIMessage Feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:conversation_id/feedback",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update AIMessage Feedback"
+        },
+        {
+          "info": {
+            "name": "Create AIMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:conversation_id/messages",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create AIMessage"
+        },
+        {
+          "info": {
+            "name": "List AIConversation Suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:conversation_id/suggestions",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List AIConversation Suggestions"
+        },
+        {
+          "info": {
+            "name": "Set AITool Approval Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:conversation_id/tools/:tool_call_id/approval-status",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tool_call_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set AITool Approval Status"
+        },
+        {
+          "info": {
+            "name": "Get AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get AIConversation"
+        },
+        {
+          "info": {
+            "name": "Update AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update AIConversation"
+        },
+        {
+          "info": {
+            "name": "Delete AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete AIConversation"
+        },
+        {
+          "info": {
+            "name": "Share AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:id/share",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Share AIConversation"
+        },
+        {
+          "info": {
+            "name": "Suspend AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:id/suspend",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Suspend AIConversation"
+        },
+        {
+          "info": {
+            "name": "Unshare AIConversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/conversations/:id/unshare",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unshare AIConversation"
+        },
+        {
+          "info": {
+            "name": "Resolve Incidents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/incidents/resolve",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve Incidents"
+        },
+        {
+          "info": {
+            "name": "Get AIModels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/models",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get AIModels"
+        },
+        {
+          "info": {
+            "name": "Get AIProvider Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/provider-models/:provider",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apiBase",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get AIProvider Models"
+        },
+        {
+          "info": {
+            "name": "List AITools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/ai/tools",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List AITools"
+        },
+        {
+          "info": {
+            "name": "List Argo CDApplications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/applications",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filler",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterLabelSelector",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Argo CDApplications"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Enabled Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/clusters",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasDeprecatedApis",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Enabled Clusters"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Containers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/containers",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "podId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "image",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageTag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageDigest",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "podName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Containers"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Container",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/containers/:container_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "container_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Container"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Deprecated APIs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/deprecated-apis",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apiVersionContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Deprecated APIs"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/images",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "digest",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Images"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Image Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/images/detail",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Image Detail"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Cluster Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/instances/:instance_id/clusters/:cluster_id/detail",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Cluster Detail"
+        },
+        {
+          "info": {
+            "name": "Delete Kubernetes Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/instances/:instance_id/clusters/:cluster_id/resources/:resource_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Kubernetes Resource"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Namespaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/namespaces",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nodeName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Namespaces"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Namespaces Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/namespaces-details",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filler",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Namespaces Details"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Namespace Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/namespaces-details/:namespace_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "namespace_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Namespace Detail"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/nodes",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filler",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Nodes"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/nodes/:node_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Node"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Pods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/pods",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filler",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Pods"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Pod",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/pods/:pod_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pod_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Pod"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Resource Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resource-types",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Resource Types"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resources",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ownerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "where",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasDeletionTimestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeView",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewNameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewResourceKinds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewHealthStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "healthStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labels",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "annotations",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Resources"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Assistant Suggestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resources/:resource_id/assistant-suggestion",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Kubernetes Assistant Suggestion"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Audit Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resources/:resource_id/audit-logs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "actorId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Audit Logs"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Resource Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resources/:resource_id/detail",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Resource Detail"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Resource Diff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resources/:resource_id/diff",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Resource Diff"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resources/:resource_id/events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Events"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Manifest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resources/:resource_id/manifest",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Manifest"
+        },
+        {
+          "info": {
+            "name": "Resolve Kubernetes Assistant Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/resources/:resource_id/resolve-assistant-conversation",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve Kubernetes Assistant Conversation"
+        },
+        {
+          "info": {
+            "name": "Spotlight Search Kubernetes Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/spotlight-search",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "aiSearch",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Spotlight Search Kubernetes Resources"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/summary",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Summary"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Timeline Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/timeline-events",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timelineResourceIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "applicationNames",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Timeline Events"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Timeline Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/orgs/:organization_id/k8s/timeline-resources",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Timeline Resources"
+        },
+        {
+          "info": {
+            "name": "Get AIConversation Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/stream/orgs/:organization_id/ai/conversations/:id/messages",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kargoInstanceId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get AIConversation Stream"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Containers To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/stream/orgs/:organization_id/k8s/containers-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "podId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "image",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageTag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imageDigest",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "podName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Containers To CSV"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Deprecated APIs To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/stream/orgs/:organization_id/k8s/deprecated-apis-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apiVersionContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Deprecated APIs To CSV"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Images To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/stream/orgs/:organization_id/k8s/images-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "digest",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Images To CSV"
+        },
+        {
+          "info": {
+            "name": "List Kubernetes Resources To CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/stream/orgs/:organization_id/k8s/resources-csv",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ownerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "where",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasDeletionTimestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeView",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewNameContains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewResourceKinds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "treeViewHealthStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "healthStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labels",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "annotations",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Kubernetes Resources To CSV"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://akuity.cloud/ext-api/v1/argocd/extensions/kubevision/stream/orgs/:organization_id/k8s/resources/:resource_id/logs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sinceSeconds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tailLines",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "follow",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "previous",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Kubernetes Logs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
