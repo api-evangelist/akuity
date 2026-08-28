@@ -12,6 +12,18 @@ description: >-
   Crossplane provider, all of which speak the same grpc-gateway service surface.
   Akuity runs on AWS with US and EU data residency and maintains SOC 2 Type II,
   ISO 27001:2022, PCI DSS 4.0.1, HIPAA-aligned and CSA STAR Level 1 posture.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://framerusercontent.com/images/GquIfu25ll0uHAbX9oobc0UUUE.png
 url: https://raw.githubusercontent.com/api-evangelist/akuity/refs/heads/main/apis.yml
 x-type: company
