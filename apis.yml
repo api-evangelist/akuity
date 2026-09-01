@@ -35,7 +35,7 @@ tags:
 - GitOps
 - Continuous Delivery
 - Kubernetes
-- Argo CD
+- ArgoCD
 - Kargo
 - Platform Engineering
 - DevOps
@@ -67,6 +67,8 @@ apis:
   humanURL: https://docs.akuity.io/akuity-portal/organizations/
   baseURL: https://akuity.cloud/api/v1
   tags:
+  - ApiKeyService
+  tags_raw:
   - APIKeyService
   properties:
   - type: OpenAPI
@@ -171,7 +173,7 @@ apis:
   humanURL: https://docs.akuity.io/akuity-portal/organizations/
   baseURL: https://akuity.cloud/api/v1
   tags:
-  - ExtensionService
+  - Extension Service
   tags_raw:
   - ExtensionService
   properties:
