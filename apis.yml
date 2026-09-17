@@ -75,34 +75,6 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- aid: akuity:akuity-apikeyservice-api
-  name: Akuity API Key Service API
-  description: The APIKeyService API from Akuity — 4 operation(s) for apikeyservice.
-  humanURL: https://docs.akuity.io/akuity-portal/organizations/
-  baseURL: https://akuity.cloud/api/v1
-  tags:
-  - ApiKeyService
-  tags_raw:
-  - APIKeyService
-  properties:
-  - type: OpenAPI
-    url: openapi/akuity-apikeyservice-api-openapi.yml
-  - type: Protobuf
-    url: grpc/akuity-organization.proto
-  - type: Protobuf
-    url: grpc/akuity-argocd.proto
-  - type: Protobuf
-    url: grpc/akuity-kargo.proto
-  - type: Protobuf
-    url: grpc/akuity-system.proto
-  - type: Protobuf
-    url: grpc/akuity-apikey.proto
-  - type: Protobuf
-    url: grpc/akuity-customrole.proto
-  - type: Protobuf
-    url: grpc/akuity-auth.proto
-  - type: Protobuf
-    url: grpc/akuity-extension.proto
 - aid: akuity:akuity-argocdservice-api
   name: Akuity Argo CD Service API
   description: The ArgoCDService API from Akuity — 111 operation(s) for argocdservice.
@@ -113,32 +85,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/akuity-argocdservice-api-openapi.yml
-  - type: Protobuf
-    url: grpc/akuity-organization.proto
-  - type: Protobuf
-    url: grpc/akuity-argocd.proto
-  - type: Protobuf
-    url: grpc/akuity-kargo.proto
-  - type: Protobuf
-    url: grpc/akuity-system.proto
-  - type: Protobuf
-    url: grpc/akuity-apikey.proto
-  - type: Protobuf
-    url: grpc/akuity-customrole.proto
-  - type: Protobuf
-    url: grpc/akuity-auth.proto
-  - type: Protobuf
-    url: grpc/akuity-extension.proto
-- aid: akuity:akuity-authservice-api
-  name: Akuity Auth Service API
-  description: The AuthService API from Akuity — 4 operation(s) for authservice.
-  humanURL: https://docs.akuity.io/akuity-portal/organizations/
-  baseURL: https://akuity.cloud/api/v1
-  tags:
-  - AuthService
-  properties:
-  - type: OpenAPI
-    url: openapi/akuity-authservice-api-openapi.yml
   - type: Protobuf
     url: grpc/akuity-organization.proto
   - type: Protobuf
@@ -271,6 +217,58 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/akuity-systemservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/akuity-organization.proto
+  - type: Protobuf
+    url: grpc/akuity-argocd.proto
+  - type: Protobuf
+    url: grpc/akuity-kargo.proto
+  - type: Protobuf
+    url: grpc/akuity-system.proto
+  - type: Protobuf
+    url: grpc/akuity-apikey.proto
+  - type: Protobuf
+    url: grpc/akuity-customrole.proto
+  - type: Protobuf
+    url: grpc/akuity-auth.proto
+  - type: Protobuf
+    url: grpc/akuity-extension.proto
+- aid: akuity:akuity-api-key-service-api
+  name: Akuity Api Key Service API
+  description: The Api Key Service API from Akuity — 4 operation(s) for api key service.
+  humanURL: https://docs.akuity.io/akuity-portal/organizations/
+  baseURL: https://akuity.cloud/api/v1
+  tags:
+  - Api Key Service
+  properties:
+  - type: OpenAPI
+    url: openapi/akuity-api-key-service-api-openapi.yml
+  - type: Protobuf
+    url: grpc/akuity-organization.proto
+  - type: Protobuf
+    url: grpc/akuity-argocd.proto
+  - type: Protobuf
+    url: grpc/akuity-kargo.proto
+  - type: Protobuf
+    url: grpc/akuity-system.proto
+  - type: Protobuf
+    url: grpc/akuity-apikey.proto
+  - type: Protobuf
+    url: grpc/akuity-customrole.proto
+  - type: Protobuf
+    url: grpc/akuity-auth.proto
+  - type: Protobuf
+    url: grpc/akuity-extension.proto
+- aid: akuity:akuity-auth-service-api
+  name: Akuity Auth Service API
+  description: The Auth Service API from Akuity — 4 operation(s) for auth service.
+  humanURL: https://docs.akuity.io/akuity-portal/organizations/
+  baseURL: https://akuity.cloud/api/v1
+  tags:
+  - Auth Service
+  properties:
+  - type: OpenAPI
+    url: openapi/akuity-auth-service-api-openapi.yml
   - type: Protobuf
     url: grpc/akuity-organization.proto
   - type: Protobuf
