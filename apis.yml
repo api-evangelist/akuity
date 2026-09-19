@@ -45,6 +45,10 @@ x-source: harvest:secondary-market
 specificationVersion: '0.23'
 created: '2026-08-06'
 modified: '2026-08-06'
+x-docs-platform: docusaurus
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
+x-docs-hosting: aws-cloudfront
 tags:
 - GitOps
 - Continuous Delivery
