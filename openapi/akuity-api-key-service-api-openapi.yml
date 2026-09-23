@@ -13,7 +13,7 @@ servers:
 security:
 - basicAuth: []
 tags:
-- name: APIKeyService
+- name: Api Key Service
 paths:
   /api/v1/apikeys/{id}:
     delete:
@@ -57,7 +57,7 @@ paths:
           description: gRPC status error
       summary: Delete APIKey
       tags:
-      - APIKeyService
+      - Api Key Service
       x-grpc-method: akuity.apikey.v1.APIKeyService/DeleteAPIKey
     get:
       operationId: APIKeyService_GetAPIKey
@@ -100,7 +100,7 @@ paths:
           description: gRPC status error
       summary: Get APIKey
       tags:
-      - APIKeyService
+      - Api Key Service
       x-grpc-method: akuity.apikey.v1.APIKeyService/GetAPIKey
   /api/v1/apikeys/{id}/regenerate:
     post:
@@ -150,7 +150,7 @@ paths:
           description: gRPC status error
       summary: Regenerate APIKey Secret
       tags:
-      - APIKeyService
+      - Api Key Service
       x-grpc-method: akuity.apikey.v1.APIKeyService/RegenerateAPIKeySecret
   /api/v1/organizations/{organization_id}/workspaces/{workspace_id}/apikeys/{id}:
     delete:
@@ -204,7 +204,7 @@ paths:
           description: gRPC status error
       summary: Delete Workspace APIKey
       tags:
-      - APIKeyService
+      - Api Key Service
       x-grpc-method: akuity.apikey.v1.APIKeyService/DeleteWorkspaceAPIKey
     get:
       operationId: APIKeyService_GetWorkspaceAPIKey
@@ -257,7 +257,7 @@ paths:
           description: gRPC status error
       summary: Get Workspace APIKey
       tags:
-      - APIKeyService
+      - Api Key Service
       x-grpc-method: akuity.apikey.v1.APIKeyService/GetWorkspaceAPIKey
   /api/v1/organizations/{organization_id}/workspaces/{workspace_id}/apikeys/{id}/regenerate:
     post:
@@ -317,24 +317,12 @@ paths:
           description: gRPC status error
       summary: Regenerate Workspace APIKey Secret
       tags:
-      - APIKeyService
+      - Api Key Service
       x-grpc-method: akuity.apikey.v1.APIKeyService/RegenerateWorkspaceAPIKeySecret
 components:
   schemas:
-    akuity_apikey_v1_DeleteWorkspaceAPIKeyResponse:
-      title: akuity.apikey.v1.DeleteWorkspaceAPIKeyResponse
-      type: object
-    akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretRequest:
-      properties:
-        expiry:
-          type: string
-        id:
-          type: string
-        organizationId:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretRequest
+    akuity_apikey_v1_DeleteAPIKeyResponse:
+      title: akuity.apikey.v1.DeleteAPIKeyResponse
       type: object
     akuity_apikey_v1_GetAPIKeyResponse:
       properties:
@@ -342,19 +330,11 @@ components:
           $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
       title: akuity.apikey.v1.GetAPIKeyResponse
       type: object
-    akuity_apikey_v1_GetWorkspaceAPIKeyResponse:
+    akuity_apikey_v1_RegenerateAPIKeySecretResponse:
       properties:
         apiKey:
           $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
-      title: akuity.apikey.v1.GetWorkspaceAPIKeyResponse
-      type: object
-    akuity_apikey_v1_RegenerateAPIKeySecretRequest:
-      properties:
-        expiry:
-          type: string
-        id:
-          type: string
-      title: akuity.apikey.v1.RegenerateAPIKeySecretRequest
+      title: akuity.apikey.v1.RegenerateAPIKeySecretResponse
       type: object
     akuity_apikey_v1_APIKey:
       properties:
@@ -376,20 +356,8 @@ components:
           type: string
       title: akuity.apikey.v1.APIKey
       type: object
-    Status:
-      properties:
-        code:
-          description: gRPC status code (google.rpc.Code)
-          format: int32
-          type: integer
-        details:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        message:
-          type: string
-      title: google.rpc.Status
+    akuity_apikey_v1_DeleteWorkspaceAPIKeyResponse:
+      title: akuity.apikey.v1.DeleteWorkspaceAPIKeyResponse
       type: object
     akuity_accesscontrol_v1_Permissions:
       properties:
@@ -407,14 +375,46 @@ components:
           type: array
       title: akuity.accesscontrol.v1.Permissions
       type: object
-    akuity_apikey_v1_DeleteAPIKeyResponse:
-      title: akuity.apikey.v1.DeleteAPIKeyResponse
+    akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretRequest:
+      properties:
+        expiry:
+          type: string
+        id:
+          type: string
+        organizationId:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretRequest
       type: object
-    akuity_apikey_v1_RegenerateAPIKeySecretResponse:
+    akuity_apikey_v1_RegenerateAPIKeySecretRequest:
+      properties:
+        expiry:
+          type: string
+        id:
+          type: string
+      title: akuity.apikey.v1.RegenerateAPIKeySecretRequest
+      type: object
+    akuity_apikey_v1_GetWorkspaceAPIKeyResponse:
       properties:
         apiKey:
           $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
-      title: akuity.apikey.v1.RegenerateAPIKeySecretResponse
+      title: akuity.apikey.v1.GetWorkspaceAPIKeyResponse
+      type: object
+    Status:
+      properties:
+        code:
+          description: gRPC status code (google.rpc.Code)
+          format: int32
+          type: integer
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        message:
+          type: string
+      title: google.rpc.Status
       type: object
     akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretResponse:
       properties:

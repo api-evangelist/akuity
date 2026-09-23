@@ -302,41 +302,15 @@ paths:
       x-grpc-method: akuity.extension.v1.ExtensionService/GetExtensionSettings
 components:
   schemas:
-    akuity_argocd_v1_SyncOperationEvent:
+    akuity_organization_v1_AuditLog_AuditDetails:
       properties:
-        applicationName:
+        actionType:
           type: string
-        count:
-          format: int64
-          type: integer
-        details:
-          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationEventDetails'
-        duration:
-          format: int64
-          type: integer
-        endTime:
+        message:
           type: string
-        id:
+        patch:
           type: string
-        instanceId:
-          type: string
-        lastOccurredTimestamp:
-          type: string
-        resultMessage:
-          type: string
-        resultPhase:
-          type: string
-        startTime:
-          type: string
-      title: akuity.argocd.v1.SyncOperationEvent
-      type: object
-    akuity_argocd_v1_OperationInitiator:
-      properties:
-        automated:
-          type: boolean
-        username:
-          type: string
-      title: akuity.argocd.v1.OperationInitiator
+      title: akuity.organization.v1.AuditLog.AuditDetails
       type: object
     akuity_extension_v1_GetSyncOperationsEventsForApplicationResponse:
       properties:
@@ -353,16 +327,6 @@ components:
           type: array
       title: akuity.extension.v1.GetSyncOperationsEventsForApplicationResponse
       type: object
-    akuity_organization_v1_AuditLog_AuditObject_AuditObjId:
-      properties:
-        group:
-          type: string
-        kind:
-          type: string
-        name:
-          type: string
-      title: akuity.organization.v1.AuditLog.AuditObject.AuditObjId
-      type: object
     akuity_organization_v1_AuditLog_AuditObject_AuditParentId:
       properties:
         applicationName:
@@ -373,33 +337,6 @@ components:
           type: string
       title: akuity.organization.v1.AuditLog.AuditObject.AuditParentId
       type: object
-    akuity_extension_v1_ListAuditRecordForKargoProjectsResponse:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/akuity_organization_v1_AuditLog'
-          type: array
-        totalCount:
-          format: int64
-          type: integer
-      title: akuity.extension.v1.ListAuditRecordForKargoProjectsResponse
-      type: object
-    akuity_argocd_v1_SyncOperationStat:
-      properties:
-        averageMap:
-          additionalProperties:
-            format: float
-            type: number
-          type: object
-        countMap:
-          additionalProperties:
-            format: int64
-            type: integer
-          type: object
-        intervalStart:
-          type: string
-      title: akuity.argocd.v1.SyncOperationStat
-      type: object
     akuity_extension_v1_GetExtensionSettingsResponse:
       properties:
         akuityIntelligence:
@@ -409,52 +346,6 @@ components:
         organizationId:
           type: string
       title: akuity.extension.v1.GetExtensionSettingsResponse
-      type: object
-    akuity_organization_v1_AuditLog_AuditDetails:
-      properties:
-        actionType:
-          type: string
-        message:
-          type: string
-        patch:
-          type: string
-      title: akuity.organization.v1.AuditLog.AuditDetails
-      type: object
-    akuity_extension_v1_GetSyncOperationsStatsForApplicationResponse:
-      properties:
-        syncOperationStats:
-          items:
-            $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationStat'
-          type: array
-      title: akuity.extension.v1.GetSyncOperationsStatsForApplicationResponse
-      type: object
-    akuity_extension_v1_ListAuditRecordForApplicationResponse:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/akuity_organization_v1_AuditLog'
-          type: array
-        totalCount:
-          format: int64
-          type: integer
-      title: akuity.extension.v1.ListAuditRecordForApplicationResponse
-      type: object
-    akuity_argocd_v1_SyncOperationField:
-      enum:
-      - SYNC_OPERATION_FIELD_UNSPECIFIED
-      - SYNC_OPERATION_FIELD_APPS
-      - SYNC_OPERATION_FIELD_PROJECTS
-      - SYNC_OPERATION_FIELD_INITIATORS
-      - SYNC_OPERATION_FIELD_REPOS
-      - SYNC_OPERATION_FIELD_INSTANCE_NAMES
-      type: string
-    akuity_extension_v1_ListAuditRecordForKargoProjectsRequest:
-      properties:
-        filters:
-          $ref: '#/components/schemas/akuity_organization_v1_AuditFilters'
-        projectName:
-          type: string
-      title: akuity.extension.v1.ListAuditRecordForKargoProjectsRequest
       type: object
     akuity_organization_v1_ObjectFilter:
       properties:
@@ -492,61 +383,6 @@ components:
           type: array
       title: akuity.organization.v1.ObjectFilter
       type: object
-    akuity_extension_v1_GetSyncOperationsEventsForApplicationRequest:
-      properties:
-        field:
-          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationField'
-        fieldLike:
-          type: string
-        filter:
-          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationFilter'
-        limit:
-          format: int64
-          type: string
-        offset:
-          format: int64
-          type: string
-      title: akuity.extension.v1.GetSyncOperationsEventsForApplicationRequest
-      type: object
-    akuity_argocd_v1_SyncOperationEventDetails:
-      properties:
-        dryRun:
-          type: boolean
-        initiatedBy:
-          $ref: '#/components/schemas/akuity_argocd_v1_OperationInitiator'
-        labels:
-          additionalProperties:
-            type: string
-          type: object
-        project:
-          type: string
-        prune:
-          type: boolean
-        repository:
-          type: string
-        revision:
-          type: string
-        syncOptions:
-          items:
-            type: string
-          type: array
-      title: akuity.argocd.v1.SyncOperationEventDetails
-      type: object
-    Status:
-      properties:
-        code:
-          description: gRPC status code (google.rpc.Code)
-          format: int32
-          type: integer
-        details:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        message:
-          type: string
-      title: google.rpc.Status
-      type: object
     akuity_organization_v1_AuditLog:
       properties:
         action:
@@ -566,16 +402,6 @@ components:
           type: string
       title: akuity.organization.v1.AuditLog
       type: object
-    akuity_types_misc_v1_GroupByInterval:
-      enum:
-      - GROUP_BY_INTERVAL_UNSPECIFIED
-      - GROUP_BY_INTERVAL_MINUTE
-      - GROUP_BY_INTERVAL_HOUR
-      - GROUP_BY_INTERVAL_DAY
-      - GROUP_BY_INTERVAL_WEEK
-      - GROUP_BY_INTERVAL_MONTH
-      - GROUP_BY_INTERVAL_YEAR
-      type: string
     akuity_argocd_v1_SyncOperationFilter:
       properties:
         appName:
@@ -612,6 +438,53 @@ components:
           type: string
       title: akuity.argocd.v1.SyncOperationFilter
       type: object
+    akuity_extension_v1_ListAuditRecordForKargoProjectsRequest:
+      properties:
+        filters:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditFilters'
+        projectName:
+          type: string
+      title: akuity.extension.v1.ListAuditRecordForKargoProjectsRequest
+      type: object
+    akuity_organization_v1_AuditLog_AuditObject:
+      properties:
+        id:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditObject_AuditObjId'
+        parentId:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditObject_AuditParentId'
+        type:
+          type: string
+      title: akuity.organization.v1.AuditLog.AuditObject
+      type: object
+    akuity_argocd_v1_SyncOperationGroupField:
+      enum:
+      - SYNC_OPERATION_GROUP_FIELD_UNSPECIFIED
+      - SYNC_OPERATION_GROUP_FIELD_APPS
+      - SYNC_OPERATION_GROUP_FIELD_PROJECTS
+      - SYNC_OPERATION_GROUP_FIELD_INITIATORS
+      - SYNC_OPERATION_GROUP_FIELD_INSTANCE_NAMES
+      - SYNC_OPERATION_GROUP_FIELD_STATUS
+      type: string
+    akuity_extension_v1_ListAuditRecordForApplicationResponse:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/akuity_organization_v1_AuditLog'
+          type: array
+        totalCount:
+          format: int64
+          type: integer
+      title: akuity.extension.v1.ListAuditRecordForApplicationResponse
+      type: object
+    akuity_argocd_v1_SyncOperationField:
+      enum:
+      - SYNC_OPERATION_FIELD_UNSPECIFIED
+      - SYNC_OPERATION_FIELD_APPS
+      - SYNC_OPERATION_FIELD_PROJECTS
+      - SYNC_OPERATION_FIELD_INITIATORS
+      - SYNC_OPERATION_FIELD_REPOS
+      - SYNC_OPERATION_FIELD_INSTANCE_NAMES
+      type: string
     akuity_kargo_v1_AkuityIntelligence:
       properties:
         aiSupportEngineerEnabled:
@@ -630,31 +503,22 @@ components:
           type: string
       title: akuity.kargo.v1.AkuityIntelligence
       type: object
-    akuity_organization_v1_AuditLog_AuditActor:
+    akuity_extension_v1_GetSyncOperationsEventsForApplicationRequest:
       properties:
-        id:
+        field:
+          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationField'
+        fieldLike:
           type: string
-        ip:
+        filter:
+          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationFilter'
+        limit:
+          format: int64
           type: string
-        type:
+        offset:
+          format: int64
           type: string
-      title: akuity.organization.v1.AuditLog.AuditActor
+      title: akuity.extension.v1.GetSyncOperationsEventsForApplicationRequest
       type: object
-    akuity_extension_v1_ListAuditRecordForApplicationRequest:
-      properties:
-        filters:
-          $ref: '#/components/schemas/akuity_organization_v1_AuditFilters'
-      title: akuity.extension.v1.ListAuditRecordForApplicationRequest
-      type: object
-    akuity_argocd_v1_SyncOperationGroupField:
-      enum:
-      - SYNC_OPERATION_GROUP_FIELD_UNSPECIFIED
-      - SYNC_OPERATION_GROUP_FIELD_APPS
-      - SYNC_OPERATION_GROUP_FIELD_PROJECTS
-      - SYNC_OPERATION_GROUP_FIELD_INITIATORS
-      - SYNC_OPERATION_GROUP_FIELD_INSTANCE_NAMES
-      - SYNC_OPERATION_GROUP_FIELD_STATUS
-      type: string
     akuity_organization_v1_AuditFilters:
       properties:
         action:
@@ -721,15 +585,126 @@ components:
           $ref: '#/components/schemas/akuity_organization_v1_ObjectFilter'
       title: akuity.organization.v1.AuditFilters
       type: object
-    akuity_organization_v1_AuditLog_AuditObject:
+    akuity_extension_v1_GetSyncOperationsStatsForApplicationResponse:
+      properties:
+        syncOperationStats:
+          items:
+            $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationStat'
+          type: array
+      title: akuity.extension.v1.GetSyncOperationsStatsForApplicationResponse
+      type: object
+    akuity_argocd_v1_SyncOperationEventDetails:
+      properties:
+        dryRun:
+          type: boolean
+        initiatedBy:
+          $ref: '#/components/schemas/akuity_argocd_v1_OperationInitiator'
+        labels:
+          additionalProperties:
+            type: string
+          type: object
+        project:
+          type: string
+        prune:
+          type: boolean
+        repository:
+          type: string
+        revision:
+          type: string
+        syncOptions:
+          items:
+            type: string
+          type: array
+      title: akuity.argocd.v1.SyncOperationEventDetails
+      type: object
+    akuity_argocd_v1_OperationInitiator:
+      properties:
+        automated:
+          type: boolean
+        username:
+          type: string
+      title: akuity.argocd.v1.OperationInitiator
+      type: object
+    akuity_organization_v1_AuditLog_AuditObject_AuditObjId:
+      properties:
+        group:
+          type: string
+        kind:
+          type: string
+        name:
+          type: string
+      title: akuity.organization.v1.AuditLog.AuditObject.AuditObjId
+      type: object
+    akuity_argocd_v1_SyncOperationEvent:
+      properties:
+        applicationName:
+          type: string
+        count:
+          format: int64
+          type: integer
+        details:
+          $ref: '#/components/schemas/akuity_argocd_v1_SyncOperationEventDetails'
+        duration:
+          format: int64
+          type: integer
+        endTime:
+          type: string
+        id:
+          type: string
+        instanceId:
+          type: string
+        lastOccurredTimestamp:
+          type: string
+        resultMessage:
+          type: string
+        resultPhase:
+          type: string
+        startTime:
+          type: string
+      title: akuity.argocd.v1.SyncOperationEvent
+      type: object
+    akuity_extension_v1_ListAuditRecordForKargoProjectsResponse:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/akuity_organization_v1_AuditLog'
+          type: array
+        totalCount:
+          format: int64
+          type: integer
+      title: akuity.extension.v1.ListAuditRecordForKargoProjectsResponse
+      type: object
+    akuity_organization_v1_AuditLog_AuditActor:
       properties:
         id:
-          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditObject_AuditObjId'
-        parentId:
-          $ref: '#/components/schemas/akuity_organization_v1_AuditLog_AuditObject_AuditParentId'
+          type: string
+        ip:
+          type: string
         type:
           type: string
-      title: akuity.organization.v1.AuditLog.AuditObject
+      title: akuity.organization.v1.AuditLog.AuditActor
+      type: object
+    akuity_extension_v1_ListAuditRecordForApplicationRequest:
+      properties:
+        filters:
+          $ref: '#/components/schemas/akuity_organization_v1_AuditFilters'
+      title: akuity.extension.v1.ListAuditRecordForApplicationRequest
+      type: object
+    akuity_argocd_v1_SyncOperationStat:
+      properties:
+        averageMap:
+          additionalProperties:
+            format: float
+            type: number
+          type: object
+        countMap:
+          additionalProperties:
+            format: int64
+            type: integer
+          type: object
+        intervalStart:
+          type: string
+      title: akuity.argocd.v1.SyncOperationStat
       type: object
     akuity_extension_v1_GetSyncOperationsStatsForApplicationRequest:
       properties:
@@ -740,6 +715,31 @@ components:
         interval:
           $ref: '#/components/schemas/akuity_types_misc_v1_GroupByInterval'
       title: akuity.extension.v1.GetSyncOperationsStatsForApplicationRequest
+      type: object
+    akuity_types_misc_v1_GroupByInterval:
+      enum:
+      - GROUP_BY_INTERVAL_UNSPECIFIED
+      - GROUP_BY_INTERVAL_MINUTE
+      - GROUP_BY_INTERVAL_HOUR
+      - GROUP_BY_INTERVAL_DAY
+      - GROUP_BY_INTERVAL_WEEK
+      - GROUP_BY_INTERVAL_MONTH
+      - GROUP_BY_INTERVAL_YEAR
+      type: string
+    Status:
+      properties:
+        code:
+          description: gRPC status code (google.rpc.Code)
+          format: int32
+          type: integer
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        message:
+          type: string
+      title: google.rpc.Status
       type: object
   securitySchemes:
     basicAuth:

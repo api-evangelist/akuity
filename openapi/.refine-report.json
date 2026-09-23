@@ -1,14 +1,14 @@
 {
   "provider": "akuity",
   "sources": [
-    "akuity-apikeyservice-api-openapi.yml",
-    "akuity-argocdservice-api-openapi.yml",
-    "akuity-authservice-api-openapi.yml",
-    "akuity-customroleservice-api-openapi.yml",
-    "akuity-extensionservice-api-openapi.yml",
-    "akuity-kargoservice-api-openapi.yml",
-    "akuity-organizationservice-api-openapi.yml",
-    "akuity-systemservice-api-openapi.yml"
+    "_original/akuity-apikey.json",
+    "_original/akuity-argocd.json",
+    "_original/akuity-auth.json",
+    "_original/akuity-customrole.json",
+    "_original/akuity-extension.json",
+    "_original/akuity-kargo.json",
+    "_original/akuity-organization.json",
+    "_original/akuity-system.json"
   ],
   "outputs": [
     "akuity-apikeyservice-api-openapi.yml",
@@ -20,19 +20,40 @@
     "akuity-organizationservice-api-openapi.yml",
     "akuity-systemservice-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "akuity-apikeyservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "akuity-argocdservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "akuity-authservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "akuity-customroleservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "akuity-extensionservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "akuity-kargoservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "akuity-organizationservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "akuity-systemservice-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (8 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "akuity-apikey.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-apikey.json: declared missing tag: APIKeyService",
+    "akuity-argocd.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-argocd.json: declared missing tag: ArgoCDService",
+    "akuity-auth.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-auth.json: declared missing tag: AuthService",
+    "akuity-customrole.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-customrole.json: declared missing tag: CustomRoleService",
+    "akuity-extension.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-extension.json: declared missing tag: ExtensionService",
+    "akuity-kargo.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-kargo.json: declared missing tag: KargoService",
+    "akuity-organization.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-organization.json: declared missing tag: OrganizationService",
+    "akuity-system.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "akuity-system.json: declared missing tag: SystemService",
+    "superseded outputs removed: akuity-api-key-service-api-openapi.yml, akuity-auth-service-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 8 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "akuity-api-key-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "akuity-argocdservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "akuity-auth-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "akuity-customroleservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "akuity-extensionservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "akuity-kargoservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "akuity-organizationservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "akuity-systemservice-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
