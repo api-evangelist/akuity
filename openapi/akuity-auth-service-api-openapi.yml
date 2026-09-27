@@ -187,6 +187,26 @@ paths:
       x-grpc-method: akuity.auth.v1.AuthService/GetOIDCProviderDetails
 components:
   schemas:
+    akuity_auth_v1_GetOIDCProviderDetailsResponse:
+      properties:
+        authorizationEndpoint:
+          type: string
+        issuer:
+          type: string
+        jwksUri:
+          type: string
+        tokenEndpoint:
+          type: string
+        userinfoEndpoint:
+          type: string
+      title: akuity.auth.v1.GetOIDCProviderDetailsResponse
+      type: object
+    akuity_auth_v1_GetDeviceTokenRequest:
+      properties:
+        deviceCode:
+          type: string
+      title: akuity.auth.v1.GetDeviceTokenRequest
+      type: object
     akuity_auth_v1_GetDeviceCodeResponse:
       properties:
         deviceCode:
@@ -204,21 +224,6 @@ components:
         verificationUriComplete:
           type: string
       title: akuity.auth.v1.GetDeviceCodeResponse
-      type: object
-    akuity_auth_v1_GetDeviceTokenRequest:
-      properties:
-        deviceCode:
-          type: string
-      title: akuity.auth.v1.GetDeviceTokenRequest
-      type: object
-    akuity_auth_v1_GetDeviceTokenResponse:
-      properties:
-        accessToken:
-          type: string
-      title: akuity.auth.v1.GetDeviceTokenResponse
-      type: object
-    akuity_auth_v1_RefreshAccessTokenRequest:
-      title: akuity.auth.v1.RefreshAccessTokenRequest
       type: object
     akuity_auth_v1_RefreshAccessTokenResponse:
       title: akuity.auth.v1.RefreshAccessTokenResponse
@@ -238,19 +243,14 @@ components:
           type: string
       title: google.rpc.Status
       type: object
-    akuity_auth_v1_GetOIDCProviderDetailsResponse:
+    akuity_auth_v1_RefreshAccessTokenRequest:
+      title: akuity.auth.v1.RefreshAccessTokenRequest
+      type: object
+    akuity_auth_v1_GetDeviceTokenResponse:
       properties:
-        authorizationEndpoint:
+        accessToken:
           type: string
-        issuer:
-          type: string
-        jwksUri:
-          type: string
-        tokenEndpoint:
-          type: string
-        userinfoEndpoint:
-          type: string
-      title: akuity.auth.v1.GetOIDCProviderDetailsResponse
+      title: akuity.auth.v1.GetDeviceTokenResponse
       type: object
   securitySchemes:
     basicAuth:

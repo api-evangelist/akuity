@@ -549,6 +549,42 @@ paths:
       x-grpc-method: akuity.system.v1.SystemService/ListValidWebhookEvents
 components:
   schemas:
+    akuity_system_v1_GetVersionResponse:
+      properties:
+        version:
+          type: string
+      title: akuity.system.v1.GetVersionResponse
+      type: object
+    akuity_system_v1_GetAgentVersionResponse:
+      properties:
+        version:
+          type: string
+      title: akuity.system.v1.GetAgentVersionResponse
+      type: object
+    akuity_system_v1_ListAgentVersionsResponse:
+      properties:
+        agentVersions:
+          items:
+            type: string
+          type: array
+      title: akuity.system.v1.ListAgentVersionsResponse
+      type: object
+    akuity_system_v1_ComponentVersion:
+      properties:
+        akVersions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_AKVersion'
+          type: array
+        label:
+          type: string
+        securityAdvisories:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_SecurityAdvisory'
+          type: array
+        version:
+          type: string
+      title: akuity.system.v1.ComponentVersion
+      type: object
     akuity_system_v1_EventFilters:
       properties:
         supportedFilters:
@@ -556,6 +592,157 @@ components:
             type: string
           type: array
       title: akuity.system.v1.EventFilters
+      type: object
+    akuity_system_v1_ListArgoCDVersionsResponse:
+      properties:
+        argocdVersions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_ComponentVersion'
+          type: array
+      title: akuity.system.v1.ListArgoCDVersionsResponse
+      type: object
+    akuity_system_v1_ListKargoVersionsResponse:
+      properties:
+        kargoVersions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_ComponentVersion'
+          type: array
+      title: akuity.system.v1.ListKargoVersionsResponse
+      type: object
+    akuity_system_v1_ExtensionInfo:
+      properties:
+        description:
+          type: string
+        home:
+          type: string
+        icon:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        versions:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_ExtensionInfo_ExtensionVersion'
+          type: array
+      title: akuity.system.v1.ExtensionInfo
+      type: object
+    akuity_system_v1_GetArgoCDAgentSizeSpecResponse:
+      properties:
+        large:
+          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
+        medium:
+          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
+        small:
+          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
+      title: akuity.system.v1.GetArgoCDAgentSizeSpecResponse
+      type: object
+    akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec:
+      properties:
+        controllerCpu:
+          type: string
+        controllerMemory:
+          type: string
+        repoServerCpu:
+          type: string
+        repoServerMemory:
+          type: string
+        repoServerReplicas:
+          format: int32
+          type: integer
+      title: akuity.system.v1.GetArgoCDAgentSizeSpecResponse.Spec
+      type: object
+    akuity_system_v1_ListArgoCDImageUpadterVersionsResponse:
+      properties:
+        versions:
+          items:
+            type: string
+          type: array
+      title: akuity.system.v1.ListArgoCDImageUpadterVersionsResponse
+      type: object
+    akuity_system_v1_NameConfig:
+      properties:
+        minClusterNameLength:
+          format: int64
+          type: string
+        minInstanceNameLength:
+          format: int64
+          type: string
+        minOrganizationNameLength:
+          format: int64
+          type: string
+        minSubdomainNameLength:
+          format: int64
+          type: string
+      title: akuity.system.v1.NameConfig
+      type: object
+    akuity_system_v1_ExtensionInfo_ExtensionVersion:
+      properties:
+        sha256Sum:
+          type: string
+        url:
+          type: string
+        version:
+          type: string
+      title: akuity.system.v1.ExtensionInfo.ExtensionVersion
+      type: object
+    akuity_system_v1_Banner_BannerLink:
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+      title: akuity.system.v1.Banner.BannerLink
+      type: object
+    akuity_system_v1_ListValidEmailEventsResponse:
+      properties:
+        events:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_system_v1_EventFilters'
+          type: object
+      title: akuity.system.v1.ListValidEmailEventsResponse
+      type: object
+    akuity_system_v1_GetAnnouncementResponse:
+      properties:
+        banner:
+          $ref: '#/components/schemas/akuity_system_v1_Banner'
+      title: akuity.system.v1.GetAnnouncementResponse
+      type: object
+    akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec:
+      properties:
+        controllerCpu:
+          type: string
+        controllerMemory:
+          type: string
+      title: akuity.system.v1.GetKargoAgentSizeSpecResponse.Spec
+      type: object
+    akuity_system_v1_GetKargoAgentSizeSpecResponse:
+      properties:
+        large:
+          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
+        medium:
+          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
+        small:
+          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
+      title: akuity.system.v1.GetKargoAgentSizeSpecResponse
+      type: object
+    akuity_system_v1_Banner:
+      properties:
+        closable:
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/akuity_system_v1_Banner_BannerLink'
+          type: array
+        message:
+          type: string
+        paidCustomersOnly:
+          type: boolean
+        title:
+          type: string
+        type:
+          type: string
+      title: akuity.system.v1.Banner
       type: object
     akuity_system_v1_GetSettingsResponse:
       properties:
@@ -584,6 +771,12 @@ components:
           type: string
       title: akuity.system.v1.GetSettingsResponse
       type: object
+    akuity_system_v1_GetStatusResponse:
+      properties:
+        status:
+          type: string
+      title: akuity.system.v1.GetStatusResponse
+      type: object
     akuity_system_v1_AKVersion:
       properties:
         features:
@@ -594,67 +787,6 @@ components:
           type: string
       title: akuity.system.v1.AKVersion
       type: object
-    akuity_system_v1_GetKargoAgentSizeSpecResponse:
-      properties:
-        large:
-          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
-        medium:
-          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
-        small:
-          $ref: '#/components/schemas/akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec'
-      title: akuity.system.v1.GetKargoAgentSizeSpecResponse
-      type: object
-    akuity_system_v1_ExtensionInfo_ExtensionVersion:
-      properties:
-        sha256Sum:
-          type: string
-        url:
-          type: string
-        version:
-          type: string
-      title: akuity.system.v1.ExtensionInfo.ExtensionVersion
-      type: object
-    akuity_system_v1_SecurityAdvisory:
-      properties:
-        cveId:
-          type: string
-      title: akuity.system.v1.SecurityAdvisory
-      type: object
-    akuity_system_v1_GetVersionResponse:
-      properties:
-        version:
-          type: string
-      title: akuity.system.v1.GetVersionResponse
-      type: object
-    akuity_system_v1_GetAgentVersionResponse:
-      properties:
-        version:
-          type: string
-      title: akuity.system.v1.GetAgentVersionResponse
-      type: object
-    akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec:
-      properties:
-        controllerCpu:
-          type: string
-        controllerMemory:
-          type: string
-        repoServerCpu:
-          type: string
-        repoServerMemory:
-          type: string
-        repoServerReplicas:
-          format: int32
-          type: integer
-      title: akuity.system.v1.GetArgoCDAgentSizeSpecResponse.Spec
-      type: object
-    akuity_system_v1_Banner_BannerLink:
-      properties:
-        name:
-          type: string
-        url:
-          type: string
-      title: akuity.system.v1.Banner.BannerLink
-      type: object
     akuity_system_v1_ListArgoCDExtensionsResponse:
       properties:
         extensions:
@@ -663,111 +795,11 @@ components:
           type: array
       title: akuity.system.v1.ListArgoCDExtensionsResponse
       type: object
-    akuity_system_v1_Banner:
+    akuity_system_v1_SecurityAdvisory:
       properties:
-        closable:
+        cveId:
           type: string
-        links:
-          items:
-            $ref: '#/components/schemas/akuity_system_v1_Banner_BannerLink'
-          type: array
-        message:
-          type: string
-        paidCustomersOnly:
-          type: boolean
-        title:
-          type: string
-        type:
-          type: string
-      title: akuity.system.v1.Banner
-      type: object
-    akuity_system_v1_ListArgoCDVersionsResponse:
-      properties:
-        argocdVersions:
-          items:
-            $ref: '#/components/schemas/akuity_system_v1_ComponentVersion'
-          type: array
-      title: akuity.system.v1.ListArgoCDVersionsResponse
-      type: object
-    akuity_system_v1_ListAgentVersionsResponse:
-      properties:
-        agentVersions:
-          items:
-            type: string
-          type: array
-      title: akuity.system.v1.ListAgentVersionsResponse
-      type: object
-    akuity_system_v1_GetStatusResponse:
-      properties:
-        status:
-          type: string
-      title: akuity.system.v1.GetStatusResponse
-      type: object
-    akuity_system_v1_ListArgoCDImageUpadterVersionsResponse:
-      properties:
-        versions:
-          items:
-            type: string
-          type: array
-      title: akuity.system.v1.ListArgoCDImageUpadterVersionsResponse
-      type: object
-    akuity_system_v1_ComponentVersion:
-      properties:
-        akVersions:
-          items:
-            $ref: '#/components/schemas/akuity_system_v1_AKVersion'
-          type: array
-        label:
-          type: string
-        securityAdvisories:
-          items:
-            $ref: '#/components/schemas/akuity_system_v1_SecurityAdvisory'
-          type: array
-        version:
-          type: string
-      title: akuity.system.v1.ComponentVersion
-      type: object
-    akuity_system_v1_GetKargoAgentSizeSpecResponse_Spec:
-      properties:
-        controllerCpu:
-          type: string
-        controllerMemory:
-          type: string
-      title: akuity.system.v1.GetKargoAgentSizeSpecResponse.Spec
-      type: object
-    akuity_system_v1_ListValidEmailEventsResponse:
-      properties:
-        events:
-          additionalProperties:
-            $ref: '#/components/schemas/akuity_system_v1_EventFilters'
-          type: object
-      title: akuity.system.v1.ListValidEmailEventsResponse
-      type: object
-    akuity_system_v1_ExtensionInfo:
-      properties:
-        description:
-          type: string
-        home:
-          type: string
-        icon:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        versions:
-          items:
-            $ref: '#/components/schemas/akuity_system_v1_ExtensionInfo_ExtensionVersion'
-          type: array
-      title: akuity.system.v1.ExtensionInfo
-      type: object
-    akuity_system_v1_ListKargoVersionsResponse:
-      properties:
-        kargoVersions:
-          items:
-            $ref: '#/components/schemas/akuity_system_v1_ComponentVersion'
-          type: array
-      title: akuity.system.v1.ListKargoVersionsResponse
+      title: akuity.system.v1.SecurityAdvisory
       type: object
     akuity_system_v1_ListValidWebhookEventsResponse:
       properties:
@@ -776,38 +808,6 @@ components:
             $ref: '#/components/schemas/akuity_system_v1_EventFilters'
           type: object
       title: akuity.system.v1.ListValidWebhookEventsResponse
-      type: object
-    akuity_system_v1_GetAnnouncementResponse:
-      properties:
-        banner:
-          $ref: '#/components/schemas/akuity_system_v1_Banner'
-      title: akuity.system.v1.GetAnnouncementResponse
-      type: object
-    akuity_system_v1_NameConfig:
-      properties:
-        minClusterNameLength:
-          format: int64
-          type: string
-        minInstanceNameLength:
-          format: int64
-          type: string
-        minOrganizationNameLength:
-          format: int64
-          type: string
-        minSubdomainNameLength:
-          format: int64
-          type: string
-      title: akuity.system.v1.NameConfig
-      type: object
-    akuity_system_v1_GetArgoCDAgentSizeSpecResponse:
-      properties:
-        large:
-          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
-        medium:
-          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
-        small:
-          $ref: '#/components/schemas/akuity_system_v1_GetArgoCDAgentSizeSpecResponse_Spec'
-      title: akuity.system.v1.GetArgoCDAgentSizeSpecResponse
       type: object
     Status:
       properties:
