@@ -2924,13 +2924,11 @@ paths:
       x-grpc-method: akuity.kargo.v1.KargoService/GetStageSpecificStats
 components:
   schemas:
-    akuity_kargo_v1_RegenerateManifestsResponse:
+    akuity_kargo_v1_CreateKargoInstanceResponse:
       properties:
-        skippedAgents:
-          items:
-            type: string
-          type: array
-      title: akuity.kargo.v1.RegenerateManifestsResponse
+        instance:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
+      title: akuity.kargo.v1.CreateKargoInstanceResponse
       type: object
     akuity_kargo_v1_GarbageCollectorConfig:
       properties:
@@ -2947,130 +2945,6 @@ components:
           format: int64
           type: integer
       title: akuity.kargo.v1.GarbageCollectorConfig
-      type: object
-    akuity_kargo_v1_SetAgentMaintenanceModeRequest:
-      properties:
-        agentNames:
-          items:
-            type: string
-          type: array
-        allAgents:
-          type: boolean
-        expiry:
-          format: date-time
-          type: string
-        instanceId:
-          type: string
-        maintenanceMode:
-          type: boolean
-        organizationId:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.kargo.v1.SetAgentMaintenanceModeRequest
-      type: object
-    akuity_kargo_v1_UpdateInstanceAgentVersionRequest:
-      properties:
-        agentNames:
-          items:
-            type: string
-          type: array
-        allAgents:
-          type: boolean
-        instanceId:
-          type: string
-        newVersion:
-          type: string
-        organizationId:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.kargo.v1.UpdateInstanceAgentVersionRequest
-      type: object
-    akuity_kargo_v1_DeleteInstanceResponse:
-      title: akuity.kargo.v1.DeleteInstanceResponse
-      type: object
-    akuity_kargo_v1_GetInstanceAgentCommandResponse:
-      properties:
-        command:
-          type: string
-      title: akuity.kargo.v1.GetInstanceAgentCommandResponse
-      type: object
-    akuity_kargo_v1_LeadTimeData:
-      properties:
-        freightCreationTime:
-          type: string
-        leadTime:
-          format: float
-          type: number
-        promotionEndTime:
-          type: string
-        stageName:
-          type: string
-      title: akuity.kargo.v1.LeadTimeData
-      type: object
-    akuity_kargo_v1_KargoAgentData:
-      properties:
-        akuityManaged:
-          type: boolean
-        allowedJobSa:
-          items:
-            type: string
-          type: array
-        annotations:
-          additionalProperties:
-            type: string
-          type: object
-        argocdNamespace:
-          type: string
-        autoUpgradeDisabled:
-          type: boolean
-        kustomization:
-          additionalProperties: true
-          type: object
-        labels:
-          additionalProperties:
-            type: string
-          type: object
-        maintenanceMode:
-          type: boolean
-        maintenanceModeExpiry:
-          format: date-time
-          type: string
-        namespace:
-          type: string
-        remoteArgocd:
-          type: string
-        selfManagedArgocdUrl:
-          type: string
-        size:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentSize'
-        targetVersion:
-          type: string
-      title: akuity.kargo.v1.KargoAgentData
-      type: object
-    akuity_kargo_v1_KargoApiCM:
-      properties:
-        adminAccountEnabled:
-          type: boolean
-        adminAccountTokenTtl:
-          type: string
-      title: akuity.kargo.v1.KargoApiCM
-      type: object
-    akuity_kargo_v1_DeleteInstanceAgentResponse:
-      title: akuity.kargo.v1.DeleteInstanceAgentResponse
-      type: object
-    akuity_kargo_v1_PatchKargoInstanceResponse:
-      properties:
-        instance:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
-      title: akuity.kargo.v1.PatchKargoInstanceResponse
-      type: object
-    akuity_kargo_v1_GetKargoInstanceAgentResponse:
-      properties:
-        agent:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
-      title: akuity.kargo.v1.GetKargoInstanceAgentResponse
       type: object
     akuity_kargo_v1_PromotionEventDetails:
       properties:
@@ -3099,255 +2973,8 @@ components:
           type: string
       title: akuity.kargo.v1.PromotionEventDetails
       type: object
-    akuity_kargo_v1_UpdateKargoInstanceWorkspaceRequest:
-      properties:
-        id:
-          type: string
-        newWorkspaceId:
-          type: string
-        organizationId:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.kargo.v1.UpdateKargoInstanceWorkspaceRequest
-      type: object
-    Status:
-      properties:
-        code:
-          description: gRPC status code (google.rpc.Code)
-          format: int32
-          type: integer
-        details:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        message:
-          type: string
-      title: google.rpc.Status
-      type: object
-    akuity_kargo_v1_UpdateKargoInstanceAgentRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentData'
-        description:
-          type: string
-        id:
-          type: string
-        instanceId:
-          type: string
-        organizationId:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.kargo.v1.UpdateKargoInstanceAgentRequest
-      type: object
-    akuity_kargo_v1_PromotionGroupField:
-      enum:
-      - PROMOTION_GROUP_FIELD_UNSPECIFIED
-      - PROMOTION_GROUP_FIELD_STAGES
-      - PROMOTION_GROUP_FIELD_PROJECTS
-      - PROMOTION_GROUP_FIELD_INITIATORS
-      - PROMOTION_GROUP_FIELD_INSTANCE_NAMES
-      - PROMOTION_GROUP_FIELD_STATUS
-      type: string
-    akuity_kargo_v1_ExportKargoInstanceResponse:
-      properties:
-        agents:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        analysisTemplates:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        clusterMessageChannels:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        clusterPromotionTasks:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        configmaps:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        eventRouters:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        kargo:
-          additionalProperties: true
-          type: object
-        kargoConfigmap:
-          additionalProperties: true
-          type: object
-        messageChannels:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        projectConfigs:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        projects:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        promotionTasks:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        roleBindings:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        roles:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        serviceAccounts:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        stages:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        warehouses:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-      title: akuity.kargo.v1.ExportKargoInstanceResponse
-      type: object
-    akuity_kargo_v1_InfluxDbRolloutsSecret:
-      properties:
-        authToken:
-          type: string
-        influxdbAddress:
-          type: string
-        org:
-          type: string
-      title: akuity.kargo.v1.InfluxDbRolloutsSecret
-      type: object
-    akuity_kargo_v1_PromotionField:
-      enum:
-      - PROMOTION_FIELD_UNSPECIFIED
-      - PROMOTION_FIELD_STAGES
-      - PROMOTION_FIELD_PROJECTS
-      - PROMOTION_FIELD_INITIATORS
-      - PROMOTION_FIELD_PROMOTIONS
-      - PROMOTION_FIELD_INSTANCE_NAMES
-      type: string
-    akuity_kargo_v1_RotateInstanceAgentCredentialsResponse:
-      properties:
-        skippedAgents:
-          items:
-            type: string
-          type: array
-      title: akuity.kargo.v1.RotateInstanceAgentCredentialsResponse
-      type: object
-    akuity_kargo_v1_GetPromotionStatsResponse:
-      properties:
-        promotionStats:
-          items:
-            $ref: '#/components/schemas/akuity_kargo_v1_PromotionStat'
-          type: array
-      title: akuity.kargo.v1.GetPromotionStatsResponse
-      type: object
-    akuity_kargo_v1_GetStageSpecificStatsRequest:
-      properties:
-        filter:
-          $ref: '#/components/schemas/akuity_kargo_v1_PromotionFilter'
-        organizationId:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.kargo.v1.GetStageSpecificStatsRequest
-      type: object
-    akuity_kargo_v1_GetPromotionStatsRequest:
-      properties:
-        filter:
-          $ref: '#/components/schemas/akuity_kargo_v1_PromotionFilter'
-        groupByField:
-          $ref: '#/components/schemas/akuity_kargo_v1_PromotionGroupField'
-        interval:
-          $ref: '#/components/schemas/akuity_types_misc_v1_GroupByInterval'
-        organizationId:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.kargo.v1.GetPromotionStatsRequest
-      type: object
-    akuity_kargo_v1_KargoAgentCustomization:
-      properties:
-        autoUpgradeDisabled:
-          type: boolean
-        kustomization:
-          additionalProperties: true
-          type: object
-      title: akuity.kargo.v1.KargoAgentCustomization
-      type: object
-    akuity_types_events_v1_EventType:
-      enum:
-      - EVENT_TYPE_UNSPECIFIED
-      - EVENT_TYPE_ADDED
-      - EVENT_TYPE_MODIFIED
-      - EVENT_TYPE_DELETED
-      type: string
-    akuity_kargo_v1_PromotionStat:
-      properties:
-        averageMap:
-          additionalProperties:
-            format: float
-            type: number
-          type: object
-        countMap:
-          additionalProperties:
-            format: int64
-            type: integer
-          type: object
-        intervalStart:
-          type: string
-      title: akuity.kargo.v1.PromotionStat
-      type: object
-    akuity_types_status_health_v1_StatusCode:
-      enum:
-      - STATUS_CODE_UNSPECIFIED
-      - STATUS_CODE_HEALTHY
-      - STATUS_CODE_PROGRESSING
-      - STATUS_CODE_DEGRADED
-      - STATUS_CODE_UNKNOWN
-      type: string
-    akuity_kargo_v1_OperationInitiator:
-      properties:
-        automated:
-          type: boolean
-        username:
-          type: string
-      title: akuity.kargo.v1.OperationInitiator
-      type: object
-    akuity_kargo_v1_CreateKargoInstanceAgentResponse:
-      properties:
-        agent:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
-      title: akuity.kargo.v1.CreateKargoInstanceAgentResponse
+    akuity_kargo_v1_UpdateInstanceAgentVersionResponse:
+      title: akuity.kargo.v1.UpdateInstanceAgentVersionResponse
       type: object
     akuity_types_status_health_v1_AgentHealthStatus:
       properties:
@@ -3360,54 +2987,64 @@ components:
           $ref: '#/components/schemas/akuity_types_status_health_v1_TenantPhase'
       title: akuity.types.status.health.v1.AgentHealthStatus
       type: object
-    akuity_kargo_v1_PromotionFilter:
+    akuity_types_secrets_v1_SecretsManagementConfig:
       properties:
-        endTime:
-          type: string
-        initiatedBy:
+        destinations:
           items:
-            type: string
+            $ref: '#/components/schemas/akuity_types_secrets_v1_ClusterSecretMapping'
           type: array
-        instanceId:
+        sources:
           items:
-            type: string
+            $ref: '#/components/schemas/akuity_types_secrets_v1_ClusterSecretMapping'
           type: array
-        instanceNames:
-          items:
-            type: string
-          type: array
-        projects:
-          items:
-            type: string
-          type: array
-        promotionName:
-          items:
-            type: string
-          type: array
-        stageName:
-          items:
-            type: string
-          type: array
-        startTime:
-          type: string
-      title: akuity.kargo.v1.PromotionFilter
+      title: akuity.types.secrets.v1.SecretsManagementConfig
       type: object
-    akuity_kargo_v1_ListKargoInstanceAgentsResponse:
+    akuity_kargo_v1_GetPromotionStatsResponse:
       properties:
-        agents:
+        promotionStats:
           items:
-            $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
+            $ref: '#/components/schemas/akuity_kargo_v1_PromotionStat'
           type: array
-        totalCount:
-          format: int64
-          type: string
-      title: akuity.kargo.v1.ListKargoInstanceAgentsResponse
+      title: akuity.kargo.v1.GetPromotionStatsResponse
       type: object
-    akuity_kargo_v1_KargoApiSecret:
+    akuity_types_status_health_v1_Status:
       properties:
-        adminAccountPasswordHash:
+        code:
+          $ref: '#/components/schemas/akuity_types_status_health_v1_StatusCode'
+        message:
           type: string
-      title: akuity.kargo.v1.KargoApiSecret
+      title: akuity.types.status.health.v1.Status
+      type: object
+    akuity_kargo_v1_KargoAgentSize:
+      enum:
+      - KARGO_AGENT_SIZE_UNSPECIFIED
+      - KARGO_AGENT_SIZE_SMALL
+      - KARGO_AGENT_SIZE_MEDIUM
+      - KARGO_AGENT_SIZE_LARGE
+      type: string
+    akuity_kargo_v1_PromotionField:
+      enum:
+      - PROMOTION_FIELD_UNSPECIFIED
+      - PROMOTION_FIELD_STAGES
+      - PROMOTION_FIELD_PROJECTS
+      - PROMOTION_FIELD_INITIATORS
+      - PROMOTION_FIELD_PROMOTIONS
+      - PROMOTION_FIELD_INSTANCE_NAMES
+      type: string
+    akuity_kargo_v1_PromotionGroupField:
+      enum:
+      - PROMOTION_GROUP_FIELD_UNSPECIFIED
+      - PROMOTION_GROUP_FIELD_STAGES
+      - PROMOTION_GROUP_FIELD_PROJECTS
+      - PROMOTION_GROUP_FIELD_INITIATORS
+      - PROMOTION_GROUP_FIELD_INSTANCE_NAMES
+      - PROMOTION_GROUP_FIELD_STATUS
+      type: string
+    akuity_kargo_v1_PatchKargoInstanceResponse:
+      properties:
+        instance:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
+      title: akuity.kargo.v1.PatchKargoInstanceResponse
       type: object
     akuity_types_misc_v1_GroupByInterval:
       enum:
@@ -3419,97 +3056,21 @@ components:
       - GROUP_BY_INTERVAL_MONTH
       - GROUP_BY_INTERVAL_YEAR
       type: string
-    akuity_kargo_v1_KargoInstanceSpec:
+    akuity_kargo_v1_RotateInstanceAgentCredentialsRequest:
       properties:
-        agentCustomizationDefaults:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentCustomization'
-        akuityIntelligence:
-          $ref: '#/components/schemas/akuity_kargo_v1_AkuityIntelligence'
-        backendIpAllowListEnabled:
+        agentNames:
+          items:
+            type: string
+          type: array
+        allAgents:
           type: boolean
-        defaultShardAgent:
+        instanceId:
           type: string
-        gcConfig:
-          $ref: '#/components/schemas/akuity_kargo_v1_GarbageCollectorConfig'
-        globalCredentialsNs:
-          items:
-            type: string
-          type: array
-        globalServiceAccountNs:
-          items:
-            type: string
-          type: array
-        ipAllowList:
-          items:
-            $ref: '#/components/schemas/akuity_kargo_v1_KargoIPAllowListEntry'
-          type: array
-        promoControllerEnabled:
-          type: boolean
-        secrets:
-          $ref: '#/components/schemas/akuity_types_secrets_v1_SecretsManagementConfig'
-      title: akuity.kargo.v1.KargoInstanceSpec
-      type: object
-    akuity_kargo_v1_SetAgentMaintenanceModeResponse:
-      title: akuity.kargo.v1.SetAgentMaintenanceModeResponse
-      type: object
-    akuity_kargo_v1_WatchKargoInstanceAgentsResponse:
-      properties:
-        item:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
-        type:
-          $ref: '#/components/schemas/akuity_types_events_v1_EventType'
-      title: akuity.kargo.v1.WatchKargoInstanceAgentsResponse
-      type: object
-    akuity_types_status_reconciliation_v1_StatusCode:
-      enum:
-      - STATUS_CODE_UNSPECIFIED
-      - STATUS_CODE_SUCCESSFUL
-      - STATUS_CODE_PROGRESSING
-      - STATUS_CODE_FAILED
-      type: string
-    akuity_kargo_v1_KargoWebhookCM:
-      title: akuity.kargo.v1.KargoWebhookCM
-      type: object
-    akuity_kargo_v1_GetPromotionEventsResponse:
-      properties:
-        count:
-          format: int64
+        organizationId:
           type: string
-        fieldResult:
-          items:
-            type: string
-          type: array
-        promotionEvents:
-          items:
-            $ref: '#/components/schemas/akuity_kargo_v1_PromotionEvent'
-          type: array
-      title: akuity.kargo.v1.GetPromotionEventsResponse
-      type: object
-    akuity_kargo_v1_UpdateKargoInstanceAgentResponse:
-      properties:
-        agent:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
-      title: akuity.kargo.v1.UpdateKargoInstanceAgentResponse
-      type: object
-    akuity_kargo_v1_KargoPredefinedAccountData:
-      properties:
-        claims:
-          additionalProperties:
-            $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountClaimValue'
-          type: object
-        email:
-          items:
-            type: string
-          type: array
-        groups:
-          items:
-            type: string
-          type: array
-        sub:
-          items:
-            type: string
-          type: array
-      title: akuity.kargo.v1.KargoPredefinedAccountData
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.RotateInstanceAgentCredentialsRequest
       type: object
     akuity_kargo_v1_ApplyKargoInstanceRequest:
       properties:
@@ -3616,8 +3177,20 @@ components:
           type: string
       title: akuity.kargo.v1.ApplyKargoInstanceRequest
       type: object
-    akuity_kargo_v1_UpdateInstanceAgentVersionResponse:
-      title: akuity.kargo.v1.UpdateInstanceAgentVersionResponse
+    akuity_kargo_v1_GetPromotionEventsResponse:
+      properties:
+        count:
+          format: int64
+          type: string
+        fieldResult:
+          items:
+            type: string
+          type: array
+        promotionEvents:
+          items:
+            $ref: '#/components/schemas/akuity_kargo_v1_PromotionEvent'
+          type: array
+      title: akuity.kargo.v1.GetPromotionEventsResponse
       type: object
     akuity_types_status_reconciliation_v1_Status:
       properties:
@@ -3627,21 +3200,348 @@ components:
           type: string
       title: akuity.types.status.reconciliation.v1.Status
       type: object
-    akuity_kargo_v1_KargoIPAllowListEntry:
+    akuity_kargo_v1_KargoApiCM:
+      properties:
+        adminAccountEnabled:
+          type: boolean
+        adminAccountTokenTtl:
+          type: string
+      title: akuity.kargo.v1.KargoApiCM
+      type: object
+    akuity_kargo_v1_KargoAgentData:
+      properties:
+        akuityManaged:
+          type: boolean
+        allowedJobSa:
+          items:
+            type: string
+          type: array
+        annotations:
+          additionalProperties:
+            type: string
+          type: object
+        argocdNamespace:
+          type: string
+        autoUpgradeDisabled:
+          type: boolean
+        kustomization:
+          additionalProperties: true
+          type: object
+        labels:
+          additionalProperties:
+            type: string
+          type: object
+        maintenanceMode:
+          type: boolean
+        maintenanceModeExpiry:
+          format: date-time
+          type: string
+        namespace:
+          type: string
+        remoteArgocd:
+          type: string
+        selfManagedArgocdUrl:
+          type: string
+        size:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentSize'
+        targetVersion:
+          type: string
+      title: akuity.kargo.v1.KargoAgentData
+      type: object
+    akuity_kargo_v1_PromotionEvent:
+      properties:
+        details:
+          $ref: '#/components/schemas/akuity_kargo_v1_PromotionEventDetails'
+        endTime:
+          type: string
+        id:
+          type: string
+        instanceId:
+          type: string
+        promotionName:
+          type: string
+        resultMessage:
+          type: string
+        resultPhase:
+          type: string
+        startTime:
+          type: string
+      title: akuity.kargo.v1.PromotionEvent
+      type: object
+    akuity_kargo_v1_AkuityIntelligence:
+      properties:
+        aiSupportEngineerEnabled:
+          type: boolean
+        allowedGroups:
+          items:
+            type: string
+          type: array
+        allowedUsernames:
+          items:
+            type: string
+          type: array
+        enabled:
+          type: boolean
+        modelVersion:
+          type: string
+      title: akuity.kargo.v1.AkuityIntelligence
+      type: object
+    akuity_kargo_v1_GetStageSpecificStatsRequest:
+      properties:
+        filter:
+          $ref: '#/components/schemas/akuity_kargo_v1_PromotionFilter'
+        organizationId:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.GetStageSpecificStatsRequest
+      type: object
+    akuity_kargo_v1_CreateKargoInstanceAgentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentData'
+        description:
+          type: string
+        instanceId:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        organizationId:
+          type: string
+        upsert:
+          type: boolean
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.CreateKargoInstanceAgentRequest
+      type: object
+    akuity_kargo_v1_GetInstanceAgentCommandResponse:
+      properties:
+        command:
+          type: string
+      title: akuity.kargo.v1.GetInstanceAgentCommandResponse
+      type: object
+    akuity_types_status_reconciliation_v1_AgentUpdateStatus:
+      enum:
+      - AGENT_UPDATE_STATUS_UNSPECIFIED
+      - AGENT_UPDATE_STATUS_UPDATED
+      - AGENT_UPDATE_STATUS_IN_PROGRESS
+      - AGENT_UPDATE_STATUS_DELAYED
+      type: string
+    akuity_kargo_v1_KargoControllerCM:
+      title: akuity.kargo.v1.KargoControllerCM
+      type: object
+    akuity_kargo_v1_UpdateKargoInstanceAgentsRequest:
+      properties:
+        agentCustomizations:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentCustomization'
+        instanceId:
+          type: string
+        organizationId:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.UpdateKargoInstanceAgentsRequest
+      type: object
+    akuity_kargo_v1_KargoAgentCustomization:
+      properties:
+        autoUpgradeDisabled:
+          type: boolean
+        kustomization:
+          additionalProperties: true
+          type: object
+      title: akuity.kargo.v1.KargoAgentCustomization
+      type: object
+    akuity_kargo_v1_WatchKargoInstancesResponse:
+      properties:
+        item:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
+        type:
+          $ref: '#/components/schemas/akuity_types_events_v1_EventType'
+      title: akuity.kargo.v1.WatchKargoInstancesResponse
+      type: object
+    akuity_types_status_reconciliation_v1_StatusCode:
+      enum:
+      - STATUS_CODE_UNSPECIFIED
+      - STATUS_CODE_SUCCESSFUL
+      - STATUS_CODE_PROGRESSING
+      - STATUS_CODE_FAILED
+      type: string
+    akuity_kargo_v1_RotateInstanceAgentCredentialsResponse:
+      properties:
+        skippedAgents:
+          items:
+            type: string
+          type: array
+      title: akuity.kargo.v1.RotateInstanceAgentCredentialsResponse
+      type: object
+    akuity_kargo_v1_KargoOidcConfig:
+      properties:
+        additionalScopes:
+          items:
+            type: string
+          type: array
+        adminAccount:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData'
+        cliClientId:
+          type: string
+        clientId:
+          type: string
+        dexConfig:
+          type: string
+        dexConfigSecret:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_kargo_v1_KargoOidcConfig_Value'
+          type: object
+        dexEnabled:
+          type: boolean
+        enabled:
+          type: boolean
+        issuerUrl:
+          type: string
+        projectCreatorAccount:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData'
+        userAccount:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData'
+        viewerAccount:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData'
+      title: akuity.kargo.v1.KargoOidcConfig
+      type: object
+    akuity_types_secrets_v1_ClusterSecretMapping:
+      properties:
+        clusters:
+          $ref: '#/components/schemas/akuity_types_secrets_v1_ObjectSelector'
+        secrets:
+          $ref: '#/components/schemas/akuity_types_secrets_v1_ObjectSelector'
+      title: akuity.types.secrets.v1.ClusterSecretMapping
+      type: object
+    akuity_kargo_v1_SetAgentMaintenanceModeRequest:
+      properties:
+        agentNames:
+          items:
+            type: string
+          type: array
+        allAgents:
+          type: boolean
+        expiry:
+          format: date-time
+          type: string
+        instanceId:
+          type: string
+        maintenanceMode:
+          type: boolean
+        organizationId:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.SetAgentMaintenanceModeRequest
+      type: object
+    akuity_kargo_v1_OperationInitiator:
+      properties:
+        automated:
+          type: boolean
+        username:
+          type: string
+      title: akuity.kargo.v1.OperationInitiator
+      type: object
+    akuity_kargo_v1_RegenerateManifestsResponse:
+      properties:
+        skippedAgents:
+          items:
+            type: string
+          type: array
+      title: akuity.kargo.v1.RegenerateManifestsResponse
+      type: object
+    akuity_kargo_v1_CreateKargoInstanceRequest:
       properties:
         description:
           type: string
-        ip:
+        name:
           type: string
-      title: akuity.kargo.v1.KargoIPAllowListEntry
+        organizationId:
+          type: string
+        version:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.CreateKargoInstanceRequest
       type: object
-    akuity_kargo_v1_KargoPredefinedAccountClaimValue:
+    akuity_types_secrets_v1_LabelSelectorRequirement:
       properties:
+        key:
+          type: string
+        operator:
+          type: string
         values:
           items:
             type: string
           type: array
-      title: akuity.kargo.v1.KargoPredefinedAccountClaimValue
+      title: akuity.types.secrets.v1.LabelSelectorRequirement
+      type: object
+    akuity_kargo_v1_GetKargoInstanceResponse:
+      properties:
+        instance:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
+      title: akuity.kargo.v1.GetKargoInstanceResponse
+      type: object
+    akuity_kargo_v1_DeleteInstanceResponse:
+      title: akuity.kargo.v1.DeleteInstanceResponse
+      type: object
+    akuity_kargo_v1_DeleteInstanceAgentResponse:
+      title: akuity.kargo.v1.DeleteInstanceAgentResponse
+      type: object
+    akuity_kargo_v1_KargoInstanceSpec:
+      properties:
+        agentCustomizationDefaults:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentCustomization'
+        akuityIntelligence:
+          $ref: '#/components/schemas/akuity_kargo_v1_AkuityIntelligence'
+        backendIpAllowListEnabled:
+          type: boolean
+        defaultShardAgent:
+          type: string
+        gcConfig:
+          $ref: '#/components/schemas/akuity_kargo_v1_GarbageCollectorConfig'
+        globalCredentialsNs:
+          items:
+            type: string
+          type: array
+        globalServiceAccountNs:
+          items:
+            type: string
+          type: array
+        ipAllowList:
+          items:
+            $ref: '#/components/schemas/akuity_kargo_v1_KargoIPAllowListEntry'
+          type: array
+        promoControllerEnabled:
+          type: boolean
+        secrets:
+          $ref: '#/components/schemas/akuity_types_secrets_v1_SecretsManagementConfig'
+      title: akuity.kargo.v1.KargoInstanceSpec
+      type: object
+    akuity_kargo_v1_UpdateKargoInstanceAgentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentData'
+        description:
+          type: string
+        id:
+          type: string
+        instanceId:
+          type: string
+        organizationId:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.UpdateKargoInstanceAgentRequest
+      type: object
+    akuity_kargo_v1_UpdateKargoInstanceAgentResponse:
+      properties:
+        agent:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
+      title: akuity.kargo.v1.UpdateKargoInstanceAgentResponse
       type: object
     akuity_kargo_v1_PruneResourceType:
       enum:
@@ -3664,61 +3564,184 @@ components:
       - PRUNE_RESOURCE_TYPE_CLUSTER_MESSAGE_CHANNELS
       - PRUNE_RESOURCE_TYPE_EVENT_ROUTERS
       type: string
-    akuity_kargo_v1_ListKargoInstancesResponse:
+    akuity_kargo_v1_KargoWebhookCM:
+      title: akuity.kargo.v1.KargoWebhookCM
+      type: object
+    akuity_kargo_v1_CreateKargoInstanceAgentResponse:
       properties:
-        instances:
+        agent:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
+      title: akuity.kargo.v1.CreateKargoInstanceAgentResponse
+      type: object
+    akuity_kargo_v1_RecoveryTimeData:
+      properties:
+        phase:
+          type: string
+        phaseChangeTime:
+          type: string
+        stageName:
+          type: string
+      title: akuity.kargo.v1.RecoveryTimeData
+      type: object
+    akuity_kargo_v1_ExportKargoInstanceResponse:
+      properties:
+        agents:
           items:
-            $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
+            additionalProperties: true
+            type: object
           type: array
-      title: akuity.kargo.v1.ListKargoInstancesResponse
+        analysisTemplates:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        clusterMessageChannels:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        clusterPromotionTasks:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        configmaps:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        eventRouters:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        kargo:
+          additionalProperties: true
+          type: object
+        kargoConfigmap:
+          additionalProperties: true
+          type: object
+        messageChannels:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        projectConfigs:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        projects:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        promotionTasks:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        roleBindings:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        roles:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        serviceAccounts:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        stages:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        warehouses:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+      title: akuity.kargo.v1.ExportKargoInstanceResponse
       type: object
-    akuity_kargo_v1_CreateKargoInstanceRequest:
+    akuity_kargo_v1_InfluxDbRolloutsSecret:
       properties:
-        description:
+        authToken:
           type: string
-        name:
+        influxdbAddress:
           type: string
-        organizationId:
+        org:
           type: string
-        version:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.kargo.v1.CreateKargoInstanceRequest
+      title: akuity.kargo.v1.InfluxDbRolloutsSecret
       type: object
-    akuity_kargo_v1_KargoOidcConfig_Value:
+    akuity_types_events_v1_EventType:
+      enum:
+      - EVENT_TYPE_UNSPECIFIED
+      - EVENT_TYPE_ADDED
+      - EVENT_TYPE_MODIFIED
+      - EVENT_TYPE_DELETED
+      type: string
+    akuity_kargo_v1_PromotionFilter:
       properties:
-        value:
+        endTime:
           type: string
-      title: akuity.kargo.v1.KargoOidcConfig.Value
+        initiatedBy:
+          items:
+            type: string
+          type: array
+        instanceId:
+          items:
+            type: string
+          type: array
+        instanceNames:
+          items:
+            type: string
+          type: array
+        projects:
+          items:
+            type: string
+          type: array
+        promotionName:
+          items:
+            type: string
+          type: array
+        stageName:
+          items:
+            type: string
+          type: array
+        startTime:
+          type: string
+      title: akuity.kargo.v1.PromotionFilter
       type: object
-    akuity_kargo_v1_UpdateKargoInstanceWorkspaceResponse:
+    akuity_kargo_v1_ApplyKargoInstanceResponse:
+      title: akuity.kargo.v1.ApplyKargoInstanceResponse
+      type: object
+    Status:
       properties:
-        instance:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
-      title: akuity.kargo.v1.UpdateKargoInstanceWorkspaceResponse
+        code:
+          description: gRPC status code (google.rpc.Code)
+          format: int32
+          type: integer
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        message:
+          type: string
+      title: google.rpc.Status
       type: object
-    akuity_kargo_v1_GetPromotionEventsRequest:
-      properties:
-        field:
-          $ref: '#/components/schemas/akuity_kargo_v1_PromotionField'
-        fieldLike:
-          type: string
-        filter:
-          $ref: '#/components/schemas/akuity_kargo_v1_PromotionFilter'
-        limit:
-          format: int64
-          type: string
-        offset:
-          format: int64
-          type: string
-        organizationId:
-          type: string
-        workspaceId:
-          type: string
-      title: akuity.kargo.v1.GetPromotionEventsRequest
-      type: object
-    akuity_kargo_v1_RotateInstanceAgentCredentialsRequest:
+    akuity_types_id_v1_Type:
+      enum:
+      - UNSPECIFIED
+      - ID
+      - NAME
+      type: string
+    akuity_kargo_v1_RegenerateManifestsRequest:
       properties:
         agentNames:
           items:
@@ -3732,118 +3755,36 @@ components:
           type: string
         workspaceId:
           type: string
-      title: akuity.kargo.v1.RotateInstanceAgentCredentialsRequest
+      title: akuity.kargo.v1.RegenerateManifestsRequest
       type: object
-    akuity_types_status_health_v1_TenantPhase:
-      enum:
-      - TENANT_PHASE_UNSPECIFIED
-      - TENANT_PHASE_HEALTHY
-      - TENANT_PHASE_PROGRESSING
-      - TENANT_PHASE_DEGRADED
-      - TENANT_PHASE_UNKNOWN
-      type: string
-    akuity_types_secrets_v1_LabelSelectorRequirement:
+    akuity_kargo_v1_KargoAgent:
       properties:
-        key:
+        agentState:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentState'
+        data:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentData'
+        deleteTime:
+          format: date-time
           type: string
-        operator:
+        description:
           type: string
-        values:
-          items:
-            type: string
-          type: array
-      title: akuity.types.secrets.v1.LabelSelectorRequirement
-      type: object
-    akuity_kargo_v1_KargoAgentSize:
-      enum:
-      - KARGO_AGENT_SIZE_UNSPECIFIED
-      - KARGO_AGENT_SIZE_SMALL
-      - KARGO_AGENT_SIZE_MEDIUM
-      - KARGO_AGENT_SIZE_LARGE
-      type: string
-    akuity_types_secrets_v1_ObjectSelector:
-      properties:
-        matchExpressions:
-          items:
-            $ref: '#/components/schemas/akuity_types_secrets_v1_LabelSelectorRequirement'
-          type: array
-        matchLabels:
-          additionalProperties:
-            type: string
-          type: object
-      title: akuity.types.secrets.v1.ObjectSelector
-      type: object
-    akuity_kargo_v1_UpdateKargoInstanceAgentsRequest:
-      properties:
-        agentCustomizations:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentCustomization'
-        instanceId:
+        healthStatus:
+          $ref: '#/components/schemas/akuity_types_status_health_v1_Status'
+        id:
           type: string
-        organizationId:
+        name:
           type: string
-        workspaceId:
+        namespace:
           type: string
-      title: akuity.kargo.v1.UpdateKargoInstanceAgentsRequest
-      type: object
-    akuity_types_secrets_v1_SecretsManagementConfig:
-      properties:
-        destinations:
-          items:
-            $ref: '#/components/schemas/akuity_types_secrets_v1_ClusterSecretMapping'
-          type: array
-        sources:
-          items:
-            $ref: '#/components/schemas/akuity_types_secrets_v1_ClusterSecretMapping'
-          type: array
-      title: akuity.types.secrets.v1.SecretsManagementConfig
-      type: object
-    akuity_kargo_v1_DataDogRolloutsSecret:
-      properties:
-        address:
-          type: string
-        apiKey:
-          type: string
-        appKey:
-          type: string
-      title: akuity.kargo.v1.DataDogRolloutsSecret
-      type: object
-    akuity_types_status_health_v1_AgentAggregatedHealthResponse:
-      properties:
-        degraded:
-          additionalProperties:
-            $ref: '#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus'
-          type: object
-        healthy:
-          additionalProperties:
-            $ref: '#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus'
-          type: object
-        minObservedGeneration:
+        observedGeneration:
           format: int64
           type: string
-        priorityStatus:
-          $ref: '#/components/schemas/akuity_types_status_health_v1_TenantPhase'
-        progressing:
-          additionalProperties:
-            $ref: '#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus'
-          type: object
-        unknown:
-          additionalProperties:
-            $ref: '#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus'
-          type: object
-      title: akuity.types.status.health.v1.AgentAggregatedHealthResponse
-      type: object
-    akuity_kargo_v1_KargoMiscellaneousSecrets:
-      properties:
-        datadogRolloutsSecret:
-          $ref: '#/components/schemas/akuity_kargo_v1_DataDogRolloutsSecret'
-        influxdbRolloutsSecret:
-          $ref: '#/components/schemas/akuity_kargo_v1_InfluxDbRolloutsSecret'
-        newrelicRolloutsSecret:
-          $ref: '#/components/schemas/akuity_kargo_v1_NewRelicRolloutsSecret'
-      title: akuity.kargo.v1.KargoMiscellaneousSecrets
-      type: object
-    akuity_kargo_v1_KargoControllerCM:
-      title: akuity.kargo.v1.KargoControllerCM
+        readonlySettingsChangedGeneration:
+          format: int64
+          type: string
+        reconciliationStatus:
+          $ref: '#/components/schemas/akuity_types_status_reconciliation_v1_Status'
+      title: akuity.kargo.v1.KargoAgent
       type: object
     akuity_kargo_v1_CertificateStatus:
       properties:
@@ -3858,6 +3799,46 @@ components:
           type: string
       title: akuity.kargo.v1.CertificateStatus
       type: object
+    akuity_kargo_v1_ListKargoInstancesResponse:
+      properties:
+        instances:
+          items:
+            $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
+          type: array
+      title: akuity.kargo.v1.ListKargoInstancesResponse
+      type: object
+    akuity_kargo_v1_GetStageSpecificStatsResponse:
+      properties:
+        leadTimeData:
+          items:
+            $ref: '#/components/schemas/akuity_kargo_v1_LeadTimeData'
+          type: array
+        recoveryTimeData:
+          items:
+            $ref: '#/components/schemas/akuity_kargo_v1_RecoveryTimeData'
+          type: array
+      title: akuity.kargo.v1.GetStageSpecificStatsResponse
+      type: object
+    akuity_kargo_v1_KargoApiSecret:
+      properties:
+        adminAccountPasswordHash:
+          type: string
+      title: akuity.kargo.v1.KargoApiSecret
+      type: object
+    akuity_kargo_v1_GetKargoInstanceAgentResponse:
+      properties:
+        agent:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
+      title: akuity.kargo.v1.GetKargoInstanceAgentResponse
+      type: object
+    akuity_types_status_health_v1_TenantPhase:
+      enum:
+      - TENANT_PHASE_UNSPECIFIED
+      - TENANT_PHASE_HEALTHY
+      - TENANT_PHASE_PROGRESSING
+      - TENANT_PHASE_DEGRADED
+      - TENANT_PHASE_UNKNOWN
+      type: string
     akuity_kargo_v1_KargoInstance:
       properties:
         apiCm:
@@ -3908,177 +3889,71 @@ components:
           type: string
       title: akuity.kargo.v1.KargoInstance
       type: object
-    akuity_types_secrets_v1_ClusterSecretMapping:
+    akuity_kargo_v1_KargoMiscellaneousSecrets:
       properties:
-        clusters:
-          $ref: '#/components/schemas/akuity_types_secrets_v1_ObjectSelector'
-        secrets:
-          $ref: '#/components/schemas/akuity_types_secrets_v1_ObjectSelector'
-      title: akuity.types.secrets.v1.ClusterSecretMapping
+        datadogRolloutsSecret:
+          $ref: '#/components/schemas/akuity_kargo_v1_DataDogRolloutsSecret'
+        influxdbRolloutsSecret:
+          $ref: '#/components/schemas/akuity_kargo_v1_InfluxDbRolloutsSecret'
+        newrelicRolloutsSecret:
+          $ref: '#/components/schemas/akuity_kargo_v1_NewRelicRolloutsSecret'
+      title: akuity.kargo.v1.KargoMiscellaneousSecrets
       type: object
-    akuity_kargo_v1_KargoOidcConfig:
+    akuity_kargo_v1_LeadTimeData:
       properties:
-        additionalScopes:
-          items:
-            type: string
-          type: array
-        adminAccount:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData'
-        cliClientId:
+        freightCreationTime:
           type: string
-        clientId:
-          type: string
-        dexConfig:
-          type: string
-        dexConfigSecret:
-          additionalProperties:
-            $ref: '#/components/schemas/akuity_kargo_v1_KargoOidcConfig_Value'
-          type: object
-        dexEnabled:
-          type: boolean
-        enabled:
-          type: boolean
-        issuerUrl:
-          type: string
-        projectCreatorAccount:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData'
-        userAccount:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData'
-        viewerAccount:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountData'
-      title: akuity.kargo.v1.KargoOidcConfig
-      type: object
-    akuity_kargo_v1_CreateKargoInstanceResponse:
-      properties:
-        instance:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
-      title: akuity.kargo.v1.CreateKargoInstanceResponse
-      type: object
-    akuity_types_id_v1_Type:
-      enum:
-      - UNSPECIFIED
-      - ID
-      - NAME
-      type: string
-    akuity_kargo_v1_PromotionEvent:
-      properties:
-        details:
-          $ref: '#/components/schemas/akuity_kargo_v1_PromotionEventDetails'
-        endTime:
-          type: string
-        id:
-          type: string
-        instanceId:
-          type: string
-        promotionName:
-          type: string
-        resultMessage:
-          type: string
-        resultPhase:
-          type: string
-        startTime:
-          type: string
-      title: akuity.kargo.v1.PromotionEvent
-      type: object
-    akuity_kargo_v1_WatchKargoInstancesResponse:
-      properties:
-        item:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
-        type:
-          $ref: '#/components/schemas/akuity_types_events_v1_EventType'
-      title: akuity.kargo.v1.WatchKargoInstancesResponse
-      type: object
-    akuity_types_status_reconciliation_v1_AgentUpdateStatus:
-      enum:
-      - AGENT_UPDATE_STATUS_UNSPECIFIED
-      - AGENT_UPDATE_STATUS_UPDATED
-      - AGENT_UPDATE_STATUS_IN_PROGRESS
-      - AGENT_UPDATE_STATUS_DELAYED
-      type: string
-    akuity_kargo_v1_RecoveryTimeData:
-      properties:
-        phase:
-          type: string
-        phaseChangeTime:
+        leadTime:
+          format: float
+          type: number
+        promotionEndTime:
           type: string
         stageName:
           type: string
-      title: akuity.kargo.v1.RecoveryTimeData
+      title: akuity.kargo.v1.LeadTimeData
       type: object
-    akuity_kargo_v1_CreateKargoInstanceAgentRequest:
+    akuity_kargo_v1_KargoPredefinedAccountData:
       properties:
-        data:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentData'
-        description:
+        claims:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_kargo_v1_KargoPredefinedAccountClaimValue'
+          type: object
+        email:
+          items:
+            type: string
+          type: array
+        groups:
+          items:
+            type: string
+          type: array
+        sub:
+          items:
+            type: string
+          type: array
+      title: akuity.kargo.v1.KargoPredefinedAccountData
+      type: object
+    akuity_kargo_v1_UpdateKargoInstanceWorkspaceRequest:
+      properties:
+        id:
           type: string
-        instanceId:
-          type: string
-        name:
-          type: string
-        namespace:
+        newWorkspaceId:
           type: string
         organizationId:
           type: string
-        upsert:
-          type: boolean
         workspaceId:
           type: string
-      title: akuity.kargo.v1.CreateKargoInstanceAgentRequest
+      title: akuity.kargo.v1.UpdateKargoInstanceWorkspaceRequest
       type: object
-    akuity_kargo_v1_ApplyKargoInstanceResponse:
-      title: akuity.kargo.v1.ApplyKargoInstanceResponse
-      type: object
-    akuity_kargo_v1_UpdateKargoInstanceAgentsResponse:
-      title: akuity.kargo.v1.UpdateKargoInstanceAgentsResponse
-      type: object
-    akuity_types_status_health_v1_Status:
-      properties:
-        code:
-          $ref: '#/components/schemas/akuity_types_status_health_v1_StatusCode'
-        message:
-          type: string
-      title: akuity.types.status.health.v1.Status
-      type: object
-    akuity_kargo_v1_GetStageSpecificStatsResponse:
-      properties:
-        leadTimeData:
-          items:
-            $ref: '#/components/schemas/akuity_kargo_v1_LeadTimeData'
-          type: array
-        recoveryTimeData:
-          items:
-            $ref: '#/components/schemas/akuity_kargo_v1_RecoveryTimeData'
-          type: array
-      title: akuity.kargo.v1.GetStageSpecificStatsResponse
-      type: object
-    akuity_kargo_v1_KargoAgent:
-      properties:
-        agentState:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentState'
-        data:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgentData'
-        deleteTime:
-          format: date-time
-          type: string
-        description:
-          type: string
-        healthStatus:
-          $ref: '#/components/schemas/akuity_types_status_health_v1_Status'
-        id:
-          type: string
-        name:
-          type: string
-        namespace:
-          type: string
-        observedGeneration:
-          format: int64
-          type: string
-        readonlySettingsChangedGeneration:
-          format: int64
-          type: string
-        reconciliationStatus:
-          $ref: '#/components/schemas/akuity_types_status_reconciliation_v1_Status'
-      title: akuity.kargo.v1.KargoAgent
+    akuity_types_status_health_v1_StatusCode:
+      enum:
+      - STATUS_CODE_UNSPECIFIED
+      - STATUS_CODE_HEALTHY
+      - STATUS_CODE_PROGRESSING
+      - STATUS_CODE_DEGRADED
+      - STATUS_CODE_UNKNOWN
+      type: string
+    akuity_kargo_v1_SetAgentMaintenanceModeResponse:
+      title: akuity.kargo.v1.SetAgentMaintenanceModeResponse
       type: object
     akuity_kargo_v1_NewRelicRolloutsSecret:
       properties:
@@ -4094,7 +3969,73 @@ components:
           type: string
       title: akuity.kargo.v1.NewRelicRolloutsSecret
       type: object
-    akuity_kargo_v1_RegenerateManifestsRequest:
+    akuity_kargo_v1_KargoOidcConfig_Value:
+      properties:
+        value:
+          type: string
+      title: akuity.kargo.v1.KargoOidcConfig.Value
+      type: object
+    akuity_kargo_v1_ListKargoInstanceAgentsResponse:
+      properties:
+        agents:
+          items:
+            $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
+          type: array
+        totalCount:
+          format: int64
+          type: string
+      title: akuity.kargo.v1.ListKargoInstanceAgentsResponse
+      type: object
+    akuity_types_status_health_v1_AgentAggregatedHealthResponse:
+      properties:
+        degraded:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus'
+          type: object
+        healthy:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus'
+          type: object
+        minObservedGeneration:
+          format: int64
+          type: string
+        priorityStatus:
+          $ref: '#/components/schemas/akuity_types_status_health_v1_TenantPhase'
+        progressing:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus'
+          type: object
+        unknown:
+          additionalProperties:
+            $ref: '#/components/schemas/akuity_types_status_health_v1_AgentHealthStatus'
+          type: object
+      title: akuity.types.status.health.v1.AgentAggregatedHealthResponse
+      type: object
+    akuity_kargo_v1_DataDogRolloutsSecret:
+      properties:
+        address:
+          type: string
+        apiKey:
+          type: string
+        appKey:
+          type: string
+      title: akuity.kargo.v1.DataDogRolloutsSecret
+      type: object
+    akuity_kargo_v1_KargoIPAllowListEntry:
+      properties:
+        description:
+          type: string
+        ip:
+          type: string
+      title: akuity.kargo.v1.KargoIPAllowListEntry
+      type: object
+    akuity_kargo_v1_UpdateKargoInstanceWorkspaceResponse:
+      properties:
+        instance:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
+      title: akuity.kargo.v1.UpdateKargoInstanceWorkspaceResponse
+      type: object
+    akuity_kargo_v1_UpdateInstanceAgentVersionRequest:
       properties:
         agentNames:
           items:
@@ -4104,11 +4045,43 @@ components:
           type: boolean
         instanceId:
           type: string
+        newVersion:
+          type: string
         organizationId:
           type: string
         workspaceId:
           type: string
-      title: akuity.kargo.v1.RegenerateManifestsRequest
+      title: akuity.kargo.v1.UpdateInstanceAgentVersionRequest
+      type: object
+    akuity_kargo_v1_PromotionStat:
+      properties:
+        averageMap:
+          additionalProperties:
+            format: float
+            type: number
+          type: object
+        countMap:
+          additionalProperties:
+            format: int64
+            type: integer
+          type: object
+        intervalStart:
+          type: string
+      title: akuity.kargo.v1.PromotionStat
+      type: object
+    akuity_kargo_v1_GetPromotionStatsRequest:
+      properties:
+        filter:
+          $ref: '#/components/schemas/akuity_kargo_v1_PromotionFilter'
+        groupByField:
+          $ref: '#/components/schemas/akuity_kargo_v1_PromotionGroupField'
+        interval:
+          $ref: '#/components/schemas/akuity_types_misc_v1_GroupByInterval'
+        organizationId:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.GetPromotionStatsRequest
       type: object
     akuity_kargo_v1_KargoAgentState:
       properties:
@@ -4132,29 +4105,56 @@ components:
           type: string
       title: akuity.kargo.v1.KargoAgentState
       type: object
-    akuity_kargo_v1_GetKargoInstanceResponse:
+    akuity_kargo_v1_GetPromotionEventsRequest:
       properties:
-        instance:
-          $ref: '#/components/schemas/akuity_kargo_v1_KargoInstance'
-      title: akuity.kargo.v1.GetKargoInstanceResponse
-      type: object
-    akuity_kargo_v1_AkuityIntelligence:
-      properties:
-        aiSupportEngineerEnabled:
-          type: boolean
-        allowedGroups:
-          items:
-            type: string
-          type: array
-        allowedUsernames:
-          items:
-            type: string
-          type: array
-        enabled:
-          type: boolean
-        modelVersion:
+        field:
+          $ref: '#/components/schemas/akuity_kargo_v1_PromotionField'
+        fieldLike:
           type: string
-      title: akuity.kargo.v1.AkuityIntelligence
+        filter:
+          $ref: '#/components/schemas/akuity_kargo_v1_PromotionFilter'
+        limit:
+          format: int64
+          type: string
+        offset:
+          format: int64
+          type: string
+        organizationId:
+          type: string
+        workspaceId:
+          type: string
+      title: akuity.kargo.v1.GetPromotionEventsRequest
+      type: object
+    akuity_kargo_v1_KargoPredefinedAccountClaimValue:
+      properties:
+        values:
+          items:
+            type: string
+          type: array
+      title: akuity.kargo.v1.KargoPredefinedAccountClaimValue
+      type: object
+    akuity_kargo_v1_UpdateKargoInstanceAgentsResponse:
+      title: akuity.kargo.v1.UpdateKargoInstanceAgentsResponse
+      type: object
+    akuity_types_secrets_v1_ObjectSelector:
+      properties:
+        matchExpressions:
+          items:
+            $ref: '#/components/schemas/akuity_types_secrets_v1_LabelSelectorRequirement'
+          type: array
+        matchLabels:
+          additionalProperties:
+            type: string
+          type: object
+      title: akuity.types.secrets.v1.ObjectSelector
+      type: object
+    akuity_kargo_v1_WatchKargoInstanceAgentsResponse:
+      properties:
+        item:
+          $ref: '#/components/schemas/akuity_kargo_v1_KargoAgent'
+        type:
+          $ref: '#/components/schemas/akuity_types_events_v1_EventType'
+      title: akuity.kargo.v1.WatchKargoInstanceAgentsResponse
       type: object
   securitySchemes:
     basicAuth:

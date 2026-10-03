@@ -240,14 +240,48 @@ paths:
       x-grpc-method: akuity.customrole.v1.CustomRoleService/UpdateCustomRole
 components:
   schemas:
-    akuity_customrole_v1_GetCustomRoleResponse:
+    akuity_customrole_v1_DeleteCustomRoleResponse:
+      title: akuity.customrole.v1.DeleteCustomRoleResponse
+      type: object
+    akuity_customrole_v1_CreateCustomRoleRequest:
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        organizationId:
+          type: string
+        policy:
+          type: string
+      title: akuity.customrole.v1.CreateCustomRoleRequest
+      type: object
+    akuity_customrole_v1_UpdateCustomRoleResponse:
       properties:
         customRole:
           $ref: '#/components/schemas/akuity_customrole_v1_CustomRole'
-      title: akuity.customrole.v1.GetCustomRoleResponse
+      title: akuity.customrole.v1.UpdateCustomRoleResponse
       type: object
-    akuity_customrole_v1_DeleteCustomRoleResponse:
-      title: akuity.customrole.v1.DeleteCustomRoleResponse
+    akuity_customrole_v1_UpdateCustomRoleRequest:
+      properties:
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        organizationId:
+          type: string
+        policy:
+          type: string
+      title: akuity.customrole.v1.UpdateCustomRoleRequest
+      type: object
+    akuity_customrole_v1_ListCustomRolesResponse:
+      properties:
+        customRoles:
+          items:
+            $ref: '#/components/schemas/akuity_customrole_v1_CustomRole'
+          type: array
+      title: akuity.customrole.v1.ListCustomRolesResponse
       type: object
     akuity_customrole_v1_CustomRole:
       properties:
@@ -262,38 +296,6 @@ components:
         policy:
           type: string
       title: akuity.customrole.v1.CustomRole
-      type: object
-    akuity_customrole_v1_UpdateCustomRoleResponse:
-      properties:
-        customRole:
-          $ref: '#/components/schemas/akuity_customrole_v1_CustomRole'
-      title: akuity.customrole.v1.UpdateCustomRoleResponse
-      type: object
-    akuity_customrole_v1_ListCustomRolesResponse:
-      properties:
-        customRoles:
-          items:
-            $ref: '#/components/schemas/akuity_customrole_v1_CustomRole'
-          type: array
-      title: akuity.customrole.v1.ListCustomRolesResponse
-      type: object
-    akuity_customrole_v1_CreateCustomRoleResponse:
-      properties:
-        customRole:
-          $ref: '#/components/schemas/akuity_customrole_v1_CustomRole'
-      title: akuity.customrole.v1.CreateCustomRoleResponse
-      type: object
-    akuity_customrole_v1_CreateCustomRoleRequest:
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-        organizationId:
-          type: string
-        policy:
-          type: string
-      title: akuity.customrole.v1.CreateCustomRoleRequest
       type: object
     Status:
       properties:
@@ -310,19 +312,17 @@ components:
           type: string
       title: google.rpc.Status
       type: object
-    akuity_customrole_v1_UpdateCustomRoleRequest:
+    akuity_customrole_v1_CreateCustomRoleResponse:
       properties:
-        description:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        organizationId:
-          type: string
-        policy:
-          type: string
-      title: akuity.customrole.v1.UpdateCustomRoleRequest
+        customRole:
+          $ref: '#/components/schemas/akuity_customrole_v1_CustomRole'
+      title: akuity.customrole.v1.CreateCustomRoleResponse
+      type: object
+    akuity_customrole_v1_GetCustomRoleResponse:
+      properties:
+        customRole:
+          $ref: '#/components/schemas/akuity_customrole_v1_CustomRole'
+      title: akuity.customrole.v1.GetCustomRoleResponse
       type: object
   securitySchemes:
     basicAuth:

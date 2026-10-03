@@ -228,6 +228,9 @@ components:
     akuity_auth_v1_RefreshAccessTokenResponse:
       title: akuity.auth.v1.RefreshAccessTokenResponse
       type: object
+    akuity_auth_v1_RefreshAccessTokenRequest:
+      title: akuity.auth.v1.RefreshAccessTokenRequest
+      type: object
     Status:
       properties:
         code:
@@ -242,9 +245,6 @@ components:
         message:
           type: string
       title: google.rpc.Status
-      type: object
-    akuity_auth_v1_RefreshAccessTokenRequest:
-      title: akuity.auth.v1.RefreshAccessTokenRequest
       type: object
     akuity_auth_v1_GetDeviceTokenResponse:
       properties:

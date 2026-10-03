@@ -321,11 +321,17 @@ paths:
       x-grpc-method: akuity.apikey.v1.APIKeyService/RegenerateWorkspaceAPIKeySecret
 components:
   schemas:
-    akuity_apikey_v1_RegenerateAPIKeySecretResponse:
+    akuity_apikey_v1_GetWorkspaceAPIKeyResponse:
       properties:
         apiKey:
           $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
-      title: akuity.apikey.v1.RegenerateAPIKeySecretResponse
+      title: akuity.apikey.v1.GetWorkspaceAPIKeyResponse
+      type: object
+    akuity_apikey_v1_GetAPIKeyResponse:
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
+      title: akuity.apikey.v1.GetAPIKeyResponse
       type: object
     akuity_accesscontrol_v1_Permissions:
       properties:
@@ -355,8 +361,19 @@ components:
           type: string
       title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretRequest
       type: object
-    akuity_apikey_v1_DeleteAPIKeyResponse:
-      title: akuity.apikey.v1.DeleteAPIKeyResponse
+    akuity_apikey_v1_RegenerateAPIKeySecretResponse:
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
+      title: akuity.apikey.v1.RegenerateAPIKeySecretResponse
+      type: object
+    akuity_apikey_v1_RegenerateAPIKeySecretRequest:
+      properties:
+        expiry:
+          type: string
+        id:
+          type: string
+      title: akuity.apikey.v1.RegenerateAPIKeySecretRequest
       type: object
     akuity_apikey_v1_APIKey:
       properties:
@@ -378,31 +395,8 @@ components:
           type: string
       title: akuity.apikey.v1.APIKey
       type: object
-    akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretResponse:
-      properties:
-        apiKey:
-          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
-      title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretResponse
-      type: object
-    akuity_apikey_v1_RegenerateAPIKeySecretRequest:
-      properties:
-        expiry:
-          type: string
-        id:
-          type: string
-      title: akuity.apikey.v1.RegenerateAPIKeySecretRequest
-      type: object
-    akuity_apikey_v1_GetAPIKeyResponse:
-      properties:
-        apiKey:
-          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
-      title: akuity.apikey.v1.GetAPIKeyResponse
-      type: object
-    akuity_apikey_v1_GetWorkspaceAPIKeyResponse:
-      properties:
-        apiKey:
-          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
-      title: akuity.apikey.v1.GetWorkspaceAPIKeyResponse
+    akuity_apikey_v1_DeleteAPIKeyResponse:
+      title: akuity.apikey.v1.DeleteAPIKeyResponse
       type: object
     Status:
       properties:
@@ -421,6 +415,12 @@ components:
       type: object
     akuity_apikey_v1_DeleteWorkspaceAPIKeyResponse:
       title: akuity.apikey.v1.DeleteWorkspaceAPIKeyResponse
+      type: object
+    akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretResponse:
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
+      title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretResponse
       type: object
   securitySchemes:
     basicAuth:
