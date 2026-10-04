@@ -321,11 +321,31 @@ paths:
       x-grpc-method: akuity.apikey.v1.APIKeyService/RegenerateWorkspaceAPIKeySecret
 components:
   schemas:
-    akuity_apikey_v1_GetWorkspaceAPIKeyResponse:
+    akuity_apikey_v1_APIKey:
+      properties:
+        createTime:
+          format: date-time
+          type: string
+        description:
+          type: string
+        expireTime:
+          format: date-time
+          type: string
+        id:
+          type: string
+        organizationId:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/akuity_accesscontrol_v1_Permissions'
+        secret:
+          type: string
+      title: akuity.apikey.v1.APIKey
+      type: object
+    akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretResponse:
       properties:
         apiKey:
           $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
-      title: akuity.apikey.v1.GetWorkspaceAPIKeyResponse
+      title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretResponse
       type: object
     akuity_apikey_v1_GetAPIKeyResponse:
       properties:
@@ -333,21 +353,11 @@ components:
           $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
       title: akuity.apikey.v1.GetAPIKeyResponse
       type: object
-    akuity_accesscontrol_v1_Permissions:
+    akuity_apikey_v1_GetWorkspaceAPIKeyResponse:
       properties:
-        actions:
-          items:
-            type: string
-          type: array
-        customRoles:
-          items:
-            type: string
-          type: array
-        roles:
-          items:
-            type: string
-          type: array
-      title: akuity.accesscontrol.v1.Permissions
+        apiKey:
+          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
+      title: akuity.apikey.v1.GetWorkspaceAPIKeyResponse
       type: object
     akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretRequest:
       properties:
@@ -375,28 +385,27 @@ components:
           type: string
       title: akuity.apikey.v1.RegenerateAPIKeySecretRequest
       type: object
-    akuity_apikey_v1_APIKey:
+    akuity_accesscontrol_v1_Permissions:
       properties:
-        createTime:
-          format: date-time
-          type: string
-        description:
-          type: string
-        expireTime:
-          format: date-time
-          type: string
-        id:
-          type: string
-        organizationId:
-          type: string
-        permissions:
-          $ref: '#/components/schemas/akuity_accesscontrol_v1_Permissions'
-        secret:
-          type: string
-      title: akuity.apikey.v1.APIKey
+        actions:
+          items:
+            type: string
+          type: array
+        customRoles:
+          items:
+            type: string
+          type: array
+        roles:
+          items:
+            type: string
+          type: array
+      title: akuity.accesscontrol.v1.Permissions
       type: object
     akuity_apikey_v1_DeleteAPIKeyResponse:
       title: akuity.apikey.v1.DeleteAPIKeyResponse
+      type: object
+    akuity_apikey_v1_DeleteWorkspaceAPIKeyResponse:
+      title: akuity.apikey.v1.DeleteWorkspaceAPIKeyResponse
       type: object
     Status:
       properties:
@@ -412,15 +421,6 @@ components:
         message:
           type: string
       title: google.rpc.Status
-      type: object
-    akuity_apikey_v1_DeleteWorkspaceAPIKeyResponse:
-      title: akuity.apikey.v1.DeleteWorkspaceAPIKeyResponse
-      type: object
-    akuity_apikey_v1_RegenerateWorkspaceAPIKeySecretResponse:
-      properties:
-        apiKey:
-          $ref: '#/components/schemas/akuity_apikey_v1_APIKey'
-      title: akuity.apikey.v1.RegenerateWorkspaceAPIKeySecretResponse
       type: object
   securitySchemes:
     basicAuth:
