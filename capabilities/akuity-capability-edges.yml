@@ -1,0 +1,40 @@
+slug: akuity
+provider: Akuity
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: ArgoCDService
+  spec_file: akuity-argocdservice-api-openapi.yml
+  capability_id: BC-4210.40
+  capability_id_l1: BC-4210
+  capability_name: Deployment Orchestration
+  confidence: 0.8
+  evidence: 'POST /api/v1/orgs/{organization_id}/argocd/instances/sync-operations-stats  ArgoCDService_GetSyncOperationsStats;
+    vendor: "hosted, enterprise-grade Argo CD control planes for GitOps continuous delivery"'
+  reason: Operations create and manage hosted Argo CD control-plane instances and report on sync operations
+    — i.e. GitOps delivery of changes to target clusters. That is software release/deployment management,
+    with deployment orchestration the closest L2; some ambiguity with continuous integration/environment
+    sub-capabilities keeps it at 0.8.
+- tag: KargoService
+  spec_file: akuity-kargoservice-api-openapi.yml
+  capability_id: BC-4210.40
+  capability_id_l1: BC-4210
+  capability_name: Deployment Orchestration
+  confidence: 0.75
+  evidence: 'KargoService_GetPromotionEvents  Get Promotion Events; KargoService_GetStageSpecificStats;
+    vendor: "managed Kargo for multi-stage progressive promotion"'
+  reason: The operations manage Kargo instances and their stage promotions/promotion events — i.e. progressive
+    promotion of software changes through stages to production. That is release/deployment orchestration
+    for GitOps continuous delivery, not an industry business capability. Some ambiguity remains because
+    a large share of operations are instance/agent provisioning rather than promotion itself, hence sub-capability
+    confidence is moderate.
