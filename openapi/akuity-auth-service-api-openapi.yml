@@ -193,17 +193,20 @@ components:
           type: string
       title: akuity.auth.v1.GetDeviceTokenResponse
       type: object
-    akuity_auth_v1_GetDeviceTokenRequest:
+    Status:
       properties:
-        deviceCode:
+        code:
+          description: gRPC status code (google.rpc.Code)
+          format: int32
+          type: integer
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        message:
           type: string
-      title: akuity.auth.v1.GetDeviceTokenRequest
-      type: object
-    akuity_auth_v1_RefreshAccessTokenResponse:
-      title: akuity.auth.v1.RefreshAccessTokenResponse
-      type: object
-    akuity_auth_v1_RefreshAccessTokenRequest:
-      title: akuity.auth.v1.RefreshAccessTokenRequest
+      title: google.rpc.Status
       type: object
     akuity_auth_v1_GetDeviceCodeResponse:
       properties:
@@ -223,21 +226,6 @@ components:
           type: string
       title: akuity.auth.v1.GetDeviceCodeResponse
       type: object
-    Status:
-      properties:
-        code:
-          description: gRPC status code (google.rpc.Code)
-          format: int32
-          type: integer
-        details:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-        message:
-          type: string
-      title: google.rpc.Status
-      type: object
     akuity_auth_v1_GetOIDCProviderDetailsResponse:
       properties:
         authorizationEndpoint:
@@ -251,6 +239,18 @@ components:
         userinfoEndpoint:
           type: string
       title: akuity.auth.v1.GetOIDCProviderDetailsResponse
+      type: object
+    akuity_auth_v1_GetDeviceTokenRequest:
+      properties:
+        deviceCode:
+          type: string
+      title: akuity.auth.v1.GetDeviceTokenRequest
+      type: object
+    akuity_auth_v1_RefreshAccessTokenRequest:
+      title: akuity.auth.v1.RefreshAccessTokenRequest
+      type: object
+    akuity_auth_v1_RefreshAccessTokenResponse:
+      title: akuity.auth.v1.RefreshAccessTokenResponse
       type: object
   securitySchemes:
     basicAuth:
