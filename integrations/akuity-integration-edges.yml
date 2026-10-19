@@ -1,11 +1,18 @@
 generated: '2026-10-13'
 method: searched
 checked:
+- https://api.nuget.org/v3
 - https://aws.amazon.com/marketplace/
 - https://azuremarketplace.microsoft.com/
+- https://crates.io/api/v1
 - https://focus.finops.org/data-generators/
 - https://github.com/cncf/k8s-conformance
 - https://github.com/cncf/landscape
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -71,6 +78,45 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-cloud-native.py
   first_seen: '2026-10-15'
+- partner_name: Go module proxy
+  partner: null
+  partner_match: null
+  type: register
+  direction: provider-built
+  category: official SDK (Go)
+  evidence: https://pkg.go.dev/github.com/akuity/api-client-go
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Go module proxy (public registry JSON)
+    spec_file: null
+    language: Go
+    packages:
+    - name: github.com/akuity/api-client-go
+      version: v0.29.0
+      released: '2026-03-16'
+      released_field: Time
+      lapsed: false
+      page: https://pkg.go.dev/github.com/akuity/api-client-go
+      repo_leg: github-org:akuity
+      publisher_leg: org:akuity
+      matched_by: github-org
+    - name: github.com/akuity/grpc-gateway-client
+      version: v0.0.0-20260723085237-ba27dc2ed546
+      released: '2026-07-23'
+      released_field: Time
+      lapsed: false
+      page: https://pkg.go.dev/github.com/akuity/grpc-gateway-client
+      repo_leg: github-org:akuity
+      publisher_leg: org:akuity
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 source:
 - https://github.com/cncf/landscape
 - https://github.com/cncf/k8s-conformance
