@@ -22,6 +22,9 @@ checked:
 - https://aur.archlinux.org/cgit/aur.git/tree/.SRCINFO
 - https://aur.archlinux.org/packages-meta-ext-v1.json.gz
 - https://aur.archlinux.org/rpc/v5/info
+- https://buf.build/buf.registry.module.v1.ModuleService/ListModules
+- https://buf.build/buf.registry.owner.v1.OwnerService/GetOwners
+- https://buf.build/explore
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -189,6 +192,46 @@ edges:
     detected_by: sweep-aur-vendor-cli-packages.py
     detected: '2026-10-23'
   detected_by: sweep-aur-vendor-cli-packages.py
+  first_seen: '2026-10-23'
+- partner_name: Buf Schema Registry (BSR) public modules
+  partner: buf
+  partner_match: register-name
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: third-party
+  evidence: https://buf.build/akuity
+  category: Protocol Buffers schema publishing (BSR)
+  contract_reference:
+    register: Buf Schema Registry (BSR) public modules
+    spec_file: null
+    standard: Protocol Buffers
+    role: schema-publisher
+    registrations:
+    - registered_name: akuity
+      register_status: public-modules
+      evidence_url: https://buf.build/akuity
+      matched_domain: null
+      matched_by: register-name
+      register_name_note: register-name 'akuity' = akuity; no wikidata P856
+    modules:
+    - module: buf.build/akuity/protoc-gen-grpc-gateway-client
+      state: active
+      lapsed: false
+      created: '2023-03-04'
+    - module: buf.build/akuity/protomcp
+      state: active
+      lapsed: false
+      created: '2026-09-16'
+    signal_note: 'participation only: the owner publishes Protocol Buffers schema modules on the public BSR; a listing
+      is not conformance (no certified_products)'
+    detected_by: sweep-buf-schema-registry.py
+    detected: '2026-10-23'
+    matched_by: register-name
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-buf-schema-registry.py
   first_seen: '2026-10-23'
 source:
 - https://github.com/cncf/landscape
