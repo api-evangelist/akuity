@@ -64,23 +64,152 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Akuity is the enterprise software delivery company founded by the creators of Argo CD and Kargo. The Akuity Platform is its commercial, fully-managed offering: hosted, enterprise-grade Argo CD control planes for GitOps continuous delivery, managed Kargo for multi-stage progressive promotion, the Akuity Agent for connecting target Kubernetes clusters, and Akuity Intelligence — an AI layer adding multi-cluster insight dashboards, on-call and promotion advisor agents, and AI-assisted remediation.
+Akuity is the enterprise software delivery company founded by the creators of Argo CD and Kargo. The Akuity Platform is its commercial, fully-managed offering: hosted, enterprise-grade Argo CD control planes for GitOps continuous delivery, managed Kargo for multi-stage progressive promotion, the Akuity Agent for connecting target Kubernetes clusters, and Akuity Intelligence — an AI layer adding multi-cluster insight dashboards, on-call and promotion advisor agents, and AI-assisted remediation. The platform is controlled by a REST API at https://akuity.cloud/api/v1/, an `akuity` CLI, a Terraform provider and a Crossplane provider, all of which speak the same grpc-gateway service surface. Akuity runs on AWS with US and EU data residency and maintains SOC 2 Type II, ISO 27001:2022, PCI DSS 4.0.1, HIPAA-aligned and CSA STAR Level 1 posture.
 
-- Website: https://akuity.io
-- Documentation: https://docs.akuity.io
-- API guide: https://docs.akuity.io/akuity-portal/automation/api
-- API base URL: https://akuity.cloud/api/v1/
-- GitHub: https://github.com/akuity
-- Status: https://status.akuity.io/
-- Trust Center: https://trust.akuity.io/
+**Areas:** GitOps · Continuous Delivery · Kubernetes · ArgoCD · Kargo · Platform Engineering · DevOps · Progressive Delivery · Cloud-Native · AIOps · Developer Tools
 
-## A note on the specifications in `openapi/`
+## Akuity on APIs.io
 
-Akuity publishes no OpenAPI document, and its documentation's "API Reference"
-page renders as an empty stub. The eight OpenAPI files in `openapi/` are API
-Evangelist derivations, transcribed mechanically from the protobuf service
-descriptors and `google.api.http` annotations that Akuity itself publishes in
-`github.com/akuity/api-client-go` (v0.29.0). Every path, method, parameter and
-schema comes from that published module; nothing was invented. The `grpc/`
-directory holds the same contract in its native `.proto` form. Sample operations
-were verified live against `https://akuity.cloud` on 2026-08-06.
+Everything profiled for Akuity is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/akuity/](https://apis.io/providers/akuity/)** — or go straight to one of the APIs or properties below.
+
+### APIs (8)
+
+- [Akuity Argo CD Service API](https://apis.io/apis/akuity/akuity-argocdservice-api/) — The ArgoCDService API from Akuity — 111 operation(s) for argocdservice.
+- [Akuity Custom Role Service API](https://apis.io/apis/akuity/akuity-customroleservice-api/) — The CustomRoleService API from Akuity — 2 operation(s) for customroleservice.
+- [Akuity Extension Service API](https://apis.io/apis/akuity/akuity-extensionservice-api/) — The ExtensionService API from Akuity — 6 operation(s) for extensionservice.
+- [Akuity Kargo Service API](https://apis.io/apis/akuity/akuity-kargoservice-api/) — The KargoService API from Akuity — 39 operation(s) for kargoservice.
+- [Akuity Organization Service API](https://apis.io/apis/akuity/akuity-organizationservice-api/) — The OrganizationService API from Akuity — 153 operation(s) for organizationservice.
+- [Akuity System Service API](https://apis.io/apis/akuity/akuity-systemservice-api/) — The SystemService API from Akuity — 14 operation(s) for systemservice.
+- [Akuity Api Key Service API](https://apis.io/apis/akuity/akuity-api-key-service-api/) — The Api Key Service API from Akuity — 4 operation(s) for api key service.
+- [Akuity Auth Service API](https://apis.io/apis/akuity/akuity-auth-service-api/) — The Auth Service API from Akuity — 4 operation(s) for auth service.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Akuity Notifications Webhooks](https://apis.io/asyncapis/akuity/akuity-notifications-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [akuity-mcp.yml](https://apis.io/servers/akuity/akuity-mcp-yml/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Akuity Platform API — API Keys API Key Service API](https://apis.io/collections/akuity/open-akuity-apikeyservice-api/)
+- [Akuity Platform API — Argo CD Argo CD Service API](https://apis.io/collections/akuity/open-akuity-argocdservice-api/)
+- [Akuity Platform API — Auth Auth Service API](https://apis.io/collections/akuity/open-akuity-authservice-api/)
+- [Akuity Platform API — Custom Roles Custom Role Service API](https://apis.io/collections/akuity/open-akuity-customroleservice-api/)
+- [Akuity Platform API — Extension Extension Service API](https://apis.io/collections/akuity/open-akuity-extensionservice-api/)
+- [Akuity Platform API — Kargo Kargo Service API](https://apis.io/collections/akuity/open-akuity-kargoservice-api/)
+- [Akuity Platform API — Organization Organization Service API](https://apis.io/collections/akuity/open-akuity-organizationservice-api/)
+- [Akuity Platform API — System System Service API](https://apis.io/collections/akuity/open-akuity-systemservice-api/)
+
+#### Overlays (9)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Akuity Api Key Service Api Phrasing Overlay](https://apis.io/overlays/akuity/akuity-api-key-service-api-phrasing-overlay/)
+- [Akuity Argocdservice Api Phrasing Overlay](https://apis.io/overlays/akuity/akuity-argocdservice-api-phrasing-overlay/)
+- [Akuity Auth Service Api Phrasing Overlay](https://apis.io/overlays/akuity/akuity-auth-service-api-phrasing-overlay/)
+- [Akuity Customroleservice Api Phrasing Overlay](https://apis.io/overlays/akuity/akuity-customroleservice-api-phrasing-overlay/)
+- [Akuity Extensionservice Api Phrasing Overlay](https://apis.io/overlays/akuity/akuity-extensionservice-api-phrasing-overlay/)
+- [Akuity Kargoservice Api Phrasing Overlay](https://apis.io/overlays/akuity/akuity-kargoservice-api-phrasing-overlay/)
+- [Akuity Organizationservice Api Phrasing Overlay](https://apis.io/overlays/akuity/akuity-organizationservice-api-phrasing-overlay/)
+- [Akuity Platform Overlay](https://apis.io/overlays/akuity/akuity-platform-overlay/)
+- [Akuity Systemservice Api Phrasing Overlay](https://apis.io/overlays/akuity/akuity-systemservice-api-phrasing-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Akuity Authentication](https://apis.io/security/akuity/akuity-authentication/)
+- [Akuity Domain Security](https://apis.io/security/akuity/akuity-domain-security/)
+- [Akuity Trust Center](https://apis.io/security/akuity/akuity-trust-center/)
+- [Akuity Vulnerability Disclosure](https://apis.io/security/akuity/akuity-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Akuity Plans](https://apis.io/plans/akuity/akuity-plans/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://akuity.io)
+- [Documentation](https://docs.akuity.io)
+- [Getting started](https://docs.akuity.io/argocd/getting-started/)
+- [API reference](https://docs.akuity.io/akuity-portal/reference/api)
+- [Pricing](https://akuity.io/pricing)
+- [Sign up](https://akuity.cloud)
+- [Support](https://akuity.io/connect-with-akuity)
+- [Blog](https://akuity.io/blog)
+- [Compliance](https://akuity.io/security-compliance)
+- [Terms of service](https://akuity.io/terms-of-service)
+- [Privacy policy](https://akuity.io/privacy-policy)
+- [GitHub](https://github.com/akuity)
+- [Status](https://status.akuity.io/)
+
+## API Evangelist rating
+
+**Kin Score 73.0** — exemplar · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 58.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 92.1 |
+
+**Agent readiness 26.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/akuity/](https://apis.io/providers/akuity/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Akuity: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/akuity/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
